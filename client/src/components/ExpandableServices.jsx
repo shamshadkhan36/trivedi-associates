@@ -135,11 +135,17 @@ export default function ExpandableServices({ onSelectService }) {
             <div
               key={pillar.id}
               className={`horizontal-service-card ${isExpanded ? 'expanded' : ''}`}
+              onClick={(e) => {
+                if (!isExpanded) toggleCard(pillar.id);
+              }}
             >
               {/* Card Header */}
               <div
                 className="h-card-header"
-                onClick={() => toggleCard(pillar.id)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  toggleCard(pillar.id);
+                }}
                 role="button"
                 tabIndex={0}
                 aria-expanded={isExpanded}

@@ -33,22 +33,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const chevron = card.querySelector('.h-chevron');
     const promptText = card.querySelector('.prompt-text');
 
-    if (header && body) {
-      header.addEventListener('click', () => {
-        const isExpanded = card.classList.contains('expanded');
-        if (isExpanded) {
-          card.classList.remove('expanded');
-          body.style.display = 'none';
-          chevron?.classList.remove('rotated');
-          if (promptText) promptText.textContent = 'Click to Expand';
-        } else {
-          card.classList.add('expanded');
-          body.style.display = 'block';
-          chevron?.classList.add('rotated');
-          if (promptText) promptText.textContent = 'Collapse';
-        }
+    const toggle = () => {
+      const isExpanded = card.classList.contains('expanded');
+      if (isExpanded) {
+        card.classList.remove('expanded');
+        if (body) body.style.display = 'none';
+        chevron?.classList.remove('rotated');
+        if (promptText) promptText.textContent = 'Click to Expand';
+      } else {
+        card.classList.add('expanded');
+        if (body) body.style.display = 'block';
+        chevron?.classList.add('rotated');
+        if (promptText) promptText.textContent = 'Collapse';
+      }
+    };
+
+    if (header) {
+      header.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggle();
       });
     }
+
+    card.addEventListener('click', (e) => {
+      // If clicking enquire button, let the enquire button trigger do its work
+      if (e.target.closest('.h-enquire-btn')) return;
+      if (!card.classList.contains('expanded')) {
+        toggle();
+      }
+    });
   });
 
   if (expandAllBtn) {
@@ -111,7 +124,6 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.textContent = 'Transmitting Data...';
       submitBtn.disabled = true;
 
-      try {
       const leadData = {
         id: Date.now(),
         name,
