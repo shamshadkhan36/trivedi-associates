@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Skylines from './components/Skylines';
+import ExpandableServices from './components/ExpandableServices';
+import CompanyMarquee from './components/CompanyMarquee';
+import EnquiryForm from './components/EnquiryForm';
 import Aesthetics from './components/Aesthetics';
-import Legacy from './components/Legacy';
-import PerfectSpace from './components/PerfectSpace';
-import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import FloatingControls from './components/FloatingControls';
 import { ConnectModal, SearchModal, MobileDrawer } from './components/Modals';
@@ -16,9 +15,10 @@ export default function App() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState('');
   const [projectsRefreshKey, setProjectsRefreshKey] = useState(0);
 
-  // Check if URL hash has #admin on initial load or change
+  // Check URL hash for #admin
   useEffect(() => {
     const checkHash = () => {
       if (window.location.hash === '#admin') {
@@ -37,13 +37,15 @@ export default function App() {
     }
   };
 
-  const handleProjectsUpdated = () => {
-    setProjectsRefreshKey((prev) => prev + 1);
+  const handleSelectServiceFromCard = (serviceTitle) => {
+    setSelectedService(serviceTitle);
+    const formEl = document.getElementById('enquiry-form-section');
+    if (formEl) formEl.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <div className="trivedi-app">
-      {/* Top Sticky Luxury Navigation */}
+    <div className="trivedi-app minimalist-theme">
+      {/* 0. Top Navigation */}
       <Navbar
         onOpenConnect={() => setIsConnectOpen(true)}
         onOpenSearch={() => setIsSearchOpen(true)}
@@ -51,31 +53,28 @@ export default function App() {
         onOpenAdmin={() => setIsAdminOpen(true)}
       />
 
-      {/* Section 1: Hero (Image 1) */}
+      {/* 1. Hero Section */}
       <Hero onOpenConnect={() => setIsConnectOpen(true)} />
 
-      {/* Section 2: Shaping Skylines with Timeless Design (Image 2) */}
-      <Skylines />
+      {/* 2. Four Main Headings (Expand on Click) from Whiteboard */}
+      <ExpandableServices onSelectService={handleSelectServiceFromCard} />
 
-      {/* Section 3: A Seamless Blend of Purpose and Aesthetics (Image 3) */}
+      {/* 3. Infinite Marquee Moving Company */}
+      <CompanyMarquee />
+
+      {/* 4. Enquiry Form ("Form fill data to help us reach you") */}
+      <EnquiryForm preselectedService={selectedService} />
+
+      {/* 5. Featured Architectural Projects Carousel (Dynamic via Admin Panel) */}
       <Aesthetics refreshTrigger={projectsRefreshKey} />
 
-      {/* Section 4: Our Legacy (Image 4) */}
-      <Legacy />
-
-      {/* Section 5: Find your perfect space with us (Image 5) */}
-      <PerfectSpace onOpenConnect={() => setIsConnectOpen(true)} />
-
-      {/* Section 6: Consultation & Direct Contact Cards */}
-      <ContactSection />
-
-      {/* Footer */}
+      {/* 6. Footer */}
       <Footer onOpenAdmin={() => setIsAdminOpen(true)} />
 
       {/* Floating Action Controls */}
       <FloatingControls onOpenConnect={() => setIsConnectOpen(true)} />
 
-      {/* Modals & Drawers */}
+      {/* Modals */}
       <ConnectModal
         isOpen={isConnectOpen}
         onClose={() => setIsConnectOpen(false)}
@@ -92,11 +91,11 @@ export default function App() {
         onOpenConnect={() => setIsConnectOpen(true)}
       />
 
-      {/* Admin Panel Modal / View */}
+      {/* Admin Panel Console */}
       {isAdminOpen && (
         <AdminPanel
           onClose={handleCloseAdmin}
-          onProjectsUpdated={handleProjectsUpdated}
+          onProjectsUpdated={() => setProjectsRefreshKey((prev) => prev + 1)}
         />
       )}
     </div>

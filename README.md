@@ -1,88 +1,70 @@
-# Trivedi Associates (.Com) - Full-Stack React & Node.js Website with Admin Panel
+# Trivedi Associates (.Com) - Architecture & Engineering Website
 
-An ultra-luxurious, responsive website crafted for **Trivedi Associates**, replicating the signature neoclassical elegance, layout, typography, and palette of the reference design (House of Hiranandani aesthetic) in modern **React** and **Node.js (Express)**, complete with a secure **Admin Panel** for live project and customer inquiry management.
+A minimalist luxury website for **Trivedi Associates**, custom-structured according to the client wireframe in modern **React 18 + Node.js (Express)**, featuring a secure **Admin Panel** for project and inquiry management.
 
 ---
 
 ## Client Contact & Identity Details
 
 - **Brand Name:** Trivedi Associates (`Trivedi Associates . Com`)
-- **Direct Phone:** `+91 7977117256` (1-click calling enabled: `tel:7977117256`)
-- **WhatsApp Direct:** `+91 7977117256` (1-click WhatsApp message enabled)
-- **Official Email:** `trivedi.associates13@gmail.com` (1-click direct mailto enabled)
+- **Direct Phone:** `+91 7977117256` (1-click direct call: `tel:7977117256`)
+- **WhatsApp Support:** `+91 7977117256` (1-click direct chat: `https://wa.me/917977117256`)
+- **Official Email:** `trivedi.associates13@gmail.com` (1-click direct mailto: `mailto:trivedi.associates13@gmail.com`)
 
 ---
 
-## Admin Panel Access & Credentials
+## Website Structure (Matches Client Whiteboard Wireframe)
 
-The Admin Panel allows authorized personnel to manage development projects, publish new projects to the website carousel, and view/contact prospective clients who submitted inquiries.
+1. **Minimalist Hero Section:**
+   - Architectural visual with subtle ambient motion.
+   - Clean luxury typography, brand monogram badge, and quick action buttons.
+   - Minimalist animated scroll indicator.
 
-- **Access URL:** Click the **Lock Icon** in the top navigation, or click **"Admin Portal"** in the footer, or visit `/#admin`
-- **Username / Email:** `admin@trivediassociates.com` (or `admin`)
-- **Password:** `Trivedi@2026`
+2. **4 Main Expandable Pillars (Click to Expand):**
+   - **01. Design & Planning**: Floor Planning, 3D Views & Photorealistic Modeling, Elevation Design & Facades, Interior Architecture.
+   - **02. Project Management Consultant (PMC)**: On-Site Supervision & Execution, Cost Estimation & Budget Optimization, Quality Control & Structural Audit, Timeline & Milestone Management.
+   - **03. Liaisoning & Approvals**: Municipal & BMC Approvals, Environmental & Coastal Clearances, Fire & Life Safety NOCs, Occupation Certificate (OC).
+   - **04. Green Building Consultant**: IGBC & LEED Green Certification, Energy Modeling & Optimization, Sustainable Water & Waste Systems, Eco-Friendly Materials Advisory.
+   - *Behavior:* Smooth interactive accordion with deliverable details and "Enquire for this service" quick-select.
 
-### Admin Features:
-1. **Projects Management:** View all active projects with image previews, category tags, and delete capabilities.
-2. **Publish New Project:** Add projects with Primary Title, Accent Italic Title, Subtitle, Category, and choose from curated neoclassical image presets or custom URLs. Published projects appear immediately on the live website carousel.
-3. **Client Inquiries / Leads:** Real-time table of customer consultations with 1-click **WhatsApp** and **Direct Call** shortcuts.
+3. **Infinite Company Marquee:**
+   - Seamless continuous auto-scrolling ticker showcasing prominent developer partners and corporate clients (Hiranandani, Godrej, Lodha, Oberoi Realty, L&T, Shapoorji Pallonji, Tata Housing, K Raheja, Piramal, Kalpataru).
+   - Pauses gracefully on hover.
 
----
+4. **Enquiry Form ("Form fill data to help us reach you"):**
+   - Full Name, Detail / Organization, Service Dropdown (the 4 pillars), Contact Number (`7977117256`), Email ID (`trivedi.associates13@gmail.com`), Message / Project Details.
+   - Connected to the Node.js backend API (`POST /api/contact`) with persistent lead storage in `server/data/inquiries.json`.
+   - 1-click direct hotline cards for Phone, WhatsApp, and Email.
 
-## Architecture & Layout
+5. **Featured Architectural Projects Showcase:**
+   - Sleek dark carousel dynamically loaded from the projects API.
 
-### 1. Frontend (React + Vite)
-- **`Navbar.jsx`**: Translucent/scrolled header, custom `TA` architectural monogram emblem, navigation links, search trigger, mobile drawer, admin lock icon, and "LET'S CONNECT" CTA.
-- **`Hero.jsx`**: Neoclassical colonnade hero background with subtle animated zoom, typography, and animated mouse scroll indicator.
-- **`Skylines.jsx`**: Colonnade arch cut-out on left, deep wine burgundy typography, and smooth statistical counter animations (45+ Years, 27,041 Homes, 95,288 Clients, 50.85 Mn. sq. ft., 69,357+ Trees).
-- **`Aesthetics.jsx`**: Dark theme (`#111111`) with dynamic project card carousel linked to the projects API (*Superior Build Quality*, *Meticulous Craftsmanship*, *Sustainable Living*, *Architectural Finesse*).
-- **`Legacy.jsx`**: Neoclassical grand pediment on right, interactive locality switcher tabs (**Powai**, **Thane**, **South Mumbai**) with dynamic narrative updates.
-- **`PerfectSpace.jsx`**: Neoclassical estate backdrop under golden sky with double-bordered gold/brass "LET'S CONNECT" CTA.
-- **`ContactSection.jsx`**: Contact cards for Phone, WhatsApp, Email, and Domain, connected to the Node.js Express backend API (`/api/contact`).
-- **`AdminPanel.jsx`**: Full-featured admin login and management dashboard.
-- **`Modals.jsx`**: "LET'S CONNECT" popup inquiry modal, quick project search modal, and mobile slide-out navigation drawer.
-- **`FloatingControls.jsx`**: Floating circular gold `TA` emblem seal and circular black "Back to Top" button.
-- **`Footer.jsx`**: Full luxury footer with brand story, portfolio links, admin link, and copyright.
-
-### 2. Backend (Node.js + Express)
-- **`POST /api/admin/login`**: Authenticates admin and issues secure token.
-- **`GET /api/projects`**: Public endpoint returning active projects for the carousel.
-- **`POST /api/admin/projects`**: Admin endpoint to add a new project to `server/data/projects.json`.
-- **`DELETE /api/admin/projects/:id`**: Admin endpoint to delete a project.
-- **`POST /api/contact`**: Validates visitor inquiries and persists them to `server/data/inquiries.json`.
-- **`GET /api/admin/inquiries`**: Admin endpoint to retrieve all leads.
-- **`DELETE /api/admin/inquiries/:id`**: Admin endpoint to delete lead record.
-- **`GET /api/health`**: Health check route.
+6. **Admin Panel (`/#admin`):**
+   - Username: `admin@trivediassociates.com` (or `admin`)
+   - Password: `Trivedi@2026`
+   - Add new projects with live preview, delete existing projects, and track customer leads with 1-click WhatsApp/Call actions.
 
 ---
 
 ## How to Run
 
 ### Development Mode
+```bash
+# Terminal 1: Backend API (Port 5000)
+cd server
+npm run dev
 
-1. **Start Backend Server (Port 5000):**
-   ```bash
-   cd server
-   npm run dev
-   ```
-
-2. **Start Frontend Client (Port 3000):**
-   ```bash
-   cd client
-   npm run dev
-   ```
-   Open `http://localhost:3000` in your browser.
+# Terminal 2: React Frontend (Port 3000)
+cd client
+npm run dev
+```
+Open `http://localhost:3000` in your browser.
 
 ### Production Mode
-
-1. **Build the React frontend:**
-   ```bash
-   cd client
-   npm run build
-   ```
-
-2. **Run the Node.js production server:**
-   ```bash
-   cd server
-   npm start
-   ```
-   Open `http://localhost:5000` in your browser.
+```bash
+cd client
+npm run build
+cd ../server
+npm start
+```
+Open `http://localhost:5000` in your browser.

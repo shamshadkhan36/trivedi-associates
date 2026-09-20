@@ -1,8 +1,13 @@
 import React from 'react';
 
 export default function Hero({ onOpenConnect }) {
-  const scrollToSkylines = () => {
-    const el = document.getElementById('skylines');
+  const scrollToServices = () => {
+    const el = document.getElementById('services');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const scrollToEnquiry = () => {
+    const el = document.getElementById('enquiry-form-section');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
@@ -11,36 +16,37 @@ export default function Hero({ onOpenConnect }) {
       <div className="hero-bg-container">
         <img
           src="/assets/images/hero_bg.png"
-          alt="Trivedi Associates Neoclassical Architecture"
+          alt="Trivedi Associates Architectural Excellence"
           className="hero-bg-image"
         />
       </div>
       <div className="hero-overlay"></div>
 
       <div className="hero-content">
-        <p className="hero-subtitle">Trivedi Associates &bull; Mumbai</p>
+        <div className="hero-minimal-badge">TRIVEDI ASSOCIATES &bull; MUMBAI</div>
         <h1 className="hero-title">
-          Crafting Architectural Marvels with <br />
-          <span className="italic-serif">Unrivaled Heritage</span>
+          Architectural Ingenuity, <br />
+          <span className="italic-serif">Precision Engineering</span>
         </h1>
+        <p className="hero-minimal-sub">
+          Master planning, project management consulting, government liaisoning, and IGBC/LEED green building advisory.
+        </p>
+
         <div className="hero-cta-wrapper">
-          <a href="#aesthetics" className="btn-hero-primary">
-            Explore Developments
-          </a>
-          <button
-            className="btn-hero-secondary"
-            onClick={onOpenConnect}
-          >
-            Let's Connect
+          <button onClick={scrollToServices} className="btn-hero-primary">
+            Explore 4 Core Verticals
+          </button>
+          <button onClick={scrollToEnquiry} className="btn-hero-secondary">
+            Enquire Now
           </button>
         </div>
       </div>
 
-      {/* Mouse Scroll Indicator */}
+      {/* Minimalist Scroll Indicator */}
       <div
         className="hero-scroll-indicator"
-        onClick={scrollToSkylines}
-        title="Scroll Down"
+        onClick={scrollToServices}
+        title="Scroll Down to Services"
         role="button"
         tabIndex={0}
       >
