@@ -27,11 +27,10 @@ export default function Navbar({ onOpenConnect, onOpenSearch, onOpenDrawer, onOp
       </a>
 
       <ul className="nav-links">
-        <li><a href="#skylines" className="nav-link">Our Story</a></li>
-        <li><a href="#aesthetics" className="nav-link">Residential</a></li>
-        <li><a href="#aesthetics" className="nav-link">Commercial</a></li>
-        <li><a href="#legacy" className="nav-link">Retail</a></li>
-        <li><a href="#legacy" className="nav-link">Our Legacy</a></li>
+        <li><a href="#services" className="nav-link">Our Pillars</a></li>
+        <li><a href="#marquee" className="nav-link">Partners</a></li>
+        <li><a href="#enquiry-form-section" className="nav-link">Enquire</a></li>
+        <li><a href="#showcase" className="nav-link">Developments</a></li>
       </ul>
 
       <div className="nav-actions">

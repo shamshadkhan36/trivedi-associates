@@ -41,17 +41,16 @@
       <li><a href="#marquee" class="nav-link">Partners</a></li>
       <li><a href="#enquiry-form-section" class="nav-link">Enquire</a></li>
       <li><a href="#showcase" class="nav-link">Developments</a></li>
-      <li><a href="client/index.html" class="nav-link" style="color: var(--color-gold);">React App</a></li>
     </ul>
 
     <div class="nav-actions">
       <!-- Admin Portal Lock Button -->
-      <a href="http://localhost:3000/#admin" class="nav-icon-btn" title="Admin Portal" aria-label="Admin Portal">
+      <button class="nav-icon-btn" id="openAdminBtn" title="Admin Portal (Manage Projects)" aria-label="Admin Portal">
         <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none">
           <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
           <path d="M7 11V7a5 5 0 0 1 10 0v4" />
         </svg>
-      </a>
+      </button>
 
       <!-- Search Icon Button -->
       <button class="nav-icon-btn" id="openSearchBtn" aria-label="Search">
@@ -616,12 +615,149 @@
       <div>&copy; 2026 Trivedi Associates . Com &bull; All Rights Reserved.</div>
       <div style="display: flex; gap: 20px; align-items: center;">
         <span>Architecture &bull; Engineering &bull; PMC &bull; Sustainability</span>
-        <a href="http://localhost:3000/#admin" style="color: var(--color-gold); font-size: 12px; border: 1px solid rgba(197, 168, 128, 0.3); padding: 4px 10px; border-radius: 4px; text-transform: uppercase;">
+        <button id="footerAdminBtn" style="color: var(--color-gold); font-size: 12px; border: 1px solid rgba(197, 168, 128, 0.3); padding: 4px 10px; border-radius: 4px; text-transform: uppercase; cursor: pointer; background: transparent;">
           Admin Portal
-        </a>
+        </button>
       </div>
     </div>
   </footer>
+
+  <!-- ==================== ADMIN PORTAL MODAL ==================== -->
+  <div class="admin-portal-modal" id="adminModal" style="display: none;">
+    <div class="admin-modal-backdrop" id="adminBackdrop"></div>
+    <div class="admin-modal-dialog">
+      <!-- Login View -->
+      <div id="adminLoginView" class="admin-modal-content">
+        <div class="admin-modal-header">
+          <div class="admin-brand-wrap">
+            <div class="admin-brand-icon">
+              <svg viewBox="0 0 100 100" width="22" height="22">
+                <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="4" />
+                <path d="M30 36 L70 36 M50 36 L50 78 M38 78 L62 78" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="admin-title">Trivedi Associates</h3>
+              <span class="admin-sub">Admin Operations Console</span>
+            </div>
+          </div>
+          <button class="admin-close-btn" id="closeAdminBtn" aria-label="Close">&times;</button>
+        </div>
+
+        <p class="admin-desc">
+          Enter authorized administrative credentials to manage development projects, portfolio showcases, and client inquiries.
+        </p>
+
+        <div id="adminLoginAlert" class="admin-alert-box error" style="display: none;"></div>
+
+        <form id="adminLoginForm">
+          <div class="admin-input-group">
+            <label class="admin-label">Admin Email / Username</label>
+            <input type="text" id="adminEmail" class="admin-input" value="admin@trivediassociates.com" required>
+          </div>
+          <div class="admin-input-group">
+            <label class="admin-label">Password</label>
+            <input type="password" id="adminPass" class="admin-input" placeholder="••••••••" required>
+          </div>
+          <div class="admin-hint-text">
+            Authorized sign-in: <span style="color: var(--color-gold);">admin@trivediassociates.com</span> / <span style="color: var(--color-gold);">Trivedi@2026</span>
+          </div>
+          <button type="submit" class="admin-submit-btn">Authorize &amp; Sign In</button>
+        </form>
+      </div>
+
+      <!-- Dashboard View (Logged In) -->
+      <div id="adminDashboardView" class="admin-modal-content" style="display: none;">
+        <div class="admin-modal-header">
+          <div class="admin-brand-wrap">
+            <div class="admin-brand-icon">
+              <svg viewBox="0 0 100 100" width="22" height="22">
+                <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="4" />
+                <path d="M30 36 L70 36 M50 36 L50 78 M38 78 L62 78" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="admin-title">Trivedi Associates Admin</h3>
+              <span class="admin-sub">Active Session: SuperAdmin</span>
+            </div>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: center;">
+            <button class="admin-logout-btn" id="adminLogoutBtn">Sign Out</button>
+            <button class="admin-close-btn" id="closeAdminDashBtn" aria-label="Close">&times;</button>
+          </div>
+        </div>
+
+        <div id="adminDashAlert" class="admin-alert-box success" style="display: none;"></div>
+
+        <!-- Dashboard Nav Tabs -->
+        <div class="admin-tab-bar">
+          <button class="admin-tab-btn active" id="tabBtnAdd" data-tab="add">Add New Project</button>
+          <button class="admin-tab-btn" id="tabBtnProjects" data-tab="projects">Manage Projects</button>
+          <button class="admin-tab-btn" id="tabBtnLeads" data-tab="leads">Client Enquiries</button>
+        </div>
+
+        <!-- Tab 1: Add New Project -->
+        <div id="tabPanelAdd" class="admin-tab-panel">
+          <form id="newProjectForm">
+            <div class="admin-form-row">
+              <div class="admin-input-group">
+                <label class="admin-label">Main Heading *</label>
+                <input type="text" id="projTitleMain" class="admin-input" placeholder="e.g. Imperial Heritage" required>
+              </div>
+              <div class="admin-input-group">
+                <label class="admin-label">Italic Accent Word *</label>
+                <input type="text" id="projTitleItalic" class="admin-input" placeholder="e.g. Towers" required>
+              </div>
+            </div>
+
+            <div class="admin-form-row">
+              <div class="admin-input-group">
+                <label class="admin-label">Category *</label>
+                <select id="projCategory" class="admin-input">
+                  <option value="Residential">Residential Luxury</option>
+                  <option value="Commercial">Commercial Landmark</option>
+                  <option value="Green Building">Green Building Sustainable</option>
+                  <option value="Township">Master Planned Township</option>
+                </select>
+              </div>
+              <div class="admin-input-group">
+                <label class="admin-label">Subtitle / Location *</label>
+                <input type="text" id="projSubtitle" class="admin-input" placeholder="e.g. Powai Lakefront Estate" required>
+              </div>
+            </div>
+
+            <div class="admin-input-group">
+              <label class="admin-label">Feature Image</label>
+              <select id="projImageSelect" class="admin-input">
+                <option value="assets/images/project_card_1.jpg">1. Neoclassical Classical Portico (Superior Build)</option>
+                <option value="assets/images/project_card_2.jpg">2. Signature Facade Tower (Meticulous Craft)</option>
+                <option value="assets/images/project_card_3.jpg">3. Green Parkland Pavilion (Sustainable Living)</option>
+                <option value="assets/images/project_card_4.jpg">4. Grand Balcony Columns (Architectural Finesse)</option>
+              </select>
+            </div>
+
+            <button type="submit" class="admin-submit-btn" style="margin-top: 16px;">
+              Publish Project to Website Showcase &rarr;
+            </button>
+          </form>
+        </div>
+
+        <!-- Tab 2: Manage Projects -->
+        <div id="tabPanelProjects" class="admin-tab-panel" style="display: none;">
+          <div id="adminProjectsList" class="admin-items-list">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Tab 3: Client Leads -->
+        <div id="tabPanelLeads" class="admin-tab-panel" style="display: none;">
+          <div id="adminLeadsList" class="admin-items-list">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Scripts -->
   <script src="js/main.js"></script>
