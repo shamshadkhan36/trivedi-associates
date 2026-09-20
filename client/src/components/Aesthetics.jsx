@@ -1,29 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const projects = [
+const defaultProjects = [
   {
-    id: 1,
+    id: '1',
     image: '/assets/images/project_card_1.jpg',
     titleMain: 'Superior',
     titleItalic: 'Build Quality',
     subtitle: 'Shot at Trivedi Associates Property'
   },
   {
-    id: 2,
+    id: '2',
     image: '/assets/images/project_card_2.jpg',
     titleMain: 'Meticulous',
     titleItalic: 'Craftsmanship',
     subtitle: 'Trivedi Signature Tower'
   },
   {
-    id: 3,
+    id: '3',
     image: '/assets/images/project_card_3.jpg',
     titleMain: 'Sustainable',
     titleItalic: 'Living',
     subtitle: 'Trivedi Green Haven Estate'
   },
   {
-    id: 4,
+    id: '4',
     image: '/assets/images/project_card_4.jpg',
     titleMain: 'Architectural',
     titleItalic: 'Finesse',
@@ -31,8 +31,26 @@ const projects = [
   }
 ];
 
-export default function Aesthetics() {
+export default function Aesthetics({ refreshTrigger }) {
+  const [projects, setProjects] = useState(defaultProjects);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    fetchProjects();
+  }, [refreshTrigger]);
+
+  const fetchProjects = async () => {
+    try {
+      const res = await fetch('/api/projects');
+      const data = await res.json();
+      if (data.success && data.data && data.data.length > 0) {
+        setProjects(data.data);
+      }
+    } catch (err) {
+      // Fallback to defaultProjects if backend not running
+      setProjects(defaultProjects);
+    }
+  };
 
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev >= projects.length - 1 ? 0 : prev + 1));
@@ -78,7 +96,7 @@ export default function Aesthetics() {
           </div>
         </div>
 
-        {/* Right Column: Carousel Track */}
+        {/* Right Column: Dynamic Project Carousel */}
         <div className="aesthetics-slider-col">
           <div
             className="cards-track"
@@ -90,6 +108,9 @@ export default function Aesthetics() {
                   src={proj.image}
                   alt={`${proj.titleMain} ${proj.titleItalic}`}
                   className="project-card-img"
+                  onError={(e) => {
+                    e.target.src = '/assets/images/project_card_1.jpg';
+                  }}
                 />
                 <div className="project-card-overlay">
                   <h3 className="card-title">

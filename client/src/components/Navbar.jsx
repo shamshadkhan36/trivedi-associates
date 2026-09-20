@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-export default function Navbar({ onOpenConnect, onOpenSearch, onOpenDrawer }) {
+export default function Navbar({ onOpenConnect, onOpenSearch, onOpenDrawer, onOpenAdmin }) {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -53,10 +53,24 @@ export default function Navbar({ onOpenConnect, onOpenSearch, onOpenDrawer }) {
           className="nav-icon-btn"
           onClick={onOpenSearch}
           aria-label="Search Developments"
+          title="Search Developments"
         >
           <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none">
             <circle cx="11" cy="11" r="8" />
             <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+        </button>
+
+        {/* Admin Portal Lock Icon Button */}
+        <button
+          className="nav-icon-btn"
+          onClick={onOpenAdmin}
+          aria-label="Admin Portal"
+          title="Client Admin Portal (Manage Projects)"
+        >
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
           </svg>
         </button>
 

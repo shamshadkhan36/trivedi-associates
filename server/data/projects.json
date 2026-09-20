@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "titleMain": "Superior",
+    "titleItalic": "Build Quality",
+    "subtitle": "Shot at Trivedi Associates Property",
+    "category": "Residential",
+    "image": "/assets/images/project_card_1.jpg",
+    "createdAt": "2026-09-20T21:00:00.000Z"
+  },
+  {
+    "id": "2",
+    "titleMain": "Meticulous",
+    "titleItalic": "Craftsmanship",
+    "subtitle": "Trivedi Signature Tower",
+    "category": "Commercial",
+    "image": "/assets/images/project_card_2.jpg",
+    "createdAt": "2026-09-20T21:05:00.000Z"
+  },
+  {
+    "id": "3",
+    "titleMain": "Sustainable",
+    "titleItalic": "Living",
+    "subtitle": "Trivedi Green Haven Estate",
+    "category": "Residential",
+    "image": "/assets/images/project_card_3.jpg",
+    "createdAt": "2026-09-20T21:10:00.000Z"
+  },
+  {
+    "id": "4",
+    "titleMain": "Architectural",
+    "titleItalic": "Finesse",
+    "subtitle": "Trivedi Imperial Crest",
+    "category": "Retail",
+    "image": "/assets/images/project_card_4.jpg",
+    "createdAt": "2026-09-20T21:15:00.000Z"
+  }
+]

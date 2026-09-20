@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Footer() {
+export default function Footer({ onOpenAdmin }) {
   return (
     <footer className="site-footer">
       <div className="footer-container">
@@ -71,7 +71,23 @@ export default function Footer() {
 
       <div className="footer-bottom">
         <div>&copy; 2026 Trivedi Associates . Com &bull; All Rights Reserved.</div>
-        <div>Designed for Luxury Architectural Distinction</div>
+        <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
+          <span>Designed for Luxury Architectural Distinction</span>
+          <button
+            onClick={onOpenAdmin}
+            style={{
+              color: 'var(--color-gold)',
+              fontSize: '12px',
+              border: '1px solid rgba(197, 168, 128, 0.3)',
+              padding: '4px 10px',
+              borderRadius: '4px',
+              textTransform: 'uppercase',
+              letterSpacing: '1px'
+            }}
+          >
+            Admin Portal
+          </button>
+        </div>
       </div>
     </footer>
   );

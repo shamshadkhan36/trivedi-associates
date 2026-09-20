@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Skylines from './components/Skylines';
@@ -9,11 +9,37 @@ import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import FloatingControls from './components/FloatingControls';
 import { ConnectModal, SearchModal, MobileDrawer } from './components/Modals';
+import AdminPanel from './components/AdminPanel';
 
 export default function App() {
   const [isConnectOpen, setIsConnectOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isAdminOpen, setIsAdminOpen] = useState(false);
+  const [projectsRefreshKey, setProjectsRefreshKey] = useState(0);
+
+  // Check if URL hash has #admin on initial load or change
+  useEffect(() => {
+    const checkHash = () => {
+      if (window.location.hash === '#admin') {
+        setIsAdminOpen(true);
+      }
+    };
+    checkHash();
+    window.addEventListener('hashchange', checkHash);
+    return () => window.removeEventListener('hashchange', checkHash);
+  }, []);
+
+  const handleCloseAdmin = () => {
+    setIsAdminOpen(false);
+    if (window.location.hash === '#admin') {
+      window.history.pushState('', document.title, window.location.pathname + window.location.search);
+    }
+  };
+
+  const handleProjectsUpdated = () => {
+    setProjectsRefreshKey((prev) => prev + 1);
+  };
 
   return (
     <div className="trivedi-app">
@@ -22,6 +48,7 @@ export default function App() {
         onOpenConnect={() => setIsConnectOpen(true)}
         onOpenSearch={() => setIsSearchOpen(true)}
         onOpenDrawer={() => setIsDrawerOpen(true)}
+        onOpenAdmin={() => setIsAdminOpen(true)}
       />
 
       {/* Section 1: Hero (Image 1) */}
@@ -31,7 +58,7 @@ export default function App() {
       <Skylines />
 
       {/* Section 3: A Seamless Blend of Purpose and Aesthetics (Image 3) */}
-      <Aesthetics />
+      <Aesthetics refreshTrigger={projectsRefreshKey} />
 
       {/* Section 4: Our Legacy (Image 4) */}
       <Legacy />
@@ -43,7 +70,7 @@ export default function App() {
       <ContactSection />
 
       {/* Footer */}
-      <Footer />
+      <Footer onOpenAdmin={() => setIsAdminOpen(true)} />
 
       {/* Floating Action Controls */}
       <FloatingControls onOpenConnect={() => setIsConnectOpen(true)} />
@@ -64,6 +91,14 @@ export default function App() {
         onClose={() => setIsDrawerOpen(false)}
         onOpenConnect={() => setIsConnectOpen(true)}
       />
+
+      {/* Admin Panel Modal / View */}
+      {isAdminOpen && (
+        <AdminPanel
+          onClose={handleCloseAdmin}
+          onProjectsUpdated={handleProjectsUpdated}
+        />
+      )}
     </div>
   );
 }
