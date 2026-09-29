@@ -1,6 +1,9 @@
 import React from 'react';
 
 export default function Hero({ onOpenConnect }) {
+  const customBanner = typeof window !== 'undefined' ? localStorage.getItem('ta_hero_banner') : null;
+  const bannerSrc = customBanner || '/assets/images/hero_bg.png';
+
   const scrollToServices = () => {
     const el = document.getElementById('services');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -15,7 +18,7 @@ export default function Hero({ onOpenConnect }) {
     <section className="hero-section" id="hero">
       <div className="hero-bg-container">
         <img
-          src="/assets/images/hero_bg.png"
+          src={bannerSrc}
           alt="Trivedi Associates Architectural Excellence"
           className="hero-bg-image"
         />
