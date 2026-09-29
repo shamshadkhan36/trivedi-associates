@@ -31,28 +31,29 @@ export default function Hero({ onOpenConnect }) {
         <p className="hero-minimal-sub">
           Master planning, project management consulting, government liaisoning, and IGBC/LEED green building advisory.
         </p>
-
-        <div className="hero-cta-wrapper">
-          <button onClick={scrollToServices} className="btn-hero-primary">
-            Explore 4 Core Verticals
-          </button>
-          <button onClick={scrollToEnquiry} className="btn-hero-secondary">
-            Enquire Now
-          </button>
-        </div>
       </div>
 
-      {/* Minimalist Scroll Indicator */}
-      <div
-        className="hero-scroll-indicator"
-        onClick={scrollToServices}
-        title="Scroll Down to Services"
-        role="button"
-        tabIndex={0}
-      >
-        <div className="mouse-icon">
-          <div className="mouse-dot"></div>
+      {/* Bottom Hero Action Bar: Two CTA Buttons Flanking Mouse Scroll Indicator */}
+      <div className="hero-bottom-bar">
+        <button onClick={scrollToServices} className="btn-hero-primary">
+          Explore 4 Core Verticals
+        </button>
+
+        <div
+          className="hero-scroll-indicator"
+          onClick={scrollToServices}
+          title="Scroll Down to Services"
+          role="button"
+          tabIndex={0}
+        >
+          <div className="mouse-icon">
+            <div className="mouse-dot"></div>
+          </div>
         </div>
+
+        <button onClick={scrollToEnquiry} className="btn-hero-secondary">
+          Enquire Now
+        </button>
       </div>
     </section>
   );

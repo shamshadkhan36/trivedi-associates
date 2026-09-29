@@ -337,15 +337,22 @@ button {
   font-size: 16px;
   color: rgba(255, 255, 255, 0.9);
   max-width: 680px;
-  margin: 0 auto 36px auto;
+  margin: 0 auto;
   line-height: 1.7;
   font-weight: 300;
 }
 
-.hero-cta-wrapper {
+.hero-bottom-bar {
+  position: absolute;
+  bottom: 38px;
+  left: 0;
+  width: 100%;
+  z-index: 3;
   display: flex;
-  gap: 18px;
+  align-items: center;
   justify-content: center;
+  gap: 36px;
+  padding: 0 24px;
 }
 
 .btn-hero-primary {
@@ -400,17 +407,23 @@ button {
 }
 
 .hero-scroll-indicator {
-  position: absolute;
-  bottom: 35px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3;
   cursor: pointer;
   transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-scroll-indicator:hover {
-  transform: translateX(-50%) translateY(4px);
+  transform: translateY(4px);
+}
+
+@media (max-width: 768px) {
+  .hero-bottom-bar {
+    flex-wrap: wrap;
+    gap: 14px;
+    bottom: 24px;
+  }
 }
 
 .mouse-icon {
