@@ -27,10 +27,12 @@ export default function Navbar({ onOpenConnect, onOpenSearch, onOpenDrawer, onOp
       </a>
 
       <ul className="nav-links">
-        <li><a href="#services" className="nav-link">Our Pillars</a></li>
-        <li><a href="#marquee" className="nav-link">Partners</a></li>
-        <li><a href="#enquiry-form-section" className="nav-link">Enquire</a></li>
-        <li><a href="#showcase" className="nav-link">Developments</a></li>
+        <li><a href="#hero" className="nav-link">HOME</a></li>
+        <li><a href="#services" className="nav-link">SERVICES</a></li>
+        <li><a href="#showcase" className="nav-link">PROJECTS</a></li>
+        <li><a href="#about" className="nav-link">ABOUT</a></li>
+        <li><a href="#insights" className="nav-link">INSIGHTS</a></li>
+        <li><a href="#enquiry-form-section" className="nav-link">CONTACT</a></li>
       </ul>
 
       <div className="nav-actions">

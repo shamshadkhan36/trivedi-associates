@@ -252,13 +252,12 @@ export function MobileDrawer({ isOpen, onClose, onOpenConnect }) {
         </div>
 
         <ul className="drawer-links">
-          <li><a href="#hero" onClick={onClose}>Home</a></li>
-          <li><a href="#skylines" onClick={onClose}>Our Story</a></li>
-          <li><a href="#aesthetics" onClick={onClose}>Residential</a></li>
-          <li><a href="#aesthetics" onClick={onClose}>Commercial</a></li>
-          <li><a href="#legacy" onClick={onClose}>Retail</a></li>
-          <li><a href="#legacy" onClick={onClose}>Our Legacy</a></li>
-          <li><a href="#contact" onClick={onClose}>Contact</a></li>
+          <li><a href="#hero" onClick={onClose}>HOME</a></li>
+          <li><a href="#services" onClick={onClose}>SERVICES</a></li>
+          <li><a href="#showcase" onClick={onClose}>PROJECTS</a></li>
+          <li><a href="#about" onClick={onClose}>ABOUT</a></li>
+          <li><a href="#insights" onClick={onClose}>INSIGHTS</a></li>
+          <li><a href="#enquiry-form-section" onClick={onClose}>CONTACT</a></li>
         </ul>
 
         <div style={{ marginTop: 'auto', paddingTop: '30px', borderTop: '1px solid rgba(255,255,255,0.1)' }}>

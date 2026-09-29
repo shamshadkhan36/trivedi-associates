@@ -68,7 +68,77 @@ export default function App() {
       {/* 5. Featured Architectural Projects Carousel (Dynamic via Admin Panel) */}
       <Aesthetics refreshTrigger={projectsRefreshKey} />
 
-      {/* 6. Footer */}
+      {/* 6. About Trivedi Associates */}
+      <section className="about-section" id="about">
+        <div className="about-container">
+          <div className="about-text-col">
+            <span className="services-eyebrow">ABOUT THE PRACTICE &bull; TRIVEDI ASSOCIATES</span>
+            <h2 className="services-main-title" style={{ textAlign: 'left', marginBottom: '18px' }}>
+              Engineering Landmarks with <br />
+              <span className="italic-serif">Timeless Precision</span>
+            </h2>
+            <p className="about-paragraph">
+              Headquartered in Mumbai, <strong>Trivedi Associates</strong> is a premier multidisciplinary consultancy uniting master architectural planning, rigorous project management (PMC), municipal &amp; government liaisoning, and IGBC/LEED green building advisory under one integrated practice.
+            </p>
+            <p className="about-paragraph">
+              From luxury residential towers and township developments to high-compliance commercial landmarks across Powai, Thane, and South Mumbai, we partner with India’s foremost developers to deliver statutory certainty and architectural distinction.
+            </p>
+          </div>
+          <div className="about-metrics-grid">
+            <div className="about-metric-card">
+              <div className="metric-number">04</div>
+              <div className="metric-label">Core Consulting Verticals</div>
+            </div>
+            <div className="about-metric-card">
+              <div className="metric-number">100%</div>
+              <div className="metric-label">Statutory &amp; BMC Compliance</div>
+            </div>
+            <div className="about-metric-card">
+              <div className="metric-number">IGBC</div>
+              <div className="metric-label">&amp; LEED Certified Advisory</div>
+            </div>
+            <div className="about-metric-card">
+              <div className="metric-number">360&deg;</div>
+              <div className="metric-label">Concept to OC Turnkey Delivery</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Architectural & Regulatory Insights */}
+      <section className="insights-section" id="insights">
+        <div className="insights-container">
+          <div className="services-header-wrap">
+            <div className="services-eyebrow">KNOWLEDGE &amp; ADVISORY &bull; INSIGHTS</div>
+            <h2 className="services-main-title">
+              Technical Briefs &amp; <br />
+              <span className="italic-serif">Industry Perspectives</span>
+            </h2>
+          </div>
+          <div className="insights-grid">
+            <article className="insight-card">
+              <span className="insight-tag">LIAISONING &amp; APPROVALS</span>
+              <h3 className="insight-title">Navigating DCPR 2034 &amp; Fast-Track BMC Sanctions in Mumbai</h3>
+              <p className="insight-desc">Strategic frameworks for optimizing FSI utilization, fungible compensatory areas, and streamlined IOD-to-OC approval workflows.</p>
+              <a href="#enquiry-form-section" className="insight-link">Request Advisory Brief &rarr;</a>
+            </article>
+            <article className="insight-card">
+              <span className="insight-tag">GREEN BUILDING</span>
+              <h3 className="insight-title">IGBC &amp; LEED Platinum Certification: ROI for Modern Developments</h3>
+              <p className="insight-desc">How passive solar orientation, energy modeling, and sustainable material selection unlock additional incentive FSI and lower lifecycle costs.</p>
+              <a href="#enquiry-form-section" className="insight-link">Request Advisory Brief &rarr;</a>
+            </article>
+            <article className="insight-card">
+              <span className="insight-tag">PROJECT MANAGEMENT (PMC)</span>
+              <h3 className="insight-title">Zero-Deviation Execution: Cost &amp; Quality Audits in High-Rise Construction</h3>
+              <p className="insight-desc">Implementing multi-stage structural quality audits, BOQ cost controls, and milestone tracking for on-schedule delivery.</p>
+              <a href="#enquiry-form-section" className="insight-link">Request Advisory Brief &rarr;</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      {/* 8. Footer */}
       <Footer onOpenAdmin={() => setIsAdminOpen(true)} />
 
       {/* Floating Action Controls */}
