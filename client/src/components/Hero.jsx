@@ -22,17 +22,6 @@ export default function Hero({ onOpenConnect }) {
       </div>
       <div className="hero-overlay"></div>
 
-      <div className="hero-content">
-        <div className="hero-minimal-badge">TRIVEDI ASSOCIATES &bull; MUMBAI</div>
-        <h1 className="hero-title">
-          Architectural Ingenuity, <br />
-          <span className="italic-serif">Precision Engineering</span>
-        </h1>
-        <p className="hero-minimal-sub">
-          Master planning, project management consulting, government liaisoning, and IGBC/LEED green building advisory.
-        </p>
-      </div>
-
       {/* Bottom Hero Action Bar: Two CTA Buttons Flanking Mouse Scroll Indicator */}
       <div className="hero-bottom-bar">
         <button onClick={scrollToServices} className="btn-hero-primary">
