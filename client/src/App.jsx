@@ -18,11 +18,11 @@ export default function App() {
   const [selectedService, setSelectedService] = useState('');
   const [projectsRefreshKey, setProjectsRefreshKey] = useState(0);
 
-  // Check URL hash for #admin
+  // Redirect #admin or /admin to standalone admin.html
   useEffect(() => {
     const checkHash = () => {
-      if (window.location.hash === '#admin') {
-        setIsAdminOpen(true);
+      if (window.location.hash === '#admin' || window.location.pathname === '/admin') {
+        window.location.href = '/admin.html';
       }
     };
     checkHash();
