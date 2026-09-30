@@ -179,66 +179,202 @@ document.addEventListener('DOMContentLoaded', () => {
     console.warn('Error loading custom hero banner:', e);
   }
 
-  // ----------------- PROJECT CAROUSEL SLIDER & ADMIN SYNC -----------------
-  const cardsTrack = document.getElementById('cardsTrack');
-  const prevBtn = document.getElementById('sliderPrev');
-  const nextBtn = document.getElementById('sliderNext');
+  // ----------------- CATEGORIZED PROJECTS GALLERY & FEATURED SLIDER -----------------
+  const DEFAULT_PROJECT_CATEGORIES = [
+    {
+      id: 'cat_hospitality',
+      name: 'HOSPITALITY',
+      images: [
+        { id: 'h1', url: 'assets/images/project_card_3.jpg', title: 'Resort Poolside Deck' },
+        { id: 'h2', url: 'assets/images/project_card_1.jpg', title: 'Courtyard Pavilion' },
+        { id: 'h3', url: 'assets/images/media_1789919300137.png', title: 'Illuminated Resort Pool' },
+        { id: 'h4', url: 'assets/images/media_1789919353341.png', title: 'Hospitality Master Layout' },
+        { id: 'h5', url: 'assets/images/project_card_2.jpg', title: 'Luxury Hotel Tower' }
+      ]
+    },
+    {
+      id: 'cat_commercial',
+      name: 'COMMERCIAL',
+      images: [
+        { id: 'c1', url: 'assets/images/media_1789919271519.png', title: 'Corporate Campus Plaza' },
+        { id: 'c2', url: 'assets/images/media_1789919287755.png', title: 'Recreation & Civic Zone' },
+        { id: 'c3', url: 'assets/images/project_card_2.jpg', title: 'Commercial Retail Hub' },
+        { id: 'c4', url: 'assets/images/project_card_3.jpg', title: 'Green Rooftop Terrace' },
+        { id: 'c5', url: 'assets/images/project_card_4.jpg', title: 'Executive Commercial Crest' }
+      ]
+    },
+    {
+      id: 'cat_mixed_use',
+      name: 'MIXED USE',
+      images: [
+        { id: 'm1', url: 'assets/images/media_1789919339844.png', title: 'Canopy & Amphitheatre' },
+        { id: 'm2', url: 'assets/images/project_card_2.jpg', title: 'Waterfront Mixed-Use Towers' },
+        { id: 'm3', url: 'assets/images/project_card_4.jpg', title: 'Evening Glass Facade' },
+        { id: 'm4', url: 'assets/images/project_card_3.jpg', title: 'Landscaped Promenade' },
+        { id: 'm5', url: 'assets/images/project_card_1.jpg', title: 'Neoclassical Arcade' }
+      ]
+    },
+    {
+      id: 'cat_master_planning',
+      name: 'MASTER PLANNING',
+      images: [
+        { id: 'mp1', url: 'assets/images/media_1789919353341.png', title: 'Institutional Campus' },
+        { id: 'mp2', url: 'assets/images/project_card_2.jpg', title: 'Urban Canopy Towers' },
+        { id: 'mp3', url: 'assets/images/project_card_3.jpg', title: 'Botanical Walkway & Gazebo' },
+        { id: 'mp4', url: 'assets/images/media_1789919300137.png', title: 'Integrated Township Pool' },
+        { id: 'mp5', url: 'assets/images/project_card_1.jpg', title: 'Heritage Masterplan' }
+      ]
+    },
+    {
+      id: 'cat_residential',
+      name: 'RESIDENTIAL',
+      images: [
+        { id: 'r1', url: 'assets/images/project_card_1.jpg', title: 'Trivedi Signature Entrance' },
+        { id: 'r2', url: 'assets/images/project_card_3.jpg', title: 'Residential Courtyard Greens' },
+        { id: 'r3', url: 'assets/images/project_card_4.jpg', title: 'Imperial Crest Balconies' },
+        { id: 'r4', url: 'assets/images/project_card_2.jpg', title: 'Skyline Residences' },
+        { id: 'r5', url: 'assets/images/legacy_building.png', title: 'Classical Residential Wing' }
+      ]
+    }
+  ];
 
-  const loadShowcaseProjects = () => {
-    if (!cardsTrack) return;
+  const getProjectCategories = () => {
     try {
-      const allProjectsRaw = localStorage.getItem('ta_all_projects');
-      if (allProjectsRaw) {
-        const allProjects = JSON.parse(allProjectsRaw);
-        if (Array.isArray(allProjects) && allProjects.length > 0) {
-          cardsTrack.innerHTML = allProjects.map((proj) => `
-            <div class="project-card">
-              <img src="${proj.image}" alt="${proj.titleMain}" class="project-card-img">
-              <div class="project-card-overlay">
-                <h3 class="card-title">${proj.titleMain} <br><span class="italic-serif">${proj.titleItalic}</span></h3>
-                <p class="card-subtitle">${proj.subtitle}</p>
-              </div>
-            </div>
-          `).join('');
-          return;
+      const raw = localStorage.getItem('ta_project_categories');
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
         }
       }
-
-      // Fallback for legacy ta_admin_projects key
-      const stored = JSON.parse(localStorage.getItem('ta_admin_projects') || '[]');
-      stored.forEach((proj) => {
-        const card = document.createElement('div');
-        card.className = 'project-card custom-project-card';
-        card.innerHTML = `
-          <img src="${proj.image}" alt="${proj.titleMain}" class="project-card-img">
-          <div class="project-card-overlay">
-            <h3 class="card-title">${proj.titleMain} <br><span class="italic-serif">${proj.titleItalic}</span></h3>
-            <p class="card-subtitle">${proj.subtitle}</p>
-          </div>
-        `;
-        cardsTrack.appendChild(card);
-      });
     } catch (e) {
-      console.warn('Error loading custom projects:', e);
+      console.warn('Error reading ta_project_categories:', e);
     }
+    localStorage.setItem('ta_project_categories', JSON.stringify(DEFAULT_PROJECT_CATEGORIES));
+    return DEFAULT_PROJECT_CATEGORIES;
   };
-  loadShowcaseProjects();
 
-  if (cardsTrack && prevBtn && nextBtn) {
-    let currentSlide = 0;
+  const categoriesContainer = document.getElementById('projectCategoriesContainer');
+  const featuredImgEl = document.getElementById('featuredProjectImg');
+  const featuredPrevBtn = document.getElementById('featuredPrevBtn');
+  const featuredNextBtn = document.getElementById('featuredNextBtn');
 
-    nextBtn.addEventListener('click', () => {
-      const cards = cardsTrack.querySelectorAll('.project-card');
-      currentSlide = currentSlide >= cards.length - 1 ? 0 : currentSlide + 1;
-      cardsTrack.style.transform = `translateX(-${currentSlide * 568}px)`;
+  let allFeaturedImages = [];
+  let currentFeaturedIdx = 0;
+
+  const updateFeaturedStage = (index) => {
+    if (!featuredImgEl || allFeaturedImages.length === 0) return;
+    currentFeaturedIdx = (index + allFeaturedImages.length) % allFeaturedImages.length;
+    featuredImgEl.style.opacity = '0.4';
+    setTimeout(() => {
+      featuredImgEl.src = allFeaturedImages[currentFeaturedIdx].url;
+      featuredImgEl.alt = allFeaturedImages[currentFeaturedIdx].title || 'Featured Project';
+      featuredImgEl.style.opacity = '1';
+    }, 120);
+  };
+
+  const renderCategorizedProjects = () => {
+    const categories = getProjectCategories();
+    allFeaturedImages = [];
+    categories.forEach((cat) => {
+      (cat.images || []).forEach((img) => {
+        allFeaturedImages.push(img);
+      });
     });
 
-    prevBtn.addEventListener('click', () => {
-      const cards = cardsTrack.querySelectorAll('.project-card');
-      currentSlide = currentSlide <= 0 ? cards.length - 1 : currentSlide - 1;
-      cardsTrack.style.transform = `translateX(-${currentSlide * 568}px)`;
+    if (featuredImgEl && allFeaturedImages.length > 0) {
+      featuredImgEl.src = allFeaturedImages[0].url;
+      featuredImgEl.alt = allFeaturedImages[0].title || 'Featured Project';
+    }
+
+    if (!categoriesContainer) return;
+
+    categoriesContainer.innerHTML = categories.map((cat) => {
+      const imgs = cat.images || [];
+      return `
+        <div class="project-category-block" data-cat-id="${cat.id}">
+          <h3 class="project-category-title">${cat.name}</h3>
+          <div class="cat-slider-wrapper">
+            <button class="cat-slider-arrow prev" aria-label="Previous ${cat.name}">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </button>
+            <div class="cat-slider-viewport">
+              <div class="cat-slider-track">
+                ${imgs.map((img) => `
+                  <div class="cat-image-card" data-img-url="${img.url}" title="${img.title || cat.name}">
+                    <img src="${img.url}" alt="${img.title || cat.name}" loading="lazy">
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+            <button class="cat-slider-arrow next" aria-label="Next ${cat.name}">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+                <polyline points="9 18 15 12 9 6" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // Wire up each category row's horizontal slider arrows and image click
+    categoriesContainer.querySelectorAll('.project-category-block').forEach((block) => {
+      const track = block.querySelector('.cat-slider-track');
+      const cards = block.querySelectorAll('.cat-image-card');
+      const prevArrow = block.querySelector('.cat-slider-arrow.prev');
+      const nextArrow = block.querySelector('.cat-slider-arrow.next');
+      let slideIndex = 0;
+
+      const getVisibleCount = () => {
+        if (window.innerWidth <= 600) return 1;
+        if (window.innerWidth <= 992) return 2;
+        return 4;
+      };
+
+      const updateRowSlide = () => {
+        if (!track || cards.length === 0) return;
+        const cardWidth = cards[0].getBoundingClientRect().width;
+        const gap = 18;
+        track.style.transform = `translateX(-${slideIndex * (cardWidth + gap)}px)`;
+      };
+
+      nextArrow?.addEventListener('click', () => {
+        const visible = getVisibleCount();
+        const maxSlide = Math.max(0, cards.length - visible);
+        slideIndex = slideIndex >= maxSlide ? 0 : slideIndex + 1;
+        updateRowSlide();
+      });
+
+      prevArrow?.addEventListener('click', () => {
+        const visible = getVisibleCount();
+        const maxSlide = Math.max(0, cards.length - visible);
+        slideIndex = slideIndex <= 0 ? maxSlide : slideIndex - 1;
+        updateRowSlide();
+      });
+
+      cards.forEach((card) => {
+        card.addEventListener('click', () => {
+          const url = card.getAttribute('data-img-url');
+          if (url && featuredImgEl) {
+            featuredImgEl.src = url;
+            document.querySelector('.projects-featured-banner')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        });
+      });
     });
-  }
+  };
+
+  renderCategorizedProjects();
+
+  featuredNextBtn?.addEventListener('click', () => {
+    updateFeaturedStage(currentFeaturedIdx + 1);
+  });
+
+  featuredPrevBtn?.addEventListener('click', () => {
+    updateFeaturedStage(currentFeaturedIdx - 1);
+  });
 
   // ----------------- URL-ONLY ADMIN REDIRECT -----------------
   if (window.location.hash === '#admin') {

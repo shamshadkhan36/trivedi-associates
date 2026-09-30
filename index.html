@@ -467,64 +467,37 @@
     </div>
   </section>
 
-  <!-- ==================== 5. PROJECT SHOWCASE (DYNAMICALLY SYNCS) ==================== -->
-  <section class="aesthetics-section" id="showcase">
-    <div class="aesthetics-container">
-      <div class="aesthetics-text-col">
-        <h2 class="aesthetics-title">
-          A Seamless Blend of <br>
-          <span class="italic-serif">Purpose</span> and <br>
-          <span class="italic-serif">Aesthetics</span>
-        </h2>
-        <p class="aesthetics-desc">
-          Quality construction, architectural excellence, sustainable design, and execution precision across Mumbai and Maharashtra.
-        </p>
+  <!-- ==================== 5. PROJECTS PAGE SECTION (CATEGORIZED GALLERY & FEATURED SLIDER) ==================== -->
+  <section class="projects-gallery-section" id="showcase">
+    <div class="projects-gallery-container">
+      <h2 class="projects-page-heading">Projects</h2>
 
-        <div class="slider-controls">
-          <button class="slider-btn" id="sliderPrev" aria-label="Previous Project">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="15 18 9 12 15 6"/>
-            </svg>
-          </button>
-          <button class="slider-btn" id="sliderNext" aria-label="Next Project">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="9 18 15 12 9 6"/>
-            </svg>
-          </button>
+      <!-- Top Featured Projects Dark Banner Slider -->
+      <div class="projects-featured-banner">
+        <h3 class="projects-featured-heading">Projects</h3>
+        <div class="projects-featured-stage">
+          <img
+            src="assets/images/project_card_3.jpg"
+            alt="Featured Project"
+            id="featuredProjectImg"
+            class="projects-featured-img"
+          >
         </div>
+        <button class="featured-nav-arrow prev" id="featuredPrevBtn" aria-label="Previous Featured Project">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2">
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+        </button>
+        <button class="featured-nav-arrow next" id="featuredNextBtn" aria-label="Next Featured Project">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2">
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </button>
       </div>
 
-      <div class="aesthetics-slider-col">
-        <div class="cards-track" id="cardsTrack">
-          <div class="project-card">
-            <img src="assets/images/project_card_1.jpg" alt="Superior Build Quality" class="project-card-img">
-            <div class="project-card-overlay">
-              <h3 class="card-title">Superior <br><span class="italic-serif">Build Quality</span></h3>
-              <p class="card-subtitle">Shot at Trivedi Associates Property</p>
-            </div>
-          </div>
-          <div class="project-card">
-            <img src="assets/images/project_card_2.jpg" alt="Meticulous Craftsmanship" class="project-card-img">
-            <div class="project-card-overlay">
-              <h3 class="card-title">Meticulous <br><span class="italic-serif">Craftsmanship</span></h3>
-              <p class="card-subtitle">Trivedi Signature Tower</p>
-            </div>
-          </div>
-          <div class="project-card">
-            <img src="assets/images/project_card_3.jpg" alt="Sustainable Living" class="project-card-img">
-            <div class="project-card-overlay">
-              <h3 class="card-title">Sustainable <br><span class="italic-serif">Living</span></h3>
-              <p class="card-subtitle">Trivedi Green Haven Estate</p>
-            </div>
-          </div>
-          <div class="project-card">
-            <img src="assets/images/project_card_4.jpg" alt="Architectural Finesse" class="project-card-img">
-            <div class="project-card-overlay">
-              <h3 class="card-title">Architectural <br><span class="italic-serif">Finesse</span></h3>
-              <p class="card-subtitle">Trivedi Imperial Crest</p>
-            </div>
-          </div>
-        </div>
+      <!-- Dynamic Categories & Respected Images Container -->
+      <div id="projectCategoriesContainer" class="project-categories-list">
+        <!-- Populated dynamically by js/main.js from Admin Panel categories & images -->
       </div>
     </div>
   </section>

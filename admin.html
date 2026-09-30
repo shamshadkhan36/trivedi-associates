@@ -15,16 +15,27 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    /* ==========================================================================
+       Trivedi Associates Admin Console - Matches Website Warm Cream & Wine Theme
+       ========================================================================== */
     :root {
-      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+      --font-italic-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
       --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --color-cream: #FAF5EE;
+      --color-cream-soft: #F5EFE4;
+      --color-cream-light: #FDFBF7;
       --color-wine: #832438;
       --color-wine-dark: #661A2B;
+      --color-wine-light: #A3334A;
       --color-gold: #C5A880;
-      --color-gold-light: #E0CDB3;
-      --color-dark: #0F0F0F;
-      --color-card: #181818;
-      --color-border: rgba(197, 168, 128, 0.25);
+      --color-gold-dark: #9A7B54;
+      --color-bronze: #7A5C4D;
+      --color-text-dark: #222222;
+      --color-text-muted: #555555;
+      --color-white: #FFFFFF;
+      --color-border: #E6DEC8;
     }
 
     *, *::before, *::after {
@@ -35,8 +46,8 @@
 
     body {
       font-family: var(--font-sans);
-      background-color: var(--color-dark);
-      color: #FFFFFF;
+      background-color: var(--color-cream);
+      color: var(--color-text-dark);
       min-height: 100vh;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
@@ -49,97 +60,102 @@
       align-items: center;
       justify-content: center;
       padding: 24px;
-      background: radial-gradient(circle at top, rgba(131, 36, 56, 0.18) 0%, rgba(15, 15, 15, 1) 70%);
+      background: radial-gradient(circle at top, #FDFBF7 0%, #F5EFE4 100%);
     }
 
     .login-card {
       width: 100%;
-      max-width: 440px;
-      background: var(--color-card);
+      max-width: 450px;
+      background: var(--color-white);
       border: 1px solid var(--color-border);
+      border-top: 4px solid var(--color-wine);
       border-radius: 12px;
-      padding: 40px 36px;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+      padding: 42px 38px;
+      box-shadow: 0 20px 50px rgba(131, 36, 56, 0.08);
     }
 
     .brand-header {
       display: flex;
       align-items: center;
       gap: 14px;
-      margin-bottom: 28px;
+      margin-bottom: 26px;
       padding-bottom: 20px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid var(--color-border);
     }
 
     .brand-circle {
-      width: 44px;
-      height: 44px;
+      width: 46px;
+      height: 46px;
       border-radius: 50%;
+      background: var(--color-wine);
       border: 1.5px solid var(--color-gold);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--color-gold);
+      color: var(--color-white);
       flex-shrink: 0;
     }
 
     .brand-title {
       font-family: var(--font-serif);
-      font-size: 19px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      color: #FFFFFF;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.6px;
+      color: var(--color-text-dark);
     }
 
     .brand-subtitle {
       font-size: 10.5px;
-      letter-spacing: 2.5px;
+      font-weight: 600;
+      letter-spacing: 2.2px;
       text-transform: uppercase;
-      color: var(--color-gold);
+      color: var(--color-wine);
       display: block;
     }
 
     .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .form-label {
       display: block;
       font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 1.4px;
+      font-weight: 700;
+      letter-spacing: 1.3px;
       text-transform: uppercase;
-      color: var(--color-gold);
-      margin-bottom: 8px;
+      color: var(--color-bronze);
+      margin-bottom: 7px;
     }
 
     .form-input, .form-select {
       width: 100%;
-      background: #111111;
-      border: 1px solid rgba(255, 255, 255, 0.16);
+      background: var(--color-cream-light);
+      border: 1px solid #D8CEBE;
       border-radius: 6px;
-      color: #FFFFFF;
-      padding: 13px 15px;
+      color: var(--color-text-dark);
+      padding: 12px 14px;
       font-size: 14px;
       font-family: inherit;
       outline: none;
-      transition: border-color 0.25s;
+      transition: border-color 0.25s, box-shadow 0.25s;
     }
 
     .form-input:focus, .form-select:focus {
-      border-color: var(--color-gold);
+      border-color: var(--color-wine);
+      background: var(--color-white);
+      box-shadow: 0 0 0 3px rgba(131, 36, 56, 0.08);
     }
 
     .btn-primary {
       width: 100%;
-      padding: 14px 24px;
+      padding: 13px 22px;
       background: var(--color-wine);
-      color: #FFFFFF;
+      color: var(--color-white);
       border: 1px solid var(--color-wine);
       border-radius: 6px;
-      font-size: 12.5px;
+      font-size: 12px;
       font-weight: 600;
-      letter-spacing: 1.8px;
+      letter-spacing: 1.6px;
       text-transform: uppercase;
       cursor: pointer;
       transition: all 0.25s;
@@ -148,15 +164,16 @@
     .btn-primary:hover {
       background: var(--color-wine-dark);
       border-color: var(--color-wine-dark);
+      box-shadow: 0 6px 18px rgba(131, 36, 56, 0.22);
     }
 
     .btn-secondary {
       padding: 10px 18px;
-      background: transparent;
-      color: #CCCCCC;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: var(--color-white);
+      color: var(--color-text-dark);
+      border: 1px solid #D5CBB8;
       border-radius: 6px;
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 600;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -164,33 +181,36 @@
       text-decoration: none;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 6px;
       transition: all 0.25s;
     }
 
     .btn-secondary:hover {
-      border-color: var(--color-gold);
-      color: var(--color-gold);
+      border-color: var(--color-wine);
+      color: var(--color-wine);
+      background: var(--color-cream-light);
     }
 
     .alert-box {
-      padding: 12px 16px;
-      border-radius: 6px;
-      font-size: 13px;
-      margin-bottom: 20px;
+      padding: 13px 18px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 500;
+      margin-bottom: 22px;
       display: none;
     }
 
     .alert-box.error {
-      background: rgba(211, 47, 47, 0.18);
-      border: 1px solid #ef5350;
-      color: #ffcdd2;
+      background: #FDECEA;
+      border: 1px solid #F5C2C0;
+      color: #8A1C1C;
     }
 
     .alert-box.success {
-      background: rgba(46, 125, 50, 0.2);
-      border: 1px solid #66bb6a;
-      color: #c8e6c9;
+      background: #EDF7ED;
+      border: 1px solid #B7DFB9;
+      color: #1E5622;
     }
 
     /* ==================== DASHBOARD SCREEN ==================== */
@@ -201,34 +221,36 @@
     }
 
     .topbar {
-      background: #141414;
-      border-bottom: 1px solid rgba(197, 168, 128, 0.2);
-      padding: 16px 40px;
+      background: var(--color-white);
+      border-bottom: 1px solid var(--color-border);
+      padding: 16px 42px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       position: sticky;
       top: 0;
       z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
     }
 
     .topbar-actions {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
     }
 
     .dashboard-container {
-      max-width: 1180px;
+      max-width: 1220px;
       width: 100%;
       margin: 0 auto;
-      padding: 40px 24px 80px 24px;
+      padding: 36px 24px 80px 24px;
     }
 
+    /* Navigation Tabs */
     .tabs-nav {
       display: flex;
-      gap: 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      gap: 10px;
+      border-bottom: 2px solid var(--color-border);
       margin-bottom: 32px;
       flex-wrap: wrap;
     }
@@ -237,63 +259,266 @@
       padding: 13px 24px;
       background: transparent;
       border: none;
-      border-bottom: 2.5px solid transparent;
-      color: #999999;
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 1.4px;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      color: var(--color-text-muted);
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 1.3px;
       text-transform: uppercase;
       cursor: pointer;
       transition: all 0.25s;
     }
 
     .tab-btn:hover {
-      color: #FFFFFF;
+      color: var(--color-wine);
     }
 
     .tab-btn.active {
-      color: var(--color-gold);
-      border-bottom-color: var(--color-gold);
+      color: var(--color-wine);
+      border-bottom-color: var(--color-wine);
+      background: rgba(131, 36, 56, 0.04);
     }
 
     .panel-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 28px;
       align-items: start;
     }
 
     .panel-card {
-      background: var(--color-card);
-      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
       border-radius: 12px;
-      padding: 32px;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+      padding: 30px;
+      box-shadow: 0 8px 26px rgba(0, 0, 0, 0.035);
+    }
+
+    .panel-eyebrow {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-wine);
+      margin-bottom: 6px;
+      display: block;
     }
 
     .panel-title {
       font-family: var(--font-serif);
-      font-size: 22px;
+      font-size: 23px;
       font-weight: 600;
-      color: #FFFFFF;
+      color: var(--color-text-dark);
       margin-bottom: 6px;
     }
 
     .panel-subtitle {
-      font-size: 13px;
-      color: #999999;
+      font-size: 13.5px;
+      color: var(--color-text-muted);
+      margin-bottom: 22px;
+    }
+
+    /* Category Pills */
+    .category-pills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .cat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-cream-soft);
+      border: 1px solid #DFD4C2;
+      color: var(--color-bronze);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .cat-pill-count {
+      background: var(--color-wine);
+      color: var(--color-white);
+      font-size: 10px;
+      padding: 1px 6px;
+      border-radius: 10px;
+    }
+
+    /* Dropzone */
+    .upload-dropzone {
+      border: 2px dashed var(--color-gold);
+      border-radius: 8px;
+      padding: 22px 18px;
+      text-align: center;
+      background: var(--color-cream-light);
+      cursor: pointer;
+      transition: all 0.25s;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .upload-dropzone:hover {
+      border-color: var(--color-wine);
+      background: var(--color-cream-soft);
+    }
+
+    .upload-dropzone input[type="file"] {
+      display: none;
+    }
+
+    .staged-previews {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .staged-thumb {
+      width: 68px;
+      height: 52px;
+      object-fit: cover;
+      border-radius: 5px;
+      border: 1.5px solid var(--color-wine);
+    }
+
+    .preset-pills {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .preset-btn {
+      background: var(--color-cream-light);
+      border: 1px solid #DFD5C5;
+      color: var(--color-text-dark);
+      padding: 9px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s;
+    }
+
+    .preset-btn:hover {
+      border-color: var(--color-wine);
+      color: var(--color-wine);
+      background: var(--color-white);
+    }
+
+    /* Category Showcase Manager Blocks */
+    .admin-category-section {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 24px 28px;
       margin-bottom: 24px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.025);
+    }
+
+    .admin-cat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--color-border);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .admin-cat-name {
+      font-size: 18px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--color-bronze);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .admin-cat-images-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(195px, 1fr));
+      gap: 16px;
+    }
+
+    .admin-img-card {
+      background: var(--color-cream-light);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .admin-img-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    }
+
+    .admin-img-card img {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .admin-img-card-footer {
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .admin-img-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-text-dark);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .btn-delete {
+      background: #FFF1F0;
+      border: 1px solid #FFCCC7;
+      color: #CF1322;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .btn-delete:hover {
+      background: #CF1322;
+      border-color: #CF1322;
+      color: var(--color-white);
     }
 
     .banner-preview-box {
       width: 100%;
-      height: 260px;
+      height: 270px;
       border-radius: 8px;
       overflow: hidden;
-      border: 1px solid rgba(197, 168, 128, 0.3);
+      border: 1px solid var(--color-border);
       position: relative;
-      background: #0A0A0A;
-      margin-bottom: 20px;
+      background: var(--color-cream-soft);
+      margin-bottom: 18px;
     }
 
     .banner-preview-box img {
@@ -306,108 +531,25 @@
       position: absolute;
       top: 12px;
       left: 12px;
-      background: rgba(0, 0, 0, 0.75);
-      color: var(--color-gold);
+      background: var(--color-wine);
+      color: var(--color-white);
       padding: 5px 12px;
       border-radius: 4px;
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 600;
       letter-spacing: 1px;
       text-transform: uppercase;
-      border: 1px solid rgba(197, 168, 128, 0.3);
     }
 
-    .upload-dropzone {
-      border: 1.5px dashed rgba(197, 168, 128, 0.4);
+    .lead-item {
+      background: var(--color-cream-light);
+      border: 1px solid var(--color-border);
       border-radius: 8px;
-      padding: 22px;
-      text-align: center;
-      background: rgba(255, 255, 255, 0.02);
-      cursor: pointer;
-      transition: all 0.25s;
-      margin-bottom: 18px;
-      display: block;
-    }
-
-    .upload-dropzone:hover {
-      border-color: var(--color-gold);
-      background: rgba(197, 168, 128, 0.05);
-    }
-
-    .upload-dropzone input[type="file"] {
-      display: none;
-    }
-
-    .preset-pills {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    .preset-btn {
-      background: #111;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: #DDD;
-      padding: 10px 12px;
-      border-radius: 6px;
-      font-size: 12px;
-      cursor: pointer;
-      text-align: left;
-      transition: all 0.2s;
-    }
-
-    .preset-btn:hover {
-      border-color: var(--color-gold);
-      color: var(--color-gold);
-    }
-
-    .project-item {
-      background: #121212;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 8px;
-      padding: 14px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
+      padding: 16px 20px;
       margin-bottom: 12px;
     }
 
-    .project-item-left {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .project-thumb {
-      width: 64px;
-      height: 48px;
-      border-radius: 5px;
-      object-fit: cover;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      flex-shrink: 0;
-    }
-
-    .btn-delete {
-      background: rgba(211, 47, 47, 0.18);
-      border: 1px solid #ef5350;
-      color: #ef9a9a;
-      padding: 7px 13px;
-      border-radius: 5px;
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .btn-delete:hover {
-      background: #d32f2f;
-      color: #FFFFFF;
-    }
-
-    @media (max-width: 900px) {
+    @media (max-width: 920px) {
       .panel-grid {
         grid-template-columns: 1fr;
       }
@@ -439,8 +581,8 @@
 
       <form id="loginForm">
         <div class="form-group">
-          <label class="form-label">Admin Username / ID</label>
-          <input type="text" id="loginUser" class="form-input" placeholder="Enter admin username" required autocomplete="username">
+          <label class="form-label">Admin Username</label>
+          <input type="text" id="loginUser" class="form-input" placeholder="admin" required autocomplete="username">
         </div>
 
         <div class="form-group">
@@ -452,7 +594,7 @@
       </form>
 
       <div style="margin-top: 22px; text-align: center;">
-        <a href="index.html" class="btn-secondary" style="border: none; font-size: 11.5px;">&larr; Return to Public Website</a>
+        <a href="index.html" class="btn-secondary" style="border: none;">&larr; Return to Public Website</a>
       </div>
     </div>
   </div>
@@ -461,21 +603,21 @@
   <div class="dashboard-wrapper" id="dashboardView">
     <header class="topbar">
       <div class="brand-header" style="margin: 0; padding: 0; border: none;">
-        <div class="brand-circle">
-          <svg viewBox="0 0 100 100" width="20" height="20">
+        <div class="brand-circle" style="width: 40px; height: 40px;">
+          <svg viewBox="0 0 100 100" width="19" height="19">
             <circle cx="50" cy="50" r="44" fill="none" stroke="currentColor" stroke-width="4" />
             <path d="M30 36 L70 36 M50 36 L50 78 M38 78 L62 78" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
           </svg>
         </div>
         <div>
-          <div class="brand-title" style="font-size: 17px;">Trivedi Associates</div>
-          <span class="brand-subtitle">Banner &amp; Project Management Console</span>
+          <div class="brand-title" style="font-size: 18px;">Trivedi Associates</div>
+          <span class="brand-subtitle">Categories, Projects &amp; Banner Management</span>
         </div>
       </div>
 
       <div class="topbar-actions">
-        <a href="index.html" class="btn-secondary">View Live Website &#8599;</a>
-        <button id="logoutBtn" class="btn-secondary" style="border-color: rgba(239,83,80,0.4); color: #ef9a9a;">Sign Out</button>
+        <a href="index.html#showcase" class="btn-secondary">View Projects on Website &#8599;</a>
+        <button id="logoutBtn" class="btn-secondary" style="color: var(--color-wine); border-color: rgba(131,36,56,0.3);">Sign Out</button>
       </div>
     </header>
 
@@ -484,16 +626,107 @@
 
       <!-- Navigation Tabs -->
       <div class="tabs-nav">
-        <button class="tab-btn active" data-tab="banner">1. Hero Banner Change</button>
-        <button class="tab-btn" data-tab="projects">2. Add / Manage Projects</button>
+        <button class="tab-btn active" data-tab="projects">1. Project Categories &amp; Images</button>
+        <button class="tab-btn" data-tab="banner">2. Hero Banner Change</button>
         <button class="tab-btn" data-tab="leads">3. Client Enquiries</button>
       </div>
 
-      <!-- ==================== TAB 1: HERO BANNER CHANGE ==================== -->
-      <section id="tabBanner" class="tab-section">
+      <!-- ==================== TAB 1: PROJECT CATEGORIES & RESPECTED IMAGES ==================== -->
+      <section id="tabProjects" class="tab-section">
+        <div class="panel-grid" style="margin-bottom: 32px;">
+          <!-- Left Card: Create / Manage Categories -->
+          <div class="panel-card">
+            <span class="panel-eyebrow">STEP 1 &bull; CATEGORY MANAGEMENT</span>
+            <h2 class="panel-title">Add New Project Category</h2>
+            <p class="panel-subtitle">Create a new project category row (such as Hospitality, Commercial, Mixed Use, Master Planning, Residential, etc.).</p>
+
+            <form id="addCategoryForm" style="display: flex; gap: 10px; margin-bottom: 18px;">
+              <input
+                type="text"
+                id="newCategoryNameInput"
+                class="form-input"
+                placeholder="e.g. GREEN BUILDING or INDUSTRIAL"
+                required
+              >
+              <button type="submit" class="btn-primary" style="width: auto; white-space: nowrap; padding: 12px 20px;">
+                + Add Category
+              </button>
+            </form>
+
+            <label class="form-label">Active Website Categories</label>
+            <div id="categoryPillsList" class="category-pills-wrap"></div>
+
+            <div style="margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 12px; color: var(--color-text-muted);">Need to restore original 5 categories?</span>
+              <button type="button" id="resetCategoriesBtn" class="btn-secondary" style="padding: 6px 12px; font-size: 11px;">
+                Reset Default Categories
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Card: Add Respected Images to Selected Category -->
+          <div class="panel-card">
+            <span class="panel-eyebrow">STEP 2 &bull; UPLOAD CATEGORY IMAGES</span>
+            <h2 class="panel-title">Add Respected Images to Category</h2>
+            <p class="panel-subtitle">Select a category below and upload one or multiple project photos directly from your device.</p>
+
+            <form id="addCategoryImageForm">
+              <div class="form-group">
+                <label class="form-label">Select Project Category *</label>
+                <select id="targetCategorySelect" class="form-select" required></select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Project / Image Title (Optional)</label>
+                <input type="text" id="catImageTitleInput" class="form-input" placeholder="e.g. Powai Commercial Plaza">
+              </div>
+
+              <label class="form-label">Upload Image(s) from Device (Multiple Supported)</label>
+              <label class="upload-dropzone">
+                <input type="file" id="catImagesFileInput" accept="image/*" multiple>
+                <div style="color: var(--color-wine); font-weight: 700; font-size: 13.5px; margin-bottom: 4px;">
+                  Click to Select 1 or Multiple Project Photos
+                </div>
+                <div style="color: var(--color-text-muted); font-size: 12px;" id="catFilesStatusText">
+                  Supports JPG, PNG, WebP &bull; Auto-compressed for instant loading
+                </div>
+              </label>
+
+              <div id="stagedImagesPreview" class="staged-previews"></div>
+
+              <div class="form-group">
+                <label class="form-label">Or Paste Image URL / Choose Preset</label>
+                <input type="text" id="catImageUrlInput" class="form-input" placeholder="assets/images/project_card_1.jpg or https://...">
+              </div>
+
+              <div class="preset-pills">
+                <button type="button" class="preset-btn proj-preset" data-url="assets/images/project_card_1.jpg">1. Neoclassical Portico</button>
+                <button type="button" class="preset-btn proj-preset" data-url="assets/images/project_card_2.jpg">2. Signature High-Rise</button>
+                <button type="button" class="preset-btn proj-preset" data-url="assets/images/project_card_3.jpg">3. Landscaped Green Podium</button>
+                <button type="button" class="preset-btn proj-preset" data-url="assets/images/project_card_4.jpg">4. Imperial Facade Crest</button>
+              </div>
+
+              <button type="submit" class="btn-primary">
+                Publish Image(s) to Category &rarr;
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Full-Width Visual List of Categories & Respected Images -->
+        <div>
+          <span class="panel-eyebrow">LIVE PORTFOLIO STRUCTURE</span>
+          <h2 class="panel-title" style="margin-bottom: 18px;">All Categories &amp; Respected Images</h2>
+          <div id="allCategoriesGalleryAdmin"></div>
+        </div>
+      </section>
+
+      <!-- ==================== TAB 2: HERO BANNER CHANGE ==================== -->
+      <section id="tabBanner" class="tab-section" style="display: none;">
         <div class="panel-grid">
           <!-- Left: Upload / Change Banner -->
           <div class="panel-card">
+            <span class="panel-eyebrow">MAIN WEBSITE HERO</span>
             <h2 class="panel-title">Change Website Hero Banner</h2>
             <p class="panel-subtitle">Upload a new banner photo from your device or paste an image URL to update the main Hero background immediately.</p>
 
@@ -501,10 +734,10 @@
               <label class="form-label">Option A: Upload Banner Image from Device</label>
               <label class="upload-dropzone" id="bannerDropzone">
                 <input type="file" id="bannerFileInput" accept="image/*">
-                <div style="color: var(--color-gold); font-weight: 600; font-size: 13.5px; margin-bottom: 4px;">
-                  Click to Select Image File (JPG / PNG / WebP)
+                <div style="color: var(--color-wine); font-weight: 700; font-size: 13.5px; margin-bottom: 4px;">
+                  Click to Select Banner Image File (JPG / PNG / WebP)
                 </div>
-                <div style="color: #888; font-size: 12px;" id="bannerFileName">
+                <div style="color: var(--color-text-muted); font-size: 12px;" id="bannerFileName">
                   Automatically optimized for fast full-screen display
                 </div>
               </label>
@@ -531,6 +764,7 @@
 
           <!-- Right: Live Banner Preview -->
           <div class="panel-card">
+            <span class="panel-eyebrow">ACTIVE PREVIEW</span>
             <h2 class="panel-title">Live Hero Banner Preview</h2>
             <p class="panel-subtitle">This image is currently active on the main website Hero section.</p>
 
@@ -539,79 +773,9 @@
               <img id="bannerPreviewImg" src="assets/images/hero_bg.png" alt="Hero Banner Preview">
             </div>
 
-            <div style="font-size: 12.5px; color: #999; line-height: 1.6;">
+            <div style="font-size: 13px; color: var(--color-text-muted); line-height: 1.6;">
               <strong>Tip:</strong> After clicking <em>Save &amp; Publish Banner</em>, open the main website to see your updated full-screen Hero background immediately.
             </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== TAB 2: ADD & MANAGE PROJECTS ==================== -->
-      <section id="tabProjects" class="tab-section" style="display: none;">
-        <div class="panel-grid">
-          <!-- Left: Add New Project Form -->
-          <div class="panel-card">
-            <h2 class="panel-title">Add New Project</h2>
-            <p class="panel-subtitle">Publish a new architectural development to the Projects showcase carousel.</p>
-
-            <form id="addProjectForm">
-              <div class="form-group">
-                <label class="form-label">Project Main Title *</label>
-                <input type="text" id="projMainTitle" class="form-input" placeholder="e.g. Trivedi Imperial" required>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label">Italic Highlight Word *</label>
-                <input type="text" id="projItalicTitle" class="form-input" placeholder="e.g. Heights" required>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label">Location / Subtitle *</label>
-                <input type="text" id="projLocation" class="form-input" placeholder="e.g. Powai Lakefront, Mumbai" required>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label">Project Category *</label>
-                <select id="projCategory" class="form-select">
-                  <option value="Residential">Residential Luxury</option>
-                  <option value="Commercial">Commercial Landmark</option>
-                  <option value="Green Building">IGBC / LEED Green Building</option>
-                  <option value="Township">Master Planned Township</option>
-                </select>
-              </div>
-
-              <label class="form-label">Upload Project Photo from Device</label>
-              <label class="upload-dropzone">
-                <input type="file" id="projFileInput" accept="image/*">
-                <div style="color: var(--color-gold); font-weight: 600; font-size: 13px;">
-                  Click to Upload Project Image
-                </div>
-                <div style="color: #888; font-size: 11.5px;" id="projFileName">
-                  Or choose a preset / paste URL below
-                </div>
-              </label>
-
-              <div class="form-group">
-                <label class="form-label">Or Select / Paste Project Image URL</label>
-                <input type="text" id="projImageUrl" class="form-input" value="assets/images/project_card_1.jpg">
-              </div>
-
-              <div class="preset-pills">
-                <button type="button" class="preset-btn proj-preset" data-url="assets/images/project_card_1.jpg">1. Classical Portico</button>
-                <button type="button" class="preset-btn proj-preset" data-url="assets/images/project_card_2.jpg">2. Signature Tower</button>
-                <button type="button" class="preset-btn proj-preset" data-url="assets/images/project_card_3.jpg">3. Green Estate</button>
-                <button type="button" class="preset-btn proj-preset" data-url="assets/images/project_card_4.jpg">4. Imperial Crest</button>
-              </div>
-
-              <button type="submit" class="btn-primary">Add Project to Website &rarr;</button>
-            </form>
-          </div>
-
-          <!-- Right: Existing Projects List -->
-          <div class="panel-card">
-            <h2 class="panel-title">Published Website Projects</h2>
-            <p class="panel-subtitle">Manage projects displayed in the website's Projects section.</p>
-            <div id="projectsListContainer"></div>
           </div>
         </div>
       </section>
@@ -619,7 +783,8 @@
       <!-- ==================== TAB 3: CLIENT ENQUIRIES ==================== -->
       <section id="tabLeads" class="tab-section" style="display: none;">
         <div class="panel-card">
-          <h2 class="panel-title">Client Enquiries &amp; Consultation Leads</h2>
+          <span class="panel-eyebrow">INCOMING CONSULTATION REQUESTS</span>
+          <h2 class="panel-title">Client Enquiries &amp; Leads</h2>
           <p class="panel-subtitle">Submissions received from the website Contact &amp; Enquiry form.</p>
           <div id="leadsListContainer"></div>
         </div>
@@ -628,46 +793,67 @@
   </div>
 
   <script>
-    // Default initial projects matching website showcase
-    const DEFAULT_PROJECTS = [
+    const DEFAULT_BANNER = 'assets/images/hero_bg.png';
+
+    const DEFAULT_PROJECT_CATEGORIES = [
       {
-        id: 'default_1',
-        titleMain: 'Superior',
-        titleItalic: 'Build Quality',
-        subtitle: 'Shot at Trivedi Associates Property',
-        category: 'Residential',
-        image: 'assets/images/project_card_1.jpg'
+        id: 'cat_hospitality',
+        name: 'HOSPITALITY',
+        images: [
+          { id: 'h1', url: 'assets/images/project_card_3.jpg', title: 'Resort Poolside Deck' },
+          { id: 'h2', url: 'assets/images/project_card_1.jpg', title: 'Courtyard Pavilion' },
+          { id: 'h3', url: 'assets/images/media_1789919300137.png', title: 'Illuminated Resort Pool' },
+          { id: 'h4', url: 'assets/images/media_1789919353341.png', title: 'Hospitality Master Layout' },
+          { id: 'h5', url: 'assets/images/project_card_2.jpg', title: 'Luxury Hotel Tower' }
+        ]
       },
       {
-        id: 'default_2',
-        titleMain: 'Meticulous',
-        titleItalic: 'Craftsmanship',
-        subtitle: 'Trivedi Signature Tower',
-        category: 'Commercial',
-        image: 'assets/images/project_card_2.jpg'
+        id: 'cat_commercial',
+        name: 'COMMERCIAL',
+        images: [
+          { id: 'c1', url: 'assets/images/media_1789919271519.png', title: 'Corporate Campus Plaza' },
+          { id: 'c2', url: 'assets/images/media_1789919287755.png', title: 'Recreation & Civic Zone' },
+          { id: 'c3', url: 'assets/images/project_card_2.jpg', title: 'Commercial Retail Hub' },
+          { id: 'c4', url: 'assets/images/project_card_3.jpg', title: 'Green Rooftop Terrace' },
+          { id: 'c5', url: 'assets/images/project_card_4.jpg', title: 'Executive Commercial Crest' }
+        ]
       },
       {
-        id: 'default_3',
-        titleMain: 'Sustainable',
-        titleItalic: 'Living',
-        subtitle: 'Trivedi Green Haven Estate',
-        category: 'Green Building',
-        image: 'assets/images/project_card_3.jpg'
+        id: 'cat_mixed_use',
+        name: 'MIXED USE',
+        images: [
+          { id: 'm1', url: 'assets/images/media_1789919339844.png', title: 'Canopy & Amphitheatre' },
+          { id: 'm2', url: 'assets/images/project_card_2.jpg', title: 'Waterfront Mixed-Use Towers' },
+          { id: 'm3', url: 'assets/images/project_card_4.jpg', title: 'Evening Glass Facade' },
+          { id: 'm4', url: 'assets/images/project_card_3.jpg', title: 'Landscaped Promenade' },
+          { id: 'm5', url: 'assets/images/project_card_1.jpg', title: 'Neoclassical Arcade' }
+        ]
       },
       {
-        id: 'default_4',
-        titleMain: 'Architectural',
-        titleItalic: 'Finesse',
-        subtitle: 'Trivedi Imperial Crest',
-        category: 'Township',
-        image: 'assets/images/project_card_4.jpg'
+        id: 'cat_master_planning',
+        name: 'MASTER PLANNING',
+        images: [
+          { id: 'mp1', url: 'assets/images/media_1789919353341.png', title: 'Institutional Campus' },
+          { id: 'mp2', url: 'assets/images/project_card_2.jpg', title: 'Urban Canopy Towers' },
+          { id: 'mp3', url: 'assets/images/project_card_3.jpg', title: 'Botanical Walkway & Gazebo' },
+          { id: 'mp4', url: 'assets/images/media_1789919300137.png', title: 'Integrated Township Pool' },
+          { id: 'mp5', url: 'assets/images/project_card_1.jpg', title: 'Heritage Masterplan' }
+        ]
+      },
+      {
+        id: 'cat_residential',
+        name: 'RESIDENTIAL',
+        images: [
+          { id: 'r1', url: 'assets/images/project_card_1.jpg', title: 'Trivedi Signature Entrance' },
+          { id: 'r2', url: 'assets/images/project_card_3.jpg', title: 'Residential Courtyard Greens' },
+          { id: 'r3', url: 'assets/images/project_card_4.jpg', title: 'Imperial Crest Balconies' },
+          { id: 'r4', url: 'assets/images/project_card_2.jpg', title: 'Skyline Residences' },
+          { id: 'r5', url: 'assets/images/legacy_building.png', title: 'Classical Residential Wing' }
+        ]
       }
     ];
 
-    const DEFAULT_BANNER = 'assets/images/hero_bg.png';
-
-    // Compress uploaded image via Canvas so it stores cleanly in localStorage
-    function compressImageFile(file, maxWidth = 1600, quality = 0.82) {
+    function compressImageFile(file, maxWidth = 1200, quality = 0.82) {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.onload = (e) => {
@@ -699,21 +885,24 @@
       if (!el) return;
       el.textContent = msg;
       el.style.display = 'block';
-      setTimeout(() => { el.style.display = 'none'; }, 4000);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setTimeout(() => { el.style.display = 'none'; }, 4500);
     }
 
-    // Initialize Projects in localStorage if not initialized
-    function getAllProjects() {
-      const saved = localStorage.getItem('ta_all_projects');
-      if (saved) {
-        try { return JSON.parse(saved); } catch (e) {}
-      }
-      localStorage.setItem('ta_all_projects', JSON.stringify(DEFAULT_PROJECTS));
-      return DEFAULT_PROJECTS;
+    function getCategories() {
+      try {
+        const saved = localStorage.getItem('ta_project_categories');
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        }
+      } catch (e) {}
+      localStorage.setItem('ta_project_categories', JSON.stringify(DEFAULT_PROJECT_CATEGORIES));
+      return JSON.parse(JSON.stringify(DEFAULT_PROJECT_CATEGORIES));
     }
 
-    function saveAllProjects(list) {
-      localStorage.setItem('ta_all_projects', JSON.stringify(list));
+    function saveCategories(cats) {
+      localStorage.setItem('ta_project_categories', JSON.stringify(cats));
     }
 
     // Auth Check
@@ -747,7 +936,7 @@
         loginAlert.style.display = 'none';
         checkSession();
       } else {
-        loginAlert.textContent = 'Invalid Admin Username or Password.';
+        loginAlert.textContent = 'Invalid Admin Username or Password. Use admin / Trivedi@123';
         loginAlert.style.display = 'block';
       }
     });
@@ -764,13 +953,214 @@
         btn.classList.add('active');
 
         const tab = btn.getAttribute('data-tab');
-        document.getElementById('tabBanner').style.display = tab === 'banner' ? 'block' : 'none';
         document.getElementById('tabProjects').style.display = tab === 'projects' ? 'block' : 'none';
+        document.getElementById('tabBanner').style.display = tab === 'banner' ? 'block' : 'none';
         document.getElementById('tabLeads').style.display = tab === 'leads' ? 'block' : 'none';
       });
     });
 
-    // Banner Management
+    // ==================== CATEGORIES & RESPECTED IMAGES LOGIC ====================
+    let stagedUploadedDataUrls = [];
+
+    const catImagesFileInput = document.getElementById('catImagesFileInput');
+    const catFilesStatusText = document.getElementById('catFilesStatusText');
+    const stagedImagesPreview = document.getElementById('stagedImagesPreview');
+    const catImageUrlInput = document.getElementById('catImageUrlInput');
+
+    catImagesFileInput.addEventListener('change', async (e) => {
+      const files = Array.from(e.target.files || []);
+      if (files.length === 0) return;
+
+      catFilesStatusText.textContent = `Compressing ${files.length} image(s)...`;
+      stagedUploadedDataUrls = [];
+      stagedImagesPreview.innerHTML = '';
+
+      try {
+        for (const file of files) {
+          const compressed = await compressImageFile(file, 1100, 0.82);
+          stagedUploadedDataUrls.push({
+            url: compressed,
+            name: file.name.replace(/\.[^/.]+$/, '')
+          });
+        }
+        catFilesStatusText.textContent = `${stagedUploadedDataUrls.length} image(s) ready to publish!`;
+        stagedImagesPreview.innerHTML = stagedUploadedDataUrls.map(item => `
+          <img src="${item.url}" class="staged-thumb" alt="${item.name}">
+        `).join('');
+      } catch (err) {
+        catFilesStatusText.textContent = 'Error processing selected image files.';
+      }
+    });
+
+    document.querySelectorAll('.proj-preset').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        catImageUrlInput.value = btn.getAttribute('data-url');
+      });
+    });
+
+    function renderCategoriesAndGallery() {
+      const categories = getCategories();
+      const selectEl = document.getElementById('targetCategorySelect');
+      const pillsEl = document.getElementById('categoryPillsList');
+      const galleryEl = document.getElementById('allCategoriesGalleryAdmin');
+
+      const prevSelected = selectEl.value;
+      selectEl.innerHTML = categories.map(c => `
+        <option value="${c.id}">${c.name} (${(c.images || []).length} images)</option>
+      `).join('');
+      if (prevSelected && categories.some(c => c.id === prevSelected)) {
+        selectEl.value = prevSelected;
+      }
+
+      pillsEl.innerHTML = categories.map(c => `
+        <span class="cat-pill">
+          ${c.name}
+          <span class="cat-pill-count">${(c.images || []).length}</span>
+        </span>
+      `).join('');
+
+      galleryEl.innerHTML = categories.map(cat => {
+        const imgs = cat.images || [];
+        return `
+          <div class="admin-category-section">
+            <div class="admin-cat-header">
+              <div class="admin-cat-name">
+                <span>${cat.name}</span>
+                <span style="font-size: 12px; color: var(--color-text-muted); font-weight: 500;">(${imgs.length} images)</span>
+              </div>
+              <button class="btn-delete delete-cat-btn" data-cat-id="${cat.id}">Delete Category</button>
+            </div>
+            ${imgs.length === 0 ? `
+              <div style="font-size: 13px; color: var(--color-text-muted); padding: 12px 0;">
+                No images in <strong>${cat.name}</strong> yet. Use the form above to upload images to this category.
+              </div>
+            ` : `
+              <div class="admin-cat-images-grid">
+                ${imgs.map(img => `
+                  <div class="admin-img-card">
+                    <img src="${img.url}" alt="${img.title || cat.name}">
+                    <div class="admin-img-card-footer">
+                      <span class="admin-img-title" title="${img.title || cat.name}">${img.title || cat.name}</span>
+                      <button class="btn-delete delete-img-btn" data-cat-id="${cat.id}" data-img-id="${img.id}">Remove</button>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            `}
+          </div>
+        `;
+      }).join('');
+
+      // Attach delete category handlers
+      galleryEl.querySelectorAll('.delete-cat-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const catId = btn.getAttribute('data-cat-id');
+          const updated = getCategories().filter(c => c.id !== catId);
+          saveCategories(updated);
+          renderCategoriesAndGallery();
+          showNotice('Category removed from website.');
+        });
+      });
+
+      // Attach delete single image handlers
+      galleryEl.querySelectorAll('.delete-img-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const catId = btn.getAttribute('data-cat-id');
+          const imgId = btn.getAttribute('data-img-id');
+          const cats = getCategories().map(c => {
+            if (c.id !== catId) return c;
+            return {
+              ...c,
+              images: (c.images || []).filter(i => i.id !== imgId)
+            };
+          });
+          saveCategories(cats);
+          renderCategoriesAndGallery();
+          showNotice('Image removed from category.');
+        });
+      });
+    }
+
+    // Add New Category Form
+    document.getElementById('addCategoryForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = document.getElementById('newCategoryNameInput');
+      const name = input.value.trim().toUpperCase();
+      if (!name) return;
+
+      const cats = getCategories();
+      if (cats.some(c => c.name.toUpperCase() === name)) {
+        showNotice(`Category "${name}" already exists!`);
+        return;
+      }
+
+      const newId = 'cat_' + Date.now();
+      cats.push({
+        id: newId,
+        name,
+        images: []
+      });
+      saveCategories(cats);
+      input.value = '';
+      renderCategoriesAndGallery();
+      document.getElementById('targetCategorySelect').value = newId;
+      showNotice(`New Category "${name}" created! You can now add images to it.`);
+    });
+
+    // Reset Default Categories
+    document.getElementById('resetCategoriesBtn').addEventListener('click', () => {
+      localStorage.setItem('ta_project_categories', JSON.stringify(DEFAULT_PROJECT_CATEGORIES));
+      renderCategoriesAndGallery();
+      showNotice('Restored default categories (Hospitality, Commercial, Mixed Use, Master Planning, Residential).');
+    });
+
+    // Add Respected Images to Selected Category
+    document.getElementById('addCategoryImageForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const targetCatId = document.getElementById('targetCategorySelect').value;
+      const customTitle = document.getElementById('catImageTitleInput').value.trim();
+      const manualUrl = catImageUrlInput.value.trim();
+
+      const cats = getCategories();
+      const targetCat = cats.find(c => c.id === targetCatId);
+      if (!targetCat) return;
+
+      let addedCount = 0;
+
+      if (stagedUploadedDataUrls.length > 0) {
+        stagedUploadedDataUrls.forEach((item, idx) => {
+          targetCat.images.push({
+            id: 'img_' + Date.now() + '_' + idx,
+            url: item.url,
+            title: customTitle || item.name || targetCat.name
+          });
+          addedCount++;
+        });
+      } else if (manualUrl) {
+        targetCat.images.push({
+          id: 'img_' + Date.now(),
+          url: manualUrl,
+          title: customTitle || targetCat.name
+        });
+        addedCount = 1;
+      } else {
+        alert('Please upload at least one image file or enter an image URL.');
+        return;
+      }
+
+      saveCategories(cats);
+      stagedUploadedDataUrls = [];
+      stagedImagesPreview.innerHTML = '';
+      catImagesFileInput.value = '';
+      catImageUrlInput.value = '';
+      document.getElementById('catImageTitleInput').value = '';
+      catFilesStatusText.textContent = 'Supports JPG, PNG, WebP • Auto-compressed for instant loading';
+
+      renderCategoriesAndGallery();
+      showNotice(`Published ${addedCount} image(s) to "${targetCat.name}"!`);
+    });
+
+    // ==================== HERO BANNER MANAGEMENT ====================
     const bannerPreviewImg = document.getElementById('bannerPreviewImg');
     const bannerUrlInput = document.getElementById('bannerUrlInput');
     const bannerFileInput = document.getElementById('bannerFileInput');
@@ -820,112 +1210,33 @@
       showNotice('Hero Banner reset to the default Neoclassical Colonnade.');
     });
 
-    // Project Management
-    const projFileInput = document.getElementById('projFileInput');
-    const projFileName = document.getElementById('projFileName');
-    const projImageUrl = document.getElementById('projImageUrl');
-
-    projFileInput.addEventListener('change', async (e) => {
-      const file = e.target.files[0];
-      if (!file) return;
-      projFileName.textContent = 'Processing: ' + file.name + '...';
-      try {
-        const dataUrl = await compressImageFile(file, 1000, 0.82);
-        projImageUrl.value = dataUrl;
-        projFileName.textContent = 'Uploaded: ' + file.name;
-      } catch (err) {
-        projFileName.textContent = 'Error reading file.';
-      }
-    });
-
-    document.querySelectorAll('.proj-preset').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        projImageUrl.value = btn.getAttribute('data-url');
-      });
-    });
-
-    function renderProjects() {
-      const container = document.getElementById('projectsListContainer');
-      const projects = getAllProjects();
-      if (projects.length === 0) {
-        container.innerHTML = '<div style="color:#888; font-size:13px;">No projects in showcase. Add a project on the left.</div>';
-        return;
-      }
-      container.innerHTML = projects.map((p) => `
-        <div class="project-item">
-          <div class="project-item-left">
-            <img src="${p.image}" class="project-thumb" alt="${p.titleMain}">
-            <div>
-              <div style="font-weight: 600; font-size: 14.5px; color: #FFF;">${p.titleMain} <em>${p.titleItalic || ''}</em></div>
-              <div style="font-size: 12px; color: var(--color-gold);">${p.category || 'Development'} &bull; ${p.subtitle}</div>
-            </div>
-          </div>
-          <button class="btn-delete" data-id="${p.id}">Delete</button>
-        </div>
-      `).join('');
-
-      container.querySelectorAll('.btn-delete').forEach((btn) => {
-        btn.addEventListener('click', () => {
-          const id = btn.getAttribute('data-id');
-          const updated = getAllProjects().filter(item => item.id !== id);
-          saveAllProjects(updated);
-          renderProjects();
-          showNotice('Project removed from website showcase.');
-        });
-      });
-    }
-
-    document.getElementById('addProjectForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const titleMain = document.getElementById('projMainTitle').value.trim();
-      const titleItalic = document.getElementById('projItalicTitle').value.trim();
-      const subtitle = document.getElementById('projLocation').value.trim();
-      const category = document.getElementById('projCategory').value;
-      const image = projImageUrl.value.trim() || 'assets/images/project_card_1.jpg';
-
-      const projects = getAllProjects();
-      projects.push({
-        id: 'proj_' + Date.now(),
-        titleMain,
-        titleItalic,
-        subtitle,
-        category,
-        image
-      });
-      saveAllProjects(projects);
-      renderProjects();
-      e.target.reset();
-      projImageUrl.value = 'assets/images/project_card_1.jpg';
-      projFileName.textContent = 'Or choose a preset / paste URL below';
-      showNotice(`Project "${titleMain} ${titleItalic}" added to website showcase!`);
-    });
-
+    // ==================== LEADS MANAGEMENT ====================
     function renderLeads() {
       const container = document.getElementById('leadsListContainer');
       const leads = JSON.parse(localStorage.getItem('ta_admin_leads') || '[]');
       if (leads.length === 0) {
-        container.innerHTML = '<div style="color:#888; font-size:13.5px; padding:12px 0;">No client enquiries submitted yet.</div>';
+        container.innerHTML = '<div style="color:var(--color-text-muted); font-size:13.5px; padding:12px 0;">No client enquiries submitted yet.</div>';
         return;
       }
       container.innerHTML = leads.map((l) => `
-        <div class="project-item" style="flex-direction: column; align-items: flex-start; gap: 6px;">
-          <div style="display:flex; justify-content:space-between; width:100%;">
-            <strong style="color:#FFF; font-size:14.5px;">${l.name}</strong>
-            <span style="color:#888; font-size:11.5px;">${l.createdAt || ''}</span>
+        <div class="lead-item">
+          <div style="display:flex; justify-content:space-between; width:100%; margin-bottom: 4px;">
+            <strong style="color:var(--color-text-dark); font-size:15px;">${l.name}</strong>
+            <span style="color:var(--color-text-muted); font-size:12px;">${l.createdAt || ''}</span>
           </div>
-          <div style="color:var(--color-gold); font-size:12.5px;">
+          <div style="color:var(--color-wine); font-size:12.5px; font-weight: 600; margin-bottom: 4px;">
             Phone: ${l.phone} &nbsp;|&nbsp; Email: ${l.email} &nbsp;|&nbsp; Service: ${l.service}
           </div>
-          <div style="color:#CCC; font-size:13px;">"${l.message || ''}"</div>
+          <div style="color:var(--color-text-muted); font-size:13px;">"${l.message || ''}"</div>
         </div>
       `).join('');
     }
 
     function initDashboard() {
-      const savedBanner = localStorage.getItem('ta_hero_banner') || DEFAULT_BANNER;
-      bannerPreviewImg.src = savedBanner;
-      bannerUrlInput.value = savedBanner;
-      renderProjects();
+      const currentBanner = localStorage.getItem('ta_hero_banner') || DEFAULT_BANNER;
+      bannerPreviewImg.src = currentBanner;
+      bannerUrlInput.value = currentBanner.startsWith('data:') ? '' : currentBanner;
+      renderCategoriesAndGallery();
       renderLeads();
     }
 
