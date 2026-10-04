@@ -1,6 +1,6 @@
 /* ==========================================================================
    Trivedi Associates - React App CSS
-   Minimalist Architectural Luxury Aesthetic
+   Minimalist Design Luxury Aesthetic
    ========================================================================== */
 
 /* -------------------- NAVIGATION BAR -------------------- */
@@ -275,22 +275,22 @@
   align-items: center;
   justify-content: center;
   padding: 14px 34px;
-  background: #832438 !important;
+  background: var(--color-wine) !important;
   color: #FFFFFF !important;
   font-size: 12.5px;
   letter-spacing: 2px;
   font-weight: 600;
   text-transform: uppercase;
   text-decoration: none !important;
-  border: 1px solid #832438 !important;
-  box-shadow: 0 8px 25px rgba(131, 36, 56, 0.4);
+  border: 1px solid var(--color-wine) !important;
+  box-shadow: 0 8px 25px rgba(91, 20, 34, 0.4);
   transition: var(--transition-smooth);
   border-radius: 2px;
 }
 
 .btn-hero-primary:hover {
-  background: #661A2B !important;
-  border-color: #661A2B !important;
+  background: var(--color-wine-dark) !important;
+  border-color: var(--color-wine-dark) !important;
   color: #FFFFFF !important;
   transform: translateY(-2px);
   text-decoration: none !important;

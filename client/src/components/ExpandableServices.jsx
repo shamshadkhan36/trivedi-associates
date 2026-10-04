@@ -5,7 +5,7 @@ const servicePillars = [
     id: 'design',
     number: '01',
     title: 'Design & Planning',
-    tagline: 'Architectural & Spatial Planning',
+    tagline: 'Design & Spatial Planning',
     icon: (
       <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.8">
         <path d="M2 20h20" />
@@ -15,12 +15,12 @@ const servicePillars = [
         <path d="M9 17h6" />
       </svg>
     ),
-    overview: 'Precision-driven architectural planning, spatial optimization, and photorealistic visualization for luxury developments.',
+    overview: 'Precision-driven design planning, spatial optimization, and photorealistic visualization for luxury developments.',
     deliverables: [
       'Floor Planning & Master Layouts',
       '3D Views & Modeling',
       'Elevation Design & Facades',
-      'Interior Architecture & Detailing'
+      'Interior Design & Detailing'
     ]
   },
   {
@@ -37,8 +37,8 @@ const servicePillars = [
     ),
     overview: 'End-to-end execution oversight, cost management, contractor accountability, and timely milestone delivery.',
     deliverables: [
-      'Site Supervision & Execution',
-      'Cost Estimation & Budgeting',
+      'Site management and execution',
+      'Billing consultation and budgeting',
       'Quality Control & Audit',
       'Timeline & Milestone Tracking'
     ]
@@ -57,29 +57,29 @@ const servicePillars = [
     ),
     overview: 'Expedited statutory compliance, building proposals, municipal approvals, and environmental clearances.',
     deliverables: [
-      'Municipal & BMC Approvals',
-      'Environmental Clearance (MoEF)',
-      'Fire & Life Safety NOCs',
-      'Occupation Certificate (OC)'
+      'All types of Building and plan approvals',
+      'Fire and related NOCs',
+      'Commencement certificate (CC) and Occupation certificate(OC)',
+      'All other approvals'
     ]
   },
   {
     id: 'green',
     number: '04',
     title: 'Green Building Consultant',
-    tagline: 'Sustainable LEED & IGBC Advisory',
+    tagline: 'Sustainability and green consultancy',
     icon: (
       <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.8">
         <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
         <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
       </svg>
     ),
-    overview: 'Eco-conscious design, energy modeling, and green rating facilitation reducing lifecycle operating costs.',
+    overview: 'Eco-conscious design review , energy and water saving methods, and green rating facilitation reducing lifecycle operating costs.',
     deliverables: [
-      'IGBC & LEED Certification',
-      'Energy Modeling & Daylighting',
-      'Water & Waste Management',
-      'Eco-Friendly Materials Advisory'
+      'Green building certification',
+      'Building design review for sustainability',
+      'Energy, water and waste management methods',
+      'Eco friendly material advisory'
     ]
   }
 ];
@@ -105,14 +105,7 @@ export default function ExpandableServices({ onSelectService }) {
   return (
     <section className="services-section" id="services">
       <div className="services-header-wrap">
-        <div className="services-eyebrow">OUR 4 CORE PILLARS &bull; TRIVEDI ASSOCIATES</div>
-        <h2 className="services-main-title">
-          Specialized Architectural &amp; <br />
-          <span className="italic-serif">Engineering Verticals</span>
-        </h2>
-        <p className="services-sub-desc">
-          Click any card below to expand deliverables, technical scopes, and consulting capabilities.
-        </p>
+        <h2 className="services-main-title">OUR 4 CORE PILLARS</h2>
 
         {/* Quick Toggle Controls */}
         <div className="services-toggle-bar">

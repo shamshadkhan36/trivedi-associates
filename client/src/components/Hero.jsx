@@ -19,7 +19,7 @@ export default function Hero({ onOpenConnect }) {
       <div className="hero-bg-container">
         <img
           src={bannerSrc}
-          alt="Trivedi Associates Architectural Excellence"
+          alt="Trivedi Associates Design Excellence"
           className="hero-bg-image"
         />
       </div>

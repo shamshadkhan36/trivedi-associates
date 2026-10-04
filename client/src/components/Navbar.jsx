@@ -22,7 +22,7 @@ export default function Navbar({ onOpenConnect, onOpenSearch, onOpenDrawer, onOp
         </div>
         <div className="brand-logo-text">
           <span className="brand-logo-title">Trivedi Associates</span>
-          <span className="brand-logo-sub">Architecture &amp; Living</span>
+          <span className="brand-logo-sub">DESIGN &amp; PROJECT MANAGEMENT CONSULTANT</span>
         </div>
       </a>
 

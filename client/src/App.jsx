@@ -78,10 +78,10 @@ export default function App() {
               <span className="italic-serif">Timeless Precision</span>
             </h2>
             <p className="about-paragraph">
-              Headquartered in Mumbai, <strong>Trivedi Associates</strong> is a premier multidisciplinary consultancy uniting master architectural planning, rigorous project management (PMC), municipal &amp; government liaisoning, and IGBC/LEED green building advisory under one integrated practice.
+              Headquartered in Mumbai, <strong>Trivedi Associates</strong> is a premier multidisciplinary consultancy uniting master design planning, rigorous project management (PMC), municipal &amp; government liaisoning, and IGBC/LEED green building advisory under one integrated practice.
             </p>
             <p className="about-paragraph">
-              From luxury residential towers and township developments to high-compliance commercial landmarks across Powai, Thane, and South Mumbai, we partner with India’s foremost developers to deliver statutory certainty and architectural distinction.
+              From luxury residential towers and township developments to high-compliance commercial landmarks across Powai, Thane, and South Mumbai, we partner with India’s foremost developers to deliver statutory certainty and design distinction.
             </p>
           </div>
           <div className="about-metrics-grid">

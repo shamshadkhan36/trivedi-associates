@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Trivedi Associates - Luxury Architecture & Advisory
+   Trivedi Associates - Luxury Design & Project Management Consultant
    Minimalist Neoclassical Aesthetic
    ========================================================================== */
 
@@ -11,9 +11,9 @@
   --color-cream: #FAF5EE;
   --color-cream-soft: #F5EFE4;
   --color-cream-light: #FDFBF7;
-  --color-wine: #832438;
-  --color-wine-dark: #661A2B;
-  --color-wine-light: #A3334A;
+  --color-wine: #5B1422;
+  --color-wine-dark: #3F0B15;
+  --color-wine-light: #7A1D30;
   --color-gold: #C5A880;
   --color-gold-light: #E0CDB3;
   --color-gold-dark: #9A7B54;
@@ -360,22 +360,22 @@ button {
   align-items: center;
   justify-content: center;
   padding: 14px 34px;
-  background: #832438 !important;
+  background: var(--color-wine) !important;
   color: #FFFFFF !important;
   font-size: 12.5px;
   letter-spacing: 2px;
   font-weight: 600;
   text-transform: uppercase;
   text-decoration: none !important;
-  border: 1px solid #832438 !important;
-  box-shadow: 0 8px 25px rgba(131, 36, 56, 0.4);
+  border: 1px solid var(--color-wine) !important;
+  box-shadow: 0 8px 25px rgba(91, 20, 34, 0.4);
   transition: var(--transition-smooth);
   border-radius: 2px;
 }
 
 .btn-hero-primary:hover {
-  background: #661A2B !important;
-  border-color: #661A2B !important;
+  background: var(--color-wine-dark) !important;
+  border-color: var(--color-wine-dark) !important;
   color: #FFFFFF !important;
   transform: translateY(-2px);
   text-decoration: none !important;
@@ -1645,9 +1645,9 @@ button {
 }
 
 .admin-logout-btn:hover {
-  border-color: #832438;
+  border-color: var(--color-wine);
   color: #FFF;
-  background: #832438;
+  background: var(--color-wine);
 }
 
 .admin-desc {
@@ -1722,9 +1722,9 @@ button {
 .admin-submit-btn {
   width: 100%;
   padding: 13px;
-  background: #832438;
+  background: var(--color-wine);
   color: #FFFFFF;
-  border: 1px solid #832438;
+  border: 1px solid var(--color-wine);
   border-radius: 4px;
   font-size: 13px;
   font-weight: 600;
@@ -1735,8 +1735,8 @@ button {
 }
 
 .admin-submit-btn:hover {
-  background: #661A2B;
-  border-color: #661A2B;
+  background: var(--color-wine-dark);
+  border-color: var(--color-wine-dark);
 }
 
 .admin-tab-bar {

@@ -189,7 +189,7 @@ export function SearchModal({ isOpen, onClose }) {
           Search Developments
         </h3>
         <p style={{ color: '#A0A0A0', fontSize: '13.5px', marginTop: '4px' }}>
-          Explore architectural portfolios, localities, and properties.
+          Explore design portfolios, localities, and properties.
         </p>
 
         <div className="search-input-wrap">

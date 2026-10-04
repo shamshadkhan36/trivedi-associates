@@ -10,7 +10,7 @@
   <meta http-equiv="Expires" content="0">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23832438' stroke='%23C5A880' stroke-width='4'/><text x='50' y='60' font-size='32' font-family='serif' fill='%23FFFFFF' text-anchor='middle' font-weight='bold'>TA</text></svg>">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%235B1422' stroke='%23C5A880' stroke-width='4'/><text x='50' y='60' font-size='32' font-family='serif' fill='%23FFFFFF' text-anchor='middle' font-weight='bold'>TA</text></svg>">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +19,7 @@
 
   <style>
     /* ==========================================================================
-       Trivedi Associates Admin Console - Matches Website Warm Cream & Wine Theme
+       Trivedi Associates Admin Console - Matches Website Luxury Dark Maroon Theme
        ========================================================================== */
     :root {
       --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
@@ -29,9 +29,9 @@
       --color-cream: #FAF5EE;
       --color-cream-soft: #F5EFE4;
       --color-cream-light: #FDFBF7;
-      --color-wine: #832438;
-      --color-wine-dark: #661A2B;
-      --color-wine-light: #A3334A;
+      --color-wine: #5B1422;
+      --color-wine-dark: #3F0B15;
+      --color-wine-light: #7A1D30;
       --color-gold: #C5A880;
       --color-gold-dark: #9A7B54;
       --color-bronze: #7A5C4D;
@@ -74,7 +74,7 @@
       border-top: 4px solid var(--color-wine);
       border-radius: 12px;
       padding: 42px 38px;
-      box-shadow: 0 20px 50px rgba(131, 36, 56, 0.08);
+      box-shadow: 0 20px 50px rgba(91, 20, 34, 0.08);
     }
 
     .brand-header {
@@ -146,7 +146,7 @@
     .form-input:focus, .form-select:focus {
       border-color: var(--color-wine);
       background: var(--color-white);
-      box-shadow: 0 0 0 3px rgba(131, 36, 56, 0.08);
+      box-shadow: 0 0 0 3px rgba(91, 20, 34, 0.08);
     }
 
     .btn-primary {
@@ -669,7 +669,7 @@
 
       <div class="topbar-actions">
         <a href="index.html#showcase" class="btn-secondary">View Projects on Website &#8599;</a>
-        <button id="logoutBtn" class="btn-secondary" style="color: var(--color-wine); border-color: rgba(131,36,56,0.3);">Sign Out</button>
+        <button id="logoutBtn" class="btn-secondary" style="color: var(--color-wine); border-color: rgba(91, 20, 34, 0.3);">Sign Out</button>
       </div>
     </header>
 
@@ -705,7 +705,8 @@
       <div class="tabs-nav">
         <button class="tab-btn active" data-tab="projects">1. Add Category &amp; Project Images</button>
         <button class="tab-btn" data-tab="banner">2. Hero Banner Change</button>
-        <button class="tab-btn" data-tab="leads">3. Client Enquiries</button>
+        <button class="tab-btn" data-tab="cms">3. Edit Website Content (Full CMS)</button>
+        <button class="tab-btn" data-tab="leads">4. Client Enquiries</button>
       </div>
 
       <!-- ==================== TAB 1: PROJECT CATEGORIES & RESPECTED IMAGES ==================== -->
@@ -844,7 +845,7 @@
                 <input type="text" id="bannerUrlInput" class="form-input" placeholder="assets/images/hero_bg.png or https://...">
               </div>
 
-              <label class="form-label">Option C: Quick Architectural Presets</label>
+              <label class="form-label">Option C: Quick Design Presets</label>
               <div class="preset-pills">
                 <button type="button" class="preset-btn banner-preset" data-url="assets/images/hero_bg.png">Neoclassical Grand Colonnade (Default)</button>
                 <button type="button" class="preset-btn banner-preset" data-url="assets/images/project_card_1.jpg">Classical Portico Facade</button>
@@ -877,7 +878,235 @@
         </div>
       </section>
 
-      <!-- ==================== TAB 3: CLIENT ENQUIRIES ==================== -->
+      <!-- ==================== TAB 3: WEBSITE CONTENT (CMS) ==================== -->
+      <section id="tabCms" class="tab-section" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 14px; background: var(--color-white); border: 1px solid var(--color-border); border-left: 4px solid var(--color-wine); padding: 18px 24px; border-radius: 8px;">
+          <div>
+            <span class="panel-eyebrow">LIVE WEBSITE CONTENT MANAGEMENT SYSTEM (CMS)</span>
+            <h2 class="panel-title" style="margin-bottom: 4px; font-size: 20px;">Edit All Website Texts &amp; Deliverables</h2>
+            <p class="panel-subtitle" style="margin-bottom: 0;">Update Brand subtitles, 4 Core Pillars titles/deliverables, About text, and Contact information across the website.</p>
+          </div>
+          <div style="display: flex; gap: 10px;">
+            <button type="button" id="resetCmsContentBtnTop" class="btn-secondary" style="padding: 10px 18px;">↺ Reset Defaults</button>
+            <button type="button" id="saveCmsContentBtnTop" class="btn-primary" style="width: auto; padding: 10px 24px;">💾 Save All Changes</button>
+          </div>
+        </div>
+
+        <form id="cmsContentForm">
+          <!-- CARD 1: BRAND IDENTITY & CONTACT DETAILS -->
+          <div class="panel-card" style="margin-bottom: 24px;">
+            <span class="panel-eyebrow">STEP 1 &bull; BRAND IDENTITY &amp; CONTACT INFORMATION</span>
+            <h3 style="font-family: var(--font-serif); font-size: 19px; font-weight: 700; margin-bottom: 14px; color: var(--color-wine);">Brand Subtitle &amp; Direct Communication</h3>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 16px;">
+              <div class="form-group" style="margin: 0;">
+                <label class="form-label">Header Brand Subtitle</label>
+                <input type="text" id="cms_headerBrandSub" class="form-input" placeholder="DESIGN & PROJECT MANAGEMENT CONSULTANT">
+              </div>
+              <div class="form-group" style="margin: 0;">
+                <label class="form-label">Footer Brand Subtitle</label>
+                <input type="text" id="cms_footerBrandSub" class="form-input" placeholder="DESIGN & PROJECT MANAGEMENT CONSULTANT">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Footer Brand Mission / Description</label>
+              <textarea id="cms_footerBrandDesc" class="form-input" rows="2"></textarea>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; margin-bottom: 16px;">
+              <div class="form-group" style="margin: 0;">
+                <label class="form-label">Direct Hotline Phone</label>
+                <input type="text" id="cms_contactHotlineVal" class="form-input" placeholder="+91 7977117256">
+              </div>
+              <div class="form-group" style="margin: 0;">
+                <label class="form-label">WhatsApp Quick Connect</label>
+                <input type="text" id="cms_contactWhatsappVal" class="form-input" placeholder="+91 7977117256">
+              </div>
+              <div class="form-group" style="margin: 0;">
+                <label class="form-label">Official Email Correspondence</label>
+                <input type="email" id="cms_contactEmailVal" class="form-input" placeholder="trivedi.associates13@gmail.com">
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label">Corporate Office Headquarters Address</label>
+              <input type="text" id="cms_footerAddressVal" class="form-input" placeholder="Trivedi Associates Corporate Chambers, Mumbai, Maharashtra, India">
+            </div>
+          </div>
+
+          <!-- CARD 2: SECTION 2 - OUR 4 CORE PILLARS -->
+          <div class="panel-card" style="margin-bottom: 24px;">
+            <span class="panel-eyebrow">STEP 2 &bull; 4 CORE VERTICALS</span>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; border-bottom: 1px solid var(--color-border); padding-bottom: 14px;">
+              <div>
+                <h3 style="font-family: var(--font-serif); font-size: 21px; font-weight: 700; color: var(--color-wine); margin-bottom: 2px;">
+                  Our 4 Core Pillars (Titles, Overviews &amp; Deliverables)
+                </h3>
+                <p style="font-size: 12.5px; color: var(--color-text-muted); margin: 0;">Edit the main heading, each vertical's title, tagline, overview description, and 4 deliverables.</p>
+              </div>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <label class="form-label" style="margin: 0; white-space: nowrap;">Section Main Title:</label>
+                <input type="text" id="cms_servicesMainTitle" class="form-input" style="width: 240px; font-weight: 700;" placeholder="OUR 4 CORE PILLARS">
+              </div>
+            </div>
+
+            <!-- 4 Pillar Edit Grid -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+              <!-- Pillar 1: Design & Planning -->
+              <div style="background: var(--color-cream-soft); border: 1px solid var(--color-border); border-top: 3px solid var(--color-wine); border-radius: 8px; padding: 18px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                  <span style="background: var(--color-wine); color: #fff; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 3px; letter-spacing: 1px;">PILLAR 01</span>
+                  <span style="font-size: 12px; font-weight: 600; color: var(--color-text-muted);">Design &amp; Planning</span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Card Title</label>
+                  <input type="text" id="cms_p1Title" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Tagline</label>
+                  <input type="text" id="cms_p1Tagline" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Overview Description</label>
+                  <textarea id="cms_p1Overview" class="form-input" rows="2"></textarea>
+                </div>
+                <label class="form-label">Key Deliverables (1 &ndash; 4):</label>
+                <input type="text" id="cms_p1Del1" class="form-input" style="margin-bottom: 8px;" placeholder="1. Floor Planning & Master Layouts">
+                <input type="text" id="cms_p1Del2" class="form-input" style="margin-bottom: 8px;" placeholder="2. 3D Views & Modeling">
+                <input type="text" id="cms_p1Del3" class="form-input" style="margin-bottom: 8px;" placeholder="3. Elevation Design & Facades">
+                <input type="text" id="cms_p1Del4" class="form-input" placeholder="4. Interior Design & Detailing">
+              </div>
+
+              <!-- Pillar 2: PMC -->
+              <div style="background: var(--color-cream-soft); border: 1px solid var(--color-border); border-top: 3px solid var(--color-wine); border-radius: 8px; padding: 18px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                  <span style="background: var(--color-wine); color: #fff; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 3px; letter-spacing: 1px;">PILLAR 02</span>
+                  <span style="font-size: 12px; font-weight: 600; color: var(--color-text-muted);">Project Management (PMC)</span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Card Title</label>
+                  <input type="text" id="cms_p2Title" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Tagline</label>
+                  <input type="text" id="cms_p2Tagline" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Overview Description</label>
+                  <textarea id="cms_p2Overview" class="form-input" rows="2"></textarea>
+                </div>
+                <label class="form-label">Key Deliverables (1 &ndash; 4):</label>
+                <input type="text" id="cms_p2Del1" class="form-input" style="margin-bottom: 8px;" placeholder="1. Site management and execution">
+                <input type="text" id="cms_p2Del2" class="form-input" style="margin-bottom: 8px;" placeholder="2. Billing consultation and budgeting">
+                <input type="text" id="cms_p2Del3" class="form-input" style="margin-bottom: 8px;" placeholder="3. Quality Control & Audit">
+                <input type="text" id="cms_p2Del4" class="form-input" placeholder="4. Timeline & Milestone Tracking">
+              </div>
+
+              <!-- Pillar 3: Liaisoning & Approvals -->
+              <div style="background: var(--color-cream-soft); border: 1px solid var(--color-border); border-top: 3px solid var(--color-wine); border-radius: 8px; padding: 18px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                  <span style="background: var(--color-wine); color: #fff; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 3px; letter-spacing: 1px;">PILLAR 03</span>
+                  <span style="font-size: 12px; font-weight: 600; color: var(--color-text-muted);">Liaisoning &amp; Approvals</span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Card Title</label>
+                  <input type="text" id="cms_p3Title" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Tagline</label>
+                  <input type="text" id="cms_p3Tagline" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Overview Description</label>
+                  <textarea id="cms_p3Overview" class="form-input" rows="2"></textarea>
+                </div>
+                <label class="form-label">Key Deliverables (1 &ndash; 4):</label>
+                <input type="text" id="cms_p3Del1" class="form-input" style="margin-bottom: 8px;" placeholder="1. All types of Building and plan approvals">
+                <input type="text" id="cms_p3Del2" class="form-input" style="margin-bottom: 8px;" placeholder="2. Fire and related NOCs">
+                <input type="text" id="cms_p3Del3" class="form-input" style="margin-bottom: 8px;" placeholder="3. Commencement certificate (CC) and Occupation certificate(OC)">
+                <input type="text" id="cms_p3Del4" class="form-input" placeholder="4. All other approvals">
+              </div>
+
+              <!-- Pillar 4: Green Building Consultant -->
+              <div style="background: var(--color-cream-soft); border: 1px solid var(--color-border); border-top: 3px solid var(--color-wine); border-radius: 8px; padding: 18px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                  <span style="background: var(--color-wine); color: #fff; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 3px; letter-spacing: 1px;">PILLAR 04</span>
+                  <span style="font-size: 12px; font-weight: 600; color: var(--color-text-muted);">Green Building Consultant</span>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Card Title</label>
+                  <input type="text" id="cms_p4Title" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Tagline / Subheader</label>
+                  <input type="text" id="cms_p4Tagline" class="form-input">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Overview Description / Header</label>
+                  <textarea id="cms_p4Overview" class="form-input" rows="2"></textarea>
+                </div>
+                <label class="form-label">Key Deliverables (1 &ndash; 4):</label>
+                <input type="text" id="cms_p4Del1" class="form-input" style="margin-bottom: 8px;" placeholder="1. Green building certification">
+                <input type="text" id="cms_p4Del2" class="form-input" style="margin-bottom: 8px;" placeholder="2. Building design review for sustainability">
+                <input type="text" id="cms_p4Del3" class="form-input" style="margin-bottom: 8px;" placeholder="3. Energy, water and waste management methods">
+                <input type="text" id="cms_p4Del4" class="form-input" placeholder="4. Eco friendly material advisory">
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 3: ABOUT PRACTICE & INSIGHTS -->
+          <div class="panel-card" style="margin-bottom: 24px;">
+            <span class="panel-eyebrow">STEP 3 &bull; ABOUT &amp; INSIGHTS CONTENT</span>
+            <h3 style="font-family: var(--font-serif); font-size: 19px; font-weight: 700; margin-bottom: 14px; color: var(--color-wine);">About Practice &amp; Advisory Articles</h3>
+            
+            <div class="form-group">
+              <label class="form-label">About Section Heading</label>
+              <input type="text" id="cms_aboutMainTitle" class="form-input">
+            </div>
+            <div class="form-group">
+              <label class="form-label">About Paragraph 1</label>
+              <textarea id="cms_aboutP1" class="form-input" rows="2"></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">About Paragraph 2</label>
+              <textarea id="cms_aboutP2" class="form-input" rows="2"></textarea>
+            </div>
+
+            <div style="border-top: 1px solid var(--color-border); margin: 20px 0 16px; padding-top: 16px;">
+              <label class="form-label" style="font-size: 12px; color: var(--color-wine);">Technical Insight Cards (3 Briefs):</label>
+              
+              <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 10px;">
+                <div style="background: var(--color-cream-soft); padding: 14px; border-radius: 6px; border: 1px solid var(--color-border);">
+                  <strong style="font-size: 12px; display: block; margin-bottom: 6px; color: var(--color-text-dark);">Insight 1 (Liaisoning)</strong>
+                  <input type="text" id="cms_insight1Title" class="form-input" style="margin-bottom: 8px;" placeholder="Insight 1 Title">
+                  <textarea id="cms_insight1Desc" class="form-input" rows="3" placeholder="Insight 1 Description"></textarea>
+                </div>
+                <div style="background: var(--color-cream-soft); padding: 14px; border-radius: 6px; border: 1px solid var(--color-border);">
+                  <strong style="font-size: 12px; display: block; margin-bottom: 6px; color: var(--color-text-dark);">Insight 2 (Green Building)</strong>
+                  <input type="text" id="cms_insight2Title" class="form-input" style="margin-bottom: 8px;" placeholder="Insight 2 Title">
+                  <textarea id="cms_insight2Desc" class="form-input" rows="3" placeholder="Insight 2 Description"></textarea>
+                </div>
+                <div style="background: var(--color-cream-soft); padding: 14px; border-radius: 6px; border: 1px solid var(--color-border);">
+                  <strong style="font-size: 12px; display: block; margin-bottom: 6px; color: var(--color-text-dark);">Insight 3 (PMC)</strong>
+                  <input type="text" id="cms_insight3Title" class="form-input" style="margin-bottom: 8px;" placeholder="Insight 3 Title">
+                  <textarea id="cms_insight3Desc" class="form-input" rows="3" placeholder="Insight 3 Description"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Save Actions -->
+          <div style="display: flex; justify-content: flex-end; gap: 14px; align-items: center; padding: 16px 0;">
+            <button type="button" id="resetCmsContentBtnBottom" class="btn-secondary" style="padding: 12px 20px;">↺ Reset Defaults</button>
+            <button type="submit" class="btn-primary" style="width: auto; padding: 14px 40px; font-size: 14px;">
+              💾 Save All Website Content
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- ==================== TAB 4: CLIENT ENQUIRIES ==================== -->
       <section id="tabLeads" class="tab-section" style="display: none;">
         <div class="panel-card">
           <span class="panel-eyebrow">INCOMING CONSULTATION REQUESTS</span>
@@ -1074,6 +1303,7 @@
         const tab = btn.getAttribute('data-tab');
         document.getElementById('tabProjects').style.display = tab === 'projects' ? 'block' : 'none';
         document.getElementById('tabBanner').style.display = tab === 'banner' ? 'block' : 'none';
+        document.getElementById('tabCms').style.display = tab === 'cms' ? 'block' : 'none';
         document.getElementById('tabLeads').style.display = tab === 'leads' ? 'block' : 'none';
       });
     });
@@ -1387,12 +1617,127 @@
       `).join('');
     }
 
+    // ==================== EDIT WEBSITE CONTENT (CMS) ====================
+    const DEFAULT_SITE_CONTENT = {
+      headerBrandSub: "DESIGN & PROJECT MANAGEMENT CONSULTANT",
+      footerBrandSub: "DESIGN & PROJECT MANAGEMENT CONSULTANT",
+      footerBrandDesc: "Mastering the art of neoclassical design and superior craftsmanship. 4 core pillars: Design & Planning, PMC, Liaisoning, and Green Building.",
+      servicesMainTitle: "OUR 4 CORE PILLARS",
+
+      // Pillar 1: Design & Planning
+      p1Title: "Design & Planning",
+      p1Tagline: "Design & Spatial Planning",
+      p1Overview: "Precision-driven design planning, spatial optimization, and photorealistic visualization for luxury developments.",
+      p1Del1: "Floor Planning & Master Layouts",
+      p1Del2: "3D Views & Modeling",
+      p1Del3: "Elevation Design & Facades",
+      p1Del4: "Interior Design & Detailing",
+
+      // Pillar 2: PMC
+      p2Title: "Project Management Consultant (PMC)",
+      p2Tagline: "Site Supervision & Quality Audit",
+      p2Overview: "End-to-end execution oversight, cost management, contractor accountability, and timely milestone delivery.",
+      p2Del1: "Site management and execution",
+      p2Del2: "Billing consultation and budgeting",
+      p2Del3: "Quality Control & Audit",
+      p2Del4: "Timeline & Milestone Tracking",
+
+      // Pillar 3: Liaisoning & Approvals
+      p3Title: "Liaisoning & Approvals",
+      p3Tagline: "Sanctions & Government Approvals",
+      p3Overview: "Expedited statutory compliance, building proposals, municipal approvals, and environmental clearances.",
+      p3Del1: "All types of Building and plan approvals",
+      p3Del2: "Fire and related NOCs",
+      p3Del3: "Commencement certificate (CC) and Occupation certificate(OC)",
+      p3Del4: "All other approvals",
+
+      // Pillar 4: Green Building Consultant
+      p4Title: "Green Building Consultant",
+      p4Tagline: "Sustainability and green consultancy",
+      p4Overview: "Eco-conscious design review , energy and water saving methods, and green rating facilitation reducing lifecycle operating costs.",
+      p4Del1: "Green building certification",
+      p4Del2: "Building design review for sustainability",
+      p4Del3: "Energy, water and waste management methods",
+      p4Del4: "Eco friendly material advisory",
+
+      // About Section
+      aboutMainTitle: "Engineering Landmarks with Timeless Precision",
+      aboutP1: "Headquartered in Mumbai, Trivedi Associates is a premier multidisciplinary consultancy uniting master design planning, rigorous project management (PMC), municipal & government liaisoning, and IGBC/LEED green building advisory under one integrated practice.",
+      aboutP2: "From luxury residential towers and township developments to high-compliance commercial landmarks across Powai, Thane, and South Mumbai, we partner with India’s foremost developers to deliver statutory certainty and design distinction.",
+
+      // Insights Section
+      insight1Title: "Navigating DCPR 2034 & Fast-Track BMC Sanctions in Mumbai",
+      insight1Desc: "Strategic frameworks for optimizing FSI utilization, fungible compensatory areas, and streamlined IOD-to-OC approval workflows.",
+      insight2Title: "IGBC & LEED Platinum Certification: ROI for Modern Developments",
+      insight2Desc: "How passive solar orientation, energy modeling, and sustainable material selection unlock additional incentive FSI and lower lifecycle costs.",
+      insight3Title: "Zero-Deviation Execution: Cost & Quality Audits in High-Rise Construction",
+      insight3Desc: "Implementing multi-stage structural quality audits, BOQ cost controls, and milestone tracking for on-schedule delivery.",
+
+      // Contact Information
+      contactHotlineVal: "+91 7977117256",
+      contactWhatsappVal: "+91 7977117256",
+      contactEmailVal: "trivedi.associates13@gmail.com",
+      footerAddressVal: "Trivedi Associates Corporate Chambers, Mumbai, Maharashtra, India"
+    };
+
+    function loadCmsForm() {
+      let saved = {};
+      try {
+        const raw = localStorage.getItem('ta_site_content');
+        if (raw) saved = JSON.parse(raw);
+      } catch (e) {}
+      const merged = Object.assign({}, DEFAULT_SITE_CONTENT, saved);
+
+      for (const [key, val] of Object.entries(merged)) {
+        const input = document.getElementById('cms_' + key);
+        if (input) {
+          input.value = typeof val === 'string' ? val.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim() : (val || '');
+          if (key === 'aboutMainTitle' && (val || '').includes('Engineering Landmarks')) {
+            input.value = "Engineering Landmarks with Timeless Precision";
+          }
+        }
+      }
+    }
+
+    function saveCmsForm() {
+      const data = {};
+      for (const key of Object.keys(DEFAULT_SITE_CONTENT)) {
+        const input = document.getElementById('cms_' + key);
+        if (input) {
+          data[key] = input.value.trim();
+        }
+      }
+      localStorage.setItem('ta_site_content', JSON.stringify(data));
+      showNotice('Website content successfully saved and published! Open the website to verify.');
+    }
+
+    function resetCmsForm() {
+      if (confirm('Are you sure you want to reset all website text and deliverables back to official defaults?')) {
+        localStorage.removeItem('ta_site_content');
+        loadCmsForm();
+        showNotice('Website content reset to official defaults.');
+      }
+    }
+
+    document.getElementById('cmsContentForm')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      saveCmsForm();
+    });
+
+    document.getElementById('saveCmsContentBtnTop')?.addEventListener('click', () => {
+      saveCmsForm();
+    });
+
+    document.getElementById('resetCmsContentBtnTop')?.addEventListener('click', resetCmsForm);
+    document.getElementById('resetCmsContentBtnBottom')?.addEventListener('click', resetCmsForm);
+
     function initDashboard() {
       const currentBanner = localStorage.getItem('ta_hero_banner') || DEFAULT_BANNER;
       bannerPreviewImg.src = currentBanner;
       bannerUrlInput.value = currentBanner.startsWith('data:') ? '' : currentBanner;
       renderCategoriesAndGallery();
       renderLeads();
+      loadCmsForm();
     }
 
     checkSession();

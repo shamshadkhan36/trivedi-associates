@@ -395,7 +395,7 @@ export default function AdminPanel({ onClose, onProjectsUpdated }) {
             <div style={{ maxWidth: '800px', margin: '0 auto' }}>
               <div style={{ marginBottom: '24px' }}>
                 <h3 style={{ fontSize: '24px', fontFamily: 'var(--font-serif)', color: '#FFF' }}>
-                  Publish New Architectural Project
+                  Publish New Project
                 </h3>
                 <p style={{ color: '#888', fontSize: '14px' }}>
                   Enter project details. Upon publishing, it will immediately display in the website's project showcase.

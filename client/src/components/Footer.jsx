@@ -14,11 +14,11 @@ export default function Footer({ onOpenAdmin }) {
             </div>
             <div className="brand-logo-text">
               <span className="brand-logo-title">Trivedi Associates</span>
-              <span className="brand-logo-sub">Trivedi Associates . Com</span>
+              <span className="brand-logo-sub">DESIGN &amp; PROJECT MANAGEMENT CONSULTANT</span>
             </div>
           </div>
           <p>
-            Mastering the art of neoclassical architecture and superior craftsmanship. Crafting enduring living spaces across Mumbai, Powai, Thane, and beyond.
+            Mastering the art of neoclassical design and superior craftsmanship. Crafting enduring living spaces across Mumbai, Powai, Thane, and beyond.
           </p>
         </div>
 
@@ -72,7 +72,7 @@ export default function Footer({ onOpenAdmin }) {
       <div className="footer-bottom">
         <div>&copy; 2026 Trivedi Associates . Com &bull; All Rights Reserved.</div>
         <div style={{ display: 'flex', gap: '20px', alignItems: 'center' }}>
-          <span>Designed for Luxury Architectural Distinction</span>
+          <span>Designed for Luxury Design &amp; Project Distinction</span>
         </div>
       </div>
     </footer>

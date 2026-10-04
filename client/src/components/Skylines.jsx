@@ -75,7 +75,7 @@ export default function Skylines() {
           <div className="colonnade-img-wrap">
             <img
               src="/assets/images/colonnade.png"
-              alt="Trivedi Associates Colonnade Architecture"
+              alt="Trivedi Associates Colonnade Design"
               className="colonnade-img"
             />
           </div>

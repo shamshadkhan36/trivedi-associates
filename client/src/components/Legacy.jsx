@@ -5,7 +5,7 @@ const localities = {
     label: 'Powai',
     image: '/assets/images/thumb_powai.jpg',
     description:
-      'Walk past the lanes of Powai where Trivedi Associates has crafted architectural landmarks amidst serene lakeside greens, neoclassical facades, and vibrant modern lifestyles.'
+      'Walk past the lanes of Powai where Trivedi Associates has crafted design landmarks amidst serene lakeside greens, neoclassical facades, and vibrant modern lifestyles.'
   },
   thane: {
     label: 'Thane',

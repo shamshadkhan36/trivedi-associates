@@ -1,5 +1,5 @@
 /**
- * Trivedi Associates - Minimalist Architecture Interactions
+ * Trivedi Associates - Minimalist Design Interactions
  * Controls Expandable 4 Service Cards, Slider, Enquire Form & Modals.
  */
 
@@ -178,6 +178,110 @@ document.addEventListener('DOMContentLoaded', () => {
   } catch (e) {
     console.warn('Error loading custom hero banner:', e);
   }
+
+  // ----------------- SITE CONTENT CMS (DYNAMIC EDITABLE CONTENT) -----------------
+  const DEFAULT_SITE_CONTENT = {
+    headerBrandSub: "DESIGN & PROJECT MANAGEMENT CONSULTANT",
+    footerBrandSub: "DESIGN & PROJECT MANAGEMENT CONSULTANT",
+    footerBrandDesc: "Mastering the art of neoclassical design and superior craftsmanship. 4 core pillars: Design & Planning, PMC, Liaisoning, and Green Building.",
+    servicesMainTitle: "OUR 4 CORE PILLARS",
+
+    // Pillar 1: Design & Planning
+    p1Title: "Design & Planning",
+    p1Tagline: "Design & Spatial Planning",
+    p1Overview: "Precision-driven design planning, spatial optimization, and photorealistic visualization for luxury developments.",
+    p1Del1: "Floor Planning & Master Layouts",
+    p1Del2: "3D Views & Modeling",
+    p1Del3: "Elevation Design & Facades",
+    p1Del4: "Interior Design & Detailing",
+
+    // Pillar 2: Project Management Consultant (PMC)
+    p2Title: "Project Management Consultant (PMC)",
+    p2Tagline: "Site Supervision & Quality Audit",
+    p2Overview: "End-to-end execution oversight, cost management, contractor accountability, and timely milestone delivery.",
+    p2Del1: "Site management and execution",
+    p2Del2: "Billing consultation and budgeting",
+    p2Del3: "Quality Control & Audit",
+    p2Del4: "Timeline & Milestone Tracking",
+
+    // Pillar 3: Liaisoning & Approvals
+    p3Title: "Liaisoning & Approvals",
+    p3Tagline: "Sanctions & Government Approvals",
+    p3Overview: "Expedited statutory compliance, building proposals, municipal approvals, and environmental clearances.",
+    p3Del1: "All types of Building and plan approvals",
+    p3Del2: "Fire and related NOCs",
+    p3Del3: "Commencement certificate (CC) and Occupation certificate(OC)",
+    p3Del4: "All other approvals",
+
+    // Pillar 4: Green Building Consultant
+    p4Title: "Green Building Consultant",
+    p4Tagline: "Sustainability and green consultancy",
+    p4Overview: "Eco-conscious design review , energy and water saving methods, and green rating facilitation reducing lifecycle operating costs.",
+    p4Del1: "Green building certification",
+    p4Del2: "Building design review for sustainability",
+    p4Del3: "Energy, water and waste management methods",
+    p4Del4: "Eco friendly material advisory",
+
+    // About Section
+    aboutMainTitle: "Engineering Landmarks with <br><span class=\"italic-serif\">Timeless Precision</span>",
+    aboutP1: "Headquartered in Mumbai, <strong>Trivedi Associates</strong> is a premier multidisciplinary consultancy uniting master design planning, rigorous project management (PMC), municipal & government liaisoning, and IGBC/LEED green building advisory under one integrated practice.",
+    aboutP2: "From luxury residential towers and township developments to high-compliance commercial landmarks across Powai, Thane, and South Mumbai, we partner with India’s foremost developers to deliver statutory certainty and design distinction.",
+
+    // Insights Section
+    insightsMainTitle: "Technical Briefs & <br><span class=\"italic-serif\">Industry Perspectives</span>",
+    insight1Title: "Navigating DCPR 2034 & Fast-Track BMC Sanctions in Mumbai",
+    insight1Desc: "Strategic frameworks for optimizing FSI utilization, fungible compensatory areas, and streamlined IOD-to-OC approval workflows.",
+    insight2Title: "IGBC & LEED Platinum Certification: ROI for Modern Developments",
+    insight2Desc: "How passive solar orientation, energy modeling, and sustainable material selection unlock additional incentive FSI and lower lifecycle costs.",
+    insight3Title: "Zero-Deviation Execution: Cost & Quality Audits in High-Rise Construction",
+    insight3Desc: "Implementing multi-stage structural quality audits, BOQ cost controls, and milestone tracking for on-schedule delivery.",
+
+    // Contact Information
+    contactHotlineVal: "+91 7977117256",
+    contactWhatsappVal: "+91 7977117256",
+    contactEmailVal: "trivedi.associates13@gmail.com",
+    footerAddressVal: "Trivedi Associates Corporate Chambers, Mumbai, Maharashtra, India",
+    footerPhoneVal: "+91 7977117256",
+    footerEmailVal: "trivedi.associates13@gmail.com"
+  };
+
+  const loadAndApplySiteContent = () => {
+    try {
+      let saved = {};
+      const raw = localStorage.getItem('ta_site_content');
+      if (raw) {
+        saved = JSON.parse(raw);
+      }
+      const merged = Object.assign({}, DEFAULT_SITE_CONTENT, saved);
+      for (const [key, value] of Object.entries(merged)) {
+        const el = document.getElementById(key);
+        if (el && typeof value === 'string') {
+          if (value.includes('<') && value.includes('>')) {
+            el.innerHTML = value;
+          } else {
+            el.textContent = value;
+          }
+        }
+      }
+    } catch (err) {
+      console.warn('Error applying site content:', err);
+    }
+  };
+
+  loadAndApplySiteContent();
+
+  // Listen for storage events (changes made in Admin Panel update the site live in real-time)
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'ta_site_content') {
+      loadAndApplySiteContent();
+    }
+    if (e.key === 'ta_hero_banner' && heroBgImg) {
+      heroBgImg.src = localStorage.getItem('ta_hero_banner') || 'assets/images/hero_bg.png';
+    }
+    if (e.key === 'ta_project_categories') {
+      renderCategorizedProjects();
+    }
+  });
 
   // ----------------- CATEGORIZED PROJECTS GALLERY & FEATURED SLIDER -----------------
   const DEFAULT_PROJECT_CATEGORIES = [

@@ -83,7 +83,7 @@ export default function EnquiryForm({ preselectedService }) {
             <span className="italic-serif">help us reach you</span>
           </h2>
           <p className="enquiry-description">
-            Share your project requirements, location, or consulting needs. Our senior architectural and project management principals will contact you with a tailored technical brief.
+            Share your project requirements, location, or consulting needs. Our senior design and project management principals will contact you with a tailored technical brief.
           </p>
 
           <div className="direct-cards-wrapper">

@@ -57,7 +57,7 @@ export default function ContactSection() {
         <div className="contact-info-col">
           <h2>Connect with Trivedi Associates</h2>
           <p>
-            Experience our legacy of architectural perfection. Whether you are inquiring about premium residences, commercial towers, or bespoke development advisory, our advisory team is at your service.
+            Experience our legacy of design perfection. Whether you are inquiring about premium residences, commercial towers, or bespoke development advisory, our advisory team is at your service.
           </p>
 
           <div className="direct-contact-cards">
@@ -195,7 +195,7 @@ export default function ContactSection() {
                   <option value="residential">Luxury Residential</option>
                   <option value="commercial">Commercial Landmark</option>
                   <option value="retail">Boutique Retail</option>
-                  <option value="advisory">Architectural Advisory</option>
+                  <option value="advisory">Design Advisory</option>
                 </select>
               </div>
             </div>
