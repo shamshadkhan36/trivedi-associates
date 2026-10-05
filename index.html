@@ -23,13 +23,6 @@
 
   <!-- ==================== TOP NAVIGATION ==================== -->
   <header class="header-nav">
-    <a href="#" class="brand-logo" aria-label="Trivedi Associates Home">
-      <div class="brand-logo-media">
-        <img src="assets/images/logo_white.png" alt="Trivedi Associates" class="site-header-logo">
-        <span class="brand-logo-sub" id="headerBrandSub">DESIGN &amp; PROJECT MANAGEMENT CONSULTANT</span>
-      </div>
-    </a>
-
     <ul class="nav-links">
       <li><a href="#hero" class="nav-link">HOME</a></li>
       <li><a href="#services" class="nav-link">SERVICES</a></li>
@@ -37,6 +30,13 @@
       <li><a href="#about" class="nav-link">ABOUT</a></li>
       <li><a href="#enquiry-form-section" class="nav-link">CONTACT</a></li>
     </ul>
+
+    <a href="#" class="brand-logo" aria-label="Trivedi Associates Home">
+      <div class="brand-logo-media">
+        <img src="assets/images/logo_white.png" alt="Trivedi Associates" class="site-header-logo">
+        <span class="brand-logo-sub" id="headerBrandSub">DESIGN &amp; PROJECT MANAGEMENT CONSULTANT</span>
+      </div>
+    </a>
 
     <div class="nav-actions">
       <!-- Search Icon Button -->
@@ -78,7 +78,7 @@
   <!-- ==================== 2. FOUR MAIN EXPANDABLE HEADINGS (WHITEBOARD) ==================== -->
   <section class="services-section" id="services">
     <div class="services-header-wrap">
-      <h2 class="services-main-title" id="servicesMainTitle">OUR 4 CORE PILLARS</h2>
+      <h2 class="services-main-title" id="servicesMainTitle">OUR 5 CORE PILLARS</h2>
 
       <div class="services-toggle-bar">
         <button id="expandAllBtn" class="services-mini-toggle">Expand All</button>
@@ -227,6 +227,41 @@
             <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p4Del4">Eco friendly material advisory</span></div>
           </div>
           <button class="h-enquire-btn select-service-trigger" data-service-name="Green Building Consultant">Enquire for 04 &rarr;</button>
+        </div>
+      </div>
+
+      <!-- Pillar 5: Auditing -->
+      <div class="horizontal-service-card" data-service-id="auditing">
+        <div class="h-card-header">
+          <div class="h-card-top-row">
+            <div class="h-card-number">05</div>
+            <div class="h-card-icon-wrap">
+              <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+                <path d="m9 14 2 2 4-4"/>
+              </svg>
+            </div>
+          </div>
+          <h3 class="h-card-title" id="p5Title">Auditing</h3>
+          <p class="h-card-tagline" id="p5Tagline">Structural &amp; Quality Audits</p>
+          <div class="h-card-expand-prompt">
+            <span class="prompt-text">Click to Expand</span>
+            <svg class="h-chevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </div>
+        </div>
+        <div class="h-card-expanded-body" style="display: none;">
+          <p class="h-card-overview" id="p5Overview">Rigorous structural stability assessment, construction quality control, and statutory compliance certifications.</p>
+          <div class="h-deliverables-list">
+            <div class="h-deliverables-heading">Key Deliverables:</div>
+            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p5Del1">Structural stability &amp; safety audit</span></div>
+            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p5Del2">Quality assurance &amp; material testing</span></div>
+            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p5Del3">MEP &amp; fire compliance inspections</span></div>
+            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p5Del4">Structural distress &amp; repair advisory</span></div>
+          </div>
+          <button class="h-enquire-btn select-service-trigger" data-service-name="Auditing">Enquire for 05 &rarr;</button>
         </div>
       </div>
     </div>
@@ -426,6 +461,7 @@
                 <option value="Project Management Consultant (PMC)">2. Project Management Consultant (PMC)</option>
                 <option value="Liaisoning & Approvals">3. Liaisoning &amp; Approvals</option>
                 <option value="Green Building Consultant">4. Green Building Consultant</option>
+                <option value="Auditing">5. Auditing &amp; Quality Control</option>
                 <option value="Comprehensive Advisory">Comprehensive Turnkey Advisory</option>
               </select>
             </div>
@@ -547,6 +583,7 @@
           <li><a href="#services">Project Management Consultant (PMC)</a></li>
           <li><a href="#services">Liaisoning &amp; Approvals</a></li>
           <li><a href="#services">Green Building Consultant</a></li>
+          <li><a href="#services">Auditing</a></li>
         </ul>
       </div>
 

@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
     headerBrandSub: "DESIGN & PROJECT MANAGEMENT CONSULTANT",
     footerBrandSub: "DESIGN & PROJECT MANAGEMENT CONSULTANT",
     footerBrandDesc: "Mastering the art of neoclassical design and superior craftsmanship. 4 core pillars: Design & Planning, PMC, Liaisoning, and Green Building.",
-    servicesMainTitle: "OUR 4 CORE PILLARS",
+    servicesMainTitle: "OUR 5 CORE PILLARS",
 
     // Pillar 1: Design & Planning
     p1Title: "Design & Planning",
@@ -222,6 +222,15 @@ document.addEventListener('DOMContentLoaded', () => {
     p4Del3: "Energy, water and waste management methods",
     p4Del4: "Eco friendly material advisory",
 
+    // Pillar 5: Auditing
+    p5Title: "Auditing",
+    p5Tagline: "Structural & Quality Audits",
+    p5Overview: "Rigorous structural stability assessment, construction quality control, and statutory compliance certifications.",
+    p5Del1: "Structural stability & safety audit",
+    p5Del2: "Quality assurance & material testing",
+    p5Del3: "MEP & fire compliance inspections",
+    p5Del4: "Structural distress & repair advisory",
+
     // About Section
     aboutMainTitle: "Engineering Landmarks with <br><span class=\"italic-serif\">Timeless Precision</span>",
     aboutP1: "Headquartered in Mumbai, <strong>Trivedi Associates</strong> is a premier multidisciplinary consultancy uniting master design planning, rigorous project management (PMC), municipal & government liaisoning, and IGBC/LEED green building advisory under one integrated practice.",
@@ -242,6 +251,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const raw = localStorage.getItem('ta_site_content');
       if (raw) {
         saved = JSON.parse(raw);
+        if (saved.servicesMainTitle === "OUR 4 CORE PILLARS") {
+          delete saved.servicesMainTitle;
+        }
         if (saved.footerAddressVal === "Trivedi Associates Corporate Chambers, Mumbai, Maharashtra, India") {
           delete saved.footerAddressVal;
         }

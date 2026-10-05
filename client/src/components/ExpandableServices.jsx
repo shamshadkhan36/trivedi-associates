@@ -81,6 +81,26 @@ const servicePillars = [
       'Energy, water and waste management methods',
       'Eco friendly material advisory'
     ]
+  },
+  {
+    id: 'auditing',
+    number: '05',
+    title: 'Auditing',
+    tagline: 'Structural & Quality Audits',
+    icon: (
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.8">
+        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+        <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+        <path d="m9 14 2 2 4-4" />
+      </svg>
+    ),
+    overview: 'Rigorous structural stability assessment, construction quality control, and statutory compliance certifications.',
+    deliverables: [
+      'Structural stability & safety audit',
+      'Quality assurance & material testing',
+      'MEP & fire compliance inspections',
+      'Structural distress & repair advisory'
+    ]
   }
 ];
 
@@ -105,7 +125,7 @@ export default function ExpandableServices({ onSelectService }) {
   return (
     <section className="services-section" id="services">
       <div className="services-header-wrap">
-        <h2 className="services-main-title">OUR 4 CORE PILLARS</h2>
+        <h2 className="services-main-title">OUR 5 CORE PILLARS</h2>
 
         {/* Quick Toggle Controls */}
         <div className="services-toggle-bar">
