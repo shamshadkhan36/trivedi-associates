@@ -6,14 +6,8 @@ export default function Footer({ onOpenAdmin }) {
       <div className="footer-container">
         <div className="footer-col-brand">
           <div className="brand-logo">
-            <div className="brand-logo-icon">
-              <svg viewBox="0 0 100 100" width="24" height="24">
-                <circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" strokeWidth="3.5" />
-                <path d="M30 36 L70 36 M50 36 L50 78 M38 78 L62 78" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" />
-              </svg>
-            </div>
-            <div className="brand-logo-text">
-              <span className="brand-logo-title">Trivedi Associates</span>
+            <div className="brand-logo-media">
+              <img src="/assets/images/logo_white.png" alt="Trivedi Associates" className="site-footer-logo" />
               <span className="brand-logo-sub">DESIGN &amp; PROJECT MANAGEMENT CONSULTANT</span>
             </div>
           </div>

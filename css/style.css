@@ -118,6 +118,29 @@ button {
   color: #FFFFFF !important;
 }
 
+.site-header-logo {
+  height: 40px;
+  width: auto;
+  max-width: 220px;
+  object-fit: contain;
+  display: block;
+}
+
+.site-footer-logo {
+  height: 44px;
+  width: auto;
+  max-width: 240px;
+  object-fit: contain;
+  display: block;
+}
+
+.brand-logo-media {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
 .brand-logo-icon {
   width: 44px;
   height: 44px;
