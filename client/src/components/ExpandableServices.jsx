@@ -125,7 +125,7 @@ export default function ExpandableServices({ onSelectService }) {
   return (
     <section className="services-section" id="services">
       <div className="services-header-wrap">
-        <h2 className="services-main-title">OUR 5 CORE PILLARS</h2>
+        <h2 className="services-main-title">OUR 5 CORE SERVICES</h2>
 
         {/* Quick Toggle Controls */}
         <div className="services-toggle-bar">

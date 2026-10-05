@@ -919,19 +919,19 @@
             </div>
           </div>
 
-          <!-- CARD 2: SECTION 2 - OUR 4 CORE PILLARS -->
+          <!-- CARD 2: SECTION 2 - OUR 5 CORE SERVICES -->
           <div class="panel-card" style="margin-bottom: 24px;">
-            <span class="panel-eyebrow">STEP 2 &bull; 4 CORE VERTICALS</span>
+            <span class="panel-eyebrow">STEP 2 &bull; 5 CORE SERVICES</span>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px; border-bottom: 1px solid var(--color-border); padding-bottom: 14px;">
               <div>
                 <h3 style="font-family: var(--font-serif); font-size: 21px; font-weight: 700; color: var(--color-wine); margin-bottom: 2px;">
-                  Our 4 Core Pillars (Titles, Overviews &amp; Deliverables)
+                  Our 5 Core Services (Titles, Overviews &amp; Deliverables)
                 </h3>
                 <p style="font-size: 12.5px; color: var(--color-text-muted); margin: 0;">Edit the main heading, each vertical's title, tagline, overview description, and 4 deliverables.</p>
               </div>
               <div style="display: flex; align-items: center; gap: 10px;">
                 <label class="form-label" style="margin: 0; white-space: nowrap;">Section Main Title:</label>
-                <input type="text" id="cms_servicesMainTitle" class="form-input" style="width: 240px; font-weight: 700;" placeholder="OUR 4 CORE PILLARS">
+                <input type="text" id="cms_servicesMainTitle" class="form-input" style="width: 240px; font-weight: 700;" placeholder="OUR 5 CORE SERVICES">
               </div>
             </div>
 
@@ -1608,8 +1608,8 @@
     const DEFAULT_SITE_CONTENT = {
       headerBrandSub: "DESIGN & PROJECT MANAGEMENT CONSULTANT",
       footerBrandSub: "DESIGN & PROJECT MANAGEMENT CONSULTANT",
-      footerBrandDesc: "Mastering the art of neoclassical design and superior craftsmanship. 4 core pillars: Design & Planning, PMC, Liaisoning, and Green Building.",
-      servicesMainTitle: "OUR 5 CORE PILLARS",
+      footerBrandDesc: "Mastering the art of neoclassical design and superior craftsmanship. 5 core services: Design & Planning, PMC, Liaisoning, Green Building, and Auditing.",
+      servicesMainTitle: "OUR 5 CORE SERVICES",
 
       // Pillar 1: Design & Planning
       p1Title: "Design & Planning",
@@ -1674,8 +1674,11 @@
         const raw = localStorage.getItem('ta_site_content');
         if (raw) {
           saved = JSON.parse(raw);
-          if (saved.servicesMainTitle === "OUR 4 CORE PILLARS") {
+          if (saved.servicesMainTitle === "OUR 4 CORE PILLARS" || saved.servicesMainTitle === "OUR 5 CORE PILLARS") {
             delete saved.servicesMainTitle;
+          }
+          if (saved.footerBrandDesc && saved.footerBrandDesc.includes("4 core")) {
+            delete saved.footerBrandDesc;
           }
           if (saved.footerAddressVal === "Trivedi Associates Corporate Chambers, Mumbai, Maharashtra, India") {
             delete saved.footerAddressVal;

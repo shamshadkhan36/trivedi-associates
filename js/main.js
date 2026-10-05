@@ -183,8 +183,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const DEFAULT_SITE_CONTENT = {
     headerBrandSub: "DESIGN & PROJECT MANAGEMENT CONSULTANT",
     footerBrandSub: "DESIGN & PROJECT MANAGEMENT CONSULTANT",
-    footerBrandDesc: "Mastering the art of neoclassical design and superior craftsmanship. 4 core pillars: Design & Planning, PMC, Liaisoning, and Green Building.",
-    servicesMainTitle: "OUR 5 CORE PILLARS",
+    footerBrandDesc: "Mastering the art of neoclassical design and superior craftsmanship. 5 core services: Design & Planning, PMC, Liaisoning, Green Building, and Auditing.",
+    servicesMainTitle: "OUR 5 CORE SERVICES",
 
     // Pillar 1: Design & Planning
     p1Title: "Design & Planning",
@@ -251,8 +251,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const raw = localStorage.getItem('ta_site_content');
       if (raw) {
         saved = JSON.parse(raw);
-        if (saved.servicesMainTitle === "OUR 4 CORE PILLARS") {
+        if (saved.servicesMainTitle === "OUR 4 CORE PILLARS" || saved.servicesMainTitle === "OUR 5 CORE PILLARS") {
           delete saved.servicesMainTitle;
+        }
+        if (saved.footerBrandDesc && saved.footerBrandDesc.includes("4 core")) {
+          delete saved.footerBrandDesc;
         }
         if (saved.footerAddressVal === "Trivedi Associates Corporate Chambers, Mumbai, Maharashtra, India") {
           delete saved.footerAddressVal;

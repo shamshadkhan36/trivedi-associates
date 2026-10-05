@@ -25,23 +25,11 @@ export default function Hero({ onOpenConnect }) {
       </div>
       <div className="hero-overlay"></div>
 
-      {/* Bottom Hero Action Bar: Two CTA Buttons Flanking Mouse Scroll Indicator */}
+      {/* Bottom Hero Action Bar: Two CTA Buttons */}
       <div className="hero-bottom-bar">
         <button onClick={scrollToServices} className="btn-hero-primary">
-          Explore 4 Core Verticals
+          Explore 5 Core Services
         </button>
-
-        <div
-          className="hero-scroll-indicator"
-          onClick={scrollToServices}
-          title="Scroll Down to Services"
-          role="button"
-          tabIndex={0}
-        >
-          <div className="mouse-icon">
-            <div className="mouse-dot"></div>
-          </div>
-        </div>
 
         <button onClick={scrollToEnquiry} className="btn-hero-secondary">
           Enquire Now
