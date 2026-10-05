@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
     contactHotlineVal: "+91 7977117256",
     contactWhatsappVal: "+91 7977117256",
     contactEmailVal: "trivedi.associates13@gmail.com",
-    footerAddressVal: "Trivedi Associates Corporate Chambers, Mumbai, Maharashtra, India",
+    footerAddressVal: "Western Mumbai : Jogeshwari (East)<br>Central Mumbai : Kurla (East)",
     footerPhoneVal: "+91 7977117256",
     footerEmailVal: "trivedi.associates13@gmail.com"
   };
@@ -242,15 +242,22 @@ document.addEventListener('DOMContentLoaded', () => {
       const raw = localStorage.getItem('ta_site_content');
       if (raw) {
         saved = JSON.parse(raw);
+        if (saved.footerAddressVal === "Trivedi Associates Corporate Chambers, Mumbai, Maharashtra, India") {
+          delete saved.footerAddressVal;
+        }
       }
       const merged = Object.assign({}, DEFAULT_SITE_CONTENT, saved);
       for (const [key, value] of Object.entries(merged)) {
         const el = document.getElementById(key);
         if (el && typeof value === 'string') {
-          if (value.includes('<') && value.includes('>')) {
-            el.innerHTML = value;
+          let val = value;
+          if (key === 'footerAddressVal' && val.includes('|') && !val.includes('<br>')) {
+            val = val.split('|').map(s => s.trim()).join('<br>');
+          }
+          if (val.includes('<') && val.includes('>')) {
+            el.innerHTML = val;
           } else {
-            el.textContent = value;
+            el.textContent = val;
           }
         }
       }

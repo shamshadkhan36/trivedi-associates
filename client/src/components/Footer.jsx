@@ -12,7 +12,7 @@ export default function Footer({ onOpenAdmin }) {
             </div>
           </div>
           <p>
-            Mastering the art of neoclassical design and superior craftsmanship. Crafting enduring living spaces across Mumbai, Powai, Thane, and beyond.
+            Mastering the art of neoclassical design and superior craftsmanship. Crafting enduring living spaces across Western &amp; Central Mumbai and beyond.
           </p>
         </div>
 
@@ -30,11 +30,8 @@ export default function Footer({ onOpenAdmin }) {
         <div>
           <h4 className="footer-col-title">Locations</h4>
           <ul className="footer-col-links">
-            <li><a href="#legacy">Powai Estates</a></li>
-            <li><a href="#legacy">Thane Greenery</a></li>
-            <li><a href="#legacy">South Mumbai Towers</a></li>
-            <li><a href="#skylines">Bandra Residences</a></li>
-            <li><a href="#contact">Upcoming Releases</a></li>
+            <li><a href="#contact"><strong>Western Mumbai:</strong> Jogeshwari (East)</a></li>
+            <li><a href="#contact"><strong>Central Mumbai:</strong> Kurla (East)</a></li>
           </ul>
         </div>
 
@@ -45,7 +42,10 @@ export default function Footer({ onOpenAdmin }) {
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
               <circle cx="12" cy="10" r="3" />
             </svg>
-            <span>Trivedi Associates Corporate Chambers, Mumbai, Maharashtra, India</span>
+            <span>
+              <div><strong>Western Mumbai :</strong> Jogeshwari (East)</div>
+              <div style={{ marginTop: '4px' }}><strong>Central Mumbai :</strong> Kurla (East)</div>
+            </span>
           </div>
           <div className="footer-contact-item">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2">
