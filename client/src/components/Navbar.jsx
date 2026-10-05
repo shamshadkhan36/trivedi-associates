@@ -31,7 +31,6 @@ export default function Navbar({ onOpenConnect, onOpenSearch, onOpenDrawer, onOp
         <li><a href="#services" className="nav-link">SERVICES</a></li>
         <li><a href="#showcase" className="nav-link">PROJECTS</a></li>
         <li><a href="#about" className="nav-link">ABOUT</a></li>
-        <li><a href="#insights" className="nav-link">INSIGHTS</a></li>
         <li><a href="#enquiry-form-section" className="nav-link">CONTACT</a></li>
       </ul>
 

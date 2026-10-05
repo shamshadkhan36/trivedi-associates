@@ -105,40 +105,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* 7. Architectural & Regulatory Insights */}
-      <section className="insights-section" id="insights">
-        <div className="insights-container">
-          <div className="services-header-wrap">
-            <div className="services-eyebrow">KNOWLEDGE &amp; ADVISORY &bull; INSIGHTS</div>
-            <h2 className="services-main-title">
-              Technical Briefs &amp; <br />
-              <span className="italic-serif">Industry Perspectives</span>
-            </h2>
-          </div>
-          <div className="insights-grid">
-            <article className="insight-card">
-              <span className="insight-tag">LIAISONING &amp; APPROVALS</span>
-              <h3 className="insight-title">Navigating DCPR 2034 &amp; Fast-Track BMC Sanctions in Mumbai</h3>
-              <p className="insight-desc">Strategic frameworks for optimizing FSI utilization, fungible compensatory areas, and streamlined IOD-to-OC approval workflows.</p>
-              <a href="#enquiry-form-section" className="insight-link">Request Advisory Brief &rarr;</a>
-            </article>
-            <article className="insight-card">
-              <span className="insight-tag">GREEN BUILDING</span>
-              <h3 className="insight-title">IGBC &amp; LEED Platinum Certification: ROI for Modern Developments</h3>
-              <p className="insight-desc">How passive solar orientation, energy modeling, and sustainable material selection unlock additional incentive FSI and lower lifecycle costs.</p>
-              <a href="#enquiry-form-section" className="insight-link">Request Advisory Brief &rarr;</a>
-            </article>
-            <article className="insight-card">
-              <span className="insight-tag">PROJECT MANAGEMENT (PMC)</span>
-              <h3 className="insight-title">Zero-Deviation Execution: Cost &amp; Quality Audits in High-Rise Construction</h3>
-              <p className="insight-desc">Implementing multi-stage structural quality audits, BOQ cost controls, and milestone tracking for on-schedule delivery.</p>
-              <a href="#enquiry-form-section" className="insight-link">Request Advisory Brief &rarr;</a>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      {/* 8. Footer */}
+      {/* 7. Footer */}
       <Footer onOpenAdmin={() => setIsAdminOpen(true)} />
 
       {/* Floating Action Controls */}

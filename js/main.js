@@ -227,15 +227,6 @@ document.addEventListener('DOMContentLoaded', () => {
     aboutP1: "Headquartered in Mumbai, <strong>Trivedi Associates</strong> is a premier multidisciplinary consultancy uniting master design planning, rigorous project management (PMC), municipal & government liaisoning, and IGBC/LEED green building advisory under one integrated practice.",
     aboutP2: "From luxury residential towers and township developments to high-compliance commercial landmarks across Powai, Thane, and South Mumbai, we partner with India’s foremost developers to deliver statutory certainty and design distinction.",
 
-    // Insights Section
-    insightsMainTitle: "Technical Briefs & <br><span class=\"italic-serif\">Industry Perspectives</span>",
-    insight1Title: "Navigating DCPR 2034 & Fast-Track BMC Sanctions in Mumbai",
-    insight1Desc: "Strategic frameworks for optimizing FSI utilization, fungible compensatory areas, and streamlined IOD-to-OC approval workflows.",
-    insight2Title: "IGBC & LEED Platinum Certification: ROI for Modern Developments",
-    insight2Desc: "How passive solar orientation, energy modeling, and sustainable material selection unlock additional incentive FSI and lower lifecycle costs.",
-    insight3Title: "Zero-Deviation Execution: Cost & Quality Audits in High-Rise Construction",
-    insight3Desc: "Implementing multi-stage structural quality audits, BOQ cost controls, and milestone tracking for on-schedule delivery.",
-
     // Contact Information
     contactHotlineVal: "+91 7977117256",
     contactWhatsappVal: "+91 7977117256",
