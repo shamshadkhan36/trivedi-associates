@@ -64,6 +64,7 @@
   max-width: 290px;
   object-fit: contain;
   display: block;
+  margin: 0 auto;
   transition: height 0.3s ease;
 }
 
@@ -77,14 +78,15 @@
   max-width: 260px;
   object-fit: contain;
   display: block;
+  margin: 0 auto;
 }
 
 .brand-logo-media {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 3px;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
 }
 
 .brand-logo-icon {
@@ -121,8 +123,9 @@
   color: var(--color-gold);
   text-transform: uppercase;
   font-weight: 500;
-  text-align: left;
+  text-align: center;
   width: 100%;
+  display: block;
   text-decoration: none !important;
 }
 
