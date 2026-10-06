@@ -297,70 +297,47 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ----------------- CATEGORIZED PROJECTS GALLERY & FEATURED SLIDER -----------------
+  // ----------------- CATEGORIZED PROJECTS GALLERY & FEATURED SLIDER -----------------
   const DEFAULT_PROJECT_CATEGORIES = [
-    {
-      id: 'cat_hospitality',
-      name: 'HOSPITALITY',
-      images: [
-        { id: 'h1', url: 'assets/images/project_card_3.jpg', title: 'Resort Poolside Deck' },
-        { id: 'h2', url: 'assets/images/project_card_1.jpg', title: 'Courtyard Pavilion' },
-        { id: 'h3', url: 'assets/images/media_1789919300137.png', title: 'Illuminated Resort Pool' },
-        { id: 'h4', url: 'assets/images/media_1789919353341.png', title: 'Hospitality Master Layout' },
-        { id: 'h5', url: 'assets/images/project_card_2.jpg', title: 'Luxury Hotel Tower' }
-      ]
-    },
-    {
-      id: 'cat_commercial',
-      name: 'COMMERCIAL',
-      images: [
-        { id: 'c1', url: 'assets/images/media_1789919271519.png', title: 'Corporate Campus Plaza' },
-        { id: 'c2', url: 'assets/images/media_1789919287755.png', title: 'Recreation & Civic Zone' },
-        { id: 'c3', url: 'assets/images/project_card_2.jpg', title: 'Commercial Retail Hub' },
-        { id: 'c4', url: 'assets/images/project_card_3.jpg', title: 'Green Rooftop Terrace' },
-        { id: 'c5', url: 'assets/images/project_card_4.jpg', title: 'Executive Commercial Crest' }
-      ]
-    },
-    {
-      id: 'cat_mixed_use',
-      name: 'MIXED USE',
-      images: [
-        { id: 'm1', url: 'assets/images/media_1789919339844.png', title: 'Canopy & Amphitheatre' },
-        { id: 'm2', url: 'assets/images/project_card_2.jpg', title: 'Waterfront Mixed-Use Towers' },
-        { id: 'm3', url: 'assets/images/project_card_4.jpg', title: 'Evening Glass Facade' },
-        { id: 'm4', url: 'assets/images/project_card_3.jpg', title: 'Landscaped Promenade' },
-        { id: 'm5', url: 'assets/images/project_card_1.jpg', title: 'Neoclassical Arcade' }
-      ]
-    },
-    {
-      id: 'cat_master_planning',
-      name: 'MASTER PLANNING',
-      images: [
-        { id: 'mp1', url: 'assets/images/media_1789919353341.png', title: 'Institutional Campus' },
-        { id: 'mp2', url: 'assets/images/project_card_2.jpg', title: 'Urban Canopy Towers' },
-        { id: 'mp3', url: 'assets/images/project_card_3.jpg', title: 'Botanical Walkway & Gazebo' },
-        { id: 'mp4', url: 'assets/images/media_1789919300137.png', title: 'Integrated Township Pool' },
-        { id: 'mp5', url: 'assets/images/project_card_1.jpg', title: 'Heritage Masterplan' }
-      ]
-    },
-    {
-      id: 'cat_residential',
-      name: 'RESIDENTIAL',
-      images: [
-        { id: 'r1', url: 'assets/images/project_card_1.jpg', title: 'Trivedi Signature Entrance' },
-        { id: 'r2', url: 'assets/images/project_card_3.jpg', title: 'Residential Courtyard Greens' },
-        { id: 'r3', url: 'assets/images/project_card_4.jpg', title: 'Imperial Crest Balconies' },
-        { id: 'r4', url: 'assets/images/project_card_2.jpg', title: 'Skyline Residences' },
-        { id: 'r5', url: 'assets/images/legacy_building.png', title: 'Classical Residential Wing' }
-      ]
-    }
+    { id: 'cat_hospitality', name: 'HOSPITALITY', images: [] },
+    { id: 'cat_commercial', name: 'COMMERCIAL', images: [] },
+    { id: 'cat_mixed_use', name: 'MIXED USE', images: [] },
+    { id: 'cat_master_planning', name: 'MASTER PLANNING', images: [] },
+    { id: 'cat_residential', name: 'RESIDENTIAL', images: [] }
   ];
+
+  // Automatic cleanup of legacy mock/dummy project images from browser storage
+  (function cleanupLegacyProjects() {
+    try {
+      const key = 'ta_legacy_projects_cleaned_v2';
+      if (!localStorage.getItem(key)) {
+        const saved = localStorage.getItem('ta_project_categories');
+        if (saved) {
+          let cats = JSON.parse(saved);
+          if (Array.isArray(cats)) {
+            cats = cats.map(c => ({
+              ...c,
+              images: (c.images || []).filter(img => {
+                const u = img.url || '';
+                return !u.includes('project_card_') && !u.includes('media_1789919') && !u.includes('legacy_building');
+              })
+            }));
+            localStorage.setItem('ta_project_categories', JSON.stringify(cats));
+          }
+        } else {
+          localStorage.setItem('ta_project_categories', JSON.stringify(DEFAULT_PROJECT_CATEGORIES));
+        }
+        localStorage.setItem(key, 'true');
+      }
+    } catch (e) {}
+  })();
 
   const getProjectCategories = () => {
     try {
       const raw = localStorage.getItem('ta_project_categories');
       if (raw) {
         const parsed = JSON.parse(raw);
-        if (Array.isArray(parsed) && parsed.length > 0) {
+        if (Array.isArray(parsed)) {
           return parsed;
         }
       }
@@ -373,6 +350,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const categoriesContainer = document.getElementById('projectCategoriesContainer');
   const featuredImgEl = document.getElementById('featuredProjectImg');
+  const featuredBannerEl = document.querySelector('.projects-featured-banner');
   const featuredPrevBtn = document.getElementById('featuredPrevBtn');
   const featuredNextBtn = document.getElementById('featuredNextBtn');
 
@@ -399,14 +377,35 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    if (featuredImgEl && allFeaturedImages.length > 0) {
-      featuredImgEl.src = allFeaturedImages[0].url;
-      featuredImgEl.alt = allFeaturedImages[0].title || 'Featured Project';
+    if (allFeaturedImages.length > 0) {
+      if (featuredBannerEl) featuredBannerEl.style.display = 'block';
+      if (featuredImgEl) {
+        featuredImgEl.src = allFeaturedImages[0].url;
+        featuredImgEl.alt = allFeaturedImages[0].title || 'Featured Project';
+      }
+    } else {
+      if (featuredBannerEl) featuredBannerEl.style.display = 'none';
     }
 
     if (!categoriesContainer) return;
 
-    categoriesContainer.innerHTML = categories.map((cat) => {
+    const populatedCats = categories.filter((c) => (c.images || []).length > 0);
+
+    if (populatedCats.length === 0) {
+      categoriesContainer.innerHTML = `
+        <div class="projects-empty-state" style="text-align: center; padding: 50px 20px; color: #888;">
+          <h3 style="font-family: var(--font-serif); font-size: 20px; color: var(--color-wine); margin-bottom: 8px;">
+            Portfolio Curation in Progress
+          </h3>
+          <p style="font-size: 13.5px; color: #888; max-width: 480px; margin: 0 auto;">
+            New development projects and architectural showcases are being curated. Projects added via Admin Panel will appear here live.
+          </p>
+        </div>
+      `;
+      return;
+    }
+
+    categoriesContainer.innerHTML = populatedCats.map((cat) => {
       const imgs = cat.images || [];
       return `
         <div class="project-category-block" data-cat-id="${cat.id}">

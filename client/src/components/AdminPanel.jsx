@@ -9,7 +9,7 @@ export default function AdminPanel({ onClose, onProjectsUpdated }) {
 
   // Login form state
   const [loginCreds, setLoginCreds] = useState({
-    username: 'admin@trivediassociates.com',
+    username: '',
     password: ''
   });
   const [loginError, setLoginError] = useState('');
@@ -236,7 +236,7 @@ export default function AdminPanel({ onClose, onProjectsUpdated }) {
                 value={loginCreds.username}
                 onChange={(e) => setLoginCreds({ ...loginCreds, username: e.target.value })}
                 style={styles.input}
-                placeholder="admin@trivediassociates.com"
+                placeholder="Enter username"
                 required
               />
             </div>

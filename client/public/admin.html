@@ -626,7 +626,7 @@
       <form id="loginForm">
         <div class="form-group">
           <label class="form-label">Admin Username</label>
-          <input type="text" id="loginUser" class="form-input" placeholder="admin" required autocomplete="username">
+          <input type="text" id="loginUser" class="form-input" placeholder="Enter username" required autocomplete="username">
         </div>
 
         <div class="form-group">
@@ -776,16 +776,9 @@
 
               <div id="stagedImagesPreview" class="staged-previews"></div>
 
-              <div class="form-group">
-                <label class="form-label">Or Paste Image URL / Choose Preset</label>
-                <input type="text" id="catImageUrlInput" class="form-input" placeholder="assets/images/project_card_1.jpg or https://...">
-              </div>
-
-              <div class="preset-pills">
-                <button type="button" class="preset-btn proj-preset" data-url="assets/images/project_card_1.jpg">1. Neoclassical Portico</button>
-                <button type="button" class="preset-btn proj-preset" data-url="assets/images/project_card_2.jpg">2. Signature High-Rise</button>
-                <button type="button" class="preset-btn proj-preset" data-url="assets/images/project_card_3.jpg">3. Landscaped Green Podium</button>
-                <button type="button" class="preset-btn proj-preset" data-url="assets/images/project_card_4.jpg">4. Imperial Facade Crest</button>
+              <div class="form-group" style="margin-bottom: 22px;">
+                <label class="form-label">Or Paste Direct Image URL</label>
+                <input type="text" id="catImageUrlInput" class="form-input" placeholder="https://domain.com/photo.jpg or assets/images/...">
               </div>
 
               <button type="submit" class="btn-primary">
@@ -1109,62 +1102,38 @@
     const DEFAULT_BANNER = 'assets/images/hero_bg.png';
 
     const DEFAULT_PROJECT_CATEGORIES = [
-      {
-        id: 'cat_hospitality',
-        name: 'HOSPITALITY',
-        images: [
-          { id: 'h1', url: 'assets/images/project_card_3.jpg', title: 'Resort Poolside Deck' },
-          { id: 'h2', url: 'assets/images/project_card_1.jpg', title: 'Courtyard Pavilion' },
-          { id: 'h3', url: 'assets/images/media_1789919300137.png', title: 'Illuminated Resort Pool' },
-          { id: 'h4', url: 'assets/images/media_1789919353341.png', title: 'Hospitality Master Layout' },
-          { id: 'h5', url: 'assets/images/project_card_2.jpg', title: 'Luxury Hotel Tower' }
-        ]
-      },
-      {
-        id: 'cat_commercial',
-        name: 'COMMERCIAL',
-        images: [
-          { id: 'c1', url: 'assets/images/media_1789919271519.png', title: 'Corporate Campus Plaza' },
-          { id: 'c2', url: 'assets/images/media_1789919287755.png', title: 'Recreation & Civic Zone' },
-          { id: 'c3', url: 'assets/images/project_card_2.jpg', title: 'Commercial Retail Hub' },
-          { id: 'c4', url: 'assets/images/project_card_3.jpg', title: 'Green Rooftop Terrace' },
-          { id: 'c5', url: 'assets/images/project_card_4.jpg', title: 'Executive Commercial Crest' }
-        ]
-      },
-      {
-        id: 'cat_mixed_use',
-        name: 'MIXED USE',
-        images: [
-          { id: 'm1', url: 'assets/images/media_1789919339844.png', title: 'Canopy & Amphitheatre' },
-          { id: 'm2', url: 'assets/images/project_card_2.jpg', title: 'Waterfront Mixed-Use Towers' },
-          { id: 'm3', url: 'assets/images/project_card_4.jpg', title: 'Evening Glass Facade' },
-          { id: 'm4', url: 'assets/images/project_card_3.jpg', title: 'Landscaped Promenade' },
-          { id: 'm5', url: 'assets/images/project_card_1.jpg', title: 'Neoclassical Arcade' }
-        ]
-      },
-      {
-        id: 'cat_master_planning',
-        name: 'MASTER PLANNING',
-        images: [
-          { id: 'mp1', url: 'assets/images/media_1789919353341.png', title: 'Institutional Campus' },
-          { id: 'mp2', url: 'assets/images/project_card_2.jpg', title: 'Urban Canopy Towers' },
-          { id: 'mp3', url: 'assets/images/project_card_3.jpg', title: 'Botanical Walkway & Gazebo' },
-          { id: 'mp4', url: 'assets/images/media_1789919300137.png', title: 'Integrated Township Pool' },
-          { id: 'mp5', url: 'assets/images/project_card_1.jpg', title: 'Heritage Masterplan' }
-        ]
-      },
-      {
-        id: 'cat_residential',
-        name: 'RESIDENTIAL',
-        images: [
-          { id: 'r1', url: 'assets/images/project_card_1.jpg', title: 'Trivedi Signature Entrance' },
-          { id: 'r2', url: 'assets/images/project_card_3.jpg', title: 'Residential Courtyard Greens' },
-          { id: 'r3', url: 'assets/images/project_card_4.jpg', title: 'Imperial Crest Balconies' },
-          { id: 'r4', url: 'assets/images/project_card_2.jpg', title: 'Skyline Residences' },
-          { id: 'r5', url: 'assets/images/legacy_building.png', title: 'Classical Residential Wing' }
-        ]
-      }
+      { id: 'cat_hospitality', name: 'HOSPITALITY', images: [] },
+      { id: 'cat_commercial', name: 'COMMERCIAL', images: [] },
+      { id: 'cat_mixed_use', name: 'MIXED USE', images: [] },
+      { id: 'cat_master_planning', name: 'MASTER PLANNING', images: [] },
+      { id: 'cat_residential', name: 'RESIDENTIAL', images: [] }
     ];
+
+    // Automatic migration to remove legacy dummy project images from storage
+    (function cleanupLegacyProjects() {
+      try {
+        const key = 'ta_legacy_projects_cleaned_v2';
+        if (!localStorage.getItem(key)) {
+          const saved = localStorage.getItem('ta_project_categories');
+          if (saved) {
+            let cats = JSON.parse(saved);
+            if (Array.isArray(cats)) {
+              cats = cats.map(c => ({
+                ...c,
+                images: (c.images || []).filter(img => {
+                  const u = img.url || '';
+                  return !u.includes('project_card_') && !u.includes('media_1789919') && !u.includes('legacy_building');
+                })
+              }));
+              localStorage.setItem('ta_project_categories', JSON.stringify(cats));
+            }
+          } else {
+            localStorage.setItem('ta_project_categories', JSON.stringify(DEFAULT_PROJECT_CATEGORIES));
+          }
+          localStorage.setItem(key, 'true');
+        }
+      } catch (e) {}
+    })();
 
     function compressImageFile(file, maxWidth = 1200, quality = 0.82) {
       return new Promise((resolve, reject) => {
@@ -1207,7 +1176,7 @@
         const saved = localStorage.getItem('ta_project_categories');
         if (saved) {
           const parsed = JSON.parse(saved);
-          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+          if (Array.isArray(parsed)) return parsed;
         }
       } catch (e) {}
       localStorage.setItem('ta_project_categories', JSON.stringify(DEFAULT_PROJECT_CATEGORIES));
@@ -1271,7 +1240,7 @@
         loginAlert.style.display = 'none';
         checkSession();
       } else {
-        loginAlert.textContent = 'Invalid Admin Username or Password. Use admin / Trivedi@123';
+        loginAlert.textContent = 'Invalid Admin Username or Password.';
         loginAlert.style.display = 'block';
       }
     });
