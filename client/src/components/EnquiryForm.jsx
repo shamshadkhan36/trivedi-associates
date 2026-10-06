@@ -106,11 +106,6 @@ export default function EnquiryForm({ preselectedService }) {
               <div className="contact-badge-label">Official Email Correspondence</div>
               <div className="contact-badge-val">trivedi.associates13@gmail.com</div>
             </a>
-
-            <div className="minimal-contact-card">
-              <div className="contact-badge-label">Corporate Domain</div>
-              <div className="contact-badge-val">Trivedi Associates . Com</div>
-            </div>
           </div>
         </div>
 
