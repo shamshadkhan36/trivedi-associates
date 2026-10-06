@@ -735,63 +735,39 @@
 
 .marquee-company-card {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  gap: 16px;
-  padding: 16px 28px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  min-width: 260px;
+  justify-content: center;
+  padding: 12px 28px;
+  background: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  min-width: 220px;
+  height: 82px;
   transition: var(--transition-smooth);
-  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+  cursor: default;
 }
 
 .marquee-company-card:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: #FFFFFF;
   border-color: var(--color-gold);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
 }
 
-.company-icon-box {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-gold);
-  flex-shrink: 0;
-  transition: transform 0.35s ease;
+.partner-logo-img {
+  max-height: 54px;
+  max-width: 175px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.3s ease;
 }
 
-.marquee-company-card:hover .company-icon-box {
-  transform: scale(1.1);
-  color: #FFF;
-}
-
-.company-text-box {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-}
-
-.company-logo-text {
-  font-family: var(--font-sans);
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  color: #FFF;
-  text-transform: uppercase;
-  line-height: 1.2;
-}
-
-.company-logo-sub {
-  font-size: 10.5px;
-  letter-spacing: 1.2px;
-  color: var(--color-gold);
-  text-transform: uppercase;
-  margin-top: 3px;
+.marquee-company-card:hover .partner-logo-img {
+  transform: scale(1.05);
 }
 
 /* -------------------- 4. ENQUIRY FORM SECTION (FROM WHITEBOARD) -------------------- */
