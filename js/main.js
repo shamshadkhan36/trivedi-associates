@@ -294,6 +294,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'ta_project_categories') {
       renderCategorizedProjects();
     }
+    if (e.key === 'ta_blog_posts') {
+      renderBlogSection();
+    }
   });
 
   // ----------------- CATEGORIZED PROJECTS GALLERY & FEATURED SLIDER -----------------
@@ -491,6 +494,201 @@ document.addEventListener('DOMContentLoaded', () => {
   featuredPrevBtn?.addEventListener('click', () => {
     updateFeaturedStage(currentFeaturedIdx - 1);
   });
+
+  // ----------------- BLOG & ARTICLES MODULE -----------------
+  const DEFAULT_BLOG_POSTS = [
+    {
+      id: 'blog_1',
+      title: "Navigating Mumbai's DCPR 2034: Essential Statutory Approvals for High-Rise Developments",
+      slug: "navigating-mumbai-dcpr-2034",
+      category: "Liaisoning & Approvals",
+      author: "Trivedi Associates Editorial Team",
+      date: "October 2026",
+      readTime: "5 min read",
+      image: "assets/images/project_card_2.jpg",
+      excerpt: "A comprehensive developer's roadmap through MCGM/BMC building proposals, DP 2034 concessions, High-Rise Committee clearances, and CFO Fire NOC compliance to secure timely Commencement Certificates (CC).",
+      content: "Developing real estate landmarks across Greater Mumbai demands rigorous technical precision and deep familiarity with the Development Control and Promotion Regulations (DCPR 2034). For high-density commercial towers and luxury residential high-rises, statutory compliance determines project feasibility and investor returns.\n\nKey Regulatory Pathways Under BMC:\n1. Scrutinized Building Proposal Submission: Preparing master architectural layouts in full conformance with FSI, TDR, and premium fungible compensatory calculations.\n2. Multi-Department Clearances: Coordinating environmental impact assessments (EIA), Chief Fire Officer (CFO) approvals, tree authority sanctions, and civil aviation height permissions.\n3. Transitioning from IOD to CC & OC: Securing the Intimation of Disapproval (IOD), satisfying statutory compliance requisites for the Commencement Certificate (CC), and guiding the project through to Final Occupancy Certificate (OC).\n\nAt Trivedi Associates, our liaisoning vertical bridges neoclassical architectural design with administrative policy, minimizing regulatory bottlenecks for Mumbai’s foremost developers."
+    },
+    {
+      id: 'blog_2',
+      title: "The Financial & Environmental Return of IGBC & LEED Green Building Certifications",
+      slug: "financial-return-igbc-leed-green-building",
+      category: "Green Building",
+      author: "Trivedi Associates Sustainability Cell",
+      date: "September 2026",
+      readTime: "4 min read",
+      image: "assets/images/project_card_3.jpg",
+      excerpt: "How lifecycle energy modeling, water conservation loops, and IGBC/LEED benchmarks reduce operational overhead while commanding premium rental yields and institutional investment.",
+      content: "Sustainable construction has transcended corporate social responsibility to become a decisive commercial advantage. Institutional investors and premium corporate tenants actively prioritize energy-efficient assets that minimize carbon intensity.\n\nCore Advantages of Certified Green Architecture:\n1. Reduced Operational Expenditure (OpEx): Advanced HVAC energy modeling, high-performance low-E double glazing, and passive shading reduce energy draw by 25% to 40%.\n2. Water Neutrality & Conservation: On-site sewage treatment plants (STP), rainwater harvesting, and drip-irrigation landscapes drastically curb municipal water dependency.\n3. Regulatory Incentives: Multiple municipal corporations across India, including Maharashtra authorities, offer additional FSI rebates and concession incentives for certified Green Buildings.\n\nAs accredited IGBC and LEED consultants, Trivedi Associates guides developers through every credit calculation from concept to official certification."
+    },
+    {
+      id: 'blog_3',
+      title: "Mitigating Capital Risk in Redevelopment: The Strategic Role of PMC & Technical Audits",
+      slug: "mitigating-capital-risk-pmc-audits",
+      category: "PMC & Auditing",
+      author: "Trivedi Associates Technical Advisory",
+      date: "August 2026",
+      readTime: "6 min read",
+      image: "assets/images/project_card_1.jpg",
+      excerpt: "Why independent project management consulting (PMC), contractor bill verification, and non-destructive structural audits (NDT) are vital to protecting developer balance sheets.",
+      content: "In large-scale society redevelopment, slum rehabilitation (SRA), and luxury residential transformations across Western and Central Mumbai, cost overruns and structural variances pose critical threats to completion.\n\nWhy Independent PMC is Vital:\n1. Milestone & Contractor Bill Certification: Independent site engineers scrutinize contractor measurements, steel consumption, and concrete grade test reports prior to any financial disbursement.\n2. Non-Destructive Testing (NDT) & Structural Audits: Ultrasonic pulse velocity and rebound hammer tests ensure that load-bearing columns and retrofitted frameworks maintain structural integrity.\n3. Turnkey Schedule Governance: Maintaining strict critical path methods (CPM) prevents the compounding delays that erode project profitability.\n\nWith Trivedi Associates acting as your trusted Project Management Consultant, developers gain total statutory certainty, transparent budget governance, and superior neoclassical execution."
+    }
+  ];
+
+  const getBlogPosts = () => {
+    try {
+      const raw = localStorage.getItem('ta_blog_posts');
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          return parsed;
+        }
+      }
+    } catch (e) {
+      console.warn('Error reading ta_blog_posts:', e);
+    }
+    localStorage.setItem('ta_blog_posts', JSON.stringify(DEFAULT_BLOG_POSTS));
+    return DEFAULT_BLOG_POSTS;
+  };
+
+  const blogPostsGrid = document.getElementById('blogPostsGrid');
+  const blogFilterBar = document.getElementById('blogFilterBar');
+  const blogReaderModal = document.getElementById('blogReaderModal');
+  const blogModalBody = document.getElementById('blogModalBody');
+  const closeBlogModalBtn = document.getElementById('closeBlogModalBtn');
+
+  let activeBlogFilter = 'ALL';
+
+  const openBlogArticle = (post) => {
+    if (!blogReaderModal || !blogModalBody) return;
+    const paragraphs = (post.content || '').split('\n').filter(p => p.trim().length > 0);
+    blogModalBody.innerHTML = `
+      <div class="blog-modal-hero">
+        <img src="${post.image || 'assets/images/project_card_1.jpg'}" alt="${post.title}">
+      </div>
+      <div class="blog-modal-body-content">
+        <div class="blog-modal-meta-row">
+          <span class="blog-modal-badge">${post.category || 'Article'}</span>
+          <span class="blog-modal-meta-text">${post.date || '2026'} &bull; ${post.readTime || '4 min read'}</span>
+        </div>
+        <h2 class="blog-modal-title">${post.title}</h2>
+        <div class="blog-modal-author-bar">
+          <div class="blog-modal-avatar">TA</div>
+          <div>
+            <div class="blog-modal-author-info">${post.author || 'Trivedi Associates Editorial Team'}</div>
+            <div class="blog-modal-author-role">Technical &amp; Statutory Advisory Cell</div>
+          </div>
+        </div>
+        <div class="blog-modal-prose">
+          ${paragraphs.map(p => `<p>${p}</p>`).join('')}
+        </div>
+        <div class="blog-modal-cta-box">
+          <div>
+            <div class="blog-modal-cta-text">Require Advisory on this Subject?</div>
+            <div style="font-size: 13px; color: #666; margin-top: 4px;">Connect with our senior partners for confidential project consultation.</div>
+          </div>
+          <button class="nav-connect-btn" id="blogConsultBtn" style="padding: 10px 22px; font-size: 11.5px;">
+            Consult With Our Team &rarr;
+          </button>
+        </div>
+      </div>
+    `;
+
+    document.getElementById('blogConsultBtn')?.addEventListener('click', () => {
+      blogReaderModal.classList.remove('active');
+      const enquirySec = document.getElementById('enquiry-form-section');
+      if (enquirySec) {
+        enquirySec.scrollIntoView({ behavior: 'smooth' });
+        const detailInput = document.getElementById('enqDetail');
+        if (detailInput) detailInput.value = `Consultation regarding: ${post.title}`;
+      }
+    });
+
+    blogReaderModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeBlogArticle = () => {
+    if (!blogReaderModal) return;
+    blogReaderModal.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  closeBlogModalBtn?.addEventListener('click', closeBlogArticle);
+  blogReaderModal?.addEventListener('click', (e) => {
+    if (e.target === blogReaderModal) closeBlogArticle();
+  });
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && blogReaderModal?.classList.contains('active')) {
+      closeBlogArticle();
+    }
+  });
+
+  const renderBlogSection = () => {
+    if (!blogPostsGrid) return;
+    const posts = getBlogPosts();
+
+    // Populate category filter bar
+    if (blogFilterBar) {
+      const categories = ['ALL', ...new Set(posts.map(p => p.category).filter(Boolean))];
+      blogFilterBar.innerHTML = categories.map(cat => `
+        <button class="blog-filter-pill ${activeBlogFilter === cat ? 'active' : ''}" data-filter="${cat}">
+          ${cat === 'ALL' ? 'All Publications' : cat}
+        </button>
+      `).join('');
+
+      blogFilterBar.querySelectorAll('.blog-filter-pill').forEach(btn => {
+        btn.addEventListener('click', () => {
+          activeBlogFilter = btn.getAttribute('data-filter') || 'ALL';
+          renderBlogSection();
+        });
+      });
+    }
+
+    const filtered = activeBlogFilter === 'ALL'
+      ? posts
+      : posts.filter(p => p.category === activeBlogFilter);
+
+    if (filtered.length === 0) {
+      blogPostsGrid.innerHTML = `
+        <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--color-text-muted);">
+          No articles found under "${activeBlogFilter}".
+        </div>
+      `;
+      return;
+    }
+
+    blogPostsGrid.innerHTML = filtered.map(post => `
+      <article class="blog-card" data-blog-id="${post.id}">
+        <div class="blog-card-media">
+          <img src="${post.image || 'assets/images/project_card_1.jpg'}" alt="${post.title}" class="blog-card-img" loading="lazy">
+          <span class="blog-card-badge">${post.category || 'Insights'}</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span>${post.date || '2026'}</span>
+            <span class="blog-card-meta-dot">&bull;</span>
+            <span>${post.readTime || '4 min read'}</span>
+          </div>
+          <h3 class="blog-card-title">${post.title}</h3>
+          <p class="blog-card-excerpt">${post.excerpt || ''}</p>
+          <div class="blog-card-action">
+            Read Full Article &rarr;
+          </div>
+        </div>
+      </article>
+    `).join('');
+
+    blogPostsGrid.querySelectorAll('.blog-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const id = card.getAttribute('data-blog-id');
+        const found = posts.find(p => String(p.id) === String(id));
+        if (found) openBlogArticle(found);
+      });
+    });
+  };
+
+  renderBlogSection();
 
   // ----------------- URL-ONLY ADMIN REDIRECT -----------------
   if (window.location.hash === '#admin') {

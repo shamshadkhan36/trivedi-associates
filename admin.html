@@ -605,8 +605,64 @@
       .panel-grid {
         grid-template-columns: 1fr;
       }
-      .topbar {
-        padding: 14px 20px;
+    .admin-blog-item {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 18px 20px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .admin-blog-item:hover {
+      border-color: var(--color-gold);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+    .admin-blog-thumb {
+      width: 120px;
+      height: 80px;
+      border-radius: 6px;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: #222;
+    }
+    .admin-blog-info {
+      flex: 1;
+    }
+    .admin-blog-item-title {
+      font-family: var(--font-serif);
+      font-size: 16.5px;
+      font-weight: 700;
+      color: var(--color-wine);
+      margin-bottom: 4px;
+    }
+    .admin-blog-item-meta {
+      font-size: 11.5px;
+      color: var(--color-text-muted);
+      margin-bottom: 8px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .admin-blog-item-desc {
+      font-size: 12.5px;
+      color: #666;
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 10px;
+    }
+    @media (max-width: 600px) {
+      .admin-blog-item {
+        flex-direction: column;
+      }
+      .admin-blog-thumb {
+        width: 100%;
+        height: 140px;
       }
     }
   </style>
@@ -691,6 +747,7 @@
         <button class="tab-btn" data-tab="banner">2. Hero Banner Change</button>
         <button class="tab-btn" data-tab="cms">3. Edit Website Content (Full CMS)</button>
         <button class="tab-btn" data-tab="leads">4. Client Enquiries</button>
+        <button class="tab-btn" data-tab="blog">5. Blog &amp; Articles</button>
       </div>
 
       <!-- ==================== TAB 1: PROJECT CATEGORIES & RESPECTED IMAGES ==================== -->
@@ -1094,6 +1151,132 @@
           <p class="panel-subtitle">Submissions received from the website Contact &amp; Enquiry form.</p>
           <div id="leadsListContainer"></div>
         </div>
+      <!-- ==================== TAB 5: BLOG & ARTICLES MANAGEMENT ==================== -->
+      <section id="tabBlog" class="tab-section" style="display: none;">
+        <div class="panel-grid" style="margin-bottom: 32px;">
+          <!-- Left Card: Write & Publish New Article -->
+          <div class="panel-card">
+            <span class="panel-eyebrow">STEP 1 &bull; WRITE &amp; PUBLISH ARTICLE</span>
+            <h2 class="panel-title">Publish New Blog Post</h2>
+            <p class="panel-subtitle">Create and publish authoritative architectural articles, regulatory guides, and project updates directly to the website.</p>
+
+            <form id="addBlogForm">
+              <div class="form-group">
+                <label class="form-label">Article Title *</label>
+                <input
+                  type="text"
+                  id="adminBlogTitle"
+                  class="form-input"
+                  placeholder="e.g. Masterplanning Mumbai: Structural Considerations for High-Rise Towers"
+                  required
+                >
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+                <div class="form-group">
+                  <label class="form-label">Category *</label>
+                  <select id="adminBlogCategory" class="form-select" required>
+                    <option value="Liaisoning & Approvals">Liaisoning & Approvals</option>
+                    <option value="Green Building">Green Building</option>
+                    <option value="PMC & Execution">PMC & Execution</option>
+                    <option value="Auditing & Quality">Auditing & Quality</option>
+                    <option value="Design & Planning">Design & Planning</option>
+                    <option value="Architecture & Insights">Architecture & Insights</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Read Time</label>
+                  <input
+                    type="text"
+                    id="adminBlogReadTime"
+                    class="form-input"
+                    placeholder="e.g. 5 min read"
+                    value="5 min read"
+                  >
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Author Name</label>
+                <input
+                  type="text"
+                  id="adminBlogAuthor"
+                  class="form-input"
+                  placeholder="e.g. Trivedi Associates Editorial Team"
+                  value="Trivedi Associates Editorial Team"
+                >
+              </div>
+
+              <!-- Article Image File or URL -->
+              <div class="form-group">
+                <label class="form-label">Featured Cover Photo *</label>
+                <label class="drop-zone" style="cursor: pointer; display: block; margin-bottom: 12px;">
+                  <input type="file" id="adminBlogImageFile" accept="image/*" style="display: none;">
+                  <div style="font-size: 13.5px; font-weight: 600; color: var(--color-wine); margin-bottom: 4px;">
+                    Click to Upload Article Cover Image
+                  </div>
+                  <div style="color: var(--color-text-muted); font-size: 12px;" id="adminBlogFileStatus">
+                    Supports JPG, PNG, WebP &bull; Auto-optimized for high-resolution displays
+                  </div>
+                </label>
+                <div id="adminBlogImgPreviewWrap" style="display: none; margin-bottom: 12px;">
+                  <img id="adminBlogImgPreview" src="" alt="Preview" style="width: 100%; height: 160px; object-fit: cover; border-radius: 6px; border: 1px solid var(--color-border);">
+                </div>
+                <input
+                  type="text"
+                  id="adminBlogImageUrl"
+                  class="form-input"
+                  placeholder="Or paste image URL (e.g. assets/images/project_card_1.jpg or https://...)"
+                >
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Short Summary / Excerpt *</label>
+                <textarea
+                  id="adminBlogExcerpt"
+                  class="form-input"
+                  rows="2"
+                  placeholder="Brief 2-3 sentence overview shown on the blog card..."
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Full Article Body * (Separate paragraphs with double Enter)</label>
+                <textarea
+                  id="adminBlogContent"
+                  class="form-input"
+                  rows="7"
+                  placeholder="Write the full detailed article content here. Use blank lines between paragraphs..."
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary" style="padding: 14px 24px; font-size: 13px;">
+                + Publish Article to Website &rarr;
+              </button>
+            </form>
+          </div>
+
+          <!-- Right Card: Published Articles List -->
+          <div class="panel-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+              <div>
+                <span class="panel-eyebrow">STEP 2 &bull; MANAGE LIVE PUBLICATIONS</span>
+                <h2 class="panel-title" style="margin-bottom: 0;">Published Articles (<span id="adminBlogCount">0</span>)</h2>
+              </div>
+              <button type="button" id="adminResetBlogsBtn" class="btn-secondary" style="padding: 6px 12px; font-size: 11px;">
+                Restore Default Articles
+              </button>
+            </div>
+            <p class="panel-subtitle">Articles currently live on the public website. You can preview or remove any article.</p>
+
+            <div id="adminBlogListContainer" class="admin-blog-list" style="display: flex; flex-direction: column; gap: 14px;">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
       </section>
     </main>
   </div>
@@ -1261,6 +1444,8 @@
         document.getElementById('tabBanner').style.display = tab === 'banner' ? 'block' : 'none';
         document.getElementById('tabCms').style.display = tab === 'cms' ? 'block' : 'none';
         document.getElementById('tabLeads').style.display = tab === 'leads' ? 'block' : 'none';
+        document.getElementById('tabBlog').style.display = tab === 'blog' ? 'block' : 'none';
+        if (tab === 'blog') renderAdminBlogList();
       });
     });
 
@@ -1700,8 +1885,204 @@
       saveCmsForm();
     });
 
-    document.getElementById('resetCmsContentBtnTop')?.addEventListener('click', resetCmsForm);
-    document.getElementById('resetCmsContentBtnBottom')?.addEventListener('click', resetCmsForm);
+    // ==================== BLOG & ARTICLES MANAGEMENT ====================
+    const DEFAULT_BLOG_POSTS = [
+      {
+        id: 'blog_1',
+        title: "Navigating Mumbai's DCPR 2034: Essential Statutory Approvals for High-Rise Developments",
+        slug: "navigating-mumbai-dcpr-2034",
+        category: "Liaisoning & Approvals",
+        author: "Trivedi Associates Editorial Team",
+        date: "October 2026",
+        readTime: "5 min read",
+        image: "assets/images/project_card_2.jpg",
+        excerpt: "A comprehensive developer's roadmap through MCGM/BMC building proposals, DP 2034 concessions, High-Rise Committee clearances, and CFO Fire NOC compliance to secure timely Commencement Certificates (CC).",
+        content: "Developing real estate landmarks across Greater Mumbai demands rigorous technical precision and deep familiarity with the Development Control and Promotion Regulations (DCPR 2034). For high-density commercial towers and luxury residential high-rises, statutory compliance determines project feasibility and investor returns.\n\nKey Regulatory Pathways Under BMC:\n1. Scrutinized Building Proposal Submission: Preparing master architectural layouts in full conformance with FSI, TDR, and premium fungible compensatory calculations.\n2. Multi-Department Clearances: Coordinating environmental impact assessments (EIA), Chief Fire Officer (CFO) approvals, tree authority sanctions, and civil aviation height permissions.\n3. Transitioning from IOD to CC & OC: Securing the Intimation of Disapproval (IOD), satisfying statutory compliance requisites for the Commencement Certificate (CC), and guiding the project through to Final Occupancy Certificate (OC).\n\nAt Trivedi Associates, our liaisoning vertical bridges neoclassical architectural design with administrative policy, minimizing regulatory bottlenecks for Mumbai’s foremost developers."
+      },
+      {
+        id: 'blog_2',
+        title: "The Financial & Environmental Return of IGBC & LEED Green Building Certifications",
+        slug: "financial-return-igbc-leed-green-building",
+        category: "Green Building",
+        author: "Trivedi Associates Sustainability Cell",
+        date: "September 2026",
+        readTime: "4 min read",
+        image: "assets/images/project_card_3.jpg",
+        excerpt: "How lifecycle energy modeling, water conservation loops, and IGBC/LEED benchmarks reduce operational overhead while commanding premium rental yields and institutional investment.",
+        content: "Sustainable construction has transcended corporate social responsibility to become a decisive commercial advantage. Institutional investors and premium corporate tenants actively prioritize energy-efficient assets that minimize carbon intensity.\n\nCore Advantages of Certified Green Architecture:\n1. Reduced Operational Expenditure (OpEx): Advanced HVAC energy modeling, high-performance low-E double glazing, and passive shading reduce energy draw by 25% to 40%.\n2. Water Neutrality & Conservation: On-site sewage treatment plants (STP), rainwater harvesting, and drip-irrigation landscapes drastically curb municipal water dependency.\n3. Regulatory Incentives: Multiple municipal corporations across India, including Maharashtra authorities, offer additional FSI rebates and concession incentives for certified Green Buildings.\n\nAs accredited IGBC and LEED consultants, Trivedi Associates guides developers through every credit calculation from concept to official certification."
+      },
+      {
+        id: 'blog_3',
+        title: "Mitigating Capital Risk in Redevelopment: The Strategic Role of PMC & Technical Audits",
+        slug: "mitigating-capital-risk-pmc-audits",
+        category: "PMC & Auditing",
+        author: "Trivedi Associates Technical Advisory",
+        date: "August 2026",
+        readTime: "6 min read",
+        image: "assets/images/project_card_1.jpg",
+        excerpt: "Why independent project management consulting (PMC), contractor bill verification, and non-destructive structural audits (NDT) are vital to protecting developer balance sheets.",
+        content: "In large-scale society redevelopment, slum rehabilitation (SRA), and luxury residential transformations across Western and Central Mumbai, cost overruns and structural variances pose critical threats to completion.\n\nWhy Independent PMC is Vital:\n1. Milestone & Contractor Bill Certification: Independent site engineers scrutinize contractor measurements, steel consumption, and concrete grade test reports prior to any financial disbursement.\n2. Non-Destructive Testing (NDT) & Structural Audits: Ultrasonic pulse velocity and rebound hammer tests ensure that load-bearing columns and retrofitted frameworks maintain structural integrity.\n3. Turnkey Schedule Governance: Maintaining strict critical path methods (CPM) prevents the compounding delays that erode project profitability.\n\nWith Trivedi Associates acting as your trusted Project Management Consultant, developers gain total statutory certainty, transparent budget governance, and superior neoclassical execution."
+      }
+    ];
+
+    function getAdminBlogPosts() {
+      try {
+        const raw = localStorage.getItem('ta_blog_posts');
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        }
+      } catch (e) {}
+      localStorage.setItem('ta_blog_posts', JSON.stringify(DEFAULT_BLOG_POSTS));
+      return JSON.parse(JSON.stringify(DEFAULT_BLOG_POSTS));
+    }
+
+    function saveAdminBlogPosts(posts) {
+      localStorage.setItem('ta_blog_posts', JSON.stringify(posts));
+    }
+
+    const adminBlogImageFile = document.getElementById('adminBlogImageFile');
+    const adminBlogFileStatus = document.getElementById('adminBlogFileStatus');
+    const adminBlogImgPreviewWrap = document.getElementById('adminBlogImgPreviewWrap');
+    const adminBlogImgPreview = document.getElementById('adminBlogImgPreview');
+    const adminBlogImageUrl = document.getElementById('adminBlogImageUrl');
+    const addBlogForm = document.getElementById('addBlogForm');
+    let stagedBlogImageDataUrl = '';
+
+    adminBlogImageFile?.addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      adminBlogFileStatus.textContent = `Optimizing: ${file.name}...`;
+      try {
+        const compressed = await compressImageFile(file, 1200, 0.85);
+        stagedBlogImageDataUrl = compressed;
+        adminBlogImgPreview.src = compressed;
+        adminBlogImgPreviewWrap.style.display = 'block';
+        adminBlogFileStatus.textContent = `Ready: ${file.name} (optimized)`;
+      } catch (err) {
+        adminBlogFileStatus.textContent = 'Error processing image file.';
+      }
+    });
+
+    adminBlogImageUrl?.addEventListener('input', () => {
+      const url = adminBlogImageUrl.value.trim();
+      if (url) {
+        stagedBlogImageDataUrl = url;
+        adminBlogImgPreview.src = url;
+        adminBlogImgPreviewWrap.style.display = 'block';
+      }
+    });
+
+    addBlogForm?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const title = document.getElementById('adminBlogTitle').value.trim();
+      const category = document.getElementById('adminBlogCategory').value.trim();
+      const readTime = document.getElementById('adminBlogReadTime').value.trim() || '4 min read';
+      const author = document.getElementById('adminBlogAuthor').value.trim() || 'Trivedi Associates Editorial Team';
+      const excerpt = document.getElementById('adminBlogExcerpt').value.trim();
+      const content = document.getElementById('adminBlogContent').value.trim();
+      const image = stagedBlogImageDataUrl || adminBlogImageUrl.value.trim() || 'assets/images/project_card_1.jpg';
+
+      if (!title || !excerpt || !content) {
+        alert('Please fill in Title, Summary, and Article Body.');
+        return;
+      }
+
+      const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+      const now = new Date();
+      const dateStr = `${months[now.getMonth()]} ${now.getFullYear()}`;
+
+      const newPost = {
+        id: 'blog_' + Date.now(),
+        title,
+        slug: title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
+        category,
+        author,
+        date: dateStr,
+        readTime,
+        image,
+        excerpt,
+        content
+      };
+
+      const posts = getAdminBlogPosts();
+      posts.unshift(newPost);
+      saveAdminBlogPosts(posts);
+
+      // Reset form
+      addBlogForm.reset();
+      document.getElementById('adminBlogReadTime').value = '5 min read';
+      document.getElementById('adminBlogAuthor').value = 'Trivedi Associates Editorial Team';
+      stagedBlogImageDataUrl = '';
+      adminBlogImgPreviewWrap.style.display = 'none';
+      adminBlogFileStatus.textContent = 'Supports JPG, PNG, WebP • Auto-optimized for high-resolution displays';
+
+      renderAdminBlogList();
+      showNotice(`Article "${title}" published live to the website!`);
+    });
+
+    function renderAdminBlogList() {
+      const container = document.getElementById('adminBlogListContainer');
+      const countEl = document.getElementById('adminBlogCount');
+      if (!container) return;
+
+      const posts = getAdminBlogPosts();
+      if (countEl) countEl.textContent = posts.length;
+
+      if (posts.length === 0) {
+        container.innerHTML = `
+          <div style="text-align: center; padding: 40px; color: var(--color-text-muted);">
+            No published articles found. Publish your first article using the form on the left!
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = posts.map(post => `
+        <div class="admin-blog-item" data-id="${post.id}">
+          <img src="${post.image || 'assets/images/project_card_1.jpg'}" alt="${post.title}" class="admin-blog-thumb">
+          <div class="admin-blog-info">
+            <h4 class="admin-blog-item-title">${post.title}</h4>
+            <div class="admin-blog-item-meta">
+              <span class="cat-pill" style="padding: 2px 8px; font-size: 10.5px;">${post.category}</span>
+              <span>&bull;</span>
+              <span>${post.date}</span>
+              <span>&bull;</span>
+              <span>${post.readTime}</span>
+              <span>&bull;</span>
+              <span style="color: var(--color-gold-dark);">${post.author || 'Trivedi Associates'}</span>
+            </div>
+            <p class="admin-blog-item-desc">${post.excerpt}</p>
+            <div style="display: flex; gap: 10px;">
+              <button class="btn-delete del-blog-btn" data-id="${post.id}">Delete Article</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      container.querySelectorAll('.del-blog-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-id');
+          const posts = getAdminBlogPosts();
+          const target = posts.find(p => String(p.id) === String(id));
+          const title = target ? target.title : 'this article';
+          if (confirm(`Are you sure you want to delete "${title}" from the website?`)) {
+            const updated = posts.filter(p => String(p.id) !== String(id));
+            saveAdminBlogPosts(updated);
+            renderAdminBlogList();
+            showNotice('Article removed from website.');
+          }
+        });
+      });
+    }
+
+    document.getElementById('adminResetBlogsBtn')?.addEventListener('click', () => {
+      if (confirm('Restore the default 3 authoritative publication articles?')) {
+        saveAdminBlogPosts(DEFAULT_BLOG_POSTS);
+        renderAdminBlogList();
+        showNotice('Restored default publication articles.');
+      }
+    });
 
     function initDashboard() {
       const currentBanner = localStorage.getItem('ta_hero_banner') || DEFAULT_BANNER;
@@ -1710,6 +2091,7 @@
       renderCategoriesAndGallery();
       renderLeads();
       loadCmsForm();
+      renderAdminBlogList();
     }
 
     checkSession();

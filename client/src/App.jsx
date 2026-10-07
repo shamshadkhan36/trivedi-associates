@@ -7,12 +7,12 @@ import EnquiryForm from './components/EnquiryForm';
 import Aesthetics from './components/Aesthetics';
 import Footer from './components/Footer';
 import FloatingControls from './components/FloatingControls';
-import { ConnectModal, SearchModal, MobileDrawer } from './components/Modals';
+import { ConnectModal, MobileDrawer } from './components/Modals';
 import AdminPanel from './components/AdminPanel';
+import BlogSection from './components/BlogSection';
 
 export default function App() {
   const [isConnectOpen, setIsConnectOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
   const [selectedService, setSelectedService] = useState('');
@@ -48,7 +48,6 @@ export default function App() {
       {/* 0. Top Navigation */}
       <Navbar
         onOpenConnect={() => setIsConnectOpen(true)}
-        onOpenSearch={() => setIsSearchOpen(true)}
         onOpenDrawer={() => setIsDrawerOpen(true)}
         onOpenAdmin={() => setIsAdminOpen(true)}
       />
@@ -105,7 +104,10 @@ export default function App() {
         </div>
       </section>
 
-      {/* 7. Footer */}
+      {/* 7. Blog & Industry Insights Section */}
+      <BlogSection />
+
+      {/* 8. Footer */}
       <Footer onOpenAdmin={() => setIsAdminOpen(true)} />
 
       {/* Floating Action Controls */}
@@ -115,11 +117,6 @@ export default function App() {
       <ConnectModal
         isOpen={isConnectOpen}
         onClose={() => setIsConnectOpen(false)}
-      />
-
-      <SearchModal
-        isOpen={isSearchOpen}
-        onClose={() => setIsSearchOpen(false)}
       />
 
       <MobileDrawer

@@ -256,6 +256,7 @@ export function MobileDrawer({ isOpen, onClose, onOpenConnect }) {
           <li><a href="#services" onClick={onClose}>SERVICES</a></li>
           <li><a href="#showcase" onClick={onClose}>PROJECTS</a></li>
           <li><a href="#about" onClick={onClose}>ABOUT</a></li>
+          <li><a href="#blog" onClick={onClose}>BLOG</a></li>
           <li><a href="#enquiry-form-section" onClick={onClose}>CONTACT</a></li>
         </ul>
 

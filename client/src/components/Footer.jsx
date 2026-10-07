@@ -19,11 +19,11 @@ export default function Footer({ onOpenAdmin }) {
         <div>
           <h4 className="footer-col-title">Portfolios</h4>
           <ul className="footer-col-links">
-            <li><a href="#aesthetics">Luxury Residential</a></li>
-            <li><a href="#aesthetics">Signature Commercial</a></li>
-            <li><a href="#legacy">High-Street Retail</a></li>
-            <li><a href="#skylines">Green Initiatives</a></li>
-            <li><a href="#legacy">Township Masterplans</a></li>
+            <li><a href="#showcase">Architectural Portfolios</a></li>
+            <li><a href="#services">Core Engineering Services</a></li>
+            <li><a href="#blog">Articles &amp; Insights</a></li>
+            <li><a href="#about">About Trivedi Associates</a></li>
+            <li><a href="#enquiry-form-section">Direct Project Consultation</a></li>
           </ul>
         </div>
 

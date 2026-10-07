@@ -35,18 +35,11 @@
       <li><a href="#services" class="nav-link">SERVICES</a></li>
       <li><a href="#showcase" class="nav-link">PROJECTS</a></li>
       <li><a href="#about" class="nav-link">ABOUT</a></li>
+      <li><a href="#blog" class="nav-link">BLOG</a></li>
       <li><a href="#enquiry-form-section" class="nav-link">CONTACT</a></li>
     </ul>
 
     <div class="nav-actions">
-      <!-- Search Icon Button -->
-      <button class="nav-icon-btn" id="openSearchBtn" aria-label="Search">
-        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
-          <circle cx="11" cy="11" r="8"/>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
-        </svg>
-      </button>
-
       <!-- Let's Connect CTA -->
       <a href="#enquiry-form-section" class="nav-connect-btn">
         Let's Connect
@@ -519,6 +512,44 @@
     </div>
   </section>
 
+  <!-- ==================== 7. BLOG & INDUSTRY INSIGHTS SECTION ==================== -->
+  <section class="blog-section" id="blog">
+    <div class="blog-container">
+      <div class="blog-header-wrap">
+        <div>
+          <span class="services-eyebrow">THOUGHT LEADERSHIP &bull; TRIVEDI ASSOCIATES</span>
+          <h2 class="services-main-title" style="text-align: left; margin-bottom: 12px;">
+            Architectural Insights &amp; <br>
+            <span class="italic-serif">Industry Publications</span>
+          </h2>
+          <p class="blog-header-sub">
+            Authoritative perspectives on BMC municipal regulations, sustainable design, PMC governance, and structural auditing across Mumbai and India.
+          </p>
+        </div>
+        <div class="blog-header-actions">
+          <div class="blog-category-filter" id="blogFilterBar">
+            <button class="blog-filter-pill active" data-filter="ALL">All Topics</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog Posts Grid -->
+      <div id="blogPostsGrid" class="blog-posts-grid">
+        <!-- Rendered dynamically by js/main.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Article Full Reader Modal -->
+  <div class="blog-modal-overlay" id="blogReaderModal" aria-hidden="true">
+    <div class="blog-modal-content" role="dialog" aria-modal="true">
+      <button class="blog-modal-close" id="closeBlogModalBtn" aria-label="Close Article">&times;</button>
+      <div id="blogModalBody">
+        <!-- Populated on click -->
+      </div>
+    </div>
+  </div>
+
   <!-- ==================== FOOTER ==================== -->
   <footer class="site-footer">
     <div class="footer-container">
@@ -542,6 +573,7 @@
           <li><a href="#services">Liaisoning &amp; Approvals</a></li>
           <li><a href="#services">Green Building Consultant</a></li>
           <li><a href="#services">Auditing</a></li>
+          <li><a href="#blog">Articles &amp; Insights</a></li>
         </ul>
       </div>
 
