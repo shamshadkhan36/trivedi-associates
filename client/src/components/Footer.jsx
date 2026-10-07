@@ -21,7 +21,7 @@ export default function Footer({ onOpenAdmin }) {
           <ul className="footer-col-links">
             <li><a href="#showcase">Architectural Portfolios</a></li>
             <li><a href="#services">Core Engineering Services</a></li>
-            <li><a href="#blog">Articles &amp; Insights</a></li>
+            <li><a href="/blog.html">Articles &amp; Insights</a></li>
             <li><a href="#about">About Trivedi Associates</a></li>
             <li><a href="#enquiry-form-section">Direct Project Consultation</a></li>
           </ul>

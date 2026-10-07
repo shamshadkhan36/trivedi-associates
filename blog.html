@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architectural Insights &amp; Publications | Trivedi Associates</title>
+  <meta name="description" content="Read expert articles on Mumbai DCPR 2034 building approvals, IGBC/LEED green building certification, PMC project management governance, and structural auditing by Trivedi Associates.">
+  <meta name="keywords" content="Trivedi Associates Blog, Mumbai DCPR 2034, BMC Liaisoning, IGBC Green Building, PMC Auditing, Structural Audits Mumbai, Architectural Articles">
+  <meta name="author" content="Trivedi Associates">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* Dedicated Blog Page Custom Enhancements */
+    .blog-page-hero {
+      position: relative;
+      background: linear-gradient(135deg, #1A050A 0%, #350B14 50%, #150307 100%);
+      color: #FFFFFF;
+      padding: 130px 24px 70px 24px;
+      text-align: center;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(197, 168, 128, 0.25);
+    }
+
+    .blog-page-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at 50% 20%, rgba(197, 168, 128, 0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .blog-page-hero-inner {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      z-index: 2;
+    }
+
+    .blog-page-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 50px;
+      background: rgba(197, 168, 128, 0.15);
+      border: 1px solid rgba(197, 168, 128, 0.35);
+      color: var(--color-gold);
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .blog-page-title {
+      font-family: var(--font-serif);
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.15;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 18px;
+      letter-spacing: -0.5px;
+    }
+
+    .blog-page-title span.italic-serif {
+      font-family: var(--font-italic-serif);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--color-gold);
+    }
+
+    .blog-page-subtitle {
+      font-size: clamp(15px, 2vw, 17px);
+      color: rgba(255, 255, 255, 0.82);
+      max-width: 720px;
+      margin: 0 auto 36px auto;
+      line-height: 1.7;
+    }
+
+    /* Search & Filter Bar */
+    .blog-search-filter-box {
+      max-width: 820px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .blog-search-input-wrap {
+      position: relative;
+      width: 100%;
+    }
+
+    .blog-search-input-wrap svg {
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-gold);
+      pointer-events: none;
+    }
+
+    .blog-search-input {
+      width: 100%;
+      padding: 15px 20px 15px 50px;
+      border-radius: 50px;
+      border: 1px solid rgba(197, 168, 128, 0.3);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
+      color: #FFFFFF;
+      font-size: 14.5px;
+      font-family: var(--font-sans);
+      outline: none;
+      transition: var(--transition-smooth);
+    }
+
+    .blog-search-input:focus {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--color-gold);
+      box-shadow: 0 0 16px rgba(197, 168, 128, 0.3);
+    }
+
+    .blog-search-input::placeholder {
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .blog-category-filter-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .blog-cat-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(197, 168, 128, 0.25);
+      color: #FFFFFF;
+      padding: 7px 18px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.6px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .blog-cat-btn:hover,
+    .blog-cat-btn.active {
+      background: var(--color-gold);
+      color: var(--color-dark);
+      border-color: var(--color-gold);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(197, 168, 128, 0.25);
+    }
+
+    /* Main Container */
+    .blog-page-main {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 60px 24px 100px 24px;
+    }
+
+    /* Spotlight / Featured Post */
+    .blog-spotlight-card {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 36px;
+      background: #FFFFFF;
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+      margin-bottom: 60px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .blog-spotlight-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 45px rgba(91, 20, 34, 0.1);
+      border-color: var(--color-gold);
+    }
+
+    .blog-spotlight-media {
+      position: relative;
+      min-height: 380px;
+      overflow: hidden;
+    }
+
+    .blog-spotlight-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .blog-spotlight-card:hover .blog-spotlight-media img {
+      transform: scale(1.04);
+    }
+
+    .blog-spotlight-content {
+      padding: 40px 44px 40px 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .blog-spotlight-pill {
+      display: inline-block;
+      align-self: flex-start;
+      background: var(--color-wine);
+      color: #FFFFFF;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 14px;
+    }
+
+    .blog-spotlight-meta {
+      font-size: 12.5px;
+      color: var(--color-gold-dark);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 12px;
+    }
+
+    .blog-spotlight-title {
+      font-family: var(--font-serif);
+      font-size: clamp(22px, 2.5vw, 30px);
+      line-height: 1.3;
+      color: var(--color-wine);
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .blog-spotlight-excerpt {
+      font-size: 15px;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .blog-spotlight-author-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .blog-spotlight-author-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-text-dark);
+    }
+
+    .blog-spotlight-read-btn {
+      color: var(--color-wine);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Section Heading for All Articles */
+    .blog-subhead-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 30px;
+      border-bottom: 2px solid var(--color-border);
+      padding-bottom: 14px;
+    }
+
+    .blog-subhead-title {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--color-wine);
+    }
+
+    .blog-articles-count {
+      font-size: 13px;
+      color: var(--color-gold-dark);
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    /* Dedicated Standalone Article View */
+    #blogArticleView {
+      display: none;
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 40px 24px 100px 24px;
+    }
+
+    .article-back-nav {
+      margin-bottom: 28px;
+    }
+
+    .article-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-cream-soft);
+      border: 1px solid var(--color-border);
+      padding: 9px 20px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-wine);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .article-back-btn:hover {
+      background: var(--color-wine);
+      color: #FFFFFF;
+      border-color: var(--color-wine);
+      transform: translateX(-4px);
+    }
+
+    .article-view-card {
+      background: #FFFFFF;
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.05);
+    }
+
+    .article-hero-wrap {
+      width: 100%;
+      height: 440px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .article-hero-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .article-view-body {
+      padding: 44px 54px 60px 54px;
+    }
+
+    .article-view-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .article-view-badge {
+      background: var(--color-wine);
+      color: #FFFFFF;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 4px;
+    }
+
+    .article-view-date-read {
+      font-size: 13px;
+      color: var(--color-gold-dark);
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .article-view-title {
+      font-family: var(--font-serif);
+      font-size: clamp(26px, 3.5vw, 40px);
+      line-height: 1.25;
+      font-weight: 700;
+      color: var(--color-wine);
+      margin-bottom: 24px;
+    }
+
+    .article-view-author-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      background: var(--color-cream-soft);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      margin-bottom: 36px;
+    }
+
+    .article-view-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 2px solid var(--color-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-wine);
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .article-view-author-details h4 {
+      font-size: 14.5px;
+      color: var(--color-text-dark);
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .article-view-author-details p {
+      font-size: 12px;
+      color: var(--color-text-muted);
+    }
+
+    .article-view-content {
+      font-size: 17px;
+      line-height: 1.9;
+      color: #2D2D2D;
+    }
+
+    .article-view-content p {
+      margin-bottom: 24px;
+    }
+
+    .article-takeaway-box {
+      margin: 40px 0;
+      padding: 30px 34px;
+      background: #FDFBF7;
+      border-left: 4px solid var(--color-gold);
+      border-radius: 0 8px 8px 0;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      border-right: 1px solid var(--color-border);
+    }
+
+    .article-takeaway-title {
+      font-family: var(--font-serif);
+      font-size: 19px;
+      color: var(--color-wine);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .article-takeaway-text {
+      font-size: 15px;
+      color: var(--color-text-muted);
+      line-height: 1.7;
+    }
+
+    .article-consultation-banner {
+      margin-top: 50px;
+      padding: 36px 40px;
+      background: linear-gradient(135deg, #2A0810 0%, #4A0E1A 100%);
+      color: #FFFFFF;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .article-consultation-banner h3 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      color: #FFFFFF;
+      margin-bottom: 6px;
+    }
+
+    .article-consultation-banner p {
+      font-size: 13.5px;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 480px;
+    }
+
+    .article-consultation-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-consult-white {
+      background: #FFFFFF;
+      color: var(--color-wine);
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-consult-white:hover {
+      background: var(--color-gold);
+      color: var(--color-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-consult-wa {
+      background: #25D366;
+      color: #FFFFFF;
+      padding: 12px 22px;
+      border-radius: 50px;
+      font-size: 12.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-consult-wa:hover {
+      background: #1EBE5B;
+      transform: translateY(-2px);
+    }
+
+    /* Empty state */
+    .blog-empty-state {
+      text-align: center;
+      padding: 70px 20px;
+      background: #FFFFFF;
+      border: 1px dashed var(--color-gold);
+      border-radius: 12px;
+      color: var(--color-text-muted);
+    }
+
+    .blog-empty-state h3 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      color: var(--color-wine);
+      margin-bottom: 8px;
+    }
+
+    /* Active nav link */
+    .nav-links li a.active-page {
+      color: var(--color-gold);
+    }
+
+    .nav-links li a.active-page::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--color-gold);
+    }
+
+    @media (max-width: 900px) {
+      .blog-spotlight-card {
+        grid-template-columns: 1fr;
+      }
+      .blog-spotlight-media {
+        min-height: 260px;
+      }
+      .blog-spotlight-content {
+        padding: 30px 24px;
+      }
+      .article-hero-wrap {
+        height: 280px;
+      }
+      .article-view-body {
+        padding: 30px 22px;
+      }
+      .article-consultation-banner {
+        padding: 28px 22px;
+      }
+    }
+  </style>
+</head>
+<body class="minimalist-theme">
+
+  <!-- ==================== TOP NAVIGATION ==================== -->
+  <header class="header-nav scrolled">
+    <a href="index.html" class="brand-logo" aria-label="Trivedi Associates Home">
+      <div class="brand-logo-media">
+        <img src="assets/images/logo_white.png" alt="Trivedi Associates" class="site-header-logo">
+        <span class="brand-logo-sub">DESIGN &amp; PROJECT MANAGEMENT CONSULTANT</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html#hero" class="nav-link">HOME</a></li>
+      <li><a href="index.html#services" class="nav-link">SERVICES</a></li>
+      <li><a href="index.html#showcase" class="nav-link">PROJECTS</a></li>
+      <li><a href="index.html#about" class="nav-link">ABOUT</a></li>
+      <li><a href="blog.html" class="nav-link active-page" style="position: relative;">BLOG</a></li>
+      <li><a href="index.html#enquiry-form-section" class="nav-link">CONTACT</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="index.html#enquiry-form-section" class="nav-connect-btn">
+        Let's Connect
+      </a>
+    </div>
+  </header>
+
+  <!-- ==================== BLOG HERO HEADER ==================== -->
+  <section class="blog-page-hero">
+    <div class="blog-page-hero-inner">
+      <div class="blog-page-badge">
+        <span>&bull;</span> TRIVEDI ASSOCIATES JOURNAL &bull;
+      </div>
+      <h1 class="blog-page-title">
+        Architectural Insights &amp; <br>
+        <span class="italic-serif">Technical Publications</span>
+      </h1>
+      <p class="blog-page-subtitle">
+        Authoritative analysis on Mumbai DCPR 2034 approvals, IGBC/LEED sustainable design, PMC governance, and structural auditing across Maharashtra and India.
+      </p>
+
+      <!-- Search & Filter Bar -->
+      <div class="blog-search-filter-box">
+        <div class="blog-search-input-wrap">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input
+            type="text"
+            id="blogSearchInput"
+            class="blog-search-input"
+            placeholder="Search articles by title, regulation, vertical (e.g. DCPR, Green Building, PMC)..."
+          >
+        </div>
+
+        <div class="blog-category-filter-row" id="blogCategoryRow">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BLOG INDEX VIEW (CARD GRID) ==================== -->
+  <main class="blog-page-main" id="blogIndexView">
+    <!-- Spotlight / Featured Article (Rendered via JS) -->
+    <div id="blogSpotlightWrap"></div>
+
+    <!-- Section Subheading -->
+    <div class="blog-subhead-row">
+      <h2 class="blog-subhead-title">All Publications</h2>
+      <div class="blog-articles-count" id="blogArticlesCount">Showing 3 Articles</div>
+    </div>
+
+    <!-- Main Grid of Blog Cards -->
+    <div class="blog-posts-grid" id="blogCardsGrid">
+      <!-- Populated dynamically via JS -->
+    </div>
+  </main>
+
+  <!-- ==================== SINGLE ARTICLE DETAIL VIEW ==================== -->
+  <article id="blogArticleView">
+    <div class="article-back-nav">
+      <button class="article-back-btn" id="articleBackBtn">
+        &larr; Back to All Articles
+      </button>
+    </div>
+
+    <div class="article-view-card">
+      <div class="article-hero-wrap">
+        <img id="artHeroImg" src="assets/images/project_card_1.jpg" alt="Article Hero">
+      </div>
+      <div class="article-view-body">
+        <div class="article-view-meta-row">
+          <span class="article-view-badge" id="artCategory">Liaisoning</span>
+          <span class="article-view-date-read" id="artMetaText">October 2026 &bull; 5 min read</span>
+        </div>
+
+        <h1 class="article-view-title" id="artTitle">Article Title</h1>
+
+        <div class="article-view-author-card">
+          <div class="article-view-avatar">TA</div>
+          <div class="article-view-author-details">
+            <h4 id="artAuthor">Trivedi Associates Editorial Team</h4>
+            <p>Technical &amp; Statutory Advisory Cell &bull; Mumbai Headquarters</p>
+          </div>
+        </div>
+
+        <div class="article-view-content" id="artContent">
+          <!-- Article paragraphs populated by JS -->
+        </div>
+
+        <!-- Key Takeaway Box -->
+        <div class="article-takeaway-box">
+          <div class="article-takeaway-title">Principal Advisory Takeaway</div>
+          <div class="article-takeaway-text" id="artTakeaway">
+            Statutory compliance and structural rigor are not regulatory burdens; when integrated early in master planning, they accelerate financial IRR and safeguard developer equity.
+          </div>
+        </div>
+
+        <!-- Consultation Banner -->
+        <div class="article-consultation-banner">
+          <div>
+            <h3>Consult With Our Senior Partners</h3>
+            <p>
+              Looking to implement these statutory frameworks or PMC standards on your upcoming development project? Connect with our principals.
+            </p>
+          </div>
+          <div class="article-consultation-actions">
+            <a href="index.html#enquiry-form-section" class="btn-consult-white" id="artEnquiryLink">
+              Book Consultation &rarr;
+            </a>
+            <a href="https://wa.me/917977117256?text=Hello%20Trivedi%20Associates,%20I%20read%20your%20article%20and%20would%20like%20to%20consult%20regarding%20our%20project." target="_blank" rel="noopener noreferrer" class="btn-consult-wa">
+              WhatsApp Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-col-brand">
+        <div class="brand-logo">
+          <div class="brand-logo-media">
+            <img src="assets/images/logo_white.png" alt="Trivedi Associates" class="site-footer-logo">
+            <span class="brand-logo-sub">DESIGN &amp; PROJECT MANAGEMENT CONSULTANT</span>
+          </div>
+        </div>
+        <p>
+          Mastering the art of neoclassical design and superior craftsmanship. Crafting enduring living spaces across Western &amp; Central Mumbai and beyond.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Portfolios</h4>
+        <ul class="footer-col-links">
+          <li><a href="index.html#showcase">Architectural Portfolios</a></li>
+          <li><a href="index.html#services">Core Engineering Services</a></li>
+          <li><a href="blog.html">Articles &amp; Insights</a></li>
+          <li><a href="index.html#about">About Trivedi Associates</a></li>
+          <li><a href="index.html#enquiry-form-section">Direct Project Consultation</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Locations</h4>
+        <ul class="footer-col-links">
+          <li><a href="index.html#enquiry-form-section"><strong>Western Mumbai:</strong> Jogeshwari (East)</a></li>
+          <li><a href="index.html#enquiry-form-section"><strong>Central Mumbai:</strong> Kurla (East)</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Headquarters &amp; Direct</h4>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          <span>Western Mumbai : Jogeshwari (East)<br>Central Mumbai : Kurla (East)</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <a href="tel:7977117256">+91 7977117256</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          <a href="mailto:trivedi.associates13@gmail.com">trivedi.associates13@gmail.com</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>&copy; 2026 Trivedi Associates . Com &bull; All Rights Reserved.</div>
+      <div style="display: flex; gap: 20px; align-items: center;">
+        <span>Design &bull; Engineering &bull; PMC &bull; Sustainability</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT LOGIC ==================== -->
+  <script>
+    const DEFAULT_BLOG_POSTS = [
+      {
+        id: 'blog_1',
+        title: "Navigating Mumbai's DCPR 2034: Essential Statutory Approvals for High-Rise Developments",
+        slug: "navigating-mumbai-dcpr-2034",
+        category: "Liaisoning & Approvals",
+        author: "Trivedi Associates Editorial Team",
+        date: "October 2026",
+        readTime: "5 min read",
+        image: "assets/images/project_card_2.jpg",
+        excerpt: "A comprehensive developer's roadmap through MCGM/BMC building proposals, DP 2034 concessions, High-Rise Committee clearances, and CFO Fire NOC compliance to secure timely Commencement Certificates (CC).",
+        content: "Developing real estate landmarks across Greater Mumbai demands rigorous technical precision and deep familiarity with the Development Control and Promotion Regulations (DCPR 2034). For high-density commercial towers and luxury residential high-rises, statutory compliance determines project feasibility and investor returns.\n\nKey Regulatory Pathways Under BMC:\n1. Scrutinized Building Proposal Submission: Preparing master architectural layouts in full conformance with FSI, TDR, and premium fungible compensatory calculations.\n2. Multi-Department Clearances: Coordinating environmental impact assessments (EIA), Chief Fire Officer (CFO) approvals, tree authority sanctions, and civil aviation height permissions.\n3. Transitioning from IOD to CC & OC: Securing the Intimation of Disapproval (IOD), satisfying statutory compliance requisites for the Commencement Certificate (CC), and guiding the project through to Final Occupancy Certificate (OC).\n\nAt Trivedi Associates, our liaisoning vertical bridges neoclassical architectural design with administrative policy, minimizing regulatory bottlenecks for Mumbai’s foremost developers."
+      },
+      {
+        id: 'blog_2',
+        title: "The Financial & Environmental Return of IGBC & LEED Green Building Certifications",
+        slug: "financial-return-igbc-leed-green-building",
+        category: "Green Building",
+        author: "Trivedi Associates Sustainability Cell",
+        date: "September 2026",
+        readTime: "4 min read",
+        image: "assets/images/project_card_3.jpg",
+        excerpt: "How lifecycle energy modeling, water conservation loops, and IGBC/LEED benchmarks reduce operational overhead while commanding premium rental yields and institutional investment.",
+        content: "Sustainable construction has transcended corporate social responsibility to become a decisive commercial advantage. Institutional investors and premium corporate tenants actively prioritize energy-efficient assets that minimize carbon intensity.\n\nCore Advantages of Certified Green Architecture:\n1. Reduced Operational Expenditure (OpEx): Advanced HVAC energy modeling, high-performance low-E double glazing, and passive shading reduce energy draw by 25% to 40%.\n2. Water Neutrality & Conservation: On-site sewage treatment plants (STP), rainwater harvesting, and drip-irrigation landscapes drastically curb municipal water dependency.\n3. Regulatory Incentives: Multiple municipal corporations across India, including Maharashtra authorities, offer additional FSI rebates and concession incentives for certified Green Buildings.\n\nAs accredited IGBC and LEED consultants, Trivedi Associates guides developers through every credit calculation from concept to official certification."
+      },
+      {
+        id: 'blog_3',
+        title: "Mitigating Capital Risk in Redevelopment: The Strategic Role of PMC & Technical Audits",
+        slug: "mitigating-capital-risk-pmc-audits",
+        category: "PMC & Auditing",
+        author: "Trivedi Associates Technical Advisory",
+        date: "August 2026",
+        readTime: "6 min read",
+        image: "assets/images/project_card_1.jpg",
+        excerpt: "Why independent project management consulting (PMC), contractor bill verification, and non-destructive structural audits (NDT) are vital to protecting developer balance sheets.",
+        content: "In large-scale society redevelopment, slum rehabilitation (SRA), and luxury residential transformations across Western and Central Mumbai, cost overruns and structural variances pose critical threats to completion.\n\nWhy Independent PMC is Vital:\n1. Milestone & Contractor Bill Certification: Independent site engineers scrutinize contractor measurements, steel consumption, and concrete grade test reports prior to any financial disbursement.\n2. Non-Destructive Testing (NDT) & Structural Audits: Ultrasonic pulse velocity and rebound hammer tests ensure that load-bearing columns and retrofitted frameworks maintain structural integrity.\n3. Turnkey Schedule Governance: Maintaining strict critical path methods (CPM) prevents the compounding delays that erode project profitability.\n\nWith Trivedi Associates acting as your trusted Project Management Consultant, developers gain total statutory certainty, transparent budget governance, and superior neoclassical execution."
+      }
+    ];
+
+    function loadPosts() {
+      try {
+        const raw = localStorage.getItem('ta_blog_posts');
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        }
+      } catch (e) {}
+      return DEFAULT_BLOG_POSTS;
+    }
+
+    let allPosts = loadPosts();
+    let currentFilter = 'ALL';
+    let searchQuery = '';
+
+    const blogIndexView = document.getElementById('blogIndexView');
+    const blogArticleView = document.getElementById('blogArticleView');
+    const blogSpotlightWrap = document.getElementById('blogSpotlightWrap');
+    const blogCardsGrid = document.getElementById('blogCardsGrid');
+    const blogArticlesCount = document.getElementById('blogArticlesCount');
+    const blogCategoryRow = document.getElementById('blogCategoryRow');
+    const blogSearchInput = document.getElementById('blogSearchInput');
+    const articleBackBtn = document.getElementById('articleBackBtn');
+
+    // Render category filters
+    function renderCategoryButtons() {
+      const categories = ['ALL', ...new Set(allPosts.map(p => p.category).filter(Boolean))];
+      blogCategoryRow.innerHTML = categories.map(cat => `
+        <button class="blog-cat-btn ${currentFilter === cat ? 'active' : ''}" data-cat="${cat}">
+          ${cat === 'ALL' ? 'All Publications' : cat}
+        </button>
+      `).join('');
+
+      blogCategoryRow.querySelectorAll('.blog-cat-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          currentFilter = btn.getAttribute('data-cat') || 'ALL';
+          renderCategoryButtons();
+          renderIndexView();
+        });
+      });
+    }
+
+    // Render Index View (Cards + Spotlight)
+    function renderIndexView() {
+      const q = searchQuery.toLowerCase().trim();
+      const filtered = allPosts.filter(post => {
+        const matchCat = currentFilter === 'ALL' || post.category === currentFilter;
+        const matchSearch = !q ||
+          (post.title && post.title.toLowerCase().includes(q)) ||
+          (post.excerpt && post.excerpt.toLowerCase().includes(q)) ||
+          (post.category && post.category.toLowerCase().includes(q)) ||
+          (post.content && post.content.toLowerCase().includes(q));
+        return matchCat && matchSearch;
+      });
+
+      blogArticlesCount.textContent = `Showing ${filtered.length} Publication${filtered.length === 1 ? '' : 's'}`;
+
+      if (filtered.length === 0) {
+        blogSpotlightWrap.innerHTML = '';
+        blogCardsGrid.innerHTML = `
+          <div class="blog-empty-state" style="grid-column: 1 / -1;">
+            <h3>No Publications Found</h3>
+            <p>No articles match "${searchQuery}". Try selecting another category or clear your search.</p>
+            <button class="article-back-btn" style="margin-top: 16px;" onclick="clearFilters()">Reset Filters</button>
+          </div>
+        `;
+        return;
+      }
+
+      // If no search filter is typed and we're looking at ALL, show the first article as spotlight!
+      if (!q && currentFilter === 'ALL' && filtered.length > 0) {
+        const spotlight = filtered[0];
+        const remaining = filtered.slice(1);
+
+        blogSpotlightWrap.innerHTML = `
+          <div class="blog-spotlight-card" onclick="viewArticle('${spotlight.id}')">
+            <div class="blog-spotlight-media">
+              <img src="${spotlight.image || 'assets/images/project_card_1.jpg'}" alt="${spotlight.title}">
+            </div>
+            <div class="blog-spotlight-content">
+              <span class="blog-spotlight-pill">Featured Publication</span>
+              <div class="blog-spotlight-meta">
+                <span>${spotlight.category}</span> &bull; <span>${spotlight.date}</span> &bull; <span>${spotlight.readTime}</span>
+              </div>
+              <h2 class="blog-spotlight-title">${spotlight.title}</h2>
+              <p class="blog-spotlight-excerpt">${spotlight.excerpt}</p>
+              <div class="blog-spotlight-author-row">
+                <span class="blog-spotlight-author-name">${spotlight.author || 'Trivedi Associates Editorial Team'}</span>
+                <span class="blog-spotlight-read-btn">
+                  Read Full Publication &rarr;
+                </span>
+              </div>
+            </div>
+          </div>
+        `;
+
+        renderCards(remaining);
+      } else {
+        blogSpotlightWrap.innerHTML = '';
+        renderCards(filtered);
+      }
+    }
+
+    function renderCards(posts) {
+      if (posts.length === 0) {
+        blogCardsGrid.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--color-text-muted);">
+            No additional publications under this topic.
+          </div>
+        `;
+        return;
+      }
+
+      blogCardsGrid.innerHTML = posts.map(post => `
+        <article class="blog-card" onclick="viewArticle('${post.id}')">
+          <div class="blog-card-media">
+            <img src="${post.image || 'assets/images/project_card_1.jpg'}" alt="${post.title}" loading="lazy">
+            <span class="blog-card-category-badge">${post.category || 'Article'}</span>
+          </div>
+          <div class="blog-card-content">
+            <div class="blog-card-meta">
+              <span>${post.date || '2026'}</span>
+              <span>&bull;</span>
+              <span>${post.readTime || '4 min read'}</span>
+            </div>
+            <h3 class="blog-card-title">${post.title}</h3>
+            <p class="blog-card-excerpt">${post.excerpt}</p>
+            <div class="blog-card-footer">
+              <span class="blog-card-author">${post.author || 'Trivedi Associates'}</span>
+              <span class="blog-card-read-more">
+                Read Publication <span class="arrow">&rarr;</span>
+              </span>
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    window.clearFilters = function() {
+      currentFilter = 'ALL';
+      searchQuery = '';
+      blogSearchInput.value = '';
+      renderCategoryButtons();
+      renderIndexView();
+    };
+
+    // Open Single Article View
+    window.viewArticle = function(id, updateHistory = true) {
+      const post = allPosts.find(p => String(p.id) === String(id) || p.slug === String(id));
+      if (!post) {
+        showIndexView();
+        return;
+      }
+
+      // Populate article elements
+      document.getElementById('artHeroImg').src = post.image || 'assets/images/project_card_1.jpg';
+      document.getElementById('artHeroImg').alt = post.title;
+      document.getElementById('artCategory').textContent = post.category || 'Publication';
+      document.getElementById('artMetaText').textContent = `${post.date || '2026'} • ${post.readTime || '5 min read'}`;
+      document.getElementById('artTitle').textContent = post.title;
+      document.getElementById('artAuthor').textContent = post.author || 'Trivedi Associates Editorial Team';
+
+      const paragraphs = (post.content || '').split('\n').filter(p => p.trim().length > 0);
+      document.getElementById('artContent').innerHTML = paragraphs.map(p => `<p>${p}</p>`).join('');
+
+      document.getElementById('artTakeaway').textContent = post.excerpt ||
+        'Statutory compliance and structural rigor are not regulatory burdens; when integrated early in master planning, they accelerate financial IRR and safeguard developer equity.';
+
+      document.getElementById('artEnquiryLink').href = `index.html#enquiry-form-section`;
+
+      // Toggle views
+      blogIndexView.style.display = 'none';
+      blogArticleView.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (updateHistory) {
+        const url = new URL(window.location);
+        url.searchParams.set('id', post.id);
+        window.history.pushState({ articleId: post.id }, post.title, url);
+      }
+      document.title = `${post.title} | Trivedi Associates`;
+    };
+
+    function showIndexView(updateHistory = true) {
+      blogArticleView.style.display = 'none';
+      blogIndexView.style.display = 'block';
+      document.title = "Architectural Insights & Publications | Trivedi Associates";
+
+      if (updateHistory) {
+        const url = new URL(window.location);
+        url.searchParams.delete('id');
+        window.history.pushState({}, "Architectural Insights & Publications | Trivedi Associates", url.pathname);
+      }
+    }
+
+    articleBackBtn?.addEventListener('click', () => {
+      showIndexView();
+    });
+
+    // Handle Search Input
+    blogSearchInput?.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      renderIndexView();
+    });
+
+    // Check URL parameters for direct deep-linking
+    function checkUrlState() {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id') || window.location.hash.replace('#', '');
+      if (id && id !== 'hero' && id !== 'services' && id !== 'showcase' && id !== 'about' && id !== 'contact') {
+        const found = allPosts.find(p => String(p.id) === String(id) || p.slug === String(id));
+        if (found) {
+          viewArticle(found.id, false);
+          return;
+        }
+      }
+      showIndexView(false);
+    }
+
+    window.addEventListener('popstate', (e) => {
+      checkUrlState();
+    });
+
+    window.addEventListener('storage', (e) => {
+      if (e.key === 'ta_blog_posts') {
+        allPosts = loadPosts();
+        renderCategoryButtons();
+        renderIndexView();
+      }
+    });
+
+    // Initial load
+    renderCategoryButtons();
+    renderIndexView();
+    checkUrlState();
+  </script>
+</body>
+</html>

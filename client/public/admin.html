@@ -709,37 +709,13 @@
 
       <div class="topbar-actions">
         <a href="index.html#showcase" class="btn-secondary">View Projects on Website &#8599;</a>
+        <a href="blog.html" target="_blank" class="btn-secondary">View Blog Page &#8599;</a>
         <button id="logoutBtn" class="btn-secondary" style="color: var(--color-wine); border-color: rgba(91, 20, 34, 0.3);">Sign Out</button>
       </div>
     </header>
 
     <main class="dashboard-container">
       <div id="dashAlert" class="alert-box success"></div>
-
-      <!-- ALWAYS-VISIBLE TOP BAR: QUICK ADD NEW CATEGORY -->
-      <div class="quick-add-category-bar">
-        <div class="quick-add-cat-left">
-          <span class="panel-eyebrow" style="margin-bottom: 2px;">PROJECT CATEGORY BUILDER</span>
-          <div style="font-family: var(--font-serif); font-size: 20px; font-weight: 700; color: var(--color-text-dark);">
-            + Add New Project Category
-          </div>
-          <div style="font-size: 12.5px; color: var(--color-text-muted);">
-            Add a new category heading to the Projects page (e.g. Hospitality, Commercial, Mixed Use, Master Planning, Residential)
-          </div>
-        </div>
-        <form id="topQuickAddCategoryForm" class="quick-add-cat-form">
-          <input
-            type="text"
-            id="topQuickCategoryInput"
-            class="form-input"
-            placeholder="Enter New Category Name (e.g. INDUSTRIAL)..."
-            required
-          >
-          <button type="submit" class="btn-primary" style="width: auto; white-space: nowrap; padding: 12px 24px;">
-            + Add Category
-          </button>
-        </form>
-      </div>
 
       <!-- Navigation Tabs -->
       <div class="tabs-nav">
@@ -752,6 +728,30 @@
 
       <!-- ==================== TAB 1: PROJECT CATEGORIES & RESPECTED IMAGES ==================== -->
       <section id="tabProjects" class="tab-section">
+        <!-- QUICK ADD NEW CATEGORY BAR -->
+        <div class="quick-add-category-bar" style="margin-top: 10px;">
+          <div class="quick-add-cat-left">
+            <span class="panel-eyebrow" style="margin-bottom: 2px;">PROJECT CATEGORY BUILDER</span>
+            <div style="font-family: var(--font-serif); font-size: 20px; font-weight: 700; color: var(--color-text-dark);">
+              + Add New Project Category
+            </div>
+            <div style="font-size: 12.5px; color: var(--color-text-muted);">
+              Add a new category heading to the Projects page (e.g. Hospitality, Commercial, Mixed Use, Master Planning, Residential)
+            </div>
+          </div>
+          <form id="topQuickAddCategoryForm" class="quick-add-cat-form">
+            <input
+              type="text"
+              id="topQuickCategoryInput"
+              class="form-input"
+              placeholder="Enter New Category Name (e.g. INDUSTRIAL)..."
+              required
+            >
+            <button type="submit" class="btn-primary" style="width: auto; white-space: nowrap; padding: 12px 24px;">
+              + Add Category
+            </button>
+          </form>
+        </div>
         <div class="panel-grid" style="margin-bottom: 32px;">
           <!-- Left Card: Create / Manage Categories -->
           <div class="panel-card">
@@ -1151,6 +1151,8 @@
           <p class="panel-subtitle">Submissions received from the website Contact &amp; Enquiry form.</p>
           <div id="leadsListContainer"></div>
         </div>
+      </section>
+
       <!-- ==================== TAB 5: BLOG & ARTICLES MANAGEMENT ==================== -->
       <section id="tabBlog" class="tab-section" style="display: none;">
         <div class="panel-grid" style="margin-bottom: 32px;">

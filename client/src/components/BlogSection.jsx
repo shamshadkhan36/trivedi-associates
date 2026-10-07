@@ -158,6 +158,23 @@ export default function BlogSection() {
               </article>
             ))}
           </div>
+
+          <div style={{ textAlign: 'center', marginTop: '45px' }}>
+            <a
+              href="/blog.html"
+              className="nav-connect-btn"
+              style={{
+                padding: '14px 34px',
+                fontSize: '13px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                textDecoration: 'none'
+              }}
+            >
+              Explore Dedicated Blog &amp; Publications &rarr;
+            </a>
+          </div>
         </div>
       </section>
 
