@@ -640,7 +640,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ----------------- BLOG & ARTICLES MODULE -----------------
-  const BLOG_STORAGE_VERSION = 'v20261011_pmc';
+  const BLOG_STORAGE_VERSION = 'v20261011_only_2_pmc_blogs';
   const DEFAULT_BLOG_POSTS = [
     {
       id: 'blog_pmc_mumbai',
@@ -665,42 +665,6 @@ document.addEventListener('DOMContentLoaded', () => {
       image: "assets/images/project_card_2.jpg",
       excerpt: "A construction project brings structural engineers, architects, MEP vendors, and fabricators together. Learn how a dedicated PMC bridges civil, steel, PEB, and MEP agencies to eliminate costly site clashes and maintain uninterrupted progress.",
       content: "A construction project is never the work of just one person. There are structural engineers, architects, contractors, MEP vendors, suppliers and many others, each with their own schedule and priorities. When these teams work without proper coordination, delays and arguments are almost certain. A Project Management Consultant (PMC) sits at the centre of all this, and PMC collaborates with all agencies for faster and steady work progress. Instead of the owner chasing ten different people, one team keeps everything moving in the same direction.\n\nTake the structure of a building first. Concrete structures are the most common choice for residential towers, hospitals and commercial complexes because they are strong, durable and easy to shape. Steel structures, on the other hand, are preferred when a project needs long spans, higher speed and lighter weight. Choosing between the two is not a small decision, and it affects cost, timeline and maintenance for years. A good PMC works with the design team to compare both options and picks what suits your project, budget and site conditions.\n\nFor factories, warehouses and large industrial sheds, many owners now go for PEB, also known as Pre Engineered Buildings. These are designed and fabricated in a factory and then assembled on site, which saves a lot of time and reduces wastage. But PEB work needs careful planning, because even a small mismatch between the foundation and the steel frame can stop work for days. The PMC checks drawings, tracks fabrication and makes sure the civil and steel teams are in sync.\n\nThen come the services that make a building actually usable: electrical, plumbing, fire fighting, ventilation and air conditioning. Delays often happen here because MEP vendors enter the site late or work without knowing what the structure team has already done. A PMC fixes this by planning the order of work well in advance, checking vendor quality and clearing clashes on paper before they turn into breakages on site. Structural engineers also get timely information, so their designs and site work stay aligned.\n\nIn the end, a project moves fast when everyone knows what to do and when to do it. That is the real value of a PMC. With regular meetings, clear reports and quick decisions, work keeps moving without confusion. If you are planning a concrete, steel or PEB project and want a team that keeps every agency on track, get in touch with us. We will help you build faster, smarter and with complete peace of mind."
-    },
-    {
-      id: 'blog_1',
-      title: "Navigating Mumbai's DCPR 2034: Essential Statutory Approvals for High-Rise Developments",
-      slug: "navigating-mumbai-dcpr-2034",
-      category: "Liaisoning & Approvals",
-      author: "Trivedi Associates Editorial Team",
-      date: "October 2026",
-      readTime: "5 min read",
-      image: "assets/images/project_card_3.jpg",
-      excerpt: "A comprehensive developer's roadmap through MCGM/BMC building proposals, DP 2034 concessions, High-Rise Committee clearances, and CFO Fire NOC compliance to secure timely Commencement Certificates (CC).",
-      content: "Developing real estate landmarks across Greater Mumbai demands rigorous technical precision and deep familiarity with the Development Control and Promotion Regulations (DCPR 2034). For high-density commercial towers and luxury residential high-rises, statutory compliance determines project feasibility and investor returns.\n\nKey Regulatory Pathways Under BMC:\n1. Scrutinized Building Proposal Submission: Preparing master architectural layouts in full conformance with FSI, TDR, and premium fungible compensatory calculations.\n2. Multi-Department Clearances: Coordinating environmental impact assessments (EIA), Chief Fire Officer (CFO) approvals, tree authority sanctions, and civil aviation height permissions.\n3. Transitioning from IOD to CC & OC: Securing the Intimation of Disapproval (IOD), satisfying statutory compliance requisites for the Commencement Certificate (CC), and guiding the project through to Final Occupancy Certificate (OC).\n\nAt Trivedi Associates, our liaisoning vertical bridges neoclassical architectural design with administrative policy, minimizing regulatory bottlenecks for Mumbai’s foremost developers."
-    },
-    {
-      id: 'blog_2',
-      title: "The Financial & Environmental Return of IGBC & LEED Green Building Certifications",
-      slug: "financial-return-igbc-leed-green-building",
-      category: "Green Building",
-      author: "Trivedi Associates Sustainability Cell",
-      date: "September 2026",
-      readTime: "4 min read",
-      image: "assets/images/project_card_1.jpg",
-      excerpt: "How lifecycle energy modeling, water conservation loops, and IGBC/LEED benchmarks reduce operational overhead while commanding premium rental yields and institutional investment.",
-      content: "Sustainable construction has transcended corporate social responsibility to become a decisive commercial advantage. Institutional investors and premium corporate tenants actively prioritize energy-efficient assets that minimize carbon intensity.\n\nCore Advantages of Certified Green Architecture:\n1. Reduced Operational Expenditure (OpEx): Advanced HVAC energy modeling, high-performance low-E double glazing, and passive shading reduce energy draw by 25% to 40%.\n2. Water Neutrality & Conservation: On-site sewage treatment plants (STP), rainwater harvesting, and drip-irrigation landscapes drastically curb municipal water dependency.\n3. Regulatory Incentives: Multiple municipal corporations across India, including Maharashtra authorities, offer additional FSI rebates and concession incentives for certified Green Buildings.\n\nAs accredited IGBC and LEED consultants, Trivedi Associates guides developers through every credit calculation from concept to official certification."
-    },
-    {
-      id: 'blog_3',
-      title: "Mitigating Capital Risk in Redevelopment: The Strategic Role of PMC & Technical Audits",
-      slug: "mitigating-capital-risk-pmc-audits",
-      category: "PMC & Auditing",
-      author: "Trivedi Associates Technical Advisory",
-      date: "August 2026",
-      readTime: "6 min read",
-      image: "assets/images/project_card_2.jpg",
-      excerpt: "Why independent project management consulting (PMC), contractor bill verification, and non-destructive structural audits (NDT) are vital to protecting developer balance sheets.",
-      content: "In large-scale society redevelopment, slum rehabilitation (SRA), and luxury residential transformations across Western and Central Mumbai, cost overruns and structural variances pose critical threats to completion.\n\nWhy Independent PMC is Vital:\n1. Milestone & Contractor Bill Certification: Independent site engineers scrutinize contractor measurements, steel consumption, and concrete grade test reports prior to any financial disbursement.\n2. Non-Destructive Testing (NDT) & Structural Audits: Ultrasonic pulse velocity and rebound hammer tests ensure that load-bearing columns and retrofitted frameworks maintain structural integrity.\n3. Turnkey Schedule Governance: Maintaining strict critical path methods (CPM) prevents the compounding delays that erode project profitability.\n\nWith Trivedi Associates acting as your trusted Project Management Consultant, developers gain total statutory certainty, transparent budget governance, and superior neoclassical execution."
     }
   ];
 
@@ -711,17 +675,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (raw && storedVersion === BLOG_STORAGE_VERSION) {
         const parsed = JSON.parse(raw);
         if (Array.isArray(parsed) && parsed.length > 0) {
-          return parsed;
-        }
-      } else if (raw) {
-        // Upgrade existing posts by prepending any missing default posts
-        let parsed = JSON.parse(raw);
-        if (Array.isArray(parsed)) {
-          const existingIds = new Set(parsed.map(p => p.id));
-          const missingDefaults = DEFAULT_BLOG_POSTS.filter(d => !existingIds.has(d.id));
-          parsed = [...missingDefaults, ...parsed];
-          localStorage.setItem('ta_blog_posts', JSON.stringify(parsed));
-          localStorage.setItem('ta_blog_version', BLOG_STORAGE_VERSION);
           return parsed;
         }
       }

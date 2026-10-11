@@ -12,7 +12,7 @@ const partnerCompanies = [
   },
   {
     name: 'Vyoman Infraprojects Pvt Ltd',
-    src: '/assets/images/partners/vyoman_infraprojects.jpg'
+    src: '/assets/images/partners/vyoman_infraprojects.png'
   },
   {
     name: 'Sundaram Infra Pvt Ltd',
