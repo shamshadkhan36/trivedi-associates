@@ -1456,7 +1456,13 @@
     max-width: 180px !important;
   }
   .brand-logo-sub {
-    display: none !important;
+    display: block !important;
+    font-size: 7px !important;
+    letter-spacing: 0.8px !important;
+    margin-top: 3px !important;
+    line-height: 1.1 !important;
+    white-space: nowrap !important;
+    text-align: center !important;
   }
   .header-nav .nav-links,
   .nav-links {
@@ -1522,6 +1528,12 @@
   .site-header-logo {
     height: 36px !important;
     max-width: 155px !important;
+  }
+  .brand-logo-sub {
+    font-size: 6.5px !important;
+    letter-spacing: 0.6px !important;
+    margin-top: 2px !important;
+    display: block !important;
   }
   .header-nav .nav-connect-btn {
     display: none !important;

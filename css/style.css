@@ -1596,12 +1596,18 @@ button {
     margin: 0 !important;
   }
   .site-header-logo {
-    height: 42px !important;
+    height: 40px !important;
     width: auto !important;
     max-width: 190px !important;
   }
   .brand-logo-sub {
-    display: none !important;
+    display: block !important;
+    font-size: 7px !important;
+    letter-spacing: 0.8px !important;
+    margin-top: 3px !important;
+    line-height: 1.1 !important;
+    white-space: nowrap !important;
+    text-align: center !important;
   }
   .header-nav .nav-links,
   .nav-links {
@@ -1810,6 +1816,12 @@ button {
     height: 34px !important;
     width: auto !important;
     max-width: 150px !important;
+  }
+  .brand-logo-sub {
+    font-size: 6px !important;
+    letter-spacing: 0.5px !important;
+    margin-top: 2px !important;
+    display: block !important;
   }
   .header-nav {
     padding: 8px 12px !important;
