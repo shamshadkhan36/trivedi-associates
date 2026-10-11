@@ -673,7 +673,7 @@
   <div class="login-wrapper" id="loginView">
     <div class="login-card">
       <div class="brand-header" style="justify-content: center; flex-direction: column; align-items: center; text-align: center; gap: 8px;">
-        <img src="assets/images/logo_light_bg.png" alt="Trivedi Associates" style="height: 52px; width: auto; max-width: 260px; object-fit: contain;">
+        <img src="assets/images/trivedi_associates_logo.png?v=20261011_v5" alt="Trivedi Associates" style="height: 52px; width: auto; max-width: 260px; object-fit: contain;">
         <span class="brand-subtitle" style="font-size: 11px; letter-spacing: 2px;">Admin Control Panel</span>
       </div>
 
@@ -703,7 +703,7 @@
   <div class="dashboard-wrapper" id="dashboardView">
     <header class="topbar">
       <div class="brand-header" style="margin: 0; padding: 0; border: none; align-items: center; gap: 14px;">
-        <img src="assets/images/logo_light_bg.png" alt="Trivedi Associates" style="height: 38px; width: auto; max-width: 200px; object-fit: contain;">
+        <img src="assets/images/trivedi_associates_logo.png?v=20261011_v5" alt="Trivedi Associates" style="height: 38px; width: auto; max-width: 200px; object-fit: contain;">
         <span class="brand-subtitle" style="border-left: 1.5px solid var(--color-border); padding-left: 14px; font-size: 11px; letter-spacing: 1.8px;">Control Console</span>
       </div>
 
@@ -1106,10 +1106,10 @@
                   <textarea id="cms_p5Overview" class="form-input" rows="2"></textarea>
                 </div>
                 <label class="form-label">Key Deliverables (1 &ndash; 4):</label>
-                <input type="text" id="cms_p5Del1" class="form-input" style="margin-bottom: 8px;" placeholder="1. Cost Management">
-                <input type="text" id="cms_p5Del2" class="form-input" style="margin-bottom: 8px;" placeholder="2. Audit of the Project">
-                <input type="text" id="cms_p5Del3" class="form-input" style="margin-bottom: 8px;" placeholder="3. Tender and Contract Cost Audit">
-                <input type="text" id="cms_p5Del4" class="form-input" placeholder="4. Final Account and Contract Closure Audit">
+                <input type="text" id="cms_p5Del1" class="form-input" style="margin-bottom: 8px;" placeholder="Cost Management">
+                <input type="text" id="cms_p5Del2" class="form-input" style="margin-bottom: 8px;" placeholder="Audit of the Project">
+                <input type="text" id="cms_p5Del3" class="form-input" style="margin-bottom: 8px;" placeholder="Tender and Contract Cost Audit">
+                <input type="text" id="cms_p5Del4" class="form-input" placeholder="Final Account and Contract Closure Audit">
               </div>
             </div>
           </div>
@@ -1964,7 +1964,7 @@
           if (saved.footerAddressVal === "Trivedi Associates Corporate Chambers, Mumbai, Maharashtra, India") {
             delete saved.footerAddressVal;
           }
-          if (saved.p5Title === "Auditing & Quality Control" || saved.p5Tagline === "Structural, NDT & Quality Audits") {
+          if (saved.p5Title === "Auditing & Quality Control" || saved.p5Tagline === "Structural, NDT & Quality Audits" || (saved.p5Del1 && /^\d+\.\s*/.test(saved.p5Del1))) {
             delete saved.p5Title;
             delete saved.p5Tagline;
             delete saved.p5Overview;

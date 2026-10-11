@@ -388,7 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (saved.footerAddressVal === "Trivedi Associates Corporate Chambers, Mumbai, Maharashtra, India") {
           delete saved.footerAddressVal;
         }
-        if (saved.p5Title === "Auditing & Quality Control" || saved.p5Tagline === "Structural, NDT & Quality Audits") {
+        if (saved.p5Title === "Auditing & Quality Control" || saved.p5Tagline === "Structural, NDT & Quality Audits" || (saved.p5Del1 && /^\d+\.\s*/.test(saved.p5Del1))) {
           delete saved.p5Title;
           delete saved.p5Tagline;
           delete saved.p5Overview;
