@@ -69,12 +69,13 @@ export default function App() {
 
       {/* 6. About Trivedi Associates */}
       <section className="about-section" id="about">
+        <div className="about-header-centered" style={{ textAlign: 'center', marginBottom: '44px' }}>
+          <h2 className="services-main-title" id="aboutMainTitle" style={{ textAlign: 'center', marginBottom: 0 }}>
+            ABOUT <span className="italic-serif">US</span>
+          </h2>
+        </div>
         <div className="about-container">
           <div className="about-text-col">
-            <h2 className="services-main-title" style={{ textAlign: 'left', marginBottom: '18px' }}>
-              Engineering Landmarks with <br />
-              <span className="italic-serif">Timeless Precision</span>
-            </h2>
             <p className="about-paragraph">
               Headquartered in Mumbai, <strong>Trivedi Associates</strong> is a premier multidisciplinary consultancy uniting master design planning, rigorous project management (PMC), municipal &amp; government liaisoning, IGBC/LEED green building advisory, and technical auditing under one integrated practice.
             </p>

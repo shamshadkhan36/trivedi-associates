@@ -446,13 +446,40 @@
   font-family: var(--font-serif);
   font-size: clamp(34px, 4.5vw, 52px);
   color: var(--color-text-dark);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.25;
+  letter-spacing: -0.02em;
   margin-bottom: 16px;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .services-main-title .italic-serif {
   color: var(--color-wine);
+}
+
+.projects-page-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(34px, 4.5vw, 52px);
+  font-weight: 700;
+  color: var(--color-text-dark);
+  margin-bottom: 32px;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
+}
+
+.about-header-centered {
+  max-width: 1200px;
+  margin: 0 auto 44px auto;
+  text-align: center;
+  padding: 0 24px;
+}
+
+.about-header-centered .services-main-title {
+  text-align: center;
+  margin-bottom: 0;
 }
 
 .services-sub-desc {

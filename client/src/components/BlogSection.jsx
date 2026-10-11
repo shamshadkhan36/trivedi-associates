@@ -46,8 +46,8 @@ export default function BlogSection() {
   return (
     <section className="blog-section" id="blog">
       <div className="blog-container">
-        <div className="blog-header-centered">
-          <h2 className="services-main-title">INSIGHTS</h2>
+        <div className="blog-header-centered" style={{ textAlign: 'center', marginBottom: '36px' }}>
+          <h2 className="services-main-title" style={{ textAlign: 'center', marginBottom: 0 }}>INSIGHTS</h2>
         </div>
 
         <div className="blog-posts-grid">
