@@ -71,7 +71,6 @@ export default function App() {
       <section className="about-section" id="about">
         <div className="about-container">
           <div className="about-text-col">
-            <span className="services-eyebrow">ABOUT THE PRACTICE &bull; TRIVEDI ASSOCIATES</span>
             <h2 className="services-main-title" style={{ textAlign: 'left', marginBottom: '18px' }}>
               Engineering Landmarks with <br />
               <span className="italic-serif">Timeless Precision</span>

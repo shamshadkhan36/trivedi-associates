@@ -325,7 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
     p4Title: "Green Building Consultant",
     p4Tagline: "Sustainability & Green Building Advisory",
     p4Overview: "Eco-conscious design review, energy and water-saving methods, and green rating facilitation reducing lifecycle operating costs.",
-    p4Del1: "IGBC & LEED Green Building Certifications",
+    p4Del1: "IGBC Green Building Certifications",
     p4Del2: "Sustainable Architecture & Building Envelope Review",
     p4Del3: "Energy, Water & Waste Management Frameworks",
     p4Del4: "Eco-Friendly Material Selection & Embodied Carbon Advisory",
@@ -402,6 +402,9 @@ document.addEventListener('DOMContentLoaded', () => {
           delete saved.aboutP1;
           delete saved.aboutP2;
         }
+        if (saved.p4Del1 && saved.p4Del1.includes("LEED")) {
+          delete saved.p4Del1;
+        }
       }
       const merged = Object.assign({}, DEFAULT_SITE_CONTENT, saved);
       applyContentMap(merged);
@@ -412,6 +415,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (res.ok) {
           const srvData = await res.json();
           if (srvData && srvData.success && srvData.data && Object.keys(srvData.data).length > 0) {
+            if (srvData.data.p4Del1 && srvData.data.p4Del1.includes("LEED")) {
+              delete srvData.data.p4Del1;
+            }
             const finalMerged = Object.assign({}, merged, srvData.data);
             applyContentMap(finalMerged);
             localStorage.setItem('ta_site_content', JSON.stringify(finalMerged));

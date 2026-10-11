@@ -76,7 +76,7 @@ const servicePillars = [
     ),
     overview: 'Eco-conscious design review, energy and water-saving methods, and green rating facilitation reducing lifecycle operating costs.',
     deliverables: [
-      'IGBC & LEED Green Building Certifications',
+      'IGBC Green Building Certifications',
       'Sustainable Architecture & Building Envelope Review',
       'Energy, Water & Waste Management Frameworks',
       'Eco-Friendly Material Selection & Embodied Carbon Advisory'
@@ -206,7 +206,7 @@ export default function ExpandableServices({ onSelectService }) {
                     className="h-enquire-btn"
                     onClick={(e) => {
                       e.stopPropagation();
-                      onSelectService(pillar.id === 'auditing' ? 'Comprehensive Advisory' : pillar.title);
+                      onSelectService(pillar.title);
                     }}
                   >
                     Enquire for {pillar.number} &rarr;

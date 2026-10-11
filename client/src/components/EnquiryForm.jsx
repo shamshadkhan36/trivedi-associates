@@ -231,6 +231,7 @@ export default function EnquiryForm({ preselectedService }) {
                   <option value="Project Management Consultant (PMC)">2. Project Management Consultant (PMC)</option>
                   <option value="Liaisoning & Approvals">3. Liaisoning &amp; Approvals</option>
                   <option value="Green Building Consultant">4. Green Building Consultant</option>
+                  <option value="Auditing and Cost Management">5. Auditing and Cost Management</option>
                   <option value="Comprehensive Advisory">Comprehensive Turnkey Advisory</option>
                 </select>
               </div>

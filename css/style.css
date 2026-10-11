@@ -4,8 +4,8 @@
    ========================================================================== */
 
 :root {
-  --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
-  --font-italic-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-serif: 'Plus Jakarta Sans', 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-italic-serif: 'Plus Jakarta Sans', 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-sans: 'Plus Jakarta Sans', 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
   
   --color-cream: #FFFFFF;
@@ -393,10 +393,10 @@ button {
 .hero-title {
   font-family: var(--font-serif);
   font-size: clamp(34px, 5.2vw, 68px);
-  font-weight: 400;
-  line-height: 1.2;
+  font-weight: 700;
+  line-height: 1.18;
   margin-bottom: 20px;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.02em;
   color: #FFFFFF !important;
 }
 
@@ -550,8 +550,9 @@ button {
   font-family: var(--font-serif);
   font-size: clamp(34px, 4.5vw, 52px);
   color: var(--color-text-dark);
-  font-weight: 400;
-  line-height: 1.25;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
   margin-bottom: 16px;
 }
 

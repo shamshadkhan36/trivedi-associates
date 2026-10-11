@@ -10,7 +10,7 @@
   <meta http-equiv="Expires" content="0">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png?v=20261011_bricklogo">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,9 +22,9 @@
        Trivedi Associates Admin Console - Matches Website Luxury Dark Maroon Theme
        ========================================================================== */
     :root {
-      --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
-      --font-italic-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
-      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-serif: 'Plus Jakarta Sans', 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-italic-serif: 'Plus Jakarta Sans', 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-sans: 'Plus Jakarta Sans', 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
 
       --color-cream: #FFFFFF;
       --color-cream-soft: #FFFFFF;
@@ -1920,7 +1920,7 @@
       p4Title: "Green Building Consultant",
       p4Tagline: "Sustainability & Green Building Advisory",
       p4Overview: "Eco-conscious design review, energy and water-saving methods, and green rating facilitation reducing lifecycle operating costs.",
-      p4Del1: "IGBC & LEED Green Building Certifications",
+      p4Del1: "IGBC Green Building Certifications",
       p4Del2: "Sustainable Architecture & Building Envelope Review",
       p4Del3: "Energy, Water & Waste Management Frameworks",
       p4Del4: "Eco-Friendly Material Selection & Embodied Carbon Advisory",
@@ -1973,6 +1973,9 @@
             delete saved.p5Del3;
             delete saved.p5Del4;
           }
+          if (saved.p4Del1 && saved.p4Del1.includes("LEED")) {
+            delete saved.p4Del1;
+          }
         }
       } catch (e) {}
 
@@ -1983,6 +1986,9 @@
           const srv = await res.json();
           if (srv && srv.success && srv.data && Object.keys(srv.data).length > 0) {
             saved = Object.assign({}, saved, srv.data);
+            if (saved.p4Del1 && saved.p4Del1.includes("LEED")) {
+              delete saved.p4Del1;
+            }
           }
         }
       } catch (e) {}
