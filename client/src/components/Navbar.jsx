@@ -16,6 +16,7 @@ export default function Navbar({ onOpenConnect, onOpenSearch, onOpenDrawer, onOp
       <a href="#" className="brand-logo" aria-label="Trivedi Associates Home">
         <div className="brand-logo-media">
           <img src="/assets/images/trivedi_associates_logo.png?v=20261012_hd" alt="Trivedi Associates" className="site-header-logo" />
+          <span className="brand-logo-sub" id="headerBrandSub">DESIGN &amp; PROJECT MANAGEMENT CONSULTANT</span>
         </div>
       </a>
 

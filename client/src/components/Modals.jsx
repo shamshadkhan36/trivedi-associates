@@ -243,7 +243,10 @@ export function MobileDrawer({ isOpen, onClose, onOpenConnect }) {
       <div className="mobile-nav-drawer" onClick={(e) => e.stopPropagation()}>
         <div className="drawer-header">
           <a href="#" onClick={onClose} className="brand-logo" aria-label="Trivedi Associates Home">
-            <img src="/assets/images/trivedi_associates_logo.png?v=20261012_hd" alt="Trivedi Associates" className="site-header-logo" style={{ height: '38px', width: 'auto', maxWidth: '175px' }} />
+            <div className="brand-logo-media">
+              <img src="/assets/images/trivedi_associates_logo.png?v=20261012_hd" alt="Trivedi Associates" className="site-header-logo" style={{ height: '38px', width: 'auto', maxWidth: '175px' }} />
+              <span className="brand-logo-sub" style={{ fontSize: '7.5px', letterSpacing: '1.2px' }}>DESIGN &amp; PROJECT MANAGEMENT CONSULTANT</span>
+            </div>
           </a>
           <button className="modal-close-btn" onClick={onClose} aria-label="Close Drawer" style={{ position: 'static' }}>
             &times;
