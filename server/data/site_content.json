@@ -1,7 +1,7 @@
 {
   "headerBrandSub": "DESIGN & PROJECT MANAGEMENT CONSULTANT",
   "footerBrandSub": "DESIGN & PROJECT MANAGEMENT CONSULTANT",
-  "footerBrandDesc": "Mastering the art of neoclassical design and superior craftsmanship. 5 core services: Design & Planning, PMC, Liaisoning, Green Building, and Auditing.",
+  "footerBrandDesc": "Mastering the art of neoclassical design and superior craftsmanship. 5 core services: Design & Planning, PMC, Liaisoning, Green Building, and Auditing and Cost Management.",
   "servicesMainTitle": "OUR 5 CORE SERVICES",
 
   "p1Title": "Design & Planning",
@@ -36,13 +36,13 @@
   "p4Del3": "Energy, Water & Waste Management Frameworks",
   "p4Del4": "Eco-Friendly Material Selection & Embodied Carbon Advisory",
 
-  "p5Title": "Auditing & Quality Control",
-  "p5Tagline": "Structural, NDT & Quality Audits",
-  "p5Overview": "Comprehensive structural stability assessments, independent construction quality control, non-destructive testing (NDT), and municipal compliance certifications.",
-  "p5Del1": "Structural Stability & BMC Rule 353B Audits",
-  "p5Del2": "Quality Assurance & Non-Destructive Testing (NDT)",
-  "p5Del3": "MEP & Fire Life-Safety Compliance Inspections",
-  "p5Del4": "Structural Distress, Dilapidation & Retrofitting Advisory",
+  "p5Title": "Auditing and Cost Management",
+  "p5Tagline": "Project and Financial Audit",
+  "p5Overview": "Independent project and financial auditing, lifecycle cost control, tender risk assessment, and contractual account closures for developers and institutions.",
+  "p5Del1": "1. Cost Management",
+  "p5Del2": "2. Audit of the Project",
+  "p5Del3": "3. Tender and Contract Cost Audit",
+  "p5Del4": "4. Final Account and Contract Closure Audit",
 
   "aboutMainTitle": "Engineering Landmarks with Timeless Precision",
   "aboutP1": "Headquartered in Mumbai, Trivedi Associates is a premier multidisciplinary consultancy uniting master design planning, rigorous project management (PMC), municipal & government liaisoning, and IGBC/LEED green building advisory under one integrated practice.",

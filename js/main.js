@@ -132,6 +132,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // ----------------- ENQUIRY FORM SUBMISSION -----------------
   const enquiryForm = document.getElementById('publicEnquiryForm');
   const enquirySuccessBox = document.getElementById('enquirySuccessBox');
+  const enquiryErrorBox = document.getElementById('enquiryErrorBox');
+  const enquiryErrorMsg = document.getElementById('enquiryErrorMsg');
   const enquiryWhatsappDirectBtn = document.getElementById('enquiryWhatsappDirectBtn');
   const enquirySuccessMsg = document.getElementById('enquirySuccessMsg');
 
@@ -145,6 +147,41 @@ document.addEventListener('DOMContentLoaded', () => {
       const phone = document.getElementById('enqPhone')?.value.trim();
       const email = document.getElementById('enqEmail')?.value.trim();
       const message = document.getElementById('enqMessage')?.value.trim();
+
+      const showError = (msg) => {
+        if (enquirySuccessBox) enquirySuccessBox.style.display = 'none';
+        if (enquiryErrorBox && enquiryErrorMsg) {
+          enquiryErrorMsg.textContent = msg;
+          enquiryErrorBox.style.display = 'block';
+          enquiryErrorBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+          alert(msg);
+        }
+      };
+
+      const hideError = () => {
+        if (enquiryErrorBox) enquiryErrorBox.style.display = 'none';
+      };
+
+      // Client-side Validation
+      if (!name || name.length < 2) {
+        showError('Please enter your full name (minimum 2 characters).');
+        return;
+      }
+
+      const cleanPhoneDigits = (phone || '').replace(/\D/g, '');
+      if (!cleanPhoneDigits || cleanPhoneDigits.length < 8) {
+        showError('Please provide a valid contact number (minimum 8 to 10 digits).');
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email || !emailRegex.test(email)) {
+        showError('Please enter a valid email address (e.g. yourname@domain.com).');
+        return;
+      }
+
+      hideError();
 
       const submitBtn = enquiryForm.querySelector('button[type="submit"]');
       const origText = submitBtn.textContent;
@@ -172,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Transmit directly to server database
       try {
-        await fetch('/api/contact', {
+        const res = await fetch('/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -183,29 +220,38 @@ document.addEventListener('DOMContentLoaded', () => {
             message
           })
         });
+
+        if (!res.ok) {
+          const errData = await res.json().catch(() => ({}));
+          throw new Error(errData.message || 'Server encountered an issue recording your enquiry. Please reach out to us directly via WhatsApp.');
+        }
+
+        // Success handling
+        hideError();
+
+        // Prepare direct WhatsApp link to Mr. Trivedi (+91 7977117256)
+        const waText = `Hello Trivedi Associates,\n\nI have submitted an enquiry on your website.\n*Name:* ${name}\n*Organization:* ${detail || 'N/A'}\n*Service:* ${service}\n*Phone:* ${phone}\n*Email:* ${email}\n*Requirements:* ${message || 'N/A'}`;
+        const waUrl = `https://wa.me/917977117256?text=${encodeURIComponent(waText)}`;
+
+        if (enquiryWhatsappDirectBtn) {
+          enquiryWhatsappDirectBtn.href = waUrl;
+        }
+        if (enquirySuccessMsg) {
+          enquirySuccessMsg.textContent = `Thank you, ${name}! Your consultation brief has been recorded. Our senior consultant will connect with you promptly at ${phone}. You can also connect immediately below:`;
+        }
+        if (enquirySuccessBox) {
+          enquirySuccessBox.style.display = 'block';
+          enquirySuccessBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        enquiryForm.reset();
       } catch (err) {
         console.warn('Server contact POST warning:', err);
+        showError(err.message || 'Unable to connect to server. Please check your internet connection or contact us via WhatsApp.');
       } finally {
         submitBtn.textContent = origText;
         submitBtn.disabled = false;
       }
-
-      // Prepare direct WhatsApp link to Mr. Trivedi (+91 7977117256)
-      const waText = `Hello Trivedi Associates,\n\nI have submitted an enquiry on your website.\n*Name:* ${name}\n*Organization:* ${detail || 'N/A'}\n*Service:* ${service}\n*Phone:* ${phone}\n*Email:* ${email}\n*Requirements:* ${message || 'N/A'}`;
-      const waUrl = `https://wa.me/917977117256?text=${encodeURIComponent(waText)}`;
-
-      if (enquiryWhatsappDirectBtn) {
-        enquiryWhatsappDirectBtn.href = waUrl;
-      }
-      if (enquirySuccessMsg) {
-        enquirySuccessMsg.textContent = `Thank you, ${name}! Your consultation brief has been recorded. Our senior consultant will connect with you promptly at ${phone}. You can also connect immediately below:`;
-      }
-      if (enquirySuccessBox) {
-        enquirySuccessBox.style.display = 'block';
-        enquirySuccessBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
-
-      enquiryForm.reset();
     });
   }
 
@@ -224,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const DEFAULT_SITE_CONTENT = {
     headerBrandSub: "DESIGN & PROJECT MANAGEMENT CONSULTANT",
     footerBrandSub: "DESIGN & PROJECT MANAGEMENT CONSULTANT",
-    footerBrandDesc: "Mastering the art of neoclassical design and superior craftsmanship. 5 core services: Design & Planning, PMC, Liaisoning, Green Building, and Auditing.",
+    footerBrandDesc: "Mastering the art of neoclassical design and superior craftsmanship. 5 core services: Design & Planning, PMC, Liaisoning, Green Building, and Auditing and Cost Management.",
     servicesMainTitle: "OUR 5 CORE SERVICES",
 
     // Pillar 1: Design & Planning
@@ -263,14 +309,14 @@ document.addEventListener('DOMContentLoaded', () => {
     p4Del3: "Energy, Water & Waste Management Frameworks",
     p4Del4: "Eco-Friendly Material Selection & Embodied Carbon Advisory",
 
-    // Pillar 5: Auditing & Quality Control
-    p5Title: "Auditing & Quality Control",
-    p5Tagline: "Structural, NDT & Quality Audits",
-    p5Overview: "Comprehensive structural stability assessments, independent construction quality control, non-destructive testing (NDT), and municipal compliance certifications.",
-    p5Del1: "Structural Stability & BMC Rule 353B Audits",
-    p5Del2: "Quality Assurance & Non-Destructive Testing (NDT)",
-    p5Del3: "MEP & Fire Life-Safety Compliance Inspections",
-    p5Del4: "Structural Distress, Dilapidation & Retrofitting Advisory",
+    // Pillar 5: Auditing and Cost Management
+    p5Title: "Auditing and Cost Management",
+    p5Tagline: "Project and Financial Audit",
+    p5Overview: "Comprehensive project and financial auditing, bill verification, tender cost auditing, and final account closures to protect project capital.",
+    p5Del1: "Cost Management",
+    p5Del2: "Audit of the Project",
+    p5Del3: "Tender and Contract Cost Audit",
+    p5Del4: "Final Account and Contract Closure Audit",
 
     // About Section
     aboutMainTitle: "Engineering Landmarks with <br><span class=\"italic-serif\">Timeless Precision</span>",
@@ -312,11 +358,20 @@ document.addEventListener('DOMContentLoaded', () => {
         if (saved.servicesMainTitle === "OUR 4 CORE PILLARS" || saved.servicesMainTitle === "OUR 5 CORE PILLARS") {
           delete saved.servicesMainTitle;
         }
-        if (saved.footerBrandDesc && saved.footerBrandDesc.includes("4 core")) {
+        if (saved.footerBrandDesc && (saved.footerBrandDesc.includes("4 core") || !saved.footerBrandDesc.includes("Cost Management"))) {
           delete saved.footerBrandDesc;
         }
         if (saved.footerAddressVal === "Trivedi Associates Corporate Chambers, Mumbai, Maharashtra, India") {
           delete saved.footerAddressVal;
+        }
+        if (saved.p5Title === "Auditing & Quality Control" || saved.p5Tagline === "Structural, NDT & Quality Audits") {
+          delete saved.p5Title;
+          delete saved.p5Tagline;
+          delete saved.p5Overview;
+          delete saved.p5Del1;
+          delete saved.p5Del2;
+          delete saved.p5Del3;
+          delete saved.p5Del4;
         }
       }
       const merged = Object.assign({}, DEFAULT_SITE_CONTENT, saved);

@@ -85,8 +85,8 @@ const servicePillars = [
   {
     id: 'auditing',
     number: '05',
-    title: 'Auditing & Quality Control',
-    tagline: 'Structural, NDT & Quality Audits',
+    title: 'Auditing and Cost Management',
+    tagline: 'Project and Financial Audit',
     icon: (
       <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.8">
         <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
@@ -94,12 +94,12 @@ const servicePillars = [
         <path d="m9 14 2 2 4-4" />
       </svg>
     ),
-    overview: 'Comprehensive structural stability assessments, independent construction quality control, non-destructive testing (NDT), and municipal compliance certifications.',
+    overview: 'Comprehensive project and financial auditing, bill verification, tender cost auditing, and final account closures to protect project capital.',
     deliverables: [
-      'Structural Stability & BMC Rule 353B Audits',
-      'Quality Assurance & Non-Destructive Testing (NDT)',
-      'MEP & Fire Life-Safety Compliance Inspections',
-      'Structural Distress, Dilapidation & Retrofitting Advisory'
+      'Cost Management',
+      'Audit of the Project',
+      'Tender and Contract Cost Audit',
+      'Final Account and Contract Closure Audit'
     ]
   }
 ];

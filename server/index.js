@@ -35,11 +35,11 @@ if (!fs.existsSync(SITE_CONTENT_FILE)) {
 }
 
 // Helpers
-const readData = (filePath) => {
+const readData = (filePath, defaultVal = []) => {
   try {
     return JSON.parse(fs.readFileSync(filePath, 'utf8'));
   } catch (e) {
-    return [];
+    return defaultVal;
   }
 };
 
@@ -67,7 +67,7 @@ app.get('/api/health', (req, res) => {
   res.json({
     status: 'online',
     brand: 'Trivedi Associates',
-    domain: 'Trivedi Associates . Com',
+    domain: 'trivediassociates.com',
     contact: '7977117256',
     email: 'trivedi.associates13@gmail.com',
     timestamp: new Date().toISOString()
@@ -76,31 +76,53 @@ app.get('/api/health', (req, res) => {
 
 // Get Projects (Public for Website Carousel & Showcase)
 app.get('/api/projects', (req, res) => {
-  const projects = readData(PROJECTS_FILE);
+  const projects = readData(PROJECTS_FILE, []);
   res.json({ success: true, count: projects.length, data: projects });
 });
 
 // Get Website CMS Content (Public)
 app.get('/api/content', (req, res) => {
-  const content = readData(SITE_CONTENT_FILE);
+  const content = readData(SITE_CONTENT_FILE, {});
   res.json({ success: true, data: content });
 });
 
 // Get Inquiries (Public & Admin Lead Synchronization)
 app.get('/api/inquiries', (req, res) => {
-  const inquiries = readData(INQUIRIES_FILE);
+  const inquiries = readData(INQUIRIES_FILE, []);
   res.json({ success: true, count: inquiries.length, data: inquiries });
 });
 
 // Contact / Consultation Inquiry API (Public)
 app.post('/api/contact', (req, res) => {
   try {
-    const { name, phone, email, interest, message } = req.body;
+    const { name, phone, email, interest, message } = req.body || {};
 
-    if (!name || !phone || !email) {
+    if (!name || typeof name !== 'string' || !name.trim()) {
       return res.status(400).json({
         success: false,
-        error: 'Name, phone number, and email are required fields.'
+        error: 'Please enter your full name.'
+      });
+    }
+
+    if (!phone || typeof phone !== 'string' || !phone.trim()) {
+      return res.status(400).json({
+        success: false,
+        error: 'Please enter your contact phone number.'
+      });
+    }
+
+    const cleanedDigits = phone.replace(/\D/g, '');
+    if (cleanedDigits.length < 8) {
+      return res.status(400).json({
+        success: false,
+        error: 'Please enter a valid phone number (minimum 8 digits).'
+      });
+    }
+
+    if (!email || typeof email !== 'string' || !email.includes('@')) {
+      return res.status(400).json({
+        success: false,
+        error: 'Please enter a valid email address.'
       });
     }
 
@@ -109,13 +131,13 @@ app.post('/api/contact', (req, res) => {
       name: name.trim(),
       phone: phone.trim(),
       email: email.trim(),
-      interest: interest || 'General Consultation',
-      message: message ? message.trim() : '',
+      interest: interest ? String(interest).trim() : 'General Consultation',
+      message: message ? String(message).trim() : '',
       status: 'New',
       createdAt: new Date().toISOString()
     };
 
-    const inquiries = readData(INQUIRIES_FILE);
+    const inquiries = readData(INQUIRIES_FILE, []);
     inquiries.unshift(newInquiry);
     writeData(INQUIRIES_FILE, inquiries);
 
@@ -124,13 +146,14 @@ app.post('/api/contact', (req, res) => {
     return res.status(201).json({
       success: true,
       message: 'Consultation request submitted successfully. Our senior relationship manager will contact you promptly.',
-      inquiryId: newInquiry.id
+      inquiryId: newInquiry.id,
+      data: newInquiry
     });
   } catch (error) {
     console.error('Error processing inquiry:', error);
     return res.status(500).json({
       success: false,
-      error: 'An internal server error occurred while processing your request.'
+      error: 'An internal server error occurred while processing your request. Please call +91 7977117256 directly.'
     });
   }
 });

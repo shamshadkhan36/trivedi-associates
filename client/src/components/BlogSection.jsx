@@ -172,7 +172,7 @@ export default function BlogSection() {
                 textDecoration: 'none'
               }}
             >
-              Explore Dedicated Blog &amp; Publications &rarr;
+              Explore Dedicated Insights &amp; Publications &rarr;
             </a>
           </div>
         </div>

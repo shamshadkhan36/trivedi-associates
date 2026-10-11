@@ -26,20 +26,36 @@ export default function EnquiryForm({ preselectedService }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus({ loading: true, message: '', isSuccess: false, waUrl: '' });
 
-    const currentName = formData.name;
-    const currentPhone = formData.phone;
+    const currentName = formData.name.trim();
+    const currentPhone = formData.phone.trim();
     const currentService = formData.service;
-    const currentDetail = formData.detail;
-    const currentEmail = formData.email;
-    const currentMessage = formData.message;
+    const currentDetail = formData.detail.trim();
+    const currentEmail = formData.email.trim();
+    const currentMessage = formData.message.trim();
+
+    if (!currentName || currentName.length < 2) {
+      setStatus({ loading: false, message: 'Please enter your full name (minimum 2 characters).', isSuccess: false, waUrl: '' });
+      return;
+    }
+    const cleanPhoneDigits = currentPhone.replace(/\D/g, '');
+    if (!cleanPhoneDigits || cleanPhoneDigits.length < 8) {
+      setStatus({ loading: false, message: 'Please provide a valid contact number (minimum 8 to 10 digits).', isSuccess: false, waUrl: '' });
+      return;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!currentEmail || !emailRegex.test(currentEmail)) {
+      setStatus({ loading: false, message: 'Please enter a valid email address (e.g. yourname@domain.com).', isSuccess: false, waUrl: '' });
+      return;
+    }
+
+    setStatus({ loading: true, message: '', isSuccess: false, waUrl: '' });
 
     const waText = `Hello Trivedi Associates,\n\nI have submitted an enquiry on your website.\n*Name:* ${currentName}\n*Organization:* ${currentDetail || 'N/A'}\n*Service:* ${currentService}\n*Phone:* ${currentPhone}\n*Email:* ${currentEmail}\n*Requirements:* ${currentMessage || 'N/A'}`;
     const waUrl = `https://wa.me/917977117256?text=${encodeURIComponent(waText)}`;
 
     try {
-      await fetch('/api/contact', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -50,25 +66,36 @@ export default function EnquiryForm({ preselectedService }) {
           message: currentMessage
         })
       });
+
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.message || 'Server error recording your enquiry.');
+      }
+
+      setStatus({
+        loading: false,
+        message: `Thank you, ${currentName}! Your project brief has been recorded. Our senior consultant will connect with you promptly at ${currentPhone}.`,
+        isSuccess: true,
+        waUrl
+      });
+
+      setFormData({
+        name: '',
+        detail: '',
+        service: 'Design & Planning',
+        phone: '',
+        email: '',
+        message: ''
+      });
     } catch (err) {
       console.warn('POST /api/contact error:', err);
+      setStatus({
+        loading: false,
+        message: err.message || 'Unable to submit enquiry. Please connect with us directly on WhatsApp.',
+        isSuccess: false,
+        waUrl: `https://wa.me/917977117256?text=${encodeURIComponent(waText)}`
+      });
     }
-
-    setStatus({
-      loading: false,
-      message: `Thank you, ${currentName}! Your project brief has been recorded. Our senior consultant will connect with you promptly at ${currentPhone}.`,
-      isSuccess: true,
-      waUrl
-    });
-
-    setFormData({
-      name: '',
-      detail: '',
-      service: 'Design & Planning',
-      phone: '',
-      email: '',
-      message: ''
-    });
   };
 
   return (
@@ -204,7 +231,7 @@ export default function EnquiryForm({ preselectedService }) {
                   <option value="Project Management Consultant (PMC)">2. Project Management Consultant (PMC)</option>
                   <option value="Liaisoning & Approvals">3. Liaisoning &amp; Approvals</option>
                   <option value="Green Building Consultant">4. Green Building Consultant</option>
-                  <option value="Auditing & Quality Control">5. Auditing &amp; Quality Control</option>
+                  <option value="Auditing and Cost Management">5. Auditing and Cost Management</option>
                   <option value="Comprehensive Advisory">Comprehensive Turnkey Advisory</option>
                 </select>
               </div>

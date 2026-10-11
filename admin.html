@@ -709,7 +709,7 @@
 
       <div class="topbar-actions">
         <a href="index.html#showcase" class="btn-secondary">View Projects on Website &#8599;</a>
-        <a href="blog.html" target="_blank" class="btn-secondary">View Blog Page &#8599;</a>
+        <a href="blog.html" target="_blank" class="btn-secondary">View Insights Page &#8599;</a>
         <button id="logoutBtn" class="btn-secondary" style="color: var(--color-wine); border-color: rgba(91, 20, 34, 0.3);">Sign Out</button>
       </div>
     </header>
@@ -723,7 +723,7 @@
         <button class="tab-btn" data-tab="banner">2. Hero Banner Change</button>
         <button class="tab-btn" data-tab="cms">3. Edit Website Content (Full CMS)</button>
         <button class="tab-btn" data-tab="leads">4. Client Enquiries</button>
-        <button class="tab-btn" data-tab="blog">5. Blog &amp; Articles</button>
+        <button class="tab-btn" data-tab="blog">5. Insights &amp; Articles</button>
       </div>
 
       <!-- ==================== TAB 1: PROJECT CATEGORIES & RESPECTED IMAGES ==================== -->
@@ -1087,11 +1087,11 @@
                 <input type="text" id="cms_p4Del4" class="form-input" placeholder="4. Eco friendly material advisory">
               </div>
 
-              <!-- Pillar 5: Auditing -->
+              <!-- Pillar 5: Auditing and Cost Management -->
               <div style="background: var(--color-cream-soft); border: 1px solid var(--color-border); border-top: 3px solid var(--color-wine); border-radius: 8px; padding: 18px;">
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
                   <span style="background: var(--color-wine); color: #fff; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 3px; letter-spacing: 1px;">PILLAR 05</span>
-                  <span style="font-size: 12px; font-weight: 600; color: var(--color-text-muted);">Auditing</span>
+                  <span style="font-size: 12px; font-weight: 600; color: var(--color-text-muted);">Auditing and Cost Management</span>
                 </div>
                 <div class="form-group">
                   <label class="form-label">Card Title</label>
@@ -1106,10 +1106,10 @@
                   <textarea id="cms_p5Overview" class="form-input" rows="2"></textarea>
                 </div>
                 <label class="form-label">Key Deliverables (1 &ndash; 4):</label>
-                <input type="text" id="cms_p5Del1" class="form-input" style="margin-bottom: 8px;" placeholder="1. Structural stability & safety audit">
-                <input type="text" id="cms_p5Del2" class="form-input" style="margin-bottom: 8px;" placeholder="2. Quality assurance & material testing">
-                <input type="text" id="cms_p5Del3" class="form-input" style="margin-bottom: 8px;" placeholder="3. MEP & fire compliance inspections">
-                <input type="text" id="cms_p5Del4" class="form-input" placeholder="4. Structural distress & repair advisory">
+                <input type="text" id="cms_p5Del1" class="form-input" style="margin-bottom: 8px;" placeholder="1. Cost Management">
+                <input type="text" id="cms_p5Del2" class="form-input" style="margin-bottom: 8px;" placeholder="2. Audit of the Project">
+                <input type="text" id="cms_p5Del3" class="form-input" style="margin-bottom: 8px;" placeholder="3. Tender and Contract Cost Audit">
+                <input type="text" id="cms_p5Del4" class="form-input" placeholder="4. Final Account and Contract Closure Audit">
               </div>
             </div>
           </div>
@@ -1162,14 +1162,14 @@
         </div>
       </section>
 
-      <!-- ==================== TAB 5: BLOG & ARTICLES MANAGEMENT ==================== -->
+      <!-- ==================== TAB 5: INSIGHTS & ARTICLES MANAGEMENT ==================== -->
       <section id="tabBlog" class="tab-section" style="display: none;">
         <div class="panel-grid" style="margin-bottom: 32px;">
           <!-- Left Card: Write & Publish New Article -->
           <div class="panel-card">
             <span class="panel-eyebrow">STEP 1 &bull; WRITE &amp; PUBLISH ARTICLE</span>
-            <h2 class="panel-title">Publish New Blog Post</h2>
-            <p class="panel-subtitle">Create and publish authoritative architectural articles, regulatory guides, and project updates directly to the website.</p>
+            <h2 class="panel-title">Publish New Article / Insight</h2>
+            <p class="panel-subtitle">Create and publish authoritative architectural articles, regulatory guides, and industry insights directly to the website.</p>
 
             <form id="addBlogForm">
               <div class="form-group">
@@ -1866,7 +1866,7 @@
     const DEFAULT_SITE_CONTENT = {
       headerBrandSub: "DESIGN & PROJECT MANAGEMENT CONSULTANT",
       footerBrandSub: "DESIGN & PROJECT MANAGEMENT CONSULTANT",
-      footerBrandDesc: "Mastering the art of neoclassical design and superior craftsmanship. 5 core services: Design & Planning, PMC, Liaisoning, Green Building, and Auditing.",
+      footerBrandDesc: "Mastering the art of neoclassical design and superior craftsmanship. 5 core services: Design & Planning, PMC, Liaisoning, Green Building, and Auditing and Cost Management.",
       servicesMainTitle: "OUR 5 CORE SERVICES",
 
       // Pillar 1: Design & Planning
@@ -1905,14 +1905,14 @@
       p4Del3: "Energy, Water & Waste Management Frameworks",
       p4Del4: "Eco-Friendly Material Selection & Embodied Carbon Advisory",
 
-      // Pillar 5: Auditing
-      p5Title: "Auditing & Quality Control",
-      p5Tagline: "Structural, NDT & Quality Audits",
-      p5Overview: "Comprehensive structural stability assessments, independent construction quality control, non-destructive testing (NDT), and municipal compliance certifications.",
-      p5Del1: "Structural Stability & BMC Rule 353B Audits",
-      p5Del2: "Quality Assurance & Non-Destructive Testing (NDT)",
-      p5Del3: "MEP & Fire Life-Safety Compliance Inspections",
-      p5Del4: "Structural Distress, Dilapidation & Retrofitting Advisory",
+      // Pillar 5: Auditing and Cost Management
+      p5Title: "Auditing and Cost Management",
+      p5Tagline: "Project and Financial Audit",
+      p5Overview: "Comprehensive project and financial auditing, bill verification, tender cost auditing, and final account closures to protect project capital.",
+      p5Del1: "Cost Management",
+      p5Del2: "Audit of the Project",
+      p5Del3: "Tender and Contract Cost Audit",
+      p5Del4: "Final Account and Contract Closure Audit",
 
       // About Section
       aboutMainTitle: "Engineering Landmarks with Timeless Precision",
@@ -1935,11 +1935,20 @@
           if (saved.servicesMainTitle === "OUR 4 CORE PILLARS" || saved.servicesMainTitle === "OUR 5 CORE PILLARS") {
             delete saved.servicesMainTitle;
           }
-          if (saved.footerBrandDesc && saved.footerBrandDesc.includes("4 core")) {
+          if (saved.footerBrandDesc && (saved.footerBrandDesc.includes("4 core") || !saved.footerBrandDesc.includes("Cost Management"))) {
             delete saved.footerBrandDesc;
           }
           if (saved.footerAddressVal === "Trivedi Associates Corporate Chambers, Mumbai, Maharashtra, India") {
             delete saved.footerAddressVal;
+          }
+          if (saved.p5Title === "Auditing & Quality Control" || saved.p5Tagline === "Structural, NDT & Quality Audits") {
+            delete saved.p5Title;
+            delete saved.p5Tagline;
+            delete saved.p5Overview;
+            delete saved.p5Del1;
+            delete saved.p5Del2;
+            delete saved.p5Del3;
+            delete saved.p5Del4;
           }
         }
       } catch (e) {}
