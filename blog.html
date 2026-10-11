@@ -17,7 +17,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=20261011_5">
 
   <style>
     /* Dedicated Blog Page Custom Enhancements */
@@ -1131,22 +1131,43 @@
     const closeMobileDrawerBtn = document.getElementById('closeMobileDrawerBtn');
     const mobileDrawerOverlay = document.getElementById('mobileDrawerOverlay');
 
-    openMobileDrawerBtn?.addEventListener('click', () => {
-      mobileDrawerOverlay?.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    });
-
     const closeDrawer = () => {
       mobileDrawerOverlay?.classList.remove('active');
       document.body.style.overflow = '';
     };
 
-    closeMobileDrawerBtn?.addEventListener('click', closeDrawer);
+    // Ensure closed on load
+    closeDrawer();
+
+    openMobileDrawerBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      mobileDrawerOverlay?.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    closeMobileDrawerBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeDrawer();
+    });
+
     mobileDrawerOverlay?.addEventListener('click', (e) => {
       if (e.target === mobileDrawerOverlay) closeDrawer();
     });
+
     document.querySelectorAll('.drawer-nav-link').forEach(link => {
       link.addEventListener('click', closeDrawer);
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileDrawerOverlay?.classList.contains('active')) {
+        closeDrawer();
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 1100 && mobileDrawerOverlay?.classList.contains('active')) {
+        closeDrawer();
+      }
     });
 
     // Initial load

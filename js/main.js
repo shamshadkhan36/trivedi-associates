@@ -32,17 +32,38 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = '';
   };
 
-  openMobileDrawerBtn?.addEventListener('click', () => {
+  // Ensure closed on load
+  closeDrawer();
+
+  openMobileDrawerBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
     mobileDrawerOverlay?.classList.add('active');
     document.body.style.overflow = 'hidden';
   });
 
-  closeMobileDrawerBtn?.addEventListener('click', closeDrawer);
+  closeMobileDrawerBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    closeDrawer();
+  });
+
   mobileDrawerOverlay?.addEventListener('click', (e) => {
     if (e.target === mobileDrawerOverlay) closeDrawer();
   });
+
   document.querySelectorAll('.drawer-nav-link').forEach(link => {
     link.addEventListener('click', closeDrawer);
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileDrawerOverlay?.classList.contains('active')) {
+      closeDrawer();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1100 && mobileDrawerOverlay?.classList.contains('active')) {
+      closeDrawer();
+    }
   });
 
   // ----------------- 5 HORIZONTAL EXPANDABLE CARDS -----------------

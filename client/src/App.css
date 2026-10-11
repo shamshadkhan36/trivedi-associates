@@ -1359,20 +1359,16 @@
   top: 0;
   right: 0;
   width: 320px;
+  max-width: 85vw;
   height: 100%;
   background: #141414;
-  z-index: 1500;
+  z-index: 10000;
   padding: 40px 30px;
   display: flex;
   flex-direction: column;
   box-shadow: -10px 0 40px rgba(0, 0, 0, 0.6);
   border-left: 1px solid rgba(197, 168, 128, 0.15);
-  animation: slideDrawer 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-@keyframes slideDrawer {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
+  transform: translateX(0);
 }
 
 .drawer-header {
