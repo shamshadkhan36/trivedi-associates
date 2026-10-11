@@ -48,11 +48,11 @@ export default function CompanyMarquee() {
   return (
     <section className="marquee-section">
       <div className="marquee-label-container">
-        <h2 className="services-main-title" style={{ marginTop: '6px', marginBottom: '4px', color: '#FFFFFF', fontSize: 'clamp(24px, 3.5vw, 36px)' }}>
+        <h2 className="services-main-title" style={{ marginTop: '6px', marginBottom: '4px', color: '#FFFFFF', fontSize: 'clamp(24px, 3vw, 34px)' }}>
           OUR CLIENTELE
         </h2>
-        <p style={{ textAlign: 'center', color: 'var(--color-gold)', fontSize: '13px', letterSpacing: '1.5px', marginBottom: '24px', textTransform: 'uppercase' }}>
-          Strategic Partners &bull; Institutional Collaborations
+        <p style={{ textAlign: 'center', color: 'var(--color-gold)', fontSize: '12.5px', letterSpacing: '1.5px', marginBottom: '24px', textTransform: 'uppercase' }}>
+          Developers &bull; Corporates &bull; Hospitality &bull; Waterparks &bull; Trust and Foundation
         </p>
       </div>
 
