@@ -4,7 +4,7 @@ import React from 'react';
 const partnerCompanies = [
   {
     name: 'Water Kingdom by EsselWorld',
-    src: '/assets/images/partners/water_kingdom.png'
+    src: '/assets/images/partners/waterpark_esselworld.png?v=20261011_v3'
   },
   {
     name: 'Signet Diamonds',
