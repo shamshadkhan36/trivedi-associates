@@ -88,6 +88,12 @@ export default function Aesthetics({ refreshTrigger }) {
                     alt={activeFeatured.title || 'Featured Project'}
                     className="projects-featured-img"
                   />
+                  {(activeFeatured.title || activeFeatured.description) && (
+                    <div className="projects-featured-info-overlay">
+                      {activeFeatured.title && <h4 className="projects-featured-info-title">{activeFeatured.title}</h4>}
+                      {activeFeatured.description && <p className="projects-featured-info-desc">{activeFeatured.description}</p>}
+                    </div>
+                  )}
                 </div>
                 <button
                   className="featured-nav-arrow prev"
@@ -136,12 +142,19 @@ export default function Aesthetics({ refreshTrigger }) {
                             <div
                               key={img.id}
                               className="cat-image-card"
+                              title={img.title || cat.name}
                               onClick={() => {
                                 const idx = allImages.findIndex((x) => x.id === img.id);
                                 if (idx >= 0) setFeaturedIndex(idx);
                               }}
                             >
                               <img src={img.url} alt={img.title || cat.name} />
+                              {(img.title || img.description) && (
+                                <div className="cat-image-caption">
+                                  {img.title && <div className="cat-image-title-text">{img.title}</div>}
+                                  {img.description && <div className="cat-image-desc-text">{img.description}</div>}
+                                </div>
+                              )}
                             </div>
                           ))}
                         </div>

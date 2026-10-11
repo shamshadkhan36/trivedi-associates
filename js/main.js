@@ -513,11 +513,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const updateFeaturedStage = (index) => {
     if (!featuredImgEl || allFeaturedImages.length === 0) return;
     currentFeaturedIdx = (index + allFeaturedImages.length) % allFeaturedImages.length;
+    const cur = allFeaturedImages[currentFeaturedIdx];
     featuredImgEl.style.opacity = '0.4';
     setTimeout(() => {
-      featuredImgEl.src = allFeaturedImages[currentFeaturedIdx].url;
-      featuredImgEl.alt = allFeaturedImages[currentFeaturedIdx].title || 'Featured Project';
+      featuredImgEl.src = cur.url;
+      featuredImgEl.alt = cur.title || 'Featured Project';
       featuredImgEl.style.opacity = '1';
+      const infoEl = document.getElementById('featuredProjectInfo');
+      if (infoEl) {
+        if (cur.title || cur.description) {
+          infoEl.style.display = 'block';
+          infoEl.innerHTML = `
+            ${cur.title ? `<h4 class="projects-featured-info-title">${cur.title}</h4>` : ''}
+            ${cur.description ? `<p class="projects-featured-info-desc">${cur.description}</p>` : ''}
+          `;
+        } else {
+          infoEl.style.display = 'none';
+        }
+      }
     }, 120);
   };
 
@@ -533,8 +546,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (allFeaturedImages.length > 0) {
       if (featuredBannerEl) featuredBannerEl.style.display = 'block';
       if (featuredImgEl) {
-        featuredImgEl.src = allFeaturedImages[0].url;
-        featuredImgEl.alt = allFeaturedImages[0].title || 'Featured Project';
+        const first = allFeaturedImages[0];
+        featuredImgEl.src = first.url;
+        featuredImgEl.alt = first.title || 'Featured Project';
+        const infoEl = document.getElementById('featuredProjectInfo');
+        if (infoEl) {
+          if (first.title || first.description) {
+            infoEl.style.display = 'block';
+            infoEl.innerHTML = `
+              ${first.title ? `<h4 class="projects-featured-info-title">${first.title}</h4>` : ''}
+              ${first.description ? `<p class="projects-featured-info-desc">${first.description}</p>` : ''}
+            `;
+          } else {
+            infoEl.style.display = 'none';
+          }
+        }
       }
     } else {
       if (featuredBannerEl) featuredBannerEl.style.display = 'none';
@@ -572,8 +598,14 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="cat-slider-viewport">
               <div class="cat-slider-track">
                 ${imgs.map((img) => `
-                  <div class="cat-image-card" data-img-url="${img.url}" title="${img.title || cat.name}">
+                  <div class="cat-image-card" data-img-url="${img.url}" data-img-title="${img.title || ''}" data-img-desc="${img.description || ''}" title="${img.title || cat.name}">
                     <img src="${img.url}" alt="${img.title || cat.name}" loading="lazy">
+                    ${img.title || img.description ? `
+                      <div class="cat-image-caption">
+                        ${img.title ? `<div class="cat-image-title-text">${img.title}</div>` : ''}
+                        ${img.description ? `<div class="cat-image-desc-text">${img.description}</div>` : ''}
+                      </div>
+                    ` : ''}
                   </div>
                 `).join('')}
               </div>
@@ -626,8 +658,23 @@ document.addEventListener('DOMContentLoaded', () => {
       cards.forEach((card) => {
         card.addEventListener('click', () => {
           const url = card.getAttribute('data-img-url');
+          const title = card.getAttribute('data-img-title');
+          const desc = card.getAttribute('data-img-desc');
           if (url && featuredImgEl) {
             featuredImgEl.src = url;
+            featuredImgEl.alt = title || 'Featured Project';
+            const infoEl = document.getElementById('featuredProjectInfo');
+            if (infoEl) {
+              if (title || desc) {
+                infoEl.style.display = 'block';
+                infoEl.innerHTML = `
+                  ${title ? `<h4 class="projects-featured-info-title">${title}</h4>` : ''}
+                  ${desc ? `<p class="projects-featured-info-desc">${desc}</p>` : ''}
+                `;
+              } else {
+                infoEl.style.display = 'none';
+              }
+            }
             document.querySelector('.projects-featured-banner')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
           }
         });

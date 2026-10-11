@@ -2419,6 +2419,72 @@ button {
   transform: scale(1.04);
 }
 
+.projects-featured-info-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(20, 10, 5, 0.94) 0%, rgba(20, 10, 5, 0.7) 65%, transparent 100%);
+  padding: 24px 20px 14px 20px;
+  text-align: left;
+  color: #FFFFFF;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.projects-featured-info-title {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  color: #FFFFFF;
+  margin: 0 0 4px 0;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.projects-featured-info-desc {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cat-image-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(20, 10, 5, 0.92) 0%, rgba(20, 10, 5, 0.5) 70%, transparent 100%);
+  padding: 16px 10px 8px 10px;
+  text-align: left;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.cat-image-title-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cat-image-desc-text {
+  font-size: 10.5px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .cat-slider-arrow {
   position: absolute;
   top: 50%;
