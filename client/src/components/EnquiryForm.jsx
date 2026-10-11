@@ -100,10 +100,14 @@ export default function EnquiryForm({ preselectedService }) {
 
   return (
     <section className="enquiry-section" id="enquiry-form-section">
+      <div className="contact-header-centered" style={{ textAlign: 'center', marginBottom: '48px' }}>
+        <h2 className="services-main-title" style={{ textAlign: 'center', marginBottom: 0 }}>
+          CONTACT US
+        </h2>
+      </div>
       <div className="enquiry-container">
         {/* Left Column: Direct Outreach & Minimalist Copy */}
         <div className="enquiry-info-column">
-          <span className="enquiry-eyebrow">CONSULTATION &amp; ADVISORY</span>
           <h2 className="enquiry-main-heading">
             Fill in your data to <br />
             <span className="italic-serif">help us reach you</span>
@@ -232,7 +236,6 @@ export default function EnquiryForm({ preselectedService }) {
                   <option value="Liaisoning & Approvals">3. Liaisoning &amp; Approvals</option>
                   <option value="Green Building Consultant">4. Green Building Consultant</option>
                   <option value="Auditing and Cost Management">5. Auditing and Cost Management</option>
-                  <option value="Comprehensive Advisory">Comprehensive Turnkey Advisory</option>
                 </select>
               </div>
 

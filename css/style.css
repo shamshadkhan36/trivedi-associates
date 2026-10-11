@@ -554,6 +554,7 @@ button {
   line-height: 1.2;
   letter-spacing: -0.02em;
   margin-bottom: 16px;
+  text-transform: uppercase;
 }
 
 .services-main-title .italic-serif {
@@ -2254,10 +2255,11 @@ button {
 .projects-page-heading {
   font-family: var(--font-sans);
   font-size: 36px;
-  font-weight: 300;
+  font-weight: 700;
   color: #222d38;
   margin-bottom: 22px;
-  letter-spacing: 0.4px;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
 }
 
 .projects-featured-banner {
@@ -2447,6 +2449,28 @@ button {
 .blog-container {
   max-width: 1320px;
   margin: 0 auto;
+}
+
+.blog-header-centered {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.blog-header-centered .services-main-title {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.contact-header-centered {
+  max-width: 1240px;
+  margin: 0 auto 48px auto;
+  padding: 0 32px;
+  text-align: center;
+}
+
+.contact-header-centered .services-main-title {
+  text-align: center;
+  margin-bottom: 0;
 }
 
 .blog-header-wrap {

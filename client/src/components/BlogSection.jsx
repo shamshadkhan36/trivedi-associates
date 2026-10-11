@@ -43,62 +43,15 @@ export default function BlogSection() {
     return DEFAULT_BLOG_POSTS;
   });
 
-  const [activeFilter, setActiveFilter] = useState('ALL');
-
-  useEffect(() => {
-    const handleStorage = (e) => {
-      if (e.key === 'ta_blog_posts') {
-        try {
-          const updated = JSON.parse(e.newValue || '[]');
-          if (Array.isArray(updated) && updated.length > 0) {
-            setPosts(updated);
-          } else {
-            setPosts(DEFAULT_BLOG_POSTS);
-          }
-        } catch (err) {}
-      }
-    };
-    window.addEventListener('storage', handleStorage);
-    return () => window.removeEventListener('storage', handleStorage);
-  }, []);
-
-  const categories = ['ALL', ...new Set(posts.map((p) => p.category).filter(Boolean))];
-
-  const filteredPosts = activeFilter === 'ALL'
-    ? posts
-    : posts.filter((p) => p.category === activeFilter);
-
   return (
     <section className="blog-section" id="blog">
       <div className="blog-container">
-        <div className="blog-header-wrap">
-          <div>
-            <span className="services-eyebrow">THOUGHT LEADERSHIP &bull; TRIVEDI ASSOCIATES</span>
-            <h2 className="services-main-title" style={{ textAlign: 'left', marginBottom: '12px' }}>
-              Architectural Insights &amp; <br />
-              <span className="italic-serif">Industry Publications</span>
-            </h2>
-            <p className="blog-header-sub">
-              Authoritative perspectives on BMC municipal regulations, sustainable design, PMC governance, and structural auditing across Mumbai and India.
-            </p>
-          </div>
-          <div className="blog-header-actions">
-            <div className="blog-category-filter">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  className={`blog-filter-pill ${activeFilter === cat ? 'active' : ''}`}
-                  onClick={() => setActiveFilter(cat)}
-                >
-                  {cat === 'ALL' ? 'All Publications' : cat}
-                </button>
-              ))}
-            </div>
-          </div>
+        <div className="blog-header-centered">
+          <h2 className="services-main-title">INSIGHTS</h2>
         </div>
 
         <div className="blog-posts-grid">
-          {filteredPosts.map((post) => (
+          {posts.map((post) => (
             <a
               key={post.id}
               href={`/blog.html?id=${encodeURIComponent(post.id)}`}

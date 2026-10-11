@@ -66,7 +66,7 @@ export default function Aesthetics({ refreshTrigger }) {
   return (
     <section className="projects-gallery-section" id="showcase">
       <div className="projects-gallery-container">
-        <h2 className="projects-page-heading">Projects</h2>
+        <h2 className="projects-page-heading">PROJECTS</h2>
 
         {allImages.length === 0 ? (
           <div className="projects-empty-state" style={{ textAlign: 'center', padding: '60px 20px', color: '#888' }}>
