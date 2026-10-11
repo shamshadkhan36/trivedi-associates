@@ -24,15 +24,17 @@ export default function Footer({ onOpenAdmin }) {
             <li><a href="#services">Liaisoning &amp; Approvals</a></li>
             <li><a href="#services">Green Building Consultant</a></li>
             <li><a href="#services">Auditing and Cost Management</a></li>
-            <li><a href="/blog.html">Articles &amp; Insights</a></li>
           </ul>
         </div>
 
         <div>
-          <h4 className="footer-col-title">Locations</h4>
+          <h4 className="footer-col-title">
+            <a href="/blog.html" style={{ color: 'inherit', textDecoration: 'none' }}>Publications</a>
+          </h4>
           <ul className="footer-col-links">
-            <li><a href="#contact"><strong>Western Mumbai:</strong> Jogeshwari (East)</a></li>
-            <li><a href="#contact"><strong>Central Mumbai:</strong> Kurla (East)</a></li>
+            <li><a href="/blog.html" style={{ color: 'var(--color-gold)', fontWeight: 600 }}>All Publications &rarr;</a></li>
+            <li><a href="/blog.html?id=blog_pmc_mumbai">PMC &amp; Cost Control</a></li>
+            <li><a href="/blog.html?id=blog_pmc_agencies">Site Agency Coordination</a></li>
           </ul>
         </div>
 
