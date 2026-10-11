@@ -146,7 +146,7 @@ button {
 .site-header-logo {
   height: 52px;
   width: auto;
-  max-width: 58px;
+  max-width: 80px;
   object-fit: contain;
   display: block;
   margin: 0 auto;
@@ -155,13 +155,13 @@ button {
 }
 
 .header-nav.scrolled .site-header-logo {
-  height: 48px;
+  height: 46px;
 }
 
 .site-footer-logo {
   height: 52px;
   width: auto;
-  max-width: 60px;
+  max-width: 80px;
   object-fit: contain;
   display: block;
   margin: 0 0 16px 0;
@@ -1586,7 +1586,7 @@ button {
   .site-header-logo {
     height: 42px !important;
     width: auto !important;
-    max-width: 48px !important;
+    max-width: 62px !important;
   }
   .brand-logo-sub {
     display: none !important;
@@ -1656,7 +1656,7 @@ button {
   .site-header-logo {
     height: 38px !important;
     width: auto !important;
-    max-width: 42px !important;
+    max-width: 55px !important;
   }
   .header-nav .nav-connect-btn {
     display: none !important; /* Hide extra button in header on small mobile to give logo + menu breathing space */
@@ -1795,7 +1795,7 @@ button {
   .site-header-logo {
     height: 34px !important;
     width: auto !important;
-    max-width: 36px !important;
+    max-width: 50px !important;
   }
   .header-nav {
     padding: 8px 12px !important;
