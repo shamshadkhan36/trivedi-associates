@@ -40,7 +40,7 @@ const partnerCompanies = [
   },
   {
     name: 'Freeda One Builders & Developers',
-    src: '/assets/images/partners/freeda_one.png'
+    src: '/assets/images/partners/freeda_one_clean.png?v=20261011_v4'
   }
 ];
 

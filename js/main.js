@@ -694,70 +694,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let activeBlogFilter = 'ALL';
 
-  const openBlogArticle = (post) => {
-    if (!blogReaderModal || !blogModalBody) return;
-    const paragraphs = (post.content || '').split('\n').filter(p => p.trim().length > 0);
-    blogModalBody.innerHTML = `
-      <div class="blog-modal-hero">
-        <img src="${post.image || 'assets/images/project_card_1.jpg'}" alt="${post.title}">
-      </div>
-      <div class="blog-modal-body-content">
-        <div class="blog-modal-meta-row">
-          <span class="blog-modal-badge">${post.category || 'Article'}</span>
-          <span class="blog-modal-meta-text">${post.date || '2026'} &bull; ${post.readTime || '4 min read'}</span>
-        </div>
-        <h2 class="blog-modal-title">${post.title}</h2>
-        <div class="blog-modal-author-bar">
-          <div class="blog-modal-avatar">TA</div>
-          <div>
-            <div class="blog-modal-author-info">${post.author || 'Trivedi Associates Editorial Team'}</div>
-            <div class="blog-modal-author-role">Technical &amp; Statutory Advisory Cell</div>
-          </div>
-        </div>
-        <div class="blog-modal-prose">
-          ${paragraphs.map(p => `<p>${p}</p>`).join('')}
-        </div>
-        <div class="blog-modal-cta-box">
-          <div>
-            <div class="blog-modal-cta-text">Require Advisory on this Subject?</div>
-            <div style="font-size: 13px; color: #666; margin-top: 4px;">Connect with our senior partners for confidential project consultation.</div>
-          </div>
-          <button class="nav-connect-btn" id="blogConsultBtn" style="padding: 10px 22px; font-size: 11.5px;">
-            Consult With Our Team &rarr;
-          </button>
-        </div>
-      </div>
-    `;
-
-    document.getElementById('blogConsultBtn')?.addEventListener('click', () => {
-      blogReaderModal.classList.remove('active');
-      const enquirySec = document.getElementById('enquiry-form-section');
-      if (enquirySec) {
-        enquirySec.scrollIntoView({ behavior: 'smooth' });
-        const detailInput = document.getElementById('enqDetail');
-        if (detailInput) detailInput.value = `Consultation regarding: ${post.title}`;
-      }
-    });
-
-    blogReaderModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+  const navigateToBlogArticle = (postOrId) => {
+    const id = typeof postOrId === 'string' ? postOrId : (postOrId.id || postOrId.slug);
+    window.location.href = `blog.html?id=${encodeURIComponent(id)}`;
   };
-
-  const closeBlogArticle = () => {
-    if (!blogReaderModal) return;
-    blogReaderModal.classList.remove('active');
-    document.body.style.overflow = '';
-  };
-
-  closeBlogModalBtn?.addEventListener('click', closeBlogArticle);
-  blogReaderModal?.addEventListener('click', (e) => {
-    if (e.target === blogReaderModal) closeBlogArticle();
-  });
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && blogReaderModal?.classList.contains('active')) {
-      closeBlogArticle();
-    }
-  });
 
   const renderBlogSection = () => {
     if (!blogPostsGrid) return;
@@ -794,7 +734,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     blogPostsGrid.innerHTML = filtered.map(post => `
-      <article class="blog-card" data-blog-id="${post.id}">
+      <a href="blog.html?id=${encodeURIComponent(post.id)}" class="blog-card" data-blog-id="${post.id}" style="text-decoration: none; color: inherit; display: flex; cursor: pointer;">
         <div class="blog-card-media">
           <img src="${post.image || 'assets/images/project_card_1.jpg'}" alt="${post.title}" class="blog-card-img" loading="lazy">
           <span class="blog-card-badge">${post.category || 'Insights'}</span>
@@ -811,14 +751,14 @@ document.addEventListener('DOMContentLoaded', () => {
             Read Full Article &rarr;
           </div>
         </div>
-      </article>
+      </a>
     `).join('');
 
     blogPostsGrid.querySelectorAll('.blog-card').forEach(card => {
-      card.addEventListener('click', () => {
+      card.addEventListener('click', (e) => {
+        e.preventDefault();
         const id = card.getAttribute('data-blog-id');
-        const found = posts.find(p => String(p.id) === String(id));
-        if (found) openBlogArticle(found);
+        navigateToBlogArticle(id);
       });
     });
   };

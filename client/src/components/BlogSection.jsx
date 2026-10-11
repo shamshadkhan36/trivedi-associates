@@ -44,7 +44,6 @@ export default function BlogSection() {
   });
 
   const [activeFilter, setActiveFilter] = useState('ALL');
-  const [readingPost, setReadingPost] = useState(null);
 
   useEffect(() => {
     const handleStorage = (e) => {
@@ -69,175 +68,87 @@ export default function BlogSection() {
     ? posts
     : posts.filter((p) => p.category === activeFilter);
 
-  const handleOpenPost = (post) => {
-    setReadingPost(post);
-    document.body.style.overflow = 'hidden';
-  };
-
-  const handleCloseModal = () => {
-    setReadingPost(null);
-    document.body.style.overflow = '';
-  };
-
-  const handleConsultCTA = (postTitle) => {
-    handleCloseModal();
-    const enquirySec = document.getElementById('enquiry-form-section');
-    if (enquirySec) {
-      enquirySec.scrollIntoView({ behavior: 'smooth' });
-      const detailInput = document.getElementById('enqDetail');
-      if (detailInput) {
-        detailInput.value = `Consultation regarding: ${postTitle}`;
-      }
-    }
-  };
-
   return (
-    <>
-      <section className="blog-section" id="blog">
-        <div className="blog-container">
-          <div className="blog-header-wrap">
-            <div>
-              <span className="services-eyebrow">THOUGHT LEADERSHIP &bull; TRIVEDI ASSOCIATES</span>
-              <h2 className="services-main-title" style={{ textAlign: 'left', marginBottom: '12px' }}>
-                Architectural Insights &amp; <br />
-                <span className="italic-serif">Industry Publications</span>
-              </h2>
-              <p className="blog-header-sub">
-                Authoritative perspectives on BMC municipal regulations, sustainable design, PMC governance, and structural auditing across Mumbai and India.
-              </p>
-            </div>
-            <div className="blog-header-actions">
-              <div className="blog-category-filter">
-                {categories.map((cat) => (
-                  <button
-                    key={cat}
-                    className={`blog-filter-pill ${activeFilter === cat ? 'active' : ''}`}
-                    onClick={() => setActiveFilter(cat)}
-                  >
-                    {cat === 'ALL' ? 'All Publications' : cat}
-                  </button>
-                ))}
-              </div>
-            </div>
+    <section className="blog-section" id="blog">
+      <div className="blog-container">
+        <div className="blog-header-wrap">
+          <div>
+            <span className="services-eyebrow">THOUGHT LEADERSHIP &bull; TRIVEDI ASSOCIATES</span>
+            <h2 className="services-main-title" style={{ textAlign: 'left', marginBottom: '12px' }}>
+              Architectural Insights &amp; <br />
+              <span className="italic-serif">Industry Publications</span>
+            </h2>
+            <p className="blog-header-sub">
+              Authoritative perspectives on BMC municipal regulations, sustainable design, PMC governance, and structural auditing across Mumbai and India.
+            </p>
           </div>
-
-          <div className="blog-posts-grid">
-            {filteredPosts.map((post) => (
-              <article key={post.id} className="blog-card" onClick={() => handleOpenPost(post)}>
-                <div className="blog-card-media">
-                  <img
-                    src={post.image || 'assets/images/project_card_1.jpg'}
-                    alt={post.title}
-                    loading="lazy"
-                  />
-                  <span className="blog-card-category-badge">{post.category || 'Article'}</span>
-                </div>
-                <div className="blog-card-content">
-                  <div className="blog-card-meta">
-                    <span>{post.date || '2026'}</span>
-                    <span>&bull;</span>
-                    <span>{post.readTime || '4 min read'}</span>
-                  </div>
-                  <h3 className="blog-card-title">{post.title}</h3>
-                  <p className="blog-card-excerpt">{post.excerpt}</p>
-                  <div className="blog-card-footer">
-                    <span className="blog-card-author">{post.author || 'Trivedi Associates'}</span>
-                    <span className="blog-card-read-more">
-                      Read Publication <span className="arrow">&rarr;</span>
-                    </span>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          <div style={{ textAlign: 'center', marginTop: '45px' }}>
-            <a
-              href="/blog.html"
-              className="nav-connect-btn"
-              style={{
-                padding: '14px 34px',
-                fontSize: '13px',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                textDecoration: 'none'
-              }}
-            >
-              Explore Dedicated Insights &amp; Publications &rarr;
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Reader Modal */}
-      {readingPost && (
-        <div
-          className="blog-modal-overlay active"
-          role="dialog"
-          aria-modal="true"
-          onClick={(e) => {
-            if (e.target.classList.contains('blog-modal-overlay')) handleCloseModal();
-          }}
-        >
-          <div className="blog-modal-content">
-            <button
-              className="blog-modal-close"
-              aria-label="Close Article"
-              onClick={handleCloseModal}
-            >
-              &times;
-            </button>
-            <div className="blog-modal-hero">
-              <img
-                src={readingPost.image || 'assets/images/project_card_1.jpg'}
-                alt={readingPost.title}
-              />
-            </div>
-            <div className="blog-modal-body-content">
-              <div className="blog-modal-meta-row">
-                <span className="blog-modal-badge">{readingPost.category || 'Article'}</span>
-                <span className="blog-modal-meta-text">
-                  {readingPost.date || '2026'} &bull; {readingPost.readTime || '4 min read'}
-                </span>
-              </div>
-              <h2 className="blog-modal-title">{readingPost.title}</h2>
-              <div className="blog-modal-author-bar">
-                <div className="blog-modal-avatar">TA</div>
-                <div>
-                  <div className="blog-modal-author-info">
-                    {readingPost.author || 'Trivedi Associates Editorial Team'}
-                  </div>
-                  <div className="blog-modal-author-role">Technical &amp; Statutory Advisory Cell</div>
-                </div>
-              </div>
-              <div className="blog-modal-prose">
-                {(readingPost.content || '')
-                  .split('\n')
-                  .filter((p) => p.trim().length > 0)
-                  .map((para, idx) => (
-                    <p key={idx}>{para}</p>
-                  ))}
-              </div>
-              <div className="blog-modal-cta-box">
-                <div>
-                  <div className="blog-modal-cta-text">Require Advisory on this Subject?</div>
-                  <div style={{ fontSize: '13px', color: '#666', marginTop: '4px' }}>
-                    Connect with our senior partners for confidential project consultation.
-                  </div>
-                </div>
+          <div className="blog-header-actions">
+            <div className="blog-category-filter">
+              {categories.map((cat) => (
                 <button
-                  className="nav-connect-btn"
-                  style={{ padding: '10px 22px', fontSize: '11.5px' }}
-                  onClick={() => handleConsultCTA(readingPost.title)}
+                  key={cat}
+                  className={`blog-filter-pill ${activeFilter === cat ? 'active' : ''}`}
+                  onClick={() => setActiveFilter(cat)}
                 >
-                  Consult With Our Team &rarr;
+                  {cat === 'ALL' ? 'All Publications' : cat}
                 </button>
-              </div>
+              ))}
             </div>
           </div>
         </div>
-      )}
-    </>
+
+        <div className="blog-posts-grid">
+          {filteredPosts.map((post) => (
+            <a
+              key={post.id}
+              href={`/blog.html?id=${encodeURIComponent(post.id)}`}
+              className="blog-card"
+              style={{ textDecoration: 'none', color: 'inherit', display: 'flex', cursor: 'pointer' }}
+            >
+              <div className="blog-card-media">
+                <img
+                  src={post.image || 'assets/images/project_card_1.jpg'}
+                  alt={post.title}
+                  loading="lazy"
+                />
+                <span className="blog-card-category-badge">{post.category || 'Article'}</span>
+              </div>
+              <div className="blog-card-content">
+                <div className="blog-card-meta">
+                  <span>{post.date || '2026'}</span>
+                  <span>&bull;</span>
+                  <span>{post.readTime || '4 min read'}</span>
+                </div>
+                <h3 className="blog-card-title">{post.title}</h3>
+                <p className="blog-card-excerpt">{post.excerpt}</p>
+                <div className="blog-card-footer">
+                  <span className="blog-card-author">{post.author || 'Trivedi Associates'}</span>
+                  <span className="blog-card-read-more">
+                    Read Publication <span className="arrow">&rarr;</span>
+                  </span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div style={{ textAlign: 'center', marginTop: '45px' }}>
+          <a
+            href="/blog.html"
+            className="nav-connect-btn"
+            style={{
+              padding: '14px 34px',
+              fontSize: '13px',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              textDecoration: 'none'
+            }}
+          >
+            Explore Dedicated Insights &amp; Publications &rarr;
+          </a>
+        </div>
+      </div>
+    </section>
   );
 }

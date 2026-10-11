@@ -1179,11 +1179,12 @@
         <div class="panel-grid" style="margin-bottom: 32px;">
           <!-- Left Card: Write & Publish New Article -->
           <div class="panel-card">
-            <span class="panel-eyebrow">STEP 1 &bull; WRITE &amp; PUBLISH ARTICLE</span>
-            <h2 class="panel-title">Publish New Article / Insight</h2>
-            <p class="panel-subtitle">Create and publish authoritative architectural articles, regulatory guides, and industry insights directly to the website.</p>
+            <span class="panel-eyebrow" id="adminBlogFormEyebrow">STEP 1 &bull; WRITE &amp; PUBLISH ARTICLE</span>
+            <h2 class="panel-title" id="adminBlogFormTitle">Publish New Article / Insight</h2>
+            <p class="panel-subtitle" id="adminBlogFormSubtitle">Create and publish authoritative architectural articles, regulatory guides, and industry insights directly to the website.</p>
 
             <form id="addBlogForm">
+              <input type="hidden" id="adminEditingBlogId" value="">
               <div class="form-group">
                 <label class="form-label">Article Title *</label>
                 <input
@@ -1202,6 +1203,8 @@
                     <option value="Liaisoning & Approvals">Liaisoning & Approvals</option>
                     <option value="Green Building">Green Building</option>
                     <option value="PMC & Execution">PMC & Execution</option>
+                    <option value="PMC & Cost Control">PMC & Cost Control</option>
+                    <option value="Site Coordination & Engineering">Site Coordination & Engineering</option>
                     <option value="Auditing & Quality">Auditing & Quality</option>
                     <option value="Design & Planning">Design & Planning</option>
                     <option value="Architecture & Insights">Architecture & Insights</option>
@@ -1276,9 +1279,14 @@
                 ></textarea>
               </div>
 
-              <button type="submit" class="btn-primary" style="padding: 14px 24px; font-size: 13px;">
-                + Publish Article to Website &rarr;
-              </button>
+              <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                <button type="submit" id="adminBlogSubmitBtn" class="btn-primary" style="padding: 14px 24px; font-size: 13px;">
+                  + Publish Article to Website &rarr;
+                </button>
+                <button type="button" id="adminBlogCancelEditBtn" class="btn-secondary" style="display: none; padding: 14px 20px; font-size: 13px;">
+                  ✕ Cancel Edit
+                </button>
+              </div>
             </form>
           </div>
 
@@ -2118,8 +2126,31 @@
       }
     });
 
+    function resetAdminBlogForm() {
+      addBlogForm.reset();
+      document.getElementById('adminEditingBlogId').value = '';
+      document.getElementById('adminBlogFormEyebrow').innerHTML = 'STEP 1 &bull; WRITE &amp; PUBLISH ARTICLE';
+      document.getElementById('adminBlogFormTitle').textContent = 'Publish New Article / Insight';
+      document.getElementById('adminBlogFormSubtitle').textContent = 'Create and publish authoritative architectural articles, regulatory guides, and industry insights directly to the website.';
+      document.getElementById('adminBlogSubmitBtn').innerHTML = '+ Publish Article to Website &rarr;';
+      document.getElementById('adminBlogCancelEditBtn').style.display = 'none';
+      document.getElementById('adminBlogReadTime').value = '5 min read';
+      document.getElementById('adminBlogAuthor').value = 'Trivedi Associates Editorial Team';
+      stagedBlogImageDataUrl = '';
+      adminBlogImgPreviewWrap.style.display = 'none';
+      adminBlogImgPreview.src = '';
+      adminBlogImageUrl.value = '';
+      adminBlogFileStatus.textContent = 'Supports JPG, PNG, WebP • Auto-optimized for high-resolution displays';
+    }
+
+    document.getElementById('adminBlogCancelEditBtn')?.addEventListener('click', () => {
+      resetAdminBlogForm();
+      showNotice('Article editing cancelled.');
+    });
+
     addBlogForm?.addEventListener('submit', (e) => {
       e.preventDefault();
+      const editingId = document.getElementById('adminEditingBlogId').value.trim();
       const title = document.getElementById('adminBlogTitle').value.trim();
       const category = document.getElementById('adminBlogCategory').value.trim();
       const readTime = document.getElementById('adminBlogReadTime').value.trim() || '4 min read';
@@ -2131,6 +2162,30 @@
       if (!title || !excerpt || !content) {
         alert('Please fill in Title, Summary, and Article Body.');
         return;
+      }
+
+      const posts = getAdminBlogPosts();
+
+      if (editingId) {
+        const index = posts.findIndex(p => String(p.id) === String(editingId));
+        if (index !== -1) {
+          posts[index] = {
+            ...posts[index],
+            title,
+            slug: title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
+            category,
+            author,
+            readTime,
+            image: image || posts[index].image || 'assets/images/project_card_1.jpg',
+            excerpt,
+            content
+          };
+          saveAdminBlogPosts(posts);
+          resetAdminBlogForm();
+          renderAdminBlogList();
+          showNotice(`Article "${title}" updated successfully!`);
+          return;
+        }
       }
 
       const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -2150,18 +2205,9 @@
         content
       };
 
-      const posts = getAdminBlogPosts();
       posts.unshift(newPost);
       saveAdminBlogPosts(posts);
-
-      // Reset form
-      addBlogForm.reset();
-      document.getElementById('adminBlogReadTime').value = '5 min read';
-      document.getElementById('adminBlogAuthor').value = 'Trivedi Associates Editorial Team';
-      stagedBlogImageDataUrl = '';
-      adminBlogImgPreviewWrap.style.display = 'none';
-      adminBlogFileStatus.textContent = 'Supports JPG, PNG, WebP • Auto-optimized for high-resolution displays';
-
+      resetAdminBlogForm();
       renderAdminBlogList();
       showNotice(`Article "${title}" published live to the website!`);
     });
@@ -2198,13 +2244,66 @@
               <span style="color: var(--color-gold-dark);">${post.author || 'Trivedi Associates'}</span>
             </div>
             <p class="admin-blog-item-desc">${post.excerpt}</p>
-            <div style="display: flex; gap: 10px;">
-              <button class="btn-delete del-blog-btn" data-id="${post.id}">Delete Article</button>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <button class="btn-secondary edit-blog-btn" data-id="${post.id}" style="padding: 7px 14px; font-size: 12px; font-weight: 600; color: var(--color-wine); border-color: rgba(112, 52, 26, 0.35);">
+                ✏️ Edit Article
+              </button>
+              <button class="btn-delete del-blog-btn" data-id="${post.id}">
+                Delete Article
+              </button>
             </div>
           </div>
         </div>
       `).join('');
 
+      // Wire up Edit buttons
+      container.querySelectorAll('.edit-blog-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-id');
+          const posts = getAdminBlogPosts();
+          const target = posts.find(p => String(p.id) === String(id));
+          if (!target) return;
+
+          document.getElementById('adminEditingBlogId').value = target.id;
+          document.getElementById('adminBlogTitle').value = target.title || '';
+          document.getElementById('adminBlogCategory').value = target.category || 'PMC & Execution';
+          document.getElementById('adminBlogReadTime').value = target.readTime || '4 min read';
+          document.getElementById('adminBlogAuthor').value = target.author || 'Trivedi Associates Editorial Team';
+          document.getElementById('adminBlogExcerpt').value = target.excerpt || '';
+          document.getElementById('adminBlogContent').value = target.content || '';
+
+          if (target.image) {
+            stagedBlogImageDataUrl = target.image;
+            adminBlogImgPreview.src = target.image;
+            adminBlogImgPreviewWrap.style.display = 'block';
+            if (target.image.startsWith('data:')) {
+              adminBlogImageUrl.value = '';
+              adminBlogFileStatus.textContent = 'Custom uploaded image loaded for editing';
+            } else {
+              adminBlogImageUrl.value = target.image;
+              adminBlogFileStatus.textContent = `Using image: ${target.image}`;
+            }
+          } else {
+            stagedBlogImageDataUrl = '';
+            adminBlogImgPreviewWrap.style.display = 'none';
+          }
+
+          document.getElementById('adminBlogFormEyebrow').textContent = 'EDITING EXISTING ARTICLE';
+          document.getElementById('adminBlogFormTitle').textContent = `Edit Article: "${target.title}"`;
+          document.getElementById('adminBlogFormSubtitle').textContent = 'Modify any field below and click "Save Changes" to update this article live on the site.';
+          document.getElementById('adminBlogSubmitBtn').innerHTML = '💾 Save Changes to Article &rarr;';
+          document.getElementById('adminBlogCancelEditBtn').style.display = 'inline-block';
+
+          // Smooth scroll to form
+          const tabBlog = document.getElementById('tabBlog');
+          if (tabBlog) {
+            tabBlog.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+          document.getElementById('adminBlogTitle').focus();
+        });
+      });
+
+      // Wire up Delete buttons
       container.querySelectorAll('.del-blog-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           const id = btn.getAttribute('data-id');
@@ -2222,8 +2321,9 @@
     }
 
     document.getElementById('adminResetBlogsBtn')?.addEventListener('click', () => {
-      if (confirm('Restore the default 3 authoritative publication articles?')) {
+      if (confirm('Restore the default 2 authoritative publication articles?')) {
         saveAdminBlogPosts(DEFAULT_BLOG_POSTS);
+        resetAdminBlogForm();
         renderAdminBlogList();
         showNotice('Restored default publication articles.');
       }

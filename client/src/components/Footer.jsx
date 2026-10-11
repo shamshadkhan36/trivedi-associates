@@ -7,8 +7,7 @@ export default function Footer({ onOpenAdmin }) {
         <div className="footer-col-brand">
           <div className="brand-logo">
             <div className="brand-logo-media">
-              <img src="/assets/images/logo_icon.png" alt="Trivedi Associates" className="site-footer-logo" />
-              <span className="brand-logo-sub">DESIGN &amp; PROJECT MANAGEMENT CONSULTANT</span>
+              <img src="/assets/images/logo_clean.png?v=20261011_fulllogo" alt="Trivedi Associates" className="site-footer-logo" />
             </div>
           </div>
           <p>
