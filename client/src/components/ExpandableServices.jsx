@@ -206,7 +206,7 @@ export default function ExpandableServices({ onSelectService }) {
                     className="h-enquire-btn"
                     onClick={(e) => {
                       e.stopPropagation();
-                      onSelectService(pillar.title);
+                      onSelectService(pillar.id === 'auditing' ? 'Comprehensive Advisory' : pillar.title);
                     }}
                   >
                     Enquire for {pillar.number} &rarr;

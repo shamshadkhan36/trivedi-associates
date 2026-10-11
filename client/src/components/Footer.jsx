@@ -12,18 +12,19 @@ export default function Footer({ onOpenAdmin }) {
             </div>
           </div>
           <p>
-            Mastering the art of neoclassical design and superior craftsmanship. Crafting enduring living spaces across Western &amp; Central Mumbai and beyond.
+            Mastering the art of neoclassical design and superior craftsmanship. 5 core services: Design &amp; Planning, PMC, Liaisoning &amp; Approvals, Green Building, and Auditing and Cost Management.
           </p>
         </div>
 
         <div>
-          <h4 className="footer-col-title">Portfolios</h4>
+          <h4 className="footer-col-title">Our 5 Core Services</h4>
           <ul className="footer-col-links">
-            <li><a href="#showcase">Architectural Portfolios</a></li>
-            <li><a href="#services">Core Engineering Services</a></li>
+            <li><a href="#services">Design &amp; Planning</a></li>
+            <li><a href="#services">Project Management Consultant (PMC)</a></li>
+            <li><a href="#services">Liaisoning &amp; Approvals</a></li>
+            <li><a href="#services">Green Building Consultant</a></li>
+            <li><a href="#services">Auditing and Cost Management</a></li>
             <li><a href="/blog.html">Articles &amp; Insights</a></li>
-            <li><a href="#about">About Trivedi Associates</a></li>
-            <li><a href="#enquiry-form-section">Direct Project Consultation</a></li>
           </ul>
         </div>
 
