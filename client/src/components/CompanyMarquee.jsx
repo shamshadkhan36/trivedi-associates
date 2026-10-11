@@ -48,7 +48,13 @@ export default function CompanyMarquee() {
   return (
     <section className="marquee-section">
       <div className="marquee-label-container">
-        <span className="marquee-eyebrow">DEVELOPMENT ECOSYSTEM &amp; STRATEGIC PARTNERS</span>
+        <span className="marquee-eyebrow">OUR CLIENTELE &bull; STRATEGIC PARTNERS</span>
+        <h2 className="services-main-title" style={{ marginTop: '6px', marginBottom: '4px', color: '#FFFFFF', fontSize: 'clamp(24px, 3.5vw, 36px)' }}>
+          OUR CLIENTELE
+        </h2>
+        <p style={{ textAlign: 'center', color: 'var(--color-gold)', fontSize: '13px', letterSpacing: '1.5px', marginBottom: '24px', textTransform: 'uppercase' }}>
+          Strategic Partners &bull; Institutional Collaborations
+        </p>
       </div>
 
       <div className="marquee-outer-track">

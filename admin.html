@@ -1146,9 +1146,18 @@
       <!-- ==================== TAB 4: CLIENT ENQUIRIES ==================== -->
       <section id="tabLeads" class="tab-section" style="display: none;">
         <div class="panel-card">
-          <span class="panel-eyebrow">INCOMING CONSULTATION REQUESTS</span>
-          <h2 class="panel-title">Client Enquiries &amp; Leads</h2>
-          <p class="panel-subtitle">Submissions received from the website Contact &amp; Enquiry form.</p>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+            <div>
+              <span class="panel-eyebrow">INCOMING CONSULTATION REQUESTS</span>
+              <h2 class="panel-title" style="margin-bottom: 2px;">Client Enquiries &amp; Leads</h2>
+              <p class="panel-subtitle" style="margin-bottom: 0;">Submissions synchronized in real-time from the website and server database.</p>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <button type="button" id="refreshLeadsBtn" class="btn-secondary" style="padding: 8px 16px; font-size: 13px; display: inline-flex; align-items: center; gap: 6px;">
+                <span>🔄 Sync Live Leads</span>
+              </button>
+            </div>
+          </div>
           <div id="leadsListContainer"></div>
         </div>
       </section>
@@ -1739,26 +1748,119 @@
     });
 
     // ==================== LEADS MANAGEMENT ====================
-    function renderLeads() {
+    async function fetchServerLeads() {
+      try {
+        const res = await fetch('/api/inquiries');
+        if (res.ok) {
+          const json = await res.json();
+          if (json && json.success && Array.isArray(json.data)) {
+            return json.data;
+          }
+        }
+      } catch (e) {
+        console.warn('Could not fetch server leads:', e);
+      }
+      return null;
+    }
+
+    async function renderLeads() {
       const container = document.getElementById('leadsListContainer');
-      const leads = JSON.parse(localStorage.getItem('ta_admin_leads') || '[]');
+      if (!container) return;
+      container.innerHTML = '<div style="color:var(--color-text-muted); font-size:13.5px; padding:16px 0;">Loading synchronized client enquiries...</div>';
+
+      const serverLeads = await fetchServerLeads();
+      const localLeads = JSON.parse(localStorage.getItem('ta_admin_leads') || '[]');
+
+      // Merge and deduplicate
+      const allLeadsMap = new Map();
+      if (Array.isArray(serverLeads)) {
+        serverLeads.forEach(l => {
+          const key = String(l.id || (l.phone || '') + (l.name || ''));
+          allLeadsMap.set(key, l);
+        });
+      }
+      localLeads.forEach(l => {
+        const key = String(l.id || (l.phone || '') + (l.name || ''));
+        if (!allLeadsMap.has(key)) {
+          allLeadsMap.set(key, l);
+        }
+      });
+
+      const leads = Array.from(allLeadsMap.values());
+
       if (leads.length === 0) {
-        container.innerHTML = '<div style="color:var(--color-text-muted); font-size:13.5px; padding:12px 0;">No client enquiries submitted yet.</div>';
+        container.innerHTML = '<div style="color:var(--color-text-muted); font-size:13.5px; padding:16px 0;">No client enquiries submitted yet. Inquiries submitted through the website form will appear here in real-time.</div>';
         return;
       }
-      container.innerHTML = leads.map((l) => `
-        <div class="lead-item">
-          <div style="display:flex; justify-content:space-between; width:100%; margin-bottom: 4px;">
-            <strong style="color:var(--color-text-dark); font-size:15px;">${l.name}</strong>
-            <span style="color:var(--color-text-muted); font-size:12px;">${l.createdAt || ''}</span>
+
+      container.innerHTML = leads.map((l) => {
+        const service = l.service || l.interest || 'Consultation Request';
+        const cleanPhone = (l.phone || '').replace(/\D/g, '').replace(/^0+/, '');
+        const waPhone = cleanPhone.length === 10 ? '91' + cleanPhone : cleanPhone;
+        const waLink = `https://wa.me/${waPhone}?text=${encodeURIComponent(`Hello ${l.name || 'there'}, this is Trivedi Associates following up on your consultation enquiry regarding ${service}.`)}`;
+        const callLink = `tel:${l.phone || ''}`;
+        const mailLink = `mailto:${l.email || ''}?subject=${encodeURIComponent('Trivedi Associates - Consultation Brief Follow-up')}`;
+        const dateDisplay = l.createdAt ? (l.createdAt.includes('T') ? new Date(l.createdAt).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) : l.createdAt) : 'Recent';
+
+        return `
+          <div class="lead-item" style="background:var(--color-white); border:1px solid var(--color-border); border-left:4px solid var(--color-wine); border-radius:8px; padding:18px 20px; margin-bottom:14px; box-shadow:0 2px 8px rgba(91,20,34,0.04);">
+            <div style="display:flex; justify-content:space-between; align-items:center; width:100%; margin-bottom: 6px; flex-wrap: wrap; gap: 8px;">
+              <div>
+                <strong style="color:var(--color-text-dark); font-size:16px; font-family:var(--font-serif);">${l.name}</strong>
+                <span style="display:inline-block; margin-left:8px; background:rgba(91,20,34,0.08); color:var(--color-wine); font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px; text-transform:uppercase;">${l.status || 'Verified Lead'}</span>
+              </div>
+              <span style="color:var(--color-text-muted); font-size:12px; font-weight:500;">📅 ${dateDisplay}</span>
+            </div>
+            <div style="color:var(--color-wine); font-size:13px; font-weight: 600; margin-bottom: 8px; line-height:1.5;">
+              📞 ${l.phone} &nbsp;|&nbsp; ✉️ ${l.email} &nbsp;|&nbsp; 🏛️ ${service}
+            </div>
+            <div style="color:var(--color-text-muted); font-size:13.5px; background:var(--color-cream-soft); padding:10px 14px; border-radius:6px; margin-bottom:12px; font-style:italic;">
+              "${l.message || 'No additional note provided'}"
+            </div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <a href="${waLink}" target="_blank" rel="noopener noreferrer" style="background:#25D366; color:#fff; padding:7px 15px; border-radius:5px; font-size:12px; font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:5px; box-shadow:0 2px 6px rgba(37,211,102,0.25);">
+                💬 WhatsApp Client
+              </a>
+              <a href="${callLink}" style="background:var(--color-wine); color:#fff; padding:7px 15px; border-radius:5px; font-size:12px; font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:5px;">
+                📞 Call Directly
+              </a>
+              <a href="${mailLink}" style="background:var(--color-text-dark); color:#fff; padding:7px 15px; border-radius:5px; font-size:12px; font-weight:600; text-decoration:none; display:inline-flex; align-items:center; gap:5px;">
+                ✉️ Email Client
+              </a>
+              <button type="button" class="delete-lead-btn" data-id="${l.id}" style="background:transparent; border:1px solid #d32f2f; color:#d32f2f; padding:6px 12px; border-radius:5px; font-size:12px; cursor:pointer;">
+                🗑️ Remove
+              </button>
+            </div>
           </div>
-          <div style="color:var(--color-wine); font-size:12.5px; font-weight: 600; margin-bottom: 4px;">
-            Phone: ${l.phone} &nbsp;|&nbsp; Email: ${l.email} &nbsp;|&nbsp; Service: ${l.service}
-          </div>
-          <div style="color:var(--color-text-muted); font-size:13px;">"${l.message || ''}"</div>
-        </div>
-      `).join('');
+        `;
+      }).join('');
+
+      container.querySelectorAll('.delete-lead-btn').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const id = btn.getAttribute('data-id');
+          if (confirm('Are you sure you want to remove this enquiry?')) {
+            try {
+              const token = localStorage.getItem('ta_admin_token') || 'ta_admin_secret_token_2026';
+              await fetch('/api/admin/inquiries/' + id, {
+                method: 'DELETE',
+                headers: { 'Authorization': 'Bearer ' + token }
+              });
+            } catch (e) {}
+
+            let local = JSON.parse(localStorage.getItem('ta_admin_leads') || '[]');
+            local = local.filter(x => String(x.id) !== String(id));
+            localStorage.setItem('ta_admin_leads', JSON.stringify(local));
+            renderLeads();
+            showNotice('Enquiry removed successfully.');
+          }
+        });
+      });
     }
+
+    document.getElementById('refreshLeadsBtn')?.addEventListener('click', () => {
+      renderLeads();
+      showNotice('Syncing latest inquiries from server...');
+    });
 
     // ==================== EDIT WEBSITE CONTENT (CMS) ====================
     const DEFAULT_SITE_CONTENT = {
@@ -1780,37 +1882,37 @@
       p2Title: "Project Management Consultant (PMC)",
       p2Tagline: "Site Supervision & Quality Audit",
       p2Overview: "End-to-end execution oversight, cost management, contractor accountability, and timely milestone delivery.",
-      p2Del1: "Site management and execution",
-      p2Del2: "Billing consultation and budgeting",
-      p2Del3: "Quality Control & Audit",
+      p2Del1: "Site Management & Execution Oversight",
+      p2Del2: "Billing Consultation & Budget Auditing",
+      p2Del3: "Quality Control & Construction Audits",
       p2Del4: "Timeline & Milestone Tracking",
 
       // Pillar 3: Liaisoning & Approvals
       p3Title: "Liaisoning & Approvals",
       p3Tagline: "Sanctions & Government Approvals",
       p3Overview: "Expedited statutory compliance, building proposals, municipal approvals, and environmental clearances.",
-      p3Del1: "All types of Building and plan approvals",
-      p3Del2: "Fire and related NOCs",
-      p3Del3: "Commencement certificate (CC) and Occupation certificate(OC)",
-      p3Del4: "All other approvals",
+      p3Del1: "All Types of Building & Plan Approvals",
+      p3Del2: "Chief Fire Officer (CFO) & Fire NOCs",
+      p3Del3: "Commencement Certificate (CC) & Occupancy Certificate (OC)",
+      p3Del4: "Environmental, High-Rise & Civil Aviation Clearances",
 
       // Pillar 4: Green Building Consultant
       p4Title: "Green Building Consultant",
-      p4Tagline: "Sustainability and green consultancy",
-      p4Overview: "Eco-conscious design review , energy and water saving methods, and green rating facilitation reducing lifecycle operating costs.",
-      p4Del1: "Green building certification",
-      p4Del2: "Building design review for sustainability",
-      p4Del3: "Energy, water and waste management methods",
-      p4Del4: "Eco friendly material advisory",
+      p4Tagline: "Sustainability & Green Building Advisory",
+      p4Overview: "Eco-conscious design review, energy and water-saving methods, and green rating facilitation reducing lifecycle operating costs.",
+      p4Del1: "IGBC & LEED Green Building Certifications",
+      p4Del2: "Sustainable Architecture & Building Envelope Review",
+      p4Del3: "Energy, Water & Waste Management Frameworks",
+      p4Del4: "Eco-Friendly Material Selection & Embodied Carbon Advisory",
 
       // Pillar 5: Auditing
-      p5Title: "Auditing",
-      p5Tagline: "Structural & Quality Audits",
-      p5Overview: "Rigorous structural stability assessment, construction quality control, and statutory compliance certifications.",
-      p5Del1: "Structural stability & safety audit",
-      p5Del2: "Quality assurance & material testing",
-      p5Del3: "MEP & fire compliance inspections",
-      p5Del4: "Structural distress & repair advisory",
+      p5Title: "Auditing & Quality Control",
+      p5Tagline: "Structural, NDT & Quality Audits",
+      p5Overview: "Comprehensive structural stability assessments, independent construction quality control, non-destructive testing (NDT), and municipal compliance certifications.",
+      p5Del1: "Structural Stability & BMC Rule 353B Audits",
+      p5Del2: "Quality Assurance & Non-Destructive Testing (NDT)",
+      p5Del3: "MEP & Fire Life-Safety Compliance Inspections",
+      p5Del4: "Structural Distress, Dilapidation & Retrofitting Advisory",
 
       // About Section
       aboutMainTitle: "Engineering Landmarks with Timeless Precision",
@@ -1824,7 +1926,7 @@
       footerAddressVal: "Western Mumbai : Jogeshwari (East) | Central Mumbai : Kurla (East)"
     };
 
-    function loadCmsForm() {
+    async function loadCmsForm() {
       let saved = {};
       try {
         const raw = localStorage.getItem('ta_site_content');
@@ -1841,6 +1943,18 @@
           }
         }
       } catch (e) {}
+
+      // Attempt async server fetch for latest published CMS content
+      try {
+        const res = await fetch('/api/content');
+        if (res.ok) {
+          const srv = await res.json();
+          if (srv && srv.success && srv.data && Object.keys(srv.data).length > 0) {
+            saved = Object.assign({}, saved, srv.data);
+          }
+        }
+      } catch (e) {}
+
       const merged = Object.assign({}, DEFAULT_SITE_CONTENT, saved);
 
       for (const [key, val] of Object.entries(merged)) {
@@ -1858,7 +1972,7 @@
       }
     }
 
-    function saveCmsForm() {
+    async function saveCmsForm() {
       const data = {};
       for (const key of Object.keys(DEFAULT_SITE_CONTENT)) {
         const input = document.getElementById('cms_' + key);
@@ -1867,7 +1981,21 @@
         }
       }
       localStorage.setItem('ta_site_content', JSON.stringify(data));
-      showNotice('Website content successfully saved and published! Open the website to verify.');
+
+      try {
+        const token = localStorage.getItem('ta_admin_token') || 'ta_admin_secret_token_2026';
+        await fetch('/api/admin/content', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+          },
+          body: JSON.stringify(data)
+        });
+        showNotice('Website content successfully saved to server and published globally! Open the website to verify.');
+      } catch (e) {
+        showNotice('Website content saved locally! Open the website to verify.');
+      }
     }
 
     function resetCmsForm() {

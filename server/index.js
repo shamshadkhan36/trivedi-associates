@@ -11,6 +11,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const INQUIRIES_FILE = path.join(__dirname, 'data', 'inquiries.json');
 const PROJECTS_FILE = path.join(__dirname, 'data', 'projects.json');
+const SITE_CONTENT_FILE = path.join(__dirname, 'data', 'site_content.json');
 
 // Admin Credentials
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@trivediassociates.com';
@@ -28,6 +29,9 @@ if (!fs.existsSync(INQUIRIES_FILE)) {
 }
 if (!fs.existsSync(PROJECTS_FILE)) {
   fs.writeFileSync(PROJECTS_FILE, JSON.stringify([], null, 2));
+}
+if (!fs.existsSync(SITE_CONTENT_FILE)) {
+  fs.writeFileSync(SITE_CONTENT_FILE, JSON.stringify({}, null, 2));
 }
 
 // Helpers
@@ -74,6 +78,18 @@ app.get('/api/health', (req, res) => {
 app.get('/api/projects', (req, res) => {
   const projects = readData(PROJECTS_FILE);
   res.json({ success: true, count: projects.length, data: projects });
+});
+
+// Get Website CMS Content (Public)
+app.get('/api/content', (req, res) => {
+  const content = readData(SITE_CONTENT_FILE);
+  res.json({ success: true, data: content });
+});
+
+// Get Inquiries (Public & Admin Lead Synchronization)
+app.get('/api/inquiries', (req, res) => {
+  const inquiries = readData(INQUIRIES_FILE);
+  res.json({ success: true, count: inquiries.length, data: inquiries });
 });
 
 // Contact / Consultation Inquiry API (Public)
@@ -254,6 +270,18 @@ app.delete('/api/admin/inquiries/:id', requireAdmin, (req, res) => {
     return res.json({ success: true, message: 'Inquiry deleted' });
   } catch (error) {
     return res.status(500).json({ success: false, error: 'Failed to delete inquiry' });
+  }
+});
+
+// Admin: Save Website CMS Content
+app.post('/api/admin/content', (req, res) => {
+  try {
+    const content = req.body;
+    writeData(SITE_CONTENT_FILE, content);
+    console.log('[Admin] Updated website CMS content on server');
+    return res.json({ success: true, message: 'Content saved successfully' });
+  } catch (error) {
+    return res.status(500).json({ success: false, error: 'Failed to save content' });
   }
 });
 

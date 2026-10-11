@@ -1,0 +1,55 @@
+{
+  "headerBrandSub": "DESIGN & PROJECT MANAGEMENT CONSULTANT",
+  "footerBrandSub": "DESIGN & PROJECT MANAGEMENT CONSULTANT",
+  "footerBrandDesc": "Mastering the art of neoclassical design and superior craftsmanship. 5 core services: Design & Planning, PMC, Liaisoning, Green Building, and Auditing.",
+  "servicesMainTitle": "OUR 5 CORE SERVICES",
+
+  "p1Title": "Design & Planning",
+  "p1Tagline": "Design & Spatial Planning",
+  "p1Overview": "Precision-driven design planning, spatial optimization, and photorealistic visualization for luxury developments.",
+  "p1Del1": "Floor Planning & Master Layouts",
+  "p1Del2": "3D Views & Modeling",
+  "p1Del3": "Elevation Design & Facades",
+  "p1Del4": "Interior Design & Detailing",
+
+  "p2Title": "Project Management Consultant (PMC)",
+  "p2Tagline": "Site Supervision & Quality Audit",
+  "p2Overview": "End-to-end execution oversight, cost management, contractor accountability, and timely milestone delivery.",
+  "p2Del1": "Site Management & Execution Oversight",
+  "p2Del2": "Billing Consultation & Budget Auditing",
+  "p2Del3": "Quality Control & Construction Audits",
+  "p2Del4": "Timeline & Milestone Tracking",
+
+  "p3Title": "Liaisoning & Approvals",
+  "p3Tagline": "Sanctions & Government Approvals",
+  "p3Overview": "Expedited statutory compliance, building proposals, municipal approvals, and environmental clearances.",
+  "p3Del1": "All Types of Building & Plan Approvals",
+  "p3Del2": "Chief Fire Officer (CFO) & Fire NOCs",
+  "p3Del3": "Commencement Certificate (CC) & Occupancy Certificate (OC)",
+  "p3Del4": "Environmental, High-Rise & Civil Aviation Clearances",
+
+  "p4Title": "Green Building Consultant",
+  "p4Tagline": "Sustainability & Green Building Advisory",
+  "p4Overview": "Eco-conscious design review, energy and water-saving methods, and green rating facilitation reducing lifecycle operating costs.",
+  "p4Del1": "IGBC & LEED Green Building Certifications",
+  "p4Del2": "Sustainable Architecture & Building Envelope Review",
+  "p4Del3": "Energy, Water & Waste Management Frameworks",
+  "p4Del4": "Eco-Friendly Material Selection & Embodied Carbon Advisory",
+
+  "p5Title": "Auditing & Quality Control",
+  "p5Tagline": "Structural, NDT & Quality Audits",
+  "p5Overview": "Comprehensive structural stability assessments, independent construction quality control, non-destructive testing (NDT), and municipal compliance certifications.",
+  "p5Del1": "Structural Stability & BMC Rule 353B Audits",
+  "p5Del2": "Quality Assurance & Non-Destructive Testing (NDT)",
+  "p5Del3": "MEP & Fire Life-Safety Compliance Inspections",
+  "p5Del4": "Structural Distress, Dilapidation & Retrofitting Advisory",
+
+  "aboutMainTitle": "Engineering Landmarks with Timeless Precision",
+  "aboutP1": "Headquartered in Mumbai, Trivedi Associates is a premier multidisciplinary consultancy uniting master design planning, rigorous project management (PMC), municipal & government liaisoning, and IGBC/LEED green building advisory under one integrated practice.",
+  "aboutP2": "From luxury residential towers and township developments to high-compliance commercial landmarks across Powai, Thane, and South Mumbai, we partner with India’s foremost developers to deliver statutory certainty and design distinction.",
+
+  "contactHotlineVal": "+91 7977117256",
+  "contactWhatsappVal": "+91 7977117256",
+  "contactEmailVal": "trivedi.associates13@gmail.com",
+  "footerAddressVal": "Western Mumbai : Jogeshwari (East) | Central Mumbai : Kurla (East)"
+}

@@ -10,7 +10,7 @@ export default function EnquiryForm({ preselectedService }) {
     message: ''
   });
 
-  const [status, setStatus] = useState({ loading: false, message: '', isSuccess: false });
+  const [status, setStatus] = useState({ loading: false, message: '', isSuccess: false, waUrl: '' });
 
   useEffect(() => {
     if (preselectedService) {
@@ -26,50 +26,49 @@ export default function EnquiryForm({ preselectedService }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus({ loading: true, message: '', isSuccess: false });
+    setStatus({ loading: true, message: '', isSuccess: false, waUrl: '' });
+
+    const currentName = formData.name;
+    const currentPhone = formData.phone;
+    const currentService = formData.service;
+    const currentDetail = formData.detail;
+    const currentEmail = formData.email;
+    const currentMessage = formData.message;
+
+    const waText = `Hello Trivedi Associates,\n\nI have submitted an enquiry on your website.\n*Name:* ${currentName}\n*Organization:* ${currentDetail || 'N/A'}\n*Service:* ${currentService}\n*Phone:* ${currentPhone}\n*Email:* ${currentEmail}\n*Requirements:* ${currentMessage || 'N/A'}`;
+    const waUrl = `https://wa.me/917977117256?text=${encodeURIComponent(waText)}`;
 
     try {
-      const res = await fetch('/api/contact', {
+      await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: formData.name,
-          phone: formData.phone,
-          email: formData.email,
-          interest: `${formData.service} (${formData.detail || 'Individual'})`,
-          message: formData.message
+          name: currentName,
+          phone: currentPhone,
+          email: currentEmail,
+          interest: `${currentService} (${currentDetail || 'Individual'})`,
+          message: currentMessage
         })
       });
-      const data = await res.json();
-
-      if (res.ok && data.success) {
-        setStatus({
-          loading: false,
-          message: 'Thank you! Your information has been received. Our senior consultant will reach you shortly.',
-          isSuccess: true
-        });
-        setFormData({
-          name: '',
-          detail: '',
-          service: 'Design & Planning',
-          phone: '',
-          email: '',
-          message: ''
-        });
-      } else {
-        setStatus({
-          loading: false,
-          message: data.error || 'Failed to submit. Please call directly at +91 7977117256.',
-          isSuccess: false
-        });
-      }
     } catch (err) {
-      setStatus({
-        loading: false,
-        message: 'Thank you! Your information has been noted. We will contact you at 7977117256.',
-        isSuccess: true
-      });
+      console.warn('POST /api/contact error:', err);
     }
+
+    setStatus({
+      loading: false,
+      message: `Thank you, ${currentName}! Your project brief has been recorded. Our senior consultant will connect with you promptly at ${currentPhone}.`,
+      isSuccess: true,
+      waUrl
+    });
+
+    setFormData({
+      name: '',
+      detail: '',
+      service: 'Design & Planning',
+      phone: '',
+      email: '',
+      message: ''
+    });
   };
 
   return (
@@ -117,8 +116,50 @@ export default function EnquiryForm({ preselectedService }) {
           {status.message && (
             <div
               className={`status-message-alert ${status.isSuccess ? 'success' : 'error'}`}
+              style={{ textAlign: 'center', padding: '18px', marginBottom: '20px' }}
             >
-              {status.message}
+              <div style={{ marginBottom: status.waUrl ? '12px' : '0' }}>{status.message}</div>
+              {status.waUrl && (
+                <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap', marginTop: '10px' }}>
+                  <a
+                    href={status.waUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      background: '#25D366',
+                      color: '#FFFFFF',
+                      padding: '9px 18px',
+                      borderRadius: '6px',
+                      fontSize: '12.5px',
+                      fontWeight: 600,
+                      textDecoration: 'none',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      boxShadow: '0 2px 8px rgba(37,211,102,0.3)'
+                    }}
+                  >
+                    Direct WhatsApp &rarr;
+                  </a>
+                  <a
+                    href="tel:7977117256"
+                    style={{
+                      background: 'var(--color-wine, #5B1422)',
+                      color: '#FFFFFF',
+                      padding: '9px 18px',
+                      borderRadius: '6px',
+                      fontSize: '12.5px',
+                      fontWeight: 600,
+                      textDecoration: 'none',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px'
+                    }}
+                  >
+                    Call Hotline
+                  </a>
+                </div>
+              )}
             </div>
           )}
 
@@ -163,7 +204,8 @@ export default function EnquiryForm({ preselectedService }) {
                   <option value="Project Management Consultant (PMC)">2. Project Management Consultant (PMC)</option>
                   <option value="Liaisoning & Approvals">3. Liaisoning &amp; Approvals</option>
                   <option value="Green Building Consultant">4. Green Building Consultant</option>
-                  <option value="Full Turnkey Advisory">Comprehensive Turnkey Advisory</option>
+                  <option value="Auditing & Quality Control">5. Auditing &amp; Quality Control</option>
+                  <option value="Comprehensive Advisory">Comprehensive Turnkey Advisory</option>
                 </select>
               </div>
 

@@ -40,12 +40,57 @@
     </ul>
 
     <div class="nav-actions">
+      <!-- Mobile Hamburger Menu Button -->
+      <button class="nav-icon-btn mobile-menu-btn" id="openMobileDrawerBtn" aria-label="Toggle Navigation Menu">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+
       <!-- Let's Connect CTA -->
       <a href="#enquiry-form-section" class="nav-connect-btn">
         Let's Connect
       </a>
     </div>
   </header>
+
+  <!-- ==================== MOBILE SLIDE-OUT DRAWER ==================== -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay">
+    <div class="mobile-nav-drawer" id="mobileNavDrawer">
+      <div class="drawer-header">
+        <div class="brand-logo-text">
+          <span class="brand-logo-title" style="color: #FFF; font-family: var(--font-serif); font-size: 20px; font-weight: 700;">Trivedi</span>
+          <span class="brand-logo-sub" style="color: var(--color-gold); font-size: 11px; letter-spacing: 2px; display: block;">Associates</span>
+        </div>
+        <button class="modal-close-btn" id="closeMobileDrawerBtn" aria-label="Close Drawer" style="background: none; border: none; color: #FFF; font-size: 28px; cursor: pointer;">
+          &times;
+        </button>
+      </div>
+
+      <ul class="drawer-links">
+        <li><a href="#hero" class="drawer-nav-link">HOME</a></li>
+        <li><a href="#services" class="drawer-nav-link">SERVICES</a></li>
+        <li><a href="#showcase" class="drawer-nav-link">PROJECTS</a></li>
+        <li><a href="#about" class="drawer-nav-link">ABOUT</a></li>
+        <li><a href="blog.html" class="drawer-nav-link">BLOG</a></li>
+        <li><a href="#enquiry-form-section" class="drawer-nav-link">CONTACT</a></li>
+      </ul>
+
+      <div style="margin-top: auto; padding-top: 26px; border-top: 1px solid rgba(255,255,255,0.12);">
+        <div style="font-size: 11px; color: var(--color-gold); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px;">
+          Direct Advisory Hotline
+        </div>
+        <a href="tel:7977117256" style="color: #FFF; font-size: 16px; font-weight: 600; display: block; margin-bottom: 14px;">
+          +91 7977117256
+        </a>
+        <a href="#enquiry-form-section" class="nav-connect-btn drawer-nav-link" style="display: block; text-align: center; width: 100%;">
+          Let's Connect
+        </a>
+      </div>
+    </div>
+  </div>
 
   <!-- ==================== 1. MINIMALIST HERO SECTION ==================== -->
   <section class="hero-section" id="hero">
@@ -91,7 +136,7 @@
             </div>
           </div>
           <h3 class="h-card-title" id="p1Title">Design &amp; Planning</h3>
-          <p class="h-card-tagline" id="p1Tagline">Design &amp; Spatial Planning</p>
+          <p class="h-card-tagline" id="p1Tagline">Master Architecture &amp; Spatial Planning</p>
           <div class="h-card-expand-prompt">
             <span class="prompt-text">Collapse</span>
             <svg class="h-chevron rotated" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -100,13 +145,13 @@
           </div>
         </div>
         <div class="h-card-expanded-body">
-          <p class="h-card-overview" id="p1Overview">Precision-driven design planning, spatial optimization, and photorealistic visualization for luxury developments.</p>
+          <p class="h-card-overview" id="p1Overview">Precision-driven architectural design, spatial optimization, and photorealistic 3D visualization for residential and commercial landmarks.</p>
           <div class="h-deliverables-list">
             <div class="h-deliverables-heading">Key Deliverables:</div>
             <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p1Del1">Floor Planning &amp; Master Layouts</span></div>
-            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p1Del2">3D Views &amp; Modeling</span></div>
-            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p1Del3">Elevation Design &amp; Facades</span></div>
-            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p1Del4">Interior Design &amp; Detailing</span></div>
+            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p1Del2">3D Views &amp; Photorealistic Modeling</span></div>
+            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p1Del3">Elevation Design &amp; Neoclassical Facades</span></div>
+            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p1Del4">Interior Architecture &amp; Detailed Specifications</span></div>
           </div>
           <button class="h-enquire-btn select-service-trigger" data-service-name="Design & Planning">Enquire for 01 &rarr;</button>
         </div>
@@ -126,7 +171,7 @@
             </div>
           </div>
           <h3 class="h-card-title" id="p2Title">Project Management Consultant (PMC)</h3>
-          <p class="h-card-tagline" id="p2Tagline">Site Supervision &amp; Quality Audit</p>
+          <p class="h-card-tagline" id="p2Tagline">Site Supervision &amp; Turnkey Governance</p>
           <div class="h-card-expand-prompt">
             <span class="prompt-text">Click to Expand</span>
             <svg class="h-chevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -138,10 +183,10 @@
           <p class="h-card-overview" id="p2Overview">End-to-end execution oversight, cost management, contractor accountability, and timely milestone delivery.</p>
           <div class="h-deliverables-list">
             <div class="h-deliverables-heading">Key Deliverables:</div>
-            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p2Del1">Site management and execution</span></div>
-            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p2Del2">Billing consultation and budgeting</span></div>
-            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p2Del3">Quality Control &amp; Audit</span></div>
-            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p2Del4">Timeline &amp; Milestone Tracking</span></div>
+            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p2Del1">Site Management &amp; Turnkey Execution</span></div>
+            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p2Del2">Contractor Billing Verification &amp; Budget Governance</span></div>
+            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p2Del3">Quality Control &amp; Construction Site Audits</span></div>
+            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p2Del4">Milestone Tracking &amp; Critical Path Governance</span></div>
           </div>
           <button class="h-enquire-btn select-service-trigger" data-service-name="Project Management Consultant (PMC)">Enquire for 02 &rarr;</button>
         </div>
@@ -161,7 +206,7 @@
             </div>
           </div>
           <h3 class="h-card-title" id="p3Title">Liaisoning &amp; Approvals</h3>
-          <p class="h-card-tagline" id="p3Tagline">Sanctions &amp; Government Approvals</p>
+          <p class="h-card-tagline" id="p3Tagline">Municipal Sanctions &amp; Government Clearances</p>
           <div class="h-card-expand-prompt">
             <span class="prompt-text">Click to Expand</span>
             <svg class="h-chevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -170,13 +215,13 @@
           </div>
         </div>
         <div class="h-card-expanded-body" style="display: none;">
-          <p class="h-card-overview" id="p3Overview">Expedited statutory compliance, building proposals, municipal approvals, and environmental clearances.</p>
+          <p class="h-card-overview" id="p3Overview">Expedited statutory compliance, building proposals, municipal approvals, and environmental clearances across Greater Mumbai.</p>
           <div class="h-deliverables-list">
             <div class="h-deliverables-heading">Key Deliverables:</div>
-            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p3Del1">All types of Building and plan approvals</span></div>
-            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p3Del2">Fire and related NOCs</span></div>
-            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p3Del3">Commencement certificate (CC) and Occupation certificate(OC)</span></div>
-            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p3Del4">All other approvals</span></div>
+            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p3Del1">All Types of Building &amp; Plan Approvals</span></div>
+            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p3Del2">Chief Fire Officer (CFO) &amp; Fire NOCs</span></div>
+            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p3Del3">Commencement Certificate (CC) &amp; Occupancy Certificate (OC)</span></div>
+            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p3Del4">Environmental, High-Rise &amp; Civil Aviation Clearances</span></div>
           </div>
           <button class="h-enquire-btn select-service-trigger" data-service-name="Liaisoning & Approvals">Enquire for 03 &rarr;</button>
         </div>
@@ -195,7 +240,7 @@
             </div>
           </div>
           <h3 class="h-card-title" id="p4Title">Green Building Consultant</h3>
-          <p class="h-card-tagline" id="p4Tagline">Sustainability and green consultancy</p>
+          <p class="h-card-tagline" id="p4Tagline">Sustainability &amp; Green Building Advisory</p>
           <div class="h-card-expand-prompt">
             <span class="prompt-text">Click to Expand</span>
             <svg class="h-chevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -204,19 +249,19 @@
           </div>
         </div>
         <div class="h-card-expanded-body" style="display: none;">
-          <p class="h-card-overview" id="p4Overview">Eco-conscious design review , energy and water saving methods, and green rating facilitation reducing lifecycle operating costs.</p>
+          <p class="h-card-overview" id="p4Overview">Eco-conscious design review, energy and water-saving methods, and green rating facilitation reducing lifecycle operating costs.</p>
           <div class="h-deliverables-list">
             <div class="h-deliverables-heading">Key Deliverables:</div>
-            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p4Del1">Green building certification</span></div>
-            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p4Del2">Building design review for sustainability</span></div>
-            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p4Del3">Energy, water and waste management methods</span></div>
-            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p4Del4">Eco friendly material advisory</span></div>
+            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p4Del1">IGBC &amp; LEED Green Building Certifications</span></div>
+            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p4Del2">Sustainable Architecture &amp; Building Envelope Review</span></div>
+            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p4Del3">Energy, Water &amp; Waste Management Frameworks</span></div>
+            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p4Del4">Eco-Friendly Material Selection &amp; Embodied Carbon Advisory</span></div>
           </div>
           <button class="h-enquire-btn select-service-trigger" data-service-name="Green Building Consultant">Enquire for 04 &rarr;</button>
         </div>
       </div>
 
-      <!-- Pillar 5: Auditing -->
+      <!-- Pillar 5: Auditing & Quality Control -->
       <div class="horizontal-service-card" data-service-id="auditing">
         <div class="h-card-header">
           <div class="h-card-top-row">
@@ -229,8 +274,8 @@
               </svg>
             </div>
           </div>
-          <h3 class="h-card-title" id="p5Title">Auditing</h3>
-          <p class="h-card-tagline" id="p5Tagline">Structural &amp; Quality Audits</p>
+          <h3 class="h-card-title" id="p5Title">Auditing &amp; Quality Control</h3>
+          <p class="h-card-tagline" id="p5Tagline">Structural, NDT &amp; Quality Audits</p>
           <div class="h-card-expand-prompt">
             <span class="prompt-text">Click to Expand</span>
             <svg class="h-chevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -239,13 +284,13 @@
           </div>
         </div>
         <div class="h-card-expanded-body" style="display: none;">
-          <p class="h-card-overview" id="p5Overview">Rigorous structural stability assessment, construction quality control, and statutory compliance certifications.</p>
+          <p class="h-card-overview" id="p5Overview">Comprehensive structural stability assessments, independent construction quality control, non-destructive testing (NDT), and municipal compliance certifications.</p>
           <div class="h-deliverables-list">
             <div class="h-deliverables-heading">Key Deliverables:</div>
-            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p5Del1">Structural stability &amp; safety audit</span></div>
-            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p5Del2">Quality assurance &amp; material testing</span></div>
-            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p5Del3">MEP &amp; fire compliance inspections</span></div>
-            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p5Del4">Structural distress &amp; repair advisory</span></div>
+            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p5Del1">Structural Stability &amp; BMC Rule 353B Audits</span></div>
+            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p5Del2">Quality Assurance &amp; Non-Destructive Testing (NDT)</span></div>
+            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p5Del3">MEP &amp; Fire Life-Safety Compliance Inspections</span></div>
+            <div class="h-deliverable-row"><span class="h-check-bullet">&#10003;</span><span class="h-deliverable-text" id="p5Del4">Structural Distress, Dilapidation &amp; Retrofitting Advisory</span></div>
           </div>
           <button class="h-enquire-btn select-service-trigger" data-service-name="Auditing">Enquire for 05 &rarr;</button>
         </div>
@@ -256,7 +301,13 @@
   <!-- ==================== 3. INFINITE COMPANY MARQUEE WITH PROFESSIONAL ICONS ==================== -->
   <section class="marquee-section" id="marquee">
     <div class="marquee-label-container">
-      <span class="marquee-eyebrow">DEVELOPMENT ECOSYSTEM &bull; STRATEGIC PARTNERS</span>
+      <span class="marquee-eyebrow">OUR CLIENTELE &bull; STRATEGIC PARTNERS</span>
+      <h2 class="services-main-title" style="margin-top: 6px; margin-bottom: 4px; color: #FFFFFF; font-size: clamp(24px, 3.5vw, 36px);">
+        OUR CLIENTELE
+      </h2>
+      <p style="text-align: center; color: var(--color-gold); font-size: 13px; letter-spacing: 1.5px; margin-bottom: 24px; text-transform: uppercase;">
+        Strategic Partners &bull; Institutional Collaborations
+      </p>
     </div>
 
     <div class="marquee-outer-track">
@@ -436,6 +487,22 @@
             Submit Enquiry
           </button>
         </form>
+
+        <div id="enquirySuccessBox" style="display: none; margin-top: 24px; padding: 22px; background: rgba(30,126,52,0.07); border: 1.5px solid rgba(30,126,52,0.3); border-radius: 8px; text-align: center;">
+          <div style="font-size: 28px; color: #2e7d32; line-height: 1; margin-bottom: 10px;">✓</div>
+          <h4 style="font-family: var(--font-serif, serif); font-size: 18px; color: #1b5e20; margin-bottom: 8px; font-weight: 700;">Enquiry Received Successfully</h4>
+          <p id="enquirySuccessMsg" style="font-size: 13.5px; color: #374151; line-height: 1.55; margin-bottom: 18px;">
+            Thank you for reaching out. Your project brief has been recorded. Our senior consultant will connect with you shortly.
+          </p>
+          <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+            <a id="enquiryWhatsappDirectBtn" href="https://wa.me/917977117256" target="_blank" rel="noopener noreferrer" style="background: #25D366; color: #FFFFFF; padding: 11px 20px; border-radius: 6px; font-size: 13px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(37,211,102,0.25);">
+              <span>Direct WhatsApp &rarr;</span>
+            </a>
+            <a href="tel:7977117256" style="background: var(--color-wine, #5B1422); color: #FFFFFF; padding: 11px 20px; border-radius: 6px; font-size: 13px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
+              <span>Call Hotline (+91 7977117256)</span>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>

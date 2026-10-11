@@ -37,9 +37,9 @@ const servicePillars = [
     ),
     overview: 'End-to-end execution oversight, cost management, contractor accountability, and timely milestone delivery.',
     deliverables: [
-      'Site management and execution',
-      'Billing consultation and budgeting',
-      'Quality Control & Audit',
+      'Site Management & Execution Oversight',
+      'Billing Consultation & Budget Auditing',
+      'Quality Control & Construction Audits',
       'Timeline & Milestone Tracking'
     ]
   },
@@ -57,36 +57,36 @@ const servicePillars = [
     ),
     overview: 'Expedited statutory compliance, building proposals, municipal approvals, and environmental clearances.',
     deliverables: [
-      'All types of Building and plan approvals',
-      'Fire and related NOCs',
-      'Commencement certificate (CC) and Occupation certificate(OC)',
-      'All other approvals'
+      'All Types of Building & Plan Approvals',
+      'Chief Fire Officer (CFO) & Fire NOCs',
+      'Commencement Certificate (CC) & Occupancy Certificate (OC)',
+      'Environmental, High-Rise & Civil Aviation Clearances'
     ]
   },
   {
     id: 'green',
     number: '04',
     title: 'Green Building Consultant',
-    tagline: 'Sustainability and green consultancy',
+    tagline: 'Sustainability & Green Building Advisory',
     icon: (
       <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.8">
         <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
         <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
       </svg>
     ),
-    overview: 'Eco-conscious design review , energy and water saving methods, and green rating facilitation reducing lifecycle operating costs.',
+    overview: 'Eco-conscious design review, energy and water-saving methods, and green rating facilitation reducing lifecycle operating costs.',
     deliverables: [
-      'Green building certification',
-      'Building design review for sustainability',
-      'Energy, water and waste management methods',
-      'Eco friendly material advisory'
+      'IGBC & LEED Green Building Certifications',
+      'Sustainable Architecture & Building Envelope Review',
+      'Energy, Water & Waste Management Frameworks',
+      'Eco-Friendly Material Selection & Embodied Carbon Advisory'
     ]
   },
   {
     id: 'auditing',
     number: '05',
-    title: 'Auditing',
-    tagline: 'Structural & Quality Audits',
+    title: 'Auditing & Quality Control',
+    tagline: 'Structural, NDT & Quality Audits',
     icon: (
       <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" strokeWidth="1.8">
         <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
@@ -94,12 +94,12 @@ const servicePillars = [
         <path d="m9 14 2 2 4-4" />
       </svg>
     ),
-    overview: 'Rigorous structural stability assessment, construction quality control, and statutory compliance certifications.',
+    overview: 'Comprehensive structural stability assessments, independent construction quality control, non-destructive testing (NDT), and municipal compliance certifications.',
     deliverables: [
-      'Structural stability & safety audit',
-      'Quality assurance & material testing',
-      'MEP & fire compliance inspections',
-      'Structural distress & repair advisory'
+      'Structural Stability & BMC Rule 353B Audits',
+      'Quality Assurance & Non-Destructive Testing (NDT)',
+      'MEP & Fire Life-Safety Compliance Inspections',
+      'Structural Distress, Dilapidation & Retrofitting Advisory'
     ]
   }
 ];

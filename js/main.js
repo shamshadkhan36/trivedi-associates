@@ -22,7 +22,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ----------------- 4 HORIZONTAL EXPANDABLE CARDS -----------------
+  // ----------------- MOBILE DRAWER NAVIGATION -----------------
+  const openMobileDrawerBtn = document.getElementById('openMobileDrawerBtn');
+  const closeMobileDrawerBtn = document.getElementById('closeMobileDrawerBtn');
+  const mobileDrawerOverlay = document.getElementById('mobileDrawerOverlay');
+
+  const closeDrawer = () => {
+    mobileDrawerOverlay?.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  openMobileDrawerBtn?.addEventListener('click', () => {
+    mobileDrawerOverlay?.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+
+  closeMobileDrawerBtn?.addEventListener('click', closeDrawer);
+  mobileDrawerOverlay?.addEventListener('click', (e) => {
+    if (e.target === mobileDrawerOverlay) closeDrawer();
+  });
+  document.querySelectorAll('.drawer-nav-link').forEach(link => {
+    link.addEventListener('click', closeDrawer);
+  });
+
+  // ----------------- 5 HORIZONTAL EXPANDABLE CARDS -----------------
   const serviceCards = document.querySelectorAll('.horizontal-service-card');
   const expandAllBtn = document.getElementById('expandAllBtn');
   const collapseAllBtn = document.getElementById('collapseAllBtn');
@@ -108,16 +131,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ----------------- ENQUIRY FORM SUBMISSION -----------------
   const enquiryForm = document.getElementById('publicEnquiryForm');
+  const enquirySuccessBox = document.getElementById('enquirySuccessBox');
+  const enquiryWhatsappDirectBtn = document.getElementById('enquiryWhatsappDirectBtn');
+  const enquirySuccessMsg = document.getElementById('enquirySuccessMsg');
+
   if (enquiryForm) {
     enquiryForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const name = document.getElementById('enqName')?.value;
-      const detail = document.getElementById('enqDetail')?.value;
-      const service = document.getElementById('enqService')?.value;
-      const phone = document.getElementById('enqPhone')?.value;
-      const email = document.getElementById('enqEmail')?.value;
-      const message = document.getElementById('enqMessage')?.value;
+      const name = document.getElementById('enqName')?.value.trim();
+      const detail = document.getElementById('enqDetail')?.value.trim();
+      const service = document.getElementById('enqService')?.value.trim();
+      const phone = document.getElementById('enqPhone')?.value.trim();
+      const email = document.getElementById('enqEmail')?.value.trim();
+      const message = document.getElementById('enqMessage')?.value.trim();
 
       const submitBtn = enquiryForm.querySelector('button[type="submit"]');
       const origText = submitBtn.textContent;
@@ -125,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.disabled = true;
 
       const leadData = {
-        id: Date.now(),
+        id: Date.now().toString(),
         name,
         phone,
         email,
@@ -134,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
         createdAt: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
       };
 
-      // Save to localStorage leads for Admin Panel review
+      // Save to localStorage leads as client backup
       try {
         const savedLeads = JSON.parse(localStorage.getItem('ta_admin_leads') || '[]');
         savedLeads.unshift(leadData);
@@ -143,8 +170,9 @@ document.addEventListener('DOMContentLoaded', () => {
         console.warn('LocalStorage leads save warning:', err);
       }
 
+      // Transmit directly to server database
       try {
-        const res = await fetch('/api/contact', {
+        await fetch('/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -155,16 +183,29 @@ document.addEventListener('DOMContentLoaded', () => {
             message
           })
         });
-
-        alert('Thank you! Your information has been received. Our senior consultant will reach you promptly at ' + phone + '.');
-        enquiryForm.reset();
       } catch (err) {
-        alert('Thank you! Your enquiry has been securely registered. Our team will contact you at ' + phone + ' or via email.');
-        enquiryForm.reset();
+        console.warn('Server contact POST warning:', err);
       } finally {
         submitBtn.textContent = origText;
         submitBtn.disabled = false;
       }
+
+      // Prepare direct WhatsApp link to Mr. Trivedi (+91 7977117256)
+      const waText = `Hello Trivedi Associates,\n\nI have submitted an enquiry on your website.\n*Name:* ${name}\n*Organization:* ${detail || 'N/A'}\n*Service:* ${service}\n*Phone:* ${phone}\n*Email:* ${email}\n*Requirements:* ${message || 'N/A'}`;
+      const waUrl = `https://wa.me/917977117256?text=${encodeURIComponent(waText)}`;
+
+      if (enquiryWhatsappDirectBtn) {
+        enquiryWhatsappDirectBtn.href = waUrl;
+      }
+      if (enquirySuccessMsg) {
+        enquirySuccessMsg.textContent = `Thank you, ${name}! Your consultation brief has been recorded. Our senior consultant will connect with you promptly at ${phone}. You can also connect immediately below:`;
+      }
+      if (enquirySuccessBox) {
+        enquirySuccessBox.style.display = 'block';
+        enquirySuccessBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      enquiryForm.reset();
     });
   }
 
@@ -199,37 +240,37 @@ document.addEventListener('DOMContentLoaded', () => {
     p2Title: "Project Management Consultant (PMC)",
     p2Tagline: "Site Supervision & Quality Audit",
     p2Overview: "End-to-end execution oversight, cost management, contractor accountability, and timely milestone delivery.",
-    p2Del1: "Site management and execution",
-    p2Del2: "Billing consultation and budgeting",
-    p2Del3: "Quality Control & Audit",
+    p2Del1: "Site Management & Execution Oversight",
+    p2Del2: "Billing Consultation & Budget Auditing",
+    p2Del3: "Quality Control & Construction Audits",
     p2Del4: "Timeline & Milestone Tracking",
 
     // Pillar 3: Liaisoning & Approvals
     p3Title: "Liaisoning & Approvals",
     p3Tagline: "Sanctions & Government Approvals",
     p3Overview: "Expedited statutory compliance, building proposals, municipal approvals, and environmental clearances.",
-    p3Del1: "All types of Building and plan approvals",
-    p3Del2: "Fire and related NOCs",
-    p3Del3: "Commencement certificate (CC) and Occupation certificate(OC)",
-    p3Del4: "All other approvals",
+    p3Del1: "All Types of Building & Plan Approvals",
+    p3Del2: "Chief Fire Officer (CFO) & Fire NOCs",
+    p3Del3: "Commencement Certificate (CC) & Occupancy Certificate (OC)",
+    p3Del4: "Environmental, High-Rise & Civil Aviation Clearances",
 
     // Pillar 4: Green Building Consultant
     p4Title: "Green Building Consultant",
-    p4Tagline: "Sustainability and green consultancy",
-    p4Overview: "Eco-conscious design review , energy and water saving methods, and green rating facilitation reducing lifecycle operating costs.",
-    p4Del1: "Green building certification",
-    p4Del2: "Building design review for sustainability",
-    p4Del3: "Energy, water and waste management methods",
-    p4Del4: "Eco friendly material advisory",
+    p4Tagline: "Sustainability & Green Building Advisory",
+    p4Overview: "Eco-conscious design review, energy and water-saving methods, and green rating facilitation reducing lifecycle operating costs.",
+    p4Del1: "IGBC & LEED Green Building Certifications",
+    p4Del2: "Sustainable Architecture & Building Envelope Review",
+    p4Del3: "Energy, Water & Waste Management Frameworks",
+    p4Del4: "Eco-Friendly Material Selection & Embodied Carbon Advisory",
 
-    // Pillar 5: Auditing
-    p5Title: "Auditing",
-    p5Tagline: "Structural & Quality Audits",
-    p5Overview: "Rigorous structural stability assessment, construction quality control, and statutory compliance certifications.",
-    p5Del1: "Structural stability & safety audit",
-    p5Del2: "Quality assurance & material testing",
-    p5Del3: "MEP & fire compliance inspections",
-    p5Del4: "Structural distress & repair advisory",
+    // Pillar 5: Auditing & Quality Control
+    p5Title: "Auditing & Quality Control",
+    p5Tagline: "Structural, NDT & Quality Audits",
+    p5Overview: "Comprehensive structural stability assessments, independent construction quality control, non-destructive testing (NDT), and municipal compliance certifications.",
+    p5Del1: "Structural Stability & BMC Rule 353B Audits",
+    p5Del2: "Quality Assurance & Non-Destructive Testing (NDT)",
+    p5Del3: "MEP & Fire Life-Safety Compliance Inspections",
+    p5Del4: "Structural Distress, Dilapidation & Retrofitting Advisory",
 
     // About Section
     aboutMainTitle: "Engineering Landmarks with <br><span class=\"italic-serif\">Timeless Precision</span>",
@@ -245,7 +286,24 @@ document.addEventListener('DOMContentLoaded', () => {
     footerEmailVal: "trivedi.associates13@gmail.com"
   };
 
-  const loadAndApplySiteContent = () => {
+  const applyContentMap = (contentMap) => {
+    for (const [key, value] of Object.entries(contentMap)) {
+      const el = document.getElementById(key);
+      if (el && typeof value === 'string') {
+        let val = value;
+        if (key === 'footerAddressVal' && val.includes('|') && !val.includes('<br>')) {
+          val = val.split('|').map(s => s.trim()).join('<br>');
+        }
+        if (val.includes('<') && val.includes('>')) {
+          el.innerHTML = val;
+        } else {
+          el.textContent = val;
+        }
+      }
+    }
+  };
+
+  const loadAndApplySiteContent = async () => {
     try {
       let saved = {};
       const raw = localStorage.getItem('ta_site_content');
@@ -262,19 +320,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
       const merged = Object.assign({}, DEFAULT_SITE_CONTENT, saved);
-      for (const [key, value] of Object.entries(merged)) {
-        const el = document.getElementById(key);
-        if (el && typeof value === 'string') {
-          let val = value;
-          if (key === 'footerAddressVal' && val.includes('|') && !val.includes('<br>')) {
-            val = val.split('|').map(s => s.trim()).join('<br>');
-          }
-          if (val.includes('<') && val.includes('>')) {
-            el.innerHTML = val;
-          } else {
-            el.textContent = val;
+      applyContentMap(merged);
+
+      // Async sync from server CMS file
+      try {
+        const res = await fetch('/api/content');
+        if (res.ok) {
+          const srvData = await res.json();
+          if (srvData && srvData.success && srvData.data && Object.keys(srvData.data).length > 0) {
+            const finalMerged = Object.assign({}, merged, srvData.data);
+            applyContentMap(finalMerged);
+            localStorage.setItem('ta_site_content', JSON.stringify(finalMerged));
           }
         }
+      } catch (netErr) {
+        // Offline or server not responding
       }
     } catch (err) {
       console.warn('Error applying site content:', err);

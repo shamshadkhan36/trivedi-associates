@@ -622,11 +622,56 @@
     </ul>
 
     <div class="nav-actions">
+      <!-- Mobile Hamburger Button -->
+      <button class="nav-icon-btn mobile-menu-btn" id="openMobileDrawerBtn" aria-label="Toggle Navigation Menu">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+
       <a href="index.html#enquiry-form-section" class="nav-connect-btn">
         Let's Connect
       </a>
     </div>
   </header>
+
+  <!-- ==================== MOBILE SLIDE-OUT DRAWER ==================== -->
+  <div class="mobile-drawer-overlay" id="mobileDrawerOverlay">
+    <div class="mobile-nav-drawer" id="mobileNavDrawer">
+      <div class="drawer-header">
+        <div class="brand-logo-text">
+          <span class="brand-logo-title" style="color: #FFF; font-family: var(--font-serif); font-size: 20px; font-weight: 700;">Trivedi</span>
+          <span class="brand-logo-sub" style="color: var(--color-gold); font-size: 11px; letter-spacing: 2px; display: block;">Associates</span>
+        </div>
+        <button class="modal-close-btn" id="closeMobileDrawerBtn" aria-label="Close Drawer" style="background: none; border: none; color: #FFF; font-size: 28px; cursor: pointer;">
+          &times;
+        </button>
+      </div>
+
+      <ul class="drawer-links">
+        <li><a href="index.html#hero" class="drawer-nav-link">HOME</a></li>
+        <li><a href="index.html#services" class="drawer-nav-link">SERVICES</a></li>
+        <li><a href="index.html#showcase" class="drawer-nav-link">PROJECTS</a></li>
+        <li><a href="index.html#about" class="drawer-nav-link">ABOUT</a></li>
+        <li><a href="blog.html" class="drawer-nav-link">BLOG</a></li>
+        <li><a href="index.html#enquiry-form-section" class="drawer-nav-link">CONTACT</a></li>
+      </ul>
+
+      <div style="margin-top: auto; padding-top: 26px; border-top: 1px solid rgba(255,255,255,0.12);">
+        <div style="font-size: 11px; color: var(--color-gold); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px;">
+          Direct Advisory Hotline
+        </div>
+        <a href="tel:7977117256" style="color: #FFF; font-size: 16px; font-weight: 600; display: block; margin-bottom: 14px;">
+          +91 7977117256
+        </a>
+        <a href="index.html#enquiry-form-section" class="nav-connect-btn drawer-nav-link" style="display: block; text-align: center; width: 100%;">
+          Let's Connect
+        </a>
+      </div>
+    </div>
+  </div>
 
   <!-- ==================== BLOG HERO HEADER ==================== -->
   <section class="blog-page-hero">
@@ -1079,6 +1124,29 @@
         renderCategoryButtons();
         renderIndexView();
       }
+    });
+
+    // Mobile Drawer Handlers
+    const openMobileDrawerBtn = document.getElementById('openMobileDrawerBtn');
+    const closeMobileDrawerBtn = document.getElementById('closeMobileDrawerBtn');
+    const mobileDrawerOverlay = document.getElementById('mobileDrawerOverlay');
+
+    openMobileDrawerBtn?.addEventListener('click', () => {
+      mobileDrawerOverlay?.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    const closeDrawer = () => {
+      mobileDrawerOverlay?.classList.remove('active');
+      document.body.style.overflow = '';
+    };
+
+    closeMobileDrawerBtn?.addEventListener('click', closeDrawer);
+    mobileDrawerOverlay?.addEventListener('click', (e) => {
+      if (e.target === mobileDrawerOverlay) closeDrawer();
+    });
+    document.querySelectorAll('.drawer-nav-link').forEach(link => {
+      link.addEventListener('click', closeDrawer);
     });
 
     // Initial load
