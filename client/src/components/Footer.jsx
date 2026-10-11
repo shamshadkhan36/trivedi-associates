@@ -32,9 +32,8 @@ export default function Footer({ onOpenAdmin }) {
             <a href="/blog.html" style={{ color: 'inherit', textDecoration: 'none' }}>Publications</a>
           </h4>
           <ul className="footer-col-links">
-            <li><a href="/blog.html" style={{ color: 'var(--color-gold)', fontWeight: 600 }}>All Publications &rarr;</a></li>
-            <li><a href="/blog.html?id=blog_pmc_mumbai">PMC &amp; Cost Control</a></li>
-            <li><a href="/blog.html?id=blog_pmc_agencies">Site Agency Coordination</a></li>
+            <li><a href="/blog.html">All Publications</a></li>
+            <li><a href="/blog.html">Articles &amp; Insights</a></li>
           </ul>
         </div>
 
