@@ -340,9 +340,12 @@ document.addEventListener('DOMContentLoaded', () => {
     p5Del4: "Final Account and Contract Closure Audit",
 
     // About Section
-    aboutMainTitle: "Engineering Landmarks with <br><span class=\"italic-serif\">Timeless Precision</span>",
-    aboutP1: "Headquartered in Mumbai, <strong>Trivedi Associates</strong> is a premier multidisciplinary consultancy uniting master design planning, rigorous project management (PMC), municipal & government liaisoning, and IGBC/LEED green building advisory under one integrated practice.",
-    aboutP2: "From luxury residential towers and township developments to high-compliance commercial landmarks across Powai, Thane, and South Mumbai, we partner with India’s foremost developers to deliver statutory certainty and design distinction.",
+    aboutMainTitle: "About <span class=\"italic-serif\">Us</span>",
+    aboutP1: "Trivedi Associates is a construction and project management consultancy firm established in 2016, founded on the principles of professional integrity, technical excellence and a commitment to delivering value-driven solutions.",
+    aboutP2: "Founded by <strong>Mr. Aakash Trivedi</strong>, Founder & Chairman, a Designer , Civil Engineer with an MBA in Construction Project Management, the firm brings together technical knowledge, strategic planning and a structured approach to construction and project execution.",
+    aboutP3: "At Trivedi Associates, we believe that successful projects are built on more than just drawings, materials and structures. They require thoughtful planning, transparent decision-making, efficient resource management and seamless coordination among all stakeholders.",
+    aboutP4: "Our approach focuses on aligning design intent, quality, cost and timelines to achieve project objectives while maintaining the highest standards of professionalism and accountability. We strive to create lasting value for our clients by combining engineering fundamentals with modern project management practices.",
+    aboutP5: "As we continue to grow, Trivedi Associates remains committed to building enduring relationships, embracing innovation and contributing to the creation of efficient, sustainable and well-executed built environments.",
 
     // Contact Information
     contactHotlineVal: "+91 7977117256",
@@ -393,6 +396,11 @@ document.addEventListener('DOMContentLoaded', () => {
           delete saved.p5Del2;
           delete saved.p5Del3;
           delete saved.p5Del4;
+        }
+        if (saved.aboutP1 && (saved.aboutP1.includes("Headquartered in Mumbai") || !saved.aboutP1.includes("established in 2016"))) {
+          delete saved.aboutMainTitle;
+          delete saved.aboutP1;
+          delete saved.aboutP2;
         }
       }
       const merged = Object.assign({}, DEFAULT_SITE_CONTENT, saved);

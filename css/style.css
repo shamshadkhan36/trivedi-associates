@@ -8,12 +8,18 @@
   --font-italic-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
   
-  --color-cream: #FAF5EE;
-  --color-cream-soft: #F5EFE4;
-  --color-cream-light: #FDFBF7;
-  --color-wine: #5B1422;
-  --color-wine-dark: #3F0B15;
-  --color-wine-light: #7A1D30;
+  --color-cream: #FFFFFF;
+  --color-cream-soft: #FFFFFF;
+  --color-cream-light: #FFFFFF;
+  --color-wine: #70341A;
+  --color-maroon: #70341A;
+  --color-brown: #70341A;
+  --color-wine-dark: #4E210E;
+  --color-maroon-dark: #4E210E;
+  --color-brown-dark: #4E210E;
+  --color-wine-light: #8E4723;
+  --color-maroon-light: #8E4723;
+  --color-brown-light: #8E4723;
   --color-gold: #C5A880;
   --color-gold-light: #E0CDB3;
   --color-gold-dark: #9A7B54;
@@ -138,13 +144,14 @@ button {
 }
 
 .site-header-logo {
-  height: 58px;
+  height: 52px;
   width: auto;
-  max-width: 290px;
+  max-width: 58px;
   object-fit: contain;
   display: block;
   margin: 0 auto;
-  transition: height 0.3s ease;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
 }
 
 .header-nav.scrolled .site-header-logo {
@@ -152,12 +159,12 @@ button {
 }
 
 .site-footer-logo {
-  height: 50px;
+  height: 52px;
   width: auto;
-  max-width: 260px;
+  max-width: 60px;
   object-fit: contain;
   display: block;
-  margin: 0 auto;
+  margin: 0 0 16px 0;
 }
 
 .brand-logo-media {
@@ -433,7 +440,7 @@ button {
   text-decoration: none !important;
   border: none !important;
   outline: none !important;
-  box-shadow: 0 8px 25px rgba(91, 20, 34, 0.4);
+  box-shadow: 0 8px 25px rgba(112, 52, 26, 0.35);
   transition: var(--transition-smooth);
   border-radius: 2px;
 }
@@ -574,7 +581,7 @@ button {
   font-weight: 600;
   padding: 4px 10px;
   border-radius: 4px;
-  background: rgba(131, 36, 56, 0.08);
+  background: rgba(112, 52, 26, 0.08);
   transition: var(--transition-smooth);
 }
 
@@ -619,14 +626,14 @@ button {
 }
 
 .horizontal-service-card:hover {
-  border-color: rgba(131, 36, 56, 0.4);
+  border-color: rgba(112, 52, 26, 0.35);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
   transform: translateY(-2px);
 }
 
 .horizontal-service-card.expanded {
   border-color: var(--color-wine);
-  box-shadow: 0 14px 35px rgba(131, 36, 56, 0.12);
+  box-shadow: 0 14px 35px rgba(112, 52, 26, 0.12);
 }
 
 .h-card-header {
@@ -659,7 +666,7 @@ button {
   width: 44px;
   height: 44px;
   border-radius: 8px;
-  background: rgba(131, 36, 56, 0.08);
+  background: rgba(112, 52, 26, 0.08);
   color: var(--color-wine);
   display: flex;
   align-items: center;
@@ -792,16 +799,16 @@ button {
 
 .h-enquire-btn:hover {
   background: var(--color-wine-dark);
-  box-shadow: 0 6px 18px rgba(131, 36, 56, 0.35);
+  box-shadow: 0 6px 18px rgba(112, 52, 26, 0.3);
 }
 
 /* -------------------- 3. INFINITE COMPANY MARQUEE -------------------- */
 .marquee-section {
-  background-color: #141414;
-  padding: 45px 0;
+  background-color: #FFFFFF;
+  padding: 50px 0;
   overflow: hidden;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .marquee-label-container {
@@ -813,7 +820,7 @@ button {
   font-size: 11px;
   letter-spacing: 3.5px;
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: var(--color-wine);
   font-weight: 600;
 }
 
@@ -822,8 +829,8 @@ button {
   overflow: hidden;
   position: relative;
   display: flex;
-  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
 
 .marquee-inner-strip {
@@ -848,14 +855,14 @@ button {
   justify-content: center;
   padding: 14px 22px;
   background: #FFFFFF;
-  border: 1px solid rgba(197, 168, 128, 0.35);
+  border: 1px solid rgba(0, 0, 0, 0.09);
   border-radius: 12px;
   width: 220px;
   min-width: 220px;
   max-width: 220px;
   height: 88px;
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
   flex-shrink: 0;
   cursor: default;
   overflow: hidden;
@@ -863,9 +870,9 @@ button {
 
 .marquee-company-card:hover {
   background: #FFFFFF;
-  border-color: var(--color-gold);
+  border-color: var(--color-wine);
   transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 12px 28px rgba(112, 52, 26, 0.12);
 }
 
 .partner-logo-img {
@@ -887,9 +894,10 @@ button {
 /* -------------------- 4. ENQUIRY FORM SECTION (FROM WHITEBOARD) -------------------- */
 .enquiry-section {
   padding: 110px 0 100px 0;
-  background-color: #171717;
-  color: var(--color-white);
+  background-color: #FFFFFF;
+  color: var(--color-text-dark);
   position: relative;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .enquiry-container {
@@ -906,7 +914,7 @@ button {
   font-size: 11.5px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: var(--color-wine);
   font-weight: 600;
   display: block;
   margin-bottom: 12px;
@@ -915,19 +923,19 @@ button {
 .enquiry-main-heading {
   font-family: var(--font-serif);
   font-size: clamp(34px, 4.2vw, 48px);
-  color: #FFF;
+  color: var(--color-text-dark);
   font-weight: 400;
   line-height: 1.25;
   margin-bottom: 20px;
 }
 
 .enquiry-main-heading .italic-serif {
-  color: var(--color-gold);
+  color: var(--color-wine);
 }
 
 .enquiry-description {
   font-size: 16px;
-  color: #AAA;
+  color: var(--color-text-muted);
   line-height: 1.75;
   margin-bottom: 40px;
 }
@@ -939,53 +947,57 @@ button {
 }
 
 .minimal-contact-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 6px;
-  padding: 14px 20px;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  border-radius: 8px;
+  padding: 16px 22px;
   transition: var(--transition-smooth);
   display: block;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 }
 
 .minimal-contact-card:hover {
-  background: rgba(255, 255, 255, 0.07);
-  border-color: var(--color-gold);
+  background: #FFFFFF;
+  border-color: var(--color-wine);
   transform: translateX(4px);
+  box-shadow: 0 8px 24px rgba(112, 52, 26, 0.1);
 }
 
 .contact-badge-label {
   font-size: 10.5px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: var(--color-wine);
   margin-bottom: 4px;
+  font-weight: 600;
 }
 
 .contact-badge-val {
   font-size: 16px;
   font-weight: 600;
-  color: #FFF;
+  color: var(--color-text-dark);
 }
 
 /* Enquiry Form Card */
 .enquiry-form-card {
-  background: #1C1C1C;
-  border: 1px solid rgba(197, 168, 128, 0.25);
-  border-radius: 10px;
+  background: #FFFFFF;
+  border: 1.5px solid rgba(112, 52, 26, 0.2);
+  border-radius: 12px;
   padding: 40px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 50px rgba(112, 52, 26, 0.08);
 }
 
 .form-card-title {
   font-family: var(--font-serif);
   font-size: 24px;
-  color: #FFF;
+  color: var(--color-wine);
+  font-weight: 700;
   margin-bottom: 4px;
 }
 
 .form-card-subtitle {
   font-size: 13.5px;
-  color: #888;
+  color: var(--color-text-muted);
   margin-bottom: 24px;
 }
 
@@ -1005,7 +1017,8 @@ button {
   font-size: 11.5px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: #BBB;
+  color: var(--color-text-dark);
+  font-weight: 600;
   margin-bottom: 8px;
 }
 
@@ -1014,25 +1027,25 @@ button {
 .minimal-textarea {
   width: 100%;
   padding: 12px 16px;
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #FFFFFF;
+  border: 1px solid #D6D0C4;
   border-radius: 6px;
-  color: #FFF;
+  color: var(--color-text-dark);
   font-family: var(--font-sans);
   font-size: 14.5px;
   transition: var(--transition-smooth);
 }
 
 .minimal-select {
-  background: #252525;
+  background: #FFFFFF;
 }
 
 .minimal-input:focus,
 .minimal-select:focus,
 .minimal-textarea:focus {
   outline: none;
-  border-color: var(--color-gold);
-  box-shadow: 0 0 0 3px rgba(197, 168, 128, 0.15);
+  border-color: var(--color-wine);
+  box-shadow: 0 0 0 3px rgba(112, 52, 26, 0.15);
 }
 
 .minimal-submit-btn {
@@ -1046,14 +1059,15 @@ button {
   text-transform: uppercase;
   border-radius: 6px;
   border: none;
-  box-shadow: 0 10px 25px rgba(131, 36, 56, 0.35);
+  box-shadow: 0 10px 25px rgba(112, 52, 26, 0.3);
   transition: var(--transition-smooth);
+  cursor: pointer;
 }
 
 .minimal-submit-btn:hover {
   background: var(--color-wine-dark);
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(131, 36, 56, 0.5);
+  box-shadow: 0 12px 30px rgba(112, 52, 26, 0.45);
 }
 
 .status-message-alert {
@@ -1570,8 +1584,9 @@ button {
     margin: 0 !important;
   }
   .site-header-logo {
-    height: 40px !important;
-    max-width: 180px !important;
+    height: 42px !important;
+    width: auto !important;
+    max-width: 48px !important;
   }
   .brand-logo-sub {
     display: none !important;
@@ -1639,8 +1654,9 @@ button {
     padding: 8px 14px !important;
   }
   .site-header-logo {
-    height: 36px !important;
-    max-width: 155px !important;
+    height: 38px !important;
+    width: auto !important;
+    max-width: 42px !important;
   }
   .header-nav .nav-connect-btn {
     display: none !important; /* Hide extra button in header on small mobile to give logo + menu breathing space */
@@ -1778,7 +1794,8 @@ button {
 @media (max-width: 480px) {
   .site-header-logo {
     height: 34px !important;
-    max-width: 140px !important;
+    width: auto !important;
+    max-width: 36px !important;
   }
   .header-nav {
     padding: 8px 12px !important;
@@ -2082,12 +2099,12 @@ button {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 64px;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .about-paragraph {
   font-size: 15.5px;
-  line-height: 1.8;
+  line-height: 1.85;
   color: var(--color-text-muted);
   margin-bottom: 18px;
 }
@@ -2100,24 +2117,25 @@ button {
 
 .about-metric-card {
   background: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.07);
-  border-radius: 10px;
+  border: 1px solid rgba(112, 52, 26, 0.16);
+  border-radius: 12px;
   padding: 28px 24px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 6px 20px rgba(112, 52, 26, 0.05);
   transition: var(--transition-smooth);
 }
 
 .about-metric-card:hover {
   border-color: var(--color-wine);
   transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(112, 52, 26, 0.12);
 }
 
 .metric-number {
   font-family: var(--font-serif);
-  font-size: 36px;
+  font-size: clamp(26px, 2.8vw, 36px);
   font-weight: 700;
   color: var(--color-wine);
-  line-height: 1.1;
+  line-height: 1.15;
   margin-bottom: 8px;
 }
 
@@ -2126,6 +2144,7 @@ button {
   font-weight: 600;
   color: var(--color-text-dark);
   letter-spacing: 0.5px;
+  line-height: 1.4;
 }
 
 .insights-section {
@@ -2159,7 +2178,7 @@ button {
 
 .insight-card:hover {
   border-color: var(--color-wine);
-  box-shadow: 0 12px 30px rgba(131, 36, 56, 0.1);
+  box-shadow: 0 12px 30px rgba(112, 52, 26, 0.1);
   transform: translateY(-4px);
 }
 
@@ -2416,7 +2435,7 @@ button {
 .blog-section {
   padding: 100px 48px;
   background-color: var(--color-cream);
-  border-top: 1px solid rgba(91, 20, 34, 0.08);
+  border-top: 1px solid rgba(112, 52, 26, 0.1);
 }
 
 .blog-container {
@@ -2486,7 +2505,7 @@ button {
 
 .blog-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(91, 20, 34, 0.09);
+  box-shadow: 0 18px 40px rgba(112, 52, 26, 0.08);
   border-color: var(--color-gold);
 }
 

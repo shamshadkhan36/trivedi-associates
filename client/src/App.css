@@ -337,7 +337,7 @@
   text-decoration: none !important;
   border: none !important;
   outline: none !important;
-  box-shadow: 0 8px 25px rgba(91, 20, 34, 0.4);
+  box-shadow: 0 8px 25px rgba(112, 52, 26, 0.4);
   transition: var(--transition-smooth);
   border-radius: 2px;
 }
@@ -478,7 +478,7 @@
   font-weight: 600;
   padding: 4px 10px;
   border-radius: 4px;
-  background: rgba(131, 36, 56, 0.08);
+  background: rgba(112, 52, 26, 0.08);
   transition: var(--transition-smooth);
 }
 
@@ -510,14 +510,14 @@
 }
 
 .horizontal-service-card:hover {
-  border-color: rgba(131, 36, 56, 0.4);
+  border-color: rgba(112, 52, 26, 0.4);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
   transform: translateY(-2px);
 }
 
 .horizontal-service-card.expanded {
   border-color: var(--color-wine);
-  box-shadow: 0 14px 35px rgba(131, 36, 56, 0.12);
+  box-shadow: 0 14px 35px rgba(112, 52, 26, 0.12);
 }
 
 .h-card-header {
@@ -550,7 +550,7 @@
   width: 44px;
   height: 44px;
   border-radius: 8px;
-  background: rgba(131, 36, 56, 0.08);
+  background: rgba(112, 52, 26, 0.08);
   color: var(--color-wine);
   display: flex;
   align-items: center;
@@ -683,7 +683,7 @@
 
 .h-enquire-btn:hover {
   background: var(--color-wine-dark);
-  box-shadow: 0 6px 18px rgba(131, 36, 56, 0.35);
+  box-shadow: 0 6px 18px rgba(112, 52, 26, 0.35);
 }
 
 /* -------------------- 3. INFINITE COMPANY MARQUEE -------------------- */
@@ -932,14 +932,14 @@
   text-transform: uppercase;
   border-radius: 6px;
   border: none;
-  box-shadow: 0 10px 25px rgba(131, 36, 56, 0.35);
+  box-shadow: 0 10px 25px rgba(112, 52, 26, 0.35);
   transition: var(--transition-smooth);
 }
 
 .minimal-submit-btn:hover {
   background: var(--color-wine-dark);
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(131, 36, 56, 0.5);
+  box-shadow: 0 12px 30px rgba(112, 52, 26, 0.5);
 }
 
 .status-message-alert {
@@ -1620,7 +1620,7 @@
 
 .insight-card:hover {
   border-color: var(--color-wine);
-  box-shadow: 0 12px 30px rgba(131, 36, 56, 0.1);
+  box-shadow: 0 12px 30px rgba(112, 52, 26, 0.1);
   transform: translateY(-4px);
 }
 
@@ -1679,7 +1679,7 @@
 .blog-section {
   padding: 100px 48px;
   background-color: var(--color-cream);
-  border-top: 1px solid rgba(91, 20, 34, 0.08);
+  border-top: 1px solid rgba(112, 52, 26, 0.08);
 }
 
 .blog-container {
@@ -1749,7 +1749,7 @@
 
 .blog-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(91, 20, 34, 0.09);
+  box-shadow: 0 18px 40px rgba(112, 52, 26, 0.09);
   border-color: var(--color-gold);
 }
 

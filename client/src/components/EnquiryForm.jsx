@@ -171,7 +171,7 @@ export default function EnquiryForm({ preselectedService }) {
                   <a
                     href="tel:7977117256"
                     style={{
-                      background: 'var(--color-wine, #5B1422)',
+                      background: 'var(--color-wine, #70341A)',
                       color: '#FFFFFF',
                       padding: '9px 18px',
                       borderRadius: '6px',

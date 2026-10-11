@@ -3,12 +3,14 @@
   --font-italic-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
   
-  --color-cream: #FAF5EE;
-  --color-cream-soft: #F5EFE4;
-  --color-cream-light: #FDFBF7;
-  --color-wine: #5B1422;
-  --color-wine-dark: #3F0B15;
-  --color-wine-light: #7A1D30;
+  --color-cream: #FFFFFF;
+  --color-cream-soft: #FFFFFF;
+  --color-cream-light: #FFFFFF;
+  --color-wine: #70341A;
+  --color-maroon: #70341A;
+  --color-brown: #70341A;
+  --color-wine-dark: #4E210E;
+  --color-wine-light: #8E4723;
   --color-gold: #C5A880;
   --color-gold-light: #E0CDB3;
   --color-gold-dark: #9A7B54;

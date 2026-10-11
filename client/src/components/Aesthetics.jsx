@@ -70,7 +70,7 @@ export default function Aesthetics({ refreshTrigger }) {
 
         {allImages.length === 0 ? (
           <div className="projects-empty-state" style={{ textAlign: 'center', padding: '60px 20px', color: '#888' }}>
-            <h3 style={{ fontFamily: 'Cinzel, Georgia, serif', fontSize: '20px', color: '#5B1422', marginBottom: '8px' }}>
+            <h3 style={{ fontFamily: 'Cinzel, Georgia, serif', fontSize: '20px', color: '#70341A', marginBottom: '8px' }}>
               Portfolio Curation in Progress
             </h3>
             <p style={{ fontSize: '13.5px', color: '#888', maxWidth: '480px', margin: '0 auto' }}>
