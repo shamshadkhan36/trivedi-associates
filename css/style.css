@@ -1555,129 +1555,254 @@ button {
 /* -------------------- RESPONSIVE BREAKPOINTS -------------------- */
 @media (max-width: 1100px) {
   .header-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 24px;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 12px 20px !important;
+    grid-template-columns: none !important;
+  }
+  .header-nav.scrolled {
+    padding: 10px 20px !important;
   }
   .header-nav .brand-logo {
-    margin: 0;
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
   }
   .site-header-logo {
-    height: 48px;
+    height: 40px !important;
+    max-width: 180px !important;
   }
+  .brand-logo-sub {
+    display: none !important;
+  }
+  .header-nav .nav-links,
   .nav-links {
-    display: none;
+    display: none !important;
+    visibility: hidden !important;
+  }
+  .header-nav .nav-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-left: auto !important;
   }
   .mobile-menu-btn {
-    display: block;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 40px !important;
+    height: 40px !important;
+    padding: 7px !important;
+    border-radius: 6px !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(197, 168, 128, 0.3) !important;
+    color: #FFFFFF !important;
+    cursor: pointer !important;
+  }
+  .header-nav .nav-connect-btn {
+    padding: 9px 16px !important;
+    font-size: 11px !important;
+    letter-spacing: 1.2px !important;
+  }
+  .services-grid-horizontal {
+    grid-template-columns: 1fr !important;
   }
   .services-list-container {
-    padding: 0 20px;
+    padding: 0 16px;
   }
   .service-card-body {
-    padding: 0 24px 28px 24px;
+    padding: 0 20px 24px 20px;
   }
   .deliverables-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
   .enquiry-container {
-    grid-template-columns: 1fr;
-    gap: 50px;
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
   }
   .aesthetics-container {
-    grid-template-columns: 1fr;
-    gap: 40px;
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
   }
   .footer-container {
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 36px !important;
   }
 }
 
 @media (max-width: 768px) {
   .header-nav {
-    padding: 14px 20px;
+    padding: 10px 14px !important;
   }
   .header-nav.scrolled {
-    padding: 10px 20px;
+    padding: 8px 14px !important;
   }
-  .service-card-header {
-    padding: 20px 20px;
+  .site-header-logo {
+    height: 36px !important;
+    max-width: 155px !important;
   }
-  .service-title-group {
-    gap: 16px;
+  .header-nav .nav-connect-btn {
+    display: none !important; /* Hide extra button in header on small mobile to give logo + menu breathing space */
   }
-  .service-heading-text {
-    font-size: 18px;
+  .hero-section {
+    min-height: 520px;
+    height: 100svh;
   }
-  .service-number {
-    font-size: 20px;
+  .hero-bottom-bar {
+    position: absolute !important;
+    bottom: 24px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: calc(100% - 32px) !important;
+    max-width: 380px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    padding: 0 !important;
   }
-  .input-row-grid {
-    grid-template-columns: 1fr;
+  .btn-hero-primary,
+  .btn-hero-secondary {
+    width: 100% !important;
+    min-height: 48px !important;
+    text-align: center !important;
+    padding: 13px 20px !important;
+    font-size: 12px !important;
+    letter-spacing: 1.5px !important;
+    box-sizing: border-box !important;
+  }
+  .services-section {
+    padding: 50px 14px !important;
+  }
+  .services-main-title {
+    font-size: clamp(22px, 5.5vw, 28px) !important;
+    text-align: center !important;
+  }
+  .services-toggle-bar {
+    justify-content: center !important;
+    margin-bottom: 22px !important;
+  }
+  .horizontal-service-card {
+    border-radius: 8px !important;
+  }
+  .h-card-header {
+    padding: 18px 16px 14px 16px !important;
+  }
+  .h-card-expanded-body {
+    padding: 0 16px 20px 16px !important;
+  }
+  .h-card-title {
+    min-height: auto !important;
+    font-size: 17px !important;
+  }
+  .h-card-tagline {
+    min-height: auto !important;
+    font-size: 12px !important;
+  }
+  .projects-gallery-section {
+    padding: 50px 14px !important;
+  }
+  .cat-image-card {
+    flex: 0 0 85% !important;
+  }
+  .about-section {
+    padding: 50px 14px !important;
+  }
+  .about-metrics-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+  .blog-section {
+    padding: 50px 14px !important;
+  }
+  .blog-posts-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .blog-category-filter {
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    padding-bottom: 8px !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .enquiry-section {
+    padding: 50px 14px !important;
+  }
+  .enquiry-container {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .direct-cards-wrapper {
+    gap: 10px !important;
+  }
+  .minimal-contact-card {
+    padding: 14px 16px !important;
   }
   .enquiry-form-card {
-    padding: 24px 18px;
+    padding: 22px 16px !important;
   }
-  .project-card {
-    flex: 0 0 320px;
-    height: 380px;
+  .input-row-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .minimal-input,
+  .minimal-select,
+  .minimal-textarea {
+    font-size: 16px !important; /* Prevents auto-zoom on iOS Safari */
   }
   .footer-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+    padding: 40px 14px 26px 14px !important;
   }
   .footer-bottom {
-    flex-direction: column;
-    gap: 14px;
-    text-align: center;
+    flex-direction: column !important;
+    gap: 12px !important;
+    text-align: center !important;
+  }
+  .marquee-company-card {
+    min-width: 160px !important;
+    max-width: 160px !important;
+    height: 68px !important;
+    padding: 8px 12px !important;
+  }
+  .partner-logo-img {
+    max-height: 40px !important;
+    max-width: 120px !important;
   }
   .floating-actions {
-    bottom: 20px;
-    right: 20px;
+    bottom: 16px !important;
+    right: 16px !important;
   }
 }
 
 @media (max-width: 480px) {
   .site-header-logo {
-    height: 40px;
-    max-width: 190px;
+    height: 34px !important;
+    max-width: 140px !important;
   }
   .header-nav {
-    padding: 10px 14px;
+    padding: 8px 12px !important;
   }
   .header-nav.scrolled {
-    padding: 8px 14px;
+    padding: 6px 12px !important;
   }
-  .nav-connect-btn {
-    padding: 8px 14px;
-    font-size: 11px;
-    letter-spacing: 1px;
-  }
-  .hero-bottom-bar {
-    width: 92%;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .btn-hero-primary, .btn-hero-secondary {
-    width: 100%;
-    text-align: center;
-    padding: 12px 18px;
-    font-size: 12px;
+  .mobile-menu-btn {
+    width: 36px !important;
+    height: 36px !important;
+    padding: 5px !important;
   }
   .services-main-title {
-    font-size: 26px;
+    font-size: 24px !important;
   }
   .marquee-company-card {
-    min-width: 180px;
-    max-width: 180px;
-    height: 74px;
-    padding: 10px 16px;
-    border-radius: 10px;
+    min-width: 140px !important;
+    max-width: 140px !important;
+    height: 62px !important;
+    padding: 6px 10px !important;
   }
   .partner-logo-img {
-    max-height: 44px;
-    max-width: 135px;
+    max-height: 36px !important;
+    max-width: 105px !important;
   }
 }
 
