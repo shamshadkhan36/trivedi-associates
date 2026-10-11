@@ -15,7 +15,7 @@ export default function Navbar({ onOpenConnect, onOpenSearch, onOpenDrawer, onOp
     <header className={`header-nav ${isScrolled ? 'scrolled' : ''}`}>
       <a href="#" className="brand-logo" aria-label="Trivedi Associates Home">
         <div className="brand-logo-media">
-          <img src="/assets/images/trivedi_associates_logo.png?v=20261011_v5" alt="Trivedi Associates" className="site-header-logo" />
+          <img src="/assets/images/trivedi_associates_logo.png?v=20261012_hd" alt="Trivedi Associates" className="site-header-logo" />
         </div>
       </a>
 
