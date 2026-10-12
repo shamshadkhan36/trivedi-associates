@@ -252,7 +252,7 @@
 
 @keyframes heroSubtleZoom {
   from { transform: scale(1.0); }
-  to { transform: scale(1.06); }
+  to { transform: scale(1.02); }
 }
 
 .hero-overlay {
@@ -429,14 +429,14 @@
 
 /* -------------------- 2. EXPANDABLE 4 SERVICES (FROM WHITEBOARD) -------------------- */
 .services-section {
-  padding: 110px 0 100px 0;
+  padding: 80px 0 75px 0;
   background-color: var(--color-cream);
   position: relative;
 }
 
 .services-header-wrap {
   max-width: 900px;
-  margin: 0 auto 60px auto;
+  margin: 0 auto 40px auto;
   text-align: center;
   padding: 0 24px;
 }
@@ -812,7 +812,7 @@
 
 /* -------------------- 4. ENQUIRY FORM SECTION (FROM WHITEBOARD) -------------------- */
 .enquiry-section {
-  padding: 110px 0 100px 0;
+  padding: 80px 0 75px 0;
   background-color: #171717;
   color: var(--color-white);
   position: relative;
@@ -1597,7 +1597,7 @@
 /* ==================== ABOUT & INSIGHTS SECTIONS ==================== */
 .about-section {
   background-color: var(--color-cream);
-  padding: 100px 32px;
+  padding: 75px 32px 70px 32px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
@@ -1741,7 +1741,7 @@
    BLOG & INDUSTRY INSIGHTS SECTION
    ========================================================================== */
 .blog-section {
-  padding: 100px 48px;
+  padding: 75px 48px 70px;
   background-color: var(--color-cream);
   border-top: 1px solid rgba(112, 52, 26, 0.08);
 }
@@ -2208,4 +2208,15 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* ==================== GLOBAL DESKTOP SCALE & ZOOM ==================== */
+@media (min-width: 992px) {
+  body {
+    zoom: 0.9;
+  }
+  .hero-section {
+    height: calc(100vh / 0.9) !important;
+  }
+}
+
 
